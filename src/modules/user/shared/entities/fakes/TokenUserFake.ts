@@ -1,4 +1,4 @@
-import { ITokenUser } from '../models/ITokenUser'
+import { ITokenUser } from '../../models/ITokenUser'
 
 class TokenUserFake implements ITokenUser {
     private _id: string
