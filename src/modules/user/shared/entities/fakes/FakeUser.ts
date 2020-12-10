@@ -1,6 +1,6 @@
 import { IUser } from '../models/IUser'
 
-class UserFake implements IUser {
+class FakeUser implements IUser {
     private _id: string
     private _name: string
     private _email: string
@@ -58,4 +58,4 @@ class UserFake implements IUser {
     }
 }
 
-export { UserFake }
+export { FakeUser }
