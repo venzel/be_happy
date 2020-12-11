@@ -1,12 +1,11 @@
 import { Router, Request, Response } from 'express'
+import { CreateUserRoute } from '@modules/user/useCases/createUser/CreateUserRoute'
 
 class Route {
     public static execute(): Router {
         const router: Router = Router()
 
-        router.get('/user', (req: Request, res: Response) => {
-            res.json({ router: true })
-        })
+        new CreateUserRoute().register(router, '/register')
 
         return router
     }
