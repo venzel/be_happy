@@ -1,1 +1,5 @@
-console.log('Queue')
+class Queue {
+    public static execute(): void {}
+}
+
+Queue.execute()
