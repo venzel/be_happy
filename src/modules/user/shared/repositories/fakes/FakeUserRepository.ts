@@ -1,5 +1,5 @@
 import { ICreateUserDTO } from '../../dtos/ICreateUserDTO'
-import { FakeUser } from '../../entities/fakes/FakeUser'
+import { FakeUser } from '../../entities/fakes/UserFake'
 import { IUser } from '../../entities/models/IUser'
 import { IUserRepository } from '../models/IUserRepository'
 
@@ -8,6 +8,18 @@ class FakeUserRepository implements IUserRepository {
 
     constructor() {
         this._repository = []
+    }
+
+    public async findById(userId: string): Promise<IUser | undefined> {
+        return this._repository.find((user) => user.id === userId)
+    }
+
+    public async findByName(userName: string): Promise<IUser | undefined> {
+        return this._repository.find((user) => user.name === userName)
+    }
+
+    public async findByEmail(userEmail: string): Promise<IUser | undefined> {
+        return this._repository.find((user) => user.email === userEmail)
     }
 
     public async create(user: ICreateUserDTO): Promise<IUser> {
@@ -25,23 +37,30 @@ class FakeUserRepository implements IUserRepository {
     public async save(user: IUser): Promise<IUser> {
         const userIndex: number = this._repository.indexOf(user)
 
-        if (userIndex !== -1) this._repository[userIndex] = user
+        if (userIndex !== -1) {
+            this._repository[userIndex] = user
+        }
 
         return user
     }
 
-    public async delete(userId: string): Promise<IUser> {
-        // const userIndex: number = this._repository.indexOf()
+    public async delete(user: IUser): Promise<IUser> {
+        const userIndex: number = this._repository.indexOf(user)
 
-        throw new Error('Method not implemented.')
+        if (userIndex !== -1) {
+            const currentDate = new Date()
+
+            user.updatedAt = currentDate
+            user.deletedAt = currentDate
+
+            this._repository[userIndex] = user
+        }
+
+        return user
     }
 
-    public async show(userId: string): Promise<IUser> {
-        throw new Error('Method not implemented.')
-    }
-
-    public async list(): Promise<IUser[]> {
-        throw new Error('Method not implemented.')
+    public async repository(): Promise<IUser[]> {
+        return this._repository
     }
 }
 
