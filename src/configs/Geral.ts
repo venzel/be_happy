@@ -9,13 +9,11 @@ class Geral {
     }
 
     private _environment(): void {
-        const env = process.env.NODE_ENV
-        this.environment = env ? env : null
+        this.environment = process.env.NODE_ENV || null
     }
 
     private _port(): void {
-        const port = process.env.SERVER_PORT
-        this.server_port = port ? port : null
+        this.server_port = process.env.SERVER_PORT || null
     }
 
     private _apiurl(): void {
