@@ -1,4 +1,4 @@
-import { IUser } from '../models/IUser'
+import { IUser } from '@modules/user/shared/entities/IUser'
 
 class FakeUser implements IUser {
     public id: string

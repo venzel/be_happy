@@ -1,9 +1,9 @@
-import { ICreateUserDTO } from '../../dtos/ICreateUserDTO'
-import { FakeUser } from '../../entities/fakes/UserFake'
-import { IUser } from '../../entities/models/IUser'
-import { IUserRepository } from '../models/IUserRepository'
+import { ICreateUserDTO } from '@modules/user/shared/dtos/ICreateUserDTO'
+import { IUser } from '@modules/user/shared/entities/IUser'
+import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
+import { FakeUser } from '../entities/UserFake'
 
-class FakeUserRepository implements IUserRepository {
+class UserRepositoryFake implements IUserRepository {
     private _repository: IUser[]
 
     constructor() {
@@ -64,4 +64,4 @@ class FakeUserRepository implements IUserRepository {
     }
 }
 
-export { FakeUserRepository }
+export { UserRepositoryFake as FakeUserRepository }
