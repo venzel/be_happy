@@ -1,0 +1,3 @@
+interface IEmotionRepository {}
+
+export { IEmotionRepository }
