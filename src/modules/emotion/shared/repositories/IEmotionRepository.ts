@@ -6,7 +6,7 @@ interface IEmotionRepository {
     create(data: ICreateEmotionDTO): Promise<IEmotion>
     save(emotion: IEmotion): Promise<IEmotion>
     delete(emotion: IEmotion): Promise<IEmotion>
-    repository(): Promise<IEmotion[]>
+    list(): Promise<IEmotion[]>
 }
 
 export { IEmotionRepository }

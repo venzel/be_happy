@@ -1,7 +1,7 @@
 import { INotification } from '@modules/notification/shared/entities/INotification'
 
-class Notification implements INotification {
-    id: string
+class NotificationFake implements INotification {
+    _id: any
     ownerId: string
     content: string
     read: boolean
@@ -9,4 +9,4 @@ class Notification implements INotification {
     updatedAt: Date
 }
 
-export { Notification }
+export { NotificationFake }

@@ -1,14 +1,18 @@
-import { v4 as uuid } from 'uuid'
+import { ObjectID } from 'mongodb'
 import { ICreateNotificationDTO } from '@modules/notification/shared/dtos/ICreateNotificationDTO'
 import { INotification } from '@modules/notification/shared/entities/INotification'
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
-import { NotificationFake } from '../entities/NotificationFake'
+import { NotificationFake } from '../schema/NotificationFake'
 
 class NotificationRepositoryFake implements INotificationRepository {
     private _repository: INotification[]
 
+    constructor() {
+        this._repository = []
+    }
+
     public async findById(notificationId: string): Promise<INotification | undefined> {
-        return this._repository.find(({ id }) => id === notificationId)
+        return this._repository.find(({ _id }) => _id === new ObjectID(notificationId))
     }
 
     public async create(data: ICreateNotificationDTO): Promise<INotification> {
@@ -16,7 +20,7 @@ class NotificationRepositoryFake implements INotificationRepository {
 
         const notificationFake = new NotificationFake()
 
-        Object.assign(notificationFake, { id: uuid(), ownerId, content })
+        Object.assign(notificationFake, { _id: new ObjectID(), ownerId, content })
 
         this._repository.push(notificationFake)
 
@@ -50,6 +54,10 @@ class NotificationRepositoryFake implements INotificationRepository {
         }
 
         return notification
+    }
+
+    public async list(): Promise<INotification[]> {
+        return this._repository
     }
 }
 

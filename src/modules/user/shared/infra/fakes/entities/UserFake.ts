@@ -8,7 +8,7 @@ class FakeUser implements IUser {
     public role: string
     public avatar: string
     public allowed: boolean
-    public activeted: boolean
+    public activated: boolean
     public createdAt: Date
     public updatedAt: Date
     public deletedAt: Date | null

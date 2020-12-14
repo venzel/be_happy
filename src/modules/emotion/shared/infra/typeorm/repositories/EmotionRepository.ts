@@ -1,32 +1,53 @@
+import { getRepository, Repository } from 'typeorm'
 import { ICreateEmotionDTO } from '@modules/emotion/shared/dtos/ICreateEmotionDTO'
 import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
+import { Emotion } from '../entities/Emotion'
 import { IEmotionRepository } from '@modules/emotion/shared/repositories/IEmotionRepository'
 
 class EmotionRepository implements IEmotionRepository {
-    private _repository: IEmotion[]
+    private _repository: Repository<IEmotion>
 
     constructor() {
-        this._repository = []
+        this._repository = getRepository(Emotion, 'postgres')
     }
 
     public async findById(emotionId: string): Promise<IEmotion | undefined> {
-        throw new Error('Method not implemented.')
+        return await this._repository.findOne({ where: { id: emotionId, deletedAt: null } })
     }
 
     public async create(data: ICreateEmotionDTO): Promise<IEmotion> {
-        throw new Error('Method not implemented.')
+        const { ownerId, emotion, description } = data
+
+        const emotionCreated = this._repository.create({ ownerId, emotion, description })
+
+        await this._repository.save(emotionCreated)
+
+        return emotionCreated
     }
 
     public async save(emotion: IEmotion): Promise<IEmotion> {
-        throw new Error('Method not implemented.')
+        const currentDate = new Date()
+
+        emotion.updatedAt = currentDate
+
+        await this._repository.save(emotion)
+
+        return emotion
     }
 
     public async delete(emotion: IEmotion): Promise<IEmotion> {
-        throw new Error('Method not implemented.')
+        const currentDate = new Date()
+
+        emotion.updatedAt = currentDate
+        emotion.deletedAt = currentDate
+
+        await this.save(emotion)
+
+        return emotion
     }
 
-    public async repository(): Promise<IEmotion[]> {
-        throw new Error('Method not implemented.')
+    public async list(): Promise<IEmotion[]> {
+        return await this._repository.find()
     }
 }
 

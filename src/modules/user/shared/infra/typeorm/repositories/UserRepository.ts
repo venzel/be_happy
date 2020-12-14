@@ -1,40 +1,62 @@
-import { ICreateUserDTO } from '@modules/user/shared/dtos/ICreateUserDTO'
+import { getRepository, Repository, Not } from 'typeorm'
 import { IUser } from '@modules/user/shared/entities/IUser'
+import { User } from '../entities/User'
+import { ICreateUserDTO } from '@modules/user/shared/dtos/ICreateUserDTO'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 
 class UserRepository implements IUserRepository {
-    private _repository: IUser[]
+    private _repository: Repository<IUser>
 
     constructor() {
-        this._repository = []
+        this._repository = getRepository(User, 'postgres')
     }
 
     public async findById(userId: string): Promise<IUser | undefined> {
-        throw new Error('Method not implemented.')
+        return await this._repository.findOne({ where: { id: userId, deletedAt: null } })
     }
 
-    public async findByName(nameUser: string): Promise<IUser | undefined> {
-        throw new Error('Method not implemented.')
+    public async findByName(userName: string): Promise<IUser | undefined> {
+        return await this._repository.findOne({ where: { name: userName, deletedAt: null } })
     }
 
-    public async findByEmail(emailUser: string): Promise<IUser | undefined> {
-        throw new Error('Method not implemented.')
+    public async findByEmail(userEmail: string): Promise<IUser | undefined> {
+        return await this._repository.findOne({ where: { email: userEmail, deletedAt: null } })
     }
 
-    public async create(user: ICreateUserDTO): Promise<IUser> {
-        throw new Error('Method not implemented.')
+    public async create(data: ICreateUserDTO): Promise<IUser> {
+        const { name, email, password, role } = data
+
+        const userCreated = this._repository.create({ name, email, password, role })
+
+        await this._repository.save(userCreated)
+
+        return userCreated
     }
 
     public async save(user: IUser): Promise<IUser> {
-        throw new Error('Method not implemented.')
+        const currentDate = new Date()
+
+        user.updatedAt = currentDate
+
+        await this._repository.save(user)
+
+        return user
     }
 
     public async delete(user: IUser): Promise<IUser> {
-        throw new Error('Method not implemented.')
+        const currentDate = new Date()
+
+        user.allowed = false
+        user.updatedAt = currentDate
+        user.deletedAt = currentDate
+
+        await this.save(user)
+
+        return user
     }
 
-    public async repository(): Promise<IUser[]> {
-        throw new Error('Method not implemented.')
+    public async list(): Promise<IUser[]> {
+        return await this._repository.find()
     }
 }
 

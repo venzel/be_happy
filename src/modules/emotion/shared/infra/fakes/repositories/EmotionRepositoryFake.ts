@@ -52,7 +52,7 @@ class EmotionRepositoryFake implements IEmotionRepository {
         return emotion
     }
 
-    public async repository(): Promise<IEmotion[]> {
+    public async list(): Promise<IEmotion[]> {
         return this._repository
     }
 }

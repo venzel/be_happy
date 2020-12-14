@@ -6,7 +6,7 @@ interface IUser {
     role: string
     avatar: string
     allowed: boolean
-    activeted: boolean
+    activated: boolean
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null

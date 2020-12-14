@@ -1,5 +1,5 @@
 interface INotification {
-    id: string
+    _id: any
     ownerId: string
     content: string
     read: boolean
