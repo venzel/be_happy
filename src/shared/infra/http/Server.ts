@@ -3,8 +3,12 @@ import { server_port } from '@configs/Geral'
 
 class Server {
     public static execute(): void {
-        app.listen(server_port, () => {
-            console.log(`Server listen in port ${server_port}!`)
+        app.on('connected', () => {
+            console.log('Connected in databases!')
+
+            app.listen(server_port, () => {
+                console.log(`Server listen in port ${server_port}!`)
+            })
         })
     }
 }
