@@ -3,31 +3,37 @@ import { IUser } from '@modules/user/shared/entities/IUser'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 
 class UserRepository implements IUserRepository {
-    findById(userId: string): Promise<IUser | undefined> {
+    private _repository: IUser[]
+
+    constructor() {
+        this._repository = []
+    }
+
+    public async findById(userId: string): Promise<IUser | undefined> {
         throw new Error('Method not implemented.')
     }
 
-    findByName(nameUser: string): Promise<IUser | undefined> {
+    public async findByName(nameUser: string): Promise<IUser | undefined> {
         throw new Error('Method not implemented.')
     }
 
-    findByEmail(emailUser: string): Promise<IUser | undefined> {
+    public async findByEmail(emailUser: string): Promise<IUser | undefined> {
         throw new Error('Method not implemented.')
     }
 
-    create(user: ICreateUserDTO): Promise<IUser> {
+    public async create(user: ICreateUserDTO): Promise<IUser> {
         throw new Error('Method not implemented.')
     }
 
-    save(user: IUser): Promise<IUser> {
+    public async save(user: IUser): Promise<IUser> {
         throw new Error('Method not implemented.')
     }
 
-    delete(user: IUser): Promise<IUser> {
+    public async delete(user: IUser): Promise<IUser> {
         throw new Error('Method not implemented.')
     }
 
-    repository(): Promise<IUser[]> {
+    public async repository(): Promise<IUser[]> {
         throw new Error('Method not implemented.')
     }
 }

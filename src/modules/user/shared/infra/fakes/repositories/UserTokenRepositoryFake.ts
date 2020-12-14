@@ -28,7 +28,7 @@ class UserTokenRepositoryFake implements IUserTokenRepository {
     }
 
     public async save(userToken: IUserToken): Promise<void> {
-        const userIndex: number = this._repository.findIndex(({ id }) => id === userToken.id)
+        const userIndex: number = this._repository.indexOf(userToken)
 
         if (userIndex !== -1) {
             this._repository[userIndex] = userToken
