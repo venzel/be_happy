@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import 'dotenv/config'
 import express, { Express } from 'express'
 import { middleware } from './Middleware'

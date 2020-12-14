@@ -3,7 +3,7 @@
 ### Dependências de desenvolvimento
 
 ```bash
-$ yarn add nodemon typescript tsconfig-paths @types/module-alias @types/node @types/express ts-node-dev npm-run-all eslint-import-resolver-typescript prettier eslint-config-prettier eslint-plugin-prettier @types/bcryptjs @types/jsonwebtoken @types/cors @types/helmet @types/morgan @types/nodemailer @types/bull @types/ioredis @types/multer jest @types/jest ts-jest supertest @types/supertest @types/module-alias -D
+$ yarn add nodemon typescript tsconfig-paths @types/module-alias @types/node @types/express ts-node-dev npm-run-all eslint-import-resolver-typescript prettier eslint-config-prettier eslint-plugin-prettier @types/uuid @types/bcryptjs @types/jsonwebtoken @types/cors @types/helmet @types/morgan @types/nodemailer @types/bull @types/ioredis @types/multer jest @types/jest ts-jest supertest @types/supertest @types/module-alias -D
 ```
 
 ### Dependências de produção

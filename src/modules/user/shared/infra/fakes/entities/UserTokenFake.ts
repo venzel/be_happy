@@ -1,4 +1,4 @@
-import { IUserToken } from '../../../entities/models/IUserToken'
+import { IUserToken } from '../../../entities/IUserToken'
 
 class UserTokenFake implements IUserToken {
     public id: string
