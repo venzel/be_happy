@@ -8,7 +8,6 @@ import {
 } from 'typeorm'
 import { Exclude, Expose } from 'class-transformer'
 import { api_url } from '@configs/Geral'
-
 import { IUser } from '@modules/user/shared/entities/IUser'
 
 @Entity('users')

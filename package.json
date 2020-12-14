@@ -66,6 +66,7 @@
     "scripts": {
         "build": "yarn tsc",
         "dev": "npm-run-all -p dev:*",
+        "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
         "dev:server": "ts-node-dev --trace-deprecation -r tsconfig-paths/register --transpile-only --ignore-watch node_modules ./src/shared/infra/http/Server.ts",
         "dev:queue": "ts-node-dev -p --trace-deprecation -r tsconfig-paths/register --transpile-only --ignore-watch node_modules ./src/shared/infra/http/Queue.ts",
         "pro": "npm-run-all -p pro:*",

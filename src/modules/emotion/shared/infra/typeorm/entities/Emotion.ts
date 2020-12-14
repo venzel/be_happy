@@ -8,12 +8,11 @@ import {
     UpdateDateColumn,
     DeleteDateColumn,
 } from 'typeorm'
-import { Expose, Exclude } from 'class-transformer'
-
 import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
 import { User } from '@modules/user/shared/infra/typeorm/entities/User'
+import { Expose, Exclude } from 'class-transformer'
 
-@Entity('emotion')
+@Entity('emotions')
 class Emotion implements IEmotion {
     @Expose({ name: 'emotionId' })
     @PrimaryGeneratedColumn('uuid')

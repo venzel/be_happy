@@ -2,6 +2,15 @@
 
 [README.md](../README.md)
 
+## Registrar a CLI e outros através de scripts
+
+```JSON
+"scripts": {
+        "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+        "migration": "yarn typeorm migration:run"
+    }
+```
+
 ## Aquivo de configuração do typeorm: ormconfig.json
 
 ```JSON
@@ -52,4 +61,10 @@ $ yarn typeorm migration:run
 
 ```bash
 $ yarn typeorm migration:revert
+```
+
+# Dropar um schema
+
+```bash
+$ yarn typeorm schema:drop
 ```

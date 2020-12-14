@@ -7,9 +7,9 @@
         "password": "",
         "database": "",
         "entities": ["./src/modules/**/infra/typeorm/entities/*.ts"],
-        "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
+        "migrations": ["./src/shared/infra/migrations/*.ts"],
         "cli": {
-            "migrationsDir": "./src/shared/infra/typeorm/migrations"
+            "migrationsDir": "./src/shared/infra/migrations"
         }
     },
     {
@@ -20,10 +20,6 @@
         "synchronize": true,
         "logging": false,
         "useUnifiedTopology": true,
-        "entities": ["./src/modules/**/infra/typeorm/schemas/*.ts"],
-        "migrations": ["./src/shared/infra/typeorm/migrations/mongodb/*.ts"],
-        "cli": {
-            "migrationsDir": "./src/shared/infra/typeorm/migrations/mongodb"
-        }
+        "entities": ["./src/modules/**/infra/typeorm/schemas/*.ts"]
     }
 ]
