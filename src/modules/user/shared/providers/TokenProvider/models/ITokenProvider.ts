@@ -1,5 +1,7 @@
+import { ICreatePayloadDTO } from '@modules/user/shared/dtos/ICreatePayloadDTO'
+
 interface ITokenProvider {
-    generateToken(payload: string): Promise<string>
+    generateToken(data: ICreatePayloadDTO): Promise<string>
     validateToken(token: string): void
 }
 
