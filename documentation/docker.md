@@ -37,7 +37,7 @@ $ sudo docker run --name postgres-behappy -e POSTGRES_PASSWORD=<PASSWORD> -d -p 
 $ sudo docker container start postgres-behappy
 
 # Acessa a bash do container
-$ docker exec -it postgres-behappy /bin/bash
+$ sudo docker exec -it postgres-behappy /bin/bash
 
 # Altera o usuário do postgres
 $ su postgres
