@@ -1,0 +1,3 @@
+class CreateEmotionTest {}
+
+export { CreateEmotionTest }

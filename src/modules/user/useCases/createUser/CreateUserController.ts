@@ -24,9 +24,14 @@ class CreateUserController {
             queueProvider
         )
 
-        const user: IUser = await createUserService.execute({ name, email, password, role: 'USER' })
+        const userCreated: IUser = await createUserService.execute({
+            name,
+            email,
+            password,
+            role: 'USER',
+        })
 
-        return res.status(201).json(classToClass(user))
+        return res.status(201).json(classToClass(userCreated))
     }
 }
 

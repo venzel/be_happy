@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { CreateUserController } from './CreateUserController'
 import { CreateUserValidator } from './CreateUserValidator'
+import { CreateUserController } from './CreateUserController'
 
 class CreateUserRoute {
     public register(router: Router, path: string): void {

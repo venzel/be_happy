@@ -16,8 +16,8 @@ class CreateUserService {
         @inject('QueueProvider') private _queueProvider: IQueueProvider
     ) {}
 
-    public async execute(dataUser: ICreateUserDTO): Promise<IUser> {
-        const { name, email, password, role } = dataUser
+    public async execute(data: ICreateUserDTO): Promise<IUser> {
+        const { name, email, password, role } = data
 
         const existsUser: IUser | undefined = await this._userRepository.findByEmail(email)
 
