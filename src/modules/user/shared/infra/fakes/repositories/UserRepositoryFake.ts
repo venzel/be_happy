@@ -72,7 +72,7 @@ class UserRepositoryFake implements IUserRepository {
         return user
     }
 
-    public async repository(): Promise<IUser[]> {
+    public async list(): Promise<IUser[]> {
         return this._repository
     }
 }
