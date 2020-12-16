@@ -31,7 +31,15 @@ class CreateUserController {
             role: 'USER',
         })
 
-        return res.status(201).json(classToClass(userCreated))
+        const status = {
+            error: false,
+            code: 201,
+            message: 'Succesfully created user!',
+        }
+
+        const data = classToClass(userCreated)
+
+        return res.status(201).json({ status, data })
     }
 }
 
