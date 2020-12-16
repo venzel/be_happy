@@ -3,7 +3,7 @@ import 'dotenv/config'
 class Geral {
     public environment: string
     public server_port: string
-    public api_url: string
+    public api_host: string
     public base_dir: string
     public token_secret: string
     public token_secret_refresh: string
@@ -33,14 +33,14 @@ class Geral {
         this.server_port = env
     }
 
-    private _apiurl(): void {
-        const env: string | undefined = process.env.API_URL
+    private _apihost(): void {
+        const env: string | undefined = process.env.API_HOST
 
         if (!env) {
-            throw new Error('Error in var ambient: API_URL!')
+            throw new Error('Error in var ambient: API_HOST!')
         }
 
-        this.api_url = env + ':' + this.server_port
+        this.api_host = env + ':' + this.server_port
     }
 
     private _basedir(): void {
@@ -80,7 +80,7 @@ class Geral {
     public setup(): void {
         this._environment()
         this._port()
-        this._apiurl()
+        this._apihost()
         this._basedir()
         this._tokensecret()
         this._tokensecretrefresh()
@@ -91,7 +91,7 @@ class Geral {
 const {
     environment,
     server_port,
-    api_url,
+    api_host: api_url,
     base_dir,
     token_secret,
     token_secret_refresh,
