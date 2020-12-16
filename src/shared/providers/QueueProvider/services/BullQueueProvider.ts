@@ -1,6 +1,6 @@
 import { IQueueProvider } from '../models/IQueueProvider'
 
-class FakeQueueProvider implements IQueueProvider {
+class BullQueueProvider implements IQueueProvider {
     public subscribe(...services: any[]): void {
         throw new Error('Method not implemented.')
     }
@@ -14,4 +14,4 @@ class FakeQueueProvider implements IQueueProvider {
     }
 }
 
-export { FakeQueueProvider }
+export { BullQueueProvider }

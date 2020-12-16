@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express'
+import { Router } from 'express'
 import { CreateUserRoute } from '@modules/user/useCases/createUser/CreateUserRoute'
 
 class Route {
@@ -11,6 +11,6 @@ class Route {
     }
 }
 
-const route: Router = Route.execute()
+const route = Route.execute
 
 export { route }

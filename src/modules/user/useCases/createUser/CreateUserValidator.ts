@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
-import { AppException } from '@shared/exceptions/AppException'
 import { isEmailValid, isPasswordValid } from '@shared/libs/RegEx'
+import { AppException } from '@shared/exceptions/AppException'
 
 class CreateUserValidator {
     public validator(req: Request, res: Response, next: NextFunction): any {

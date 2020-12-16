@@ -1,0 +1,3 @@
+interface IStorageProvider {}
+
+export { IStorageProvider }

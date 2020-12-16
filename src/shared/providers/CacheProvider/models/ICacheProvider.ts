@@ -1,0 +1,3 @@
+interface ICacheProvider {}
+
+export { ICacheProvider }

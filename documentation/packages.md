@@ -63,7 +63,7 @@ $ npm update
     "devDependencies": {
         "@types/bcryptjs": "^2.4.2",
         "@types/bull": "^3.14.4",
-        "@types/cors": "^2.8.9",
+        "@types/cors": "^2.8.7",
         "@types/express": "^4.17.9",
         "@types/helmet": "^4.0.0",
         "@types/ioredis": "^4.17.8",
@@ -71,7 +71,7 @@ $ npm update
         "@types/jsonwebtoken": "^8.5.0",
         "@types/module-alias": "^2.0.0",
         "@types/mongodb": "^3.6.3",
-        "@types/morgan": "^1.9.2",
+        "@types/morgan": "^1.9.0",
         "@types/multer": "^1.4.5",
         "@types/node": "^14.14.12",
         "@types/nodemailer": "^6.4.0",

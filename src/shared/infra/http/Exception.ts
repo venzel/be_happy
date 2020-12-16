@@ -4,13 +4,19 @@ import { AppException } from '@shared/exceptions/AppException'
 import { environment } from '@configs/Geral'
 
 class Exception {
-    static async execute(err: Errback, rq: Request, rs: Response, nx: NextFunction): Promise<Response> {
+    static async execute(
+        err: Errback,
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ): Promise<Response> {
         if (err instanceof AppException)
-            return rs.status(err.statusCode).json({ status: err.statusCode, message: err.message })
+            return res.status(err.statusCode).json({ status: err.statusCode, message: err.message })
 
-        if (environment === 'development') return rs.status(500).json(await new Youch(err, rq).toJSON())
+        if (environment === 'development')
+            return res.status(500).json(await new Youch(err, req).toJSON())
 
-        return rs.status(500).json({ status: 500, message: 'Error in system, contact admin!' })
+        return res.status(500).json({ status: 500, message: 'Error in system, contact admin!' })
     }
 }
 
