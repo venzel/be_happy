@@ -19,22 +19,16 @@ class AuthenticateUserService {
 
         const existsUser: IUser | undefined = await this._userRepository.findByEmail(email)
 
-        if (!existsUser) {
-            throw new AppException('Email or password invalid!', 403)
-        }
+        if (!existsUser) throw new AppException('Email or password invalid!', 403)
 
-        if (!existsUser.allowed) {
-            throw new AppException('User not allowed!', 403)
-        }
+        if (!existsUser.allowed) throw new AppException('User not allowed!', 403)
 
         const passwordEquals: boolean = await this._hashProvider.compareHash(
             password,
             existsUser.password
         )
 
-        if (!passwordEquals) {
-            throw new AppException('Email or password invalid!', 403)
-        }
+        if (!passwordEquals) throw new AppException('Email or password invalid!', 403)
 
         const { id, role, activated } = existsUser
 

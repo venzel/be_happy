@@ -6,13 +6,9 @@ class AuthenticateUserValidator {
     public validator(req: Request, res: Response, next: NextFunction): any {
         const { email, password } = req.body
 
-        if (!email || !isEmailValid(email)) {
-            throw new AppException('Email invalid!', 403)
-        }
+        if (!email || !isEmailValid(email)) throw new AppException('Email invalid!', 403)
 
-        if (!password) {
-            throw new AppException('Password invalid!', 403)
-        }
+        if (!password) throw new AppException('Password invalid!', 403)
 
         return next()
     }

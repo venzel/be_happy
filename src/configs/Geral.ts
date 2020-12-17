@@ -16,9 +16,7 @@ class Geral {
     private _environment(): void {
         const env: string | undefined = process.env.NODE_ENV
 
-        if (!env) {
-            throw new Error('Error in var ambient: NODE_ENV!')
-        }
+        if (!env) throw new Error('Error in var ambient: NODE_ENV!')
 
         this.environment = env
     }
@@ -26,9 +24,7 @@ class Geral {
     private _port(): void {
         const env: string | undefined = process.env.SERVER_PORT
 
-        if (!env) {
-            throw new Error('Error in var ambient: SERVER_PORT!')
-        }
+        if (!env) throw new Error('Error in var ambient: SERVER_PORT!')
 
         this.server_port = env
     }
@@ -36,9 +32,7 @@ class Geral {
     private _apihost(): void {
         const env: string | undefined = process.env.API_HOST
 
-        if (!env) {
-            throw new Error('Error in var ambient: API_HOST!')
-        }
+        if (!env) throw new Error('Error in var ambient: API_HOST!')
 
         this.api_host = env + ':' + this.server_port
     }
@@ -50,9 +44,7 @@ class Geral {
     private _tokensecret(): void {
         const env: string | undefined = process.env.TOKEN_SECRET
 
-        if (!env) {
-            throw new Error('Error in var ambient: TOKEN_SECRET!')
-        }
+        if (!env) throw new Error('Error in var ambient: TOKEN_SECRET!')
 
         this.token_secret = env
     }
@@ -60,9 +52,7 @@ class Geral {
     private _tokensecretrefresh(): void {
         const env: string | undefined = process.env.TOKEN_SECRET_REFRESH
 
-        if (!env) {
-            throw new Error('Error in var ambient: TOKEN_SECRET_REFRESH!')
-        }
+        if (!env) throw new Error('Error in var ambient: TOKEN_SECRET_REFRESH!')
 
         this.token_secret_refresh = env
     }
@@ -70,9 +60,7 @@ class Geral {
     private _tokenexpires(): void {
         const env: string | undefined = process.env.TOKEN_EXPIRES
 
-        if (!env) {
-            throw new Error('Error in var ambient: TOKEN_EXPIRES!')
-        }
+        if (!env) throw new Error('Error in var ambient: TOKEN_EXPIRES!')
 
         this.token_expires = Number(env)
     }
