@@ -12,9 +12,15 @@ class CreateEmotionService {
     ) {}
 
     public async execute(data: ICreateEmotionDTO): Promise<IEmotion> {
-        const { ownerId, emotion, description } = data
+        const { ownerId, emotion, description: descriptionAlias } = data
 
-        const createdEmotion = await this._emotionRepository.create({ ownerId, emotion, description })
+        const description: string | null = descriptionAlias || null
+
+        const createdEmotion: IEmotion = await this._emotionRepository.create({
+            ownerId,
+            emotion,
+            description,
+        })
 
         const dateFortatted = format(new Date(), "dd/MM/yyyy 'at' HH:mm'h'")
 

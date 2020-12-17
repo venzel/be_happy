@@ -4,14 +4,10 @@ import { isUUIDValid } from '@shared/libs/RegEx'
 
 class CreateEmotionValidator {
     public validator(req: Request, res: Response, next: NextFunction): any {
-        const { ownerId, emotion, description } = req.body
-
-        if (!ownerId || !isUUIDValid(ownerId)) {
-            throw new AppException('User id invalid!', 400)
-        }
+        const emotion: string | undefined = req.body.emotion
 
         if (!emotion) {
-            throw new AppException('Emotion type invalid!', 400)
+            throw new AppException('Emotion invalid!', 400)
         }
 
         return next()

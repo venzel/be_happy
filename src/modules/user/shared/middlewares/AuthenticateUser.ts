@@ -4,7 +4,7 @@ import { ITokenProvider } from '../providers/TokenProvider/models/ITokenProvider
 import { IPayloadDTO } from '../dtos/IPayloadDTO'
 import { AppException } from '@shared/exceptions/AppException'
 
-class UserAuthenticate {
+class AuthenticateUser {
     public authenticate(req: Request, res: Response, next: NextFunction): any {
         const schemaToken: string | undefined = req.headers.authorization
 
@@ -26,12 +26,12 @@ class UserAuthenticate {
 
         const tokenProvider: ITokenProvider = container.resolve<ITokenProvider>('TokenProvider')
 
-        // const { user }: IPayloadDTO = tokenProvider.validateToken(token)
-        //
-        // req.auth = user
+        const payload: IPayloadDTO = tokenProvider.validateToken(token)
+
+        req.auth = payload.user
 
         return next()
     }
 }
 
-export { UserAuthenticate }
+export { AuthenticateUser }

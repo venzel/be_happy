@@ -18,7 +18,9 @@ class JWTTokenProvider implements ITokenProvider {
                 },
             }
 
-            return sign(payload, token_secret, { expiresIn: token_expires })
+            const token: string = sign(payload, token_secret, { expiresIn: token_expires })
+
+            return token
         } catch {
             throw new Error('Token not generated!')
         }

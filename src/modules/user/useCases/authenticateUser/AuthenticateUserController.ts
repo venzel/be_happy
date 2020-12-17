@@ -8,7 +8,7 @@ import { ITokenProvider } from '@modules/user/shared/providers/TokenProvider/mod
 import { AuthenticateUserService } from './AuthenticateUserService'
 
 class AuthenticateUserController {
-    public async create(req: Request, res: Response): Promise<Response> {
+    public async authenticate(req: Request, res: Response): Promise<Response> {
         const { email, password } = req.body
 
         const userRepository: IUserRepository = container.resolve<IUserRepository>('UserRepository')

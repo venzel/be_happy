@@ -7,7 +7,7 @@ class Geral {
     public base_dir: string
     public token_secret: string
     public token_secret_refresh: string
-    public token_expires: string
+    public token_expires: number
 
     public constructor() {
         this.setup()
@@ -74,7 +74,7 @@ class Geral {
             throw new Error('Error in var ambient: TOKEN_EXPIRES!')
         }
 
-        this.token_expires = env
+        this.token_expires = Number(env)
     }
 
     public setup(): void {

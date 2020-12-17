@@ -3,7 +3,7 @@ import { isEmailValid } from '@shared/libs/RegEx'
 import { AppException } from '@shared/exceptions/AppException'
 
 class AuthenticateUserValidator {
-    public validate(req: Request, res: Response, next: NextFunction): any {
+    public validator(req: Request, res: Response, next: NextFunction): any {
         const { email, password } = req.body
 
         if (!email || !isEmailValid(email)) {

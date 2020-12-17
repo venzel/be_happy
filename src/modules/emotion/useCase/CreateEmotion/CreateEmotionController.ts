@@ -8,7 +8,8 @@ import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
 
 class CreateEmotionController {
     public async create(req: Request, res: Response): Promise<Response> {
-        const { ownerId, emotion, description } = req.body
+        const { emotion, description } = req.body
+        const { ownerId } = req.auth
 
         const emotionRepository = container.resolve<IEmotionRepository>('EmotionRepository')
         const notificationRepository = container.resolve<INotificationRepository>('EmotionRepository')
@@ -21,7 +22,15 @@ class CreateEmotionController {
             description,
         })
 
-        return res.status(201).json(classToClass(emotionCreated))
+        const status = {
+            error: false,
+            code: 201,
+            message: 'Succesfully created emotion!',
+        }
+
+        const data = classToClass(emotionCreated)
+
+        return res.status(201).json({ status, data })
     }
 }
 

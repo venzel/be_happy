@@ -1,7 +1,7 @@
 import { AppException } from '@shared/exceptions/AppException'
 import { Request, Response, NextFunction } from 'express'
 
-class UserActivated {
+class ActivatedUser {
     public activated(req: Request, res: Response, next: NextFunction): any {
         const activated: boolean = req.auth.activated
 
@@ -13,4 +13,4 @@ class UserActivated {
     }
 }
 
-export { UserActivated }
+export { ActivatedUser }
