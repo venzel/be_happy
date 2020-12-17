@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { CreateUserRoute } from '@modules/user/useCases/createUser/CreateUserRoute'
-import { AuthenticateUserRoute } from '@modules/user/useCases/authenticateUser/AuthenticateUserRoute'
+import { CreateUserRoute } from '@modules/user/useCases/CreateUser/CreateUserRoute'
+import { AuthenticateUserRoute } from '@modules/user/useCases/AuthenticateUser/AuthenticateUserRoute'
 import { CreateEmotionRoute } from '@modules/emotion/useCase/CreateEmotion/CreateEmotionRoute'
 
 class Route {
