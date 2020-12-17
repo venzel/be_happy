@@ -15,6 +15,12 @@ $ git config user.name "Username (desktop)"
 $ git config user.email "email@email.com"
 ```
 
+## Remover da staged area
+
+```bash
+$ git restore --staged <arquivo>"
+```
+
 ## Adicionar remote
 
 ```bash
