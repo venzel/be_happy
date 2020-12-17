@@ -7,7 +7,7 @@ class Route {
     public static execute(): Router {
         const router: Router = Router()
 
-        // USER
+        // GLOBAL
         new CreateUserRoute().register(router, '/register')
         new AuthenticateUserRoute().register(router, '/signin')
 

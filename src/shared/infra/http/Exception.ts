@@ -1,7 +1,7 @@
 import Youch from 'youch'
 import { Errback, Request, Response, NextFunction } from 'express'
 import { AppException } from '@shared/exceptions/AppException'
-import { environment } from '@configs/Geral'
+import { environment, email_admin } from '@configs/Geral'
 
 class Exception {
     static async execute(
@@ -27,7 +27,7 @@ class Exception {
             status: {
                 error: true,
                 code: 500,
-                message: 'Error in system, contact admin!',
+                message: `Error in system, contact admin: ${email_admin}`,
             },
         })
     }

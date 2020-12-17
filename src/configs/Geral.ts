@@ -4,10 +4,12 @@ class Geral {
     public environment: string
     public server_port: string
     public api_host: string
+    public email_admin: string
     public base_dir: string
     public token_secret: string
     public token_secret_refresh: string
     public token_expires: number
+    public sentry_dsn: string
 
     public constructor() {
         this.setup()
@@ -65,31 +67,53 @@ class Geral {
         this.token_expires = Number(env)
     }
 
+    private _sentrydsn(): void {
+        const env: string | undefined = process.env.SENTRY_DSN
+
+        if (!env) throw new Error('Error in var ambient: SENTRY_DSN!')
+
+        this.sentry_dsn = env
+    }
+
+    private _emailadmin(): void {
+        const env: string | undefined = process.env.EMAIL_ADMIN
+
+        if (!env) throw new Error('Error in var ambient: EMAIL_ADMIN!')
+
+        this.email_admin = env
+    }
+
     public setup(): void {
         this._environment()
         this._port()
         this._apihost()
+        this._emailadmin()
         this._basedir()
         this._tokensecret()
         this._tokensecretrefresh()
         this._tokenexpires()
+        this._sentrydsn()
     }
 }
 
 const {
     environment,
     server_port,
-    api_host: api_url,
+    api_host,
+    email_admin,
     base_dir,
     token_secret,
     token_secret_refresh,
     token_expires,
+    sentry_dsn,
 } = new Geral()
 
 export { environment }
 export { server_port }
-export { api_url }
+export { api_host }
+export { email_admin }
 export { base_dir }
 export { token_secret }
 export { token_secret_refresh }
 export { token_expires }
+export { sentry_dsn }

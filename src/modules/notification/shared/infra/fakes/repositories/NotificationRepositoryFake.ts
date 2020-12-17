@@ -12,7 +12,7 @@ class NotificationRepositoryFake implements INotificationRepository {
     }
 
     public async findById(notificationId: string): Promise<INotification | undefined> {
-        return this._repository.find(({ _id }) => _id === new ObjectID(notificationId))
+        return this._repository.find((data) => data._id === new ObjectID(notificationId))
     }
 
     public async create(data: ICreateNotificationDTO): Promise<INotification> {
