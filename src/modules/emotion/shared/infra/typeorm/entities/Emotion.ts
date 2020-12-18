@@ -29,7 +29,7 @@ class Emotion implements IEmotion {
     emotion: string
 
     @Column()
-    description: string
+    description: string | null
 
     @CreateDateColumn()
     createdAt: Date
