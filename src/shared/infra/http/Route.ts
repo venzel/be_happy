@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { CreateUserRoute } from '@modules/user/useCases/CreateUser/CreateUserRoute'
 import { AuthenticateUserRoute } from '@modules/user/useCases/AuthenticateUser/AuthenticateUserRoute'
-import { CreateEmotionRoute } from '@modules/emotion/useCase/CreateEmotion/CreateEmotionRoute'
+import { CreateEmotionRoute } from '@modules/emotion/useCases/CreateEmotion/CreateEmotionRoute'
 
 class Route {
     public static execute(): Router {
