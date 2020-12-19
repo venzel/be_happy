@@ -1,10 +1,10 @@
 import { injectable, inject } from 'tsyringe'
-import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { IUser } from '@modules/user/shared/entities/IUser'
+import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { AppException } from '@shared/exceptions/AppException'
 
 @injectable()
-class DeleteUserService {
+class ShowUserService {
     constructor(@inject('UserRepository') private _userRepository: IUserRepository) {}
 
     public async execute(queryUserId: string, data: IAuth): Promise<IUser> {
@@ -15,12 +15,10 @@ class DeleteUserService {
         if (!existsUser) throw new AppException('User not found!', 404)
 
         if (role === 'USER' && existsUser.id !== ownerId)
-            throw new AppException('It not permited delete another user id!', 403)
+            throw new AppException('User id not equals!', 403)
 
-        const userDeleted: IUser = await this._userRepository.delete(existsUser)
-
-        return userDeleted
+        return existsUser
     }
 }
 
-export { DeleteUserService }
+export { ShowUserService }

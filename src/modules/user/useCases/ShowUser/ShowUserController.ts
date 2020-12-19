@@ -1,12 +1,12 @@
 import { Request, Response } from 'express'
 import { container } from 'tsyringe'
 import { classToClass } from 'class-transformer'
-import { DeleteUserService } from './DeleteUserService'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
+import { ShowUserService } from './ShowUserService'
 import { IUser } from '@modules/user/shared/entities/IUser'
 
-class DeleteUserController {
-    public async destroy(req: Request, res: Response): Promise<Response> {
+class ShowUserController {
+    public async show(req: Request, res: Response): Promise<Response> {
         const { ownerId, role } = req.auth
 
         const dataUserAuth = { ownerId, role } as IAuth
@@ -15,18 +15,18 @@ class DeleteUserController {
 
         const userRepository = container.resolve<IUserRepository>('UserRepository')
 
-        const deleteUserService = new DeleteUserService(userRepository)
+        const showUserService = new ShowUserService(userRepository)
 
-        const userDeleted: IUser = await deleteUserService.execute(queryUserId, dataUserAuth)
+        const userShowed: IUser = await showUserService.execute(queryUserId, dataUserAuth)
 
         const status = {
             error: false,
             code: 200,
-            message: 'Succesfully deleted user!',
+            message: 'User showed successfully!',
         }
 
-        return res.status(201).json({ status, data: classToClass(userDeleted) })
+        return res.status(200).json({ status, data: classToClass(userShowed) })
     }
 }
 
-export { DeleteUserController }
+export { ShowUserController }

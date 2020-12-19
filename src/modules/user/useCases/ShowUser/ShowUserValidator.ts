@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express'
 import { isUUIDValid } from '@shared/libs/RegEx'
 import { AppException } from '@shared/exceptions/AppException'
 
-class DeleteUserValidator {
+class ShowUserValidator {
     public validator(req: Request, res: Response, next: NextFunction): any {
         const queryUserId: string | undefined = req.query.id?.toString()
 
@@ -10,15 +10,11 @@ class DeleteUserValidator {
 
         if (!queryUserId || !isUUIDValid(queryUserId)) throw new AppException('User id invalid!')
 
-        if (role === 'ADMIN') {
-            if (queryUserId === ownerId) throw new AppException('It is not possible to delete yourself!')
-        } else {
-            if (queryUserId !== ownerId)
-                throw new AppException('It is not possible to delete another user!')
-        }
+        if (role === 'USER' && queryUserId !== ownerId)
+            throw new AppException('It is not possible to show data another user!')
 
         return next()
     }
 }
 
-export { DeleteUserValidator }
+export { ShowUserValidator }
