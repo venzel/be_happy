@@ -37,9 +37,7 @@ class CreateUserController {
             message: 'Succesfully created user!',
         }
 
-        const data = classToClass(userCreated)
-
-        return res.status(201).json({ status, data })
+        return res.status(201).json({ status, data: classToClass(userCreated) })
     }
 }
 

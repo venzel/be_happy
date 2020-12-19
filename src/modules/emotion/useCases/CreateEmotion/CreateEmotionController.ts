@@ -36,9 +36,7 @@ class CreateEmotionController {
             message: 'Succesfully created emotion!',
         }
 
-        const data = classToClass(emotionCreated)
-
-        return res.status(201).json({ status, data })
+        return res.status(201).json({ status, data: classToClass(emotionCreated) })
     }
 }
 

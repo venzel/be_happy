@@ -29,9 +29,7 @@ class UpdateNotificationController {
             message: 'Succesfully updated notification!',
         }
 
-        const data = classToClass(notificationUpdated)
-
-        return res.status(200).json({ status, data })
+        return res.status(200).json({ status, data: classToClass(notificationUpdated) })
     }
 }
 

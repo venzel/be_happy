@@ -29,9 +29,7 @@ class AuthenticateUserController {
             message: 'User found successfully!',
         }
 
-        const data = classToClass(existsUser)
-
-        return res.status(200).json({ status, data })
+        return res.status(200).json({ status, data: classToClass(existsUser) })
     }
 }
 
