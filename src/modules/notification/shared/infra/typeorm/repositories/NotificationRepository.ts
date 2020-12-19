@@ -12,7 +12,7 @@ class NotificationRepository implements INotificationRepository {
         this._repository = getMongoRepository(Notification, 'mongo')
     }
 
-    public async findById(notificationId: string): Promise<INotification | undefined> {
+    public async findOneById(notificationId: string): Promise<INotification | undefined> {
         return await this._repository.findOne({ _id: new ObjectID(notificationId) })
     }
 
@@ -37,8 +37,6 @@ class NotificationRepository implements INotificationRepository {
     }
 
     public async markAsRead(notification: INotification): Promise<INotification> {
-        const currentDate = new Date()
-
         notification.read = true
 
         await this._repository.save(notification)

@@ -12,10 +12,14 @@ import { UserTokenRepository } from '@modules/user/shared/infra/typeorm/reposito
 import { IEmotionRepository } from '@modules/emotion/shared/repositories/IEmotionRepository'
 import { EmotionRepository } from '@modules/emotion/shared/infra/typeorm/repositories/EmotionRepository'
 
+import { IEmotionReportRepository } from '@modules/emotion/shared/repositories/IEmotionReportRepository'
+import { EmotionReportRepository } from '@modules/emotion/shared/infra/typeorm/repositories/EmotionReportRepository'
+
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
 import { NotificationRepository } from '@modules/notification/shared/infra/typeorm/repositories/NotificationRepository'
 
 container.registerSingleton<IUserRepository>('UserRepository', UserRepository)
 container.registerSingleton<IUserTokenRepository>('UserTokenRepository', UserTokenRepository)
-container.registerSingleton<IEmotionRepository>('AppointmentRepository', EmotionRepository)
+container.registerSingleton<IEmotionRepository>('EmotionRepository', EmotionRepository)
+container.registerSingleton<IEmotionReportRepository>('EmotionRepository', EmotionReportRepository)
 container.registerSingleton<INotificationRepository>('NotificationRepository', NotificationRepository)

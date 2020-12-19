@@ -2,6 +2,7 @@ import { container } from 'tsyringe'
 import { Request, Response } from 'express'
 import { classToClass } from 'class-transformer'
 import { IEmotionRepository } from '@modules/emotion/shared/repositories/IEmotionRepository'
+import { IEmotionReportRepository } from '@modules/emotion/shared/repositories/IEmotionReportRepository'
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
 import { CreateEmotionService } from './CreateEmotionService'
 import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
@@ -12,9 +13,16 @@ class CreateEmotionController {
         const { ownerId } = req.auth
 
         const emotionRepository = container.resolve<IEmotionRepository>('EmotionRepository')
+        const emotionReportRepository = container.resolve<IEmotionReportRepository>(
+            'EmotionReportRepository'
+        )
         const notificationRepository = container.resolve<INotificationRepository>('EmotionRepository')
 
-        const createEmotionService = new CreateEmotionService(emotionRepository, notificationRepository)
+        const createEmotionService = new CreateEmotionService(
+            emotionRepository,
+            emotionReportRepository,
+            notificationRepository
+        )
 
         const emotionCreated: IEmotion = await createEmotionService.execute({
             ownerId,

@@ -11,7 +11,7 @@ class NotificationRepositoryFake implements INotificationRepository {
         this._repository = []
     }
 
-    public async findById(notificationId: string): Promise<INotification | undefined> {
+    public async findOneById(notificationId: string): Promise<INotification | undefined> {
         return this._repository.find((data) => data._id === new ObjectID(notificationId))
     }
 

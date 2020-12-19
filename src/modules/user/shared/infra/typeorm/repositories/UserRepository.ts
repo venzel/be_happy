@@ -11,7 +11,7 @@ class UserRepository implements IUserRepository {
         this._repository = getRepository(User, 'postgres')
     }
 
-    public async findById(userId: string): Promise<IUser | undefined> {
+    public async findOneById(userId: string): Promise<IUser | undefined> {
         return await this._repository.findOne({ where: { id: userId, deletedAt: null } })
     }
 

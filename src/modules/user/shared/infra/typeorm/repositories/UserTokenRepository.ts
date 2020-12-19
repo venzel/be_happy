@@ -11,7 +11,7 @@ class UserTokenRepository implements IUserTokenRepository {
         this._repository = getRepository(UserToken, 'postgres')
     }
 
-    public async findById(ownerId: string): Promise<IUserToken | undefined> {
+    public async findOneById(ownerId: string): Promise<IUserToken | undefined> {
         return await this._repository.findOne({ where: { ownerId } })
     }
 

@@ -11,7 +11,7 @@ class UserTokenRepositoryFake implements IUserTokenRepository {
         this._repository = []
     }
 
-    public async findById(ownerId: string): Promise<IUserToken | undefined> {
+    public async findOneById(ownerId: string): Promise<IUserToken | undefined> {
         return this._repository.find((user) => user.id === ownerId)
     }
 
