@@ -21,7 +21,7 @@ class AuthenticateUserController {
             tokenProvider
         )
 
-        const existsUser: IUser = await authenticateUserService.execute({ email, password })
+        const userAuthenticated: IUser = await authenticateUserService.execute({ email, password })
 
         const status = {
             error: false,
@@ -29,7 +29,7 @@ class AuthenticateUserController {
             message: 'User found successfully!',
         }
 
-        return res.status(200).json({ status, data: classToClass(existsUser) })
+        return res.status(200).json({ status, data: classToClass(userAuthenticated) })
     }
 }
 
