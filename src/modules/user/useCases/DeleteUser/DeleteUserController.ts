@@ -1,5 +1,5 @@
-import { container } from 'tsyringe'
 import { Request, Response } from 'express'
+import { container } from 'tsyringe'
 import { classToClass } from 'class-transformer'
 import { DeleteUserService } from './DeleteUserService'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
