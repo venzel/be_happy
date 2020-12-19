@@ -38,7 +38,6 @@ class EmotionRepository implements IEmotionRepository {
     public async delete(emotion: IEmotion): Promise<IEmotion> {
         const currentDate = new Date()
 
-        emotion.updatedAt = currentDate
         emotion.deletedAt = currentDate
 
         await this.save(emotion)

@@ -47,7 +47,6 @@ class UserRepository implements IUserRepository {
         const currentDate = new Date()
 
         user.allowed = false
-        user.updatedAt = currentDate
         user.deletedAt = currentDate
 
         await this.save(user)

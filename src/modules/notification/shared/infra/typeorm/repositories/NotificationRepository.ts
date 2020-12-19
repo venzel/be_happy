@@ -40,7 +40,6 @@ class NotificationRepository implements INotificationRepository {
         const currentDate = new Date()
 
         notification.read = true
-        notification.updatedAt = currentDate
 
         await this._repository.save(notification)
 
