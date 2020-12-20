@@ -1,5 +1,4 @@
 import { injectable, inject } from 'tsyringe'
-import { format } from 'date-fns'
 import { formatDate } from '@shared/libs/DateFn'
 import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
 import { IEmotionRepository } from '@modules/emotion/shared/repositories/IEmotionRepository'
