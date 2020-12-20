@@ -7,7 +7,7 @@ import { AppException } from '@shared/exceptions/AppException'
 class ShowUserService {
     constructor(@inject('UserRepository') private _userRepository: IUserRepository) {}
 
-    public async execute(queryUserId: string, data: IAuth): Promise<IUser> {
+    public async execute(data: IAuth, queryUserId: string): Promise<IUser> {
         const { ownerId, role } = data
 
         const existsUser: IUser | undefined = await this._userRepository.findOneById(queryUserId)
@@ -15,7 +15,7 @@ class ShowUserService {
         if (!existsUser) throw new AppException('User not found!', 404)
 
         if (role === 'USER' && existsUser.id !== ownerId)
-            throw new AppException('User id not equals!', 403)
+            throw new AppException('It is not possible to show data another user!', 403)
 
         return existsUser
     }

@@ -11,7 +11,7 @@ class EmotionRepositoryFake implements IEmotionRepository {
         this._repository = []
     }
 
-    public async findById(emotionId: string): Promise<IEmotion | undefined> {
+    public async findOneById(emotionId: string): Promise<IEmotion | undefined> {
         return this._repository.find((emotion) => emotion.id === emotionId)
     }
 

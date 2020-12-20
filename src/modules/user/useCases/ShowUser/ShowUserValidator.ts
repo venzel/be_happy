@@ -4,9 +4,9 @@ import { AppException } from '@shared/exceptions/AppException'
 
 class ShowUserValidator {
     public validator(req: Request, res: Response, next: NextFunction): any {
-        const queryUserId: string | undefined = req.query.id?.toString()
-
         const { ownerId, role } = req.auth
+
+        const queryUserId: string | undefined = req.query.id?.toString()
 
         if (!queryUserId || !isUUIDValid(queryUserId)) throw new AppException('User id invalid!')
 

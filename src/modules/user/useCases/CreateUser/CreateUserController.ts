@@ -37,7 +37,7 @@ class CreateUserController {
             message: 'Succesfully created user!',
         }
 
-        return res.status(201).json({ status, data: classToClass(userCreated) })
+        return res.status(201).json({ status, doc: classToClass(userCreated) })
     }
 }
 

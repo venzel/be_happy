@@ -7,8 +7,8 @@ import { AppException } from '@shared/exceptions/AppException'
 class DeleteUserService {
     constructor(@inject('UserRepository') private _userRepository: IUserRepository) {}
 
-    public async execute(queryUserId: string, data: IAuth): Promise<IUser> {
-        const { ownerId, role } = data
+    public async execute(owner: IAuth, queryUserId: string): Promise<IUser> {
+        const { ownerId, role } = owner
 
         const existsUser: IUser | undefined = await this._userRepository.findOneById(queryUserId)
 

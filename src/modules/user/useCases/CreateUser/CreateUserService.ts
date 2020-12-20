@@ -23,7 +23,7 @@ class CreateUserService {
 
         if (existsUser) throw new AppException('User already exists!', 400)
 
-        const hashPassword = await this._hashProvider.gererateHash(password)
+        const hashPassword: string = await this._hashProvider.gererateHash(password)
 
         const createdUser: IUser = await this._userRepository.create({
             name,

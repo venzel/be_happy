@@ -1,6 +1,7 @@
 import { injectable, inject } from 'tsyringe'
 import { INotification } from '@modules/notification/shared/entities/INotification'
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
+import { IUpdateNotificationDTO } from '@modules/notification/shared/dtos/IUpdateNotificationDTO'
 import { AppException } from '@shared/exceptions/AppException'
 
 @injectable()
@@ -11,21 +12,23 @@ class UpdateNotificationService {
         this._notificationRepository = notificationRepository
     }
 
-    public async execute(notificationId: string, data: IAuth): Promise<INotification> {
-        const { ownerId, role } = data
+    public async execute(owner: IAuth, data: IUpdateNotificationDTO): Promise<INotification> {
+        const { ownerId, role } = owner
 
-        const existNotification: INotification | undefined = await this._notificationRepository.findById(
-            notificationId
-        )
+        const { notificationId } = data
 
-        if (!existNotification) throw new AppException('Notification not found!', 404)
+        const existsNotification:
+            | INotification
+            | undefined = await this._notificationRepository.findOneById(notificationId)
 
-        if (role === 'USER' && existNotification.ownerId !== ownerId)
+        if (!existsNotification) throw new AppException('Notification not found!', 404)
+
+        if (role === 'USER' && existsNotification.ownerId !== ownerId)
             throw new AppException('It not permited update another notification user id!', 403)
 
-        await this._notificationRepository.markAsRead(existNotification)
+        await this._notificationRepository.markAsRead(existsNotification)
 
-        return existNotification
+        return existsNotification
     }
 }
 

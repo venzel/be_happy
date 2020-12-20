@@ -8,7 +8,8 @@ import { INotification } from '@modules/notification/shared/entities/INotificati
 class UpdateNotificationController {
     public async update(req: Request, res: Response): Promise<Response> {
         const { ownerId, role } = req.auth
-        const notificationId = req.query.id as string
+
+        const { notificationId } = req.body
 
         const notificationRepository = container.resolve<INotificationRepository>(
             'NotificationRepository'
@@ -16,12 +17,11 @@ class UpdateNotificationController {
 
         const updateNotificationService = new UpdateNotificationService(notificationRepository)
 
-        const dataUserAuth: IAuth = { ownerId, role } as IAuth
+        const owner = { ownerId, role } as IAuth
 
-        const notificationUpdated: INotification = await updateNotificationService.execute(
-            notificationId,
-            dataUserAuth
-        )
+        const data = { notificationId }
+
+        const notificationUpdated: INotification = await updateNotificationService.execute(owner, data)
 
         const status = {
             error: false,
@@ -29,7 +29,7 @@ class UpdateNotificationController {
             message: 'Succesfully updated notification!',
         }
 
-        return res.status(200).json({ status, data: classToClass(notificationUpdated) })
+        return res.status(200).json({ status, doc: classToClass(notificationUpdated) })
     }
 }
 

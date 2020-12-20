@@ -29,7 +29,7 @@ class AuthenticateUserController {
             message: 'User found successfully!',
         }
 
-        return res.status(200).json({ status, data: classToClass(userAuthenticated) })
+        return res.status(200).json({ status, doc: classToClass(userAuthenticated) })
     }
 }
 

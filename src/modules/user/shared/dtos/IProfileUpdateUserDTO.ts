@@ -1,5 +1,5 @@
 interface IProfileUpdateUserDTO {
-    ownerId: string
+    userId: string
     name: string
     email: string
     oldPassword: string

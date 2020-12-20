@@ -9,15 +9,15 @@ class DeleteUserController {
     public async destroy(req: Request, res: Response): Promise<Response> {
         const { ownerId, role } = req.auth
 
-        const dataUserAuth = { ownerId, role } as IAuth
-
-        const queryUserId = String(req.query.id)
+        const queryUserId = req.query.id as string
 
         const userRepository = container.resolve<IUserRepository>('UserRepository')
 
         const deleteUserService = new DeleteUserService(userRepository)
 
-        const userDeleted: IUser = await deleteUserService.execute(queryUserId, dataUserAuth)
+        const owner = { ownerId, role } as IAuth
+
+        const userDeleted: IUser = await deleteUserService.execute(owner, queryUserId)
 
         const status = {
             error: false,
@@ -25,7 +25,7 @@ class DeleteUserController {
             message: 'Succesfully deleted user!',
         }
 
-        return res.status(201).json({ status, data: classToClass(userDeleted) })
+        return res.status(201).json({ status, doc: classToClass(userDeleted) })
     }
 }
 
