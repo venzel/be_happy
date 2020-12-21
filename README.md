@@ -1,5 +1,6 @@
 # README.md
 
+-   [Requeriments Analysis](documentation/requirements_analysis.md)
 -   [Commitizen](documentation/commitizen.md)
 -   [Docker](documentation/docker.md)
 -   [GIT](documentation/git.md)
@@ -9,4 +10,4 @@
 -   [Tests](documentation/tests.md)
 -   [TypeORM](documentation/typeorm.md)
 -   [Typescript](documentation/typescript.md)
--   [VS Code : atalhos](documentation/vscode.md)
+-   [VS Code : snippets](documentation/vscode.md)

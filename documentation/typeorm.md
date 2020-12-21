@@ -16,19 +16,21 @@
 ```JSON
 [
     {
+        "name": "default",
         "type": "postgres",
         "host": "localhost",
         "port": 6870,
         "username": "",
         "password": "",
         "database": "",
-        "entities": ["./src/modules/**/infra/typeorm/entities/*.ts"],
+        "entities": ["./src/modules/**/shared/infra/typeorm/entities/*.ts"],
         "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
         "cli": {
             "migrationsDir": "./src/shared/infra/typeorm/migrations"
         }
     },
     {
+        "name": "mongo",
         "type": "mongodb",
         "host": "localhost",
         "port": 27017,
@@ -36,11 +38,7 @@
         "synchronize": true,
         "logging": false,
         "useUnifiedTopology": true,
-        "entities": ["./src/modules/**/infra/typeorm/schemas/*.ts"],
-        "migrations": ["./src/shared/infra/typeorm/migrations/mongodb/*.ts"],
-        "cli": {
-            "migrationsDir": "./src/shared/infra/typeorm/migrations/mongodb"
-        }
+        "entities": ["./src/modules/**/shared/infra/typeorm/schemas/*.ts"]
     }
 ]
 ```
