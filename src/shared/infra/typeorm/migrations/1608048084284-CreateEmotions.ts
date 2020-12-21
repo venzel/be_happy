@@ -22,7 +22,7 @@ export default class CreateEmotions1608048084284 implements MigrationInterface {
                     {
                         name: 'emotion',
                         type: 'varchar',
-                        isNullable: true,
+                        isNullable: false,
                     },
                     {
                         name: 'description',

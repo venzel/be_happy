@@ -6,7 +6,7 @@ class EmotionFake implements IEmotion {
     public ownerId: string
     public owner: IUser
     public emotion: string
-    public description: string | null
+    public description: string
     public createdAt: Date
     public updatedAt: Date
     public deletedAt: Date | null
