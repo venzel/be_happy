@@ -8,7 +8,7 @@ class UserRepository implements IUserRepository {
     private _repository: Repository<IUser>
 
     constructor() {
-        this._repository = getRepository(User, 'postgres')
+        this._repository = getRepository(User, 'default')
     }
 
     public async findOneById(userId: string): Promise<IUser | undefined> {

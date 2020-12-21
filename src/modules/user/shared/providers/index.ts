@@ -1,10 +1,5 @@
-import { container } from 'tsyringe'
+import { HashProviderStrategy } from './HashProvider/HashProviderStrategy'
+import { TokenProviderStrategy } from './TokenProvider/TokenProviderStrategy'
 
-import { IHashProvider } from './HashProvider/models/IHashProvider'
-import { BcryptHashProvider } from './HashProvider/services/BcryptHashProvider'
-
-import { ITokenProvider } from './TokenProvider/models/ITokenProvider'
-import { JWTTokenProvider } from './TokenProvider/services/JWTTokenProvider'
-
-container.registerSingleton<IHashProvider>('HashProvider', BcryptHashProvider)
-container.registerSingleton<ITokenProvider>('TokenProvider', JWTTokenProvider)
+new HashProviderStrategy().setStrategy('bcrypt')
+new TokenProviderStrategy().setStrategy('jwt')

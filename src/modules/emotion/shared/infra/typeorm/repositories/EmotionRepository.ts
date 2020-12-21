@@ -8,7 +8,7 @@ class EmotionRepository implements IEmotionRepository {
     private _repository: Repository<IEmotion>
 
     constructor() {
-        this._repository = getRepository(Emotion, 'postgres')
+        this._repository = getRepository(Emotion, 'default')
     }
 
     public async findOneById(emotionId: string): Promise<IEmotion | undefined> {

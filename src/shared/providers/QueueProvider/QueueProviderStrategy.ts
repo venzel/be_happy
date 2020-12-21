@@ -6,7 +6,7 @@ class QueueProviderStrategy {
     private _strategies: any = {}
 
     constructor() {
-        this._strategies['redis'] = BullQueueProvider
+        this._strategies['bull'] = BullQueueProvider
     }
 
     public setStrategy(service: string): void {

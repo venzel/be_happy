@@ -8,7 +8,7 @@ class UserTokenRepository implements IUserTokenRepository {
     private _repository: Repository<IUserToken>
 
     constructor() {
-        this._repository = getRepository(UserToken, 'postgres')
+        this._repository = getRepository(UserToken, 'default')
     }
 
     public async findOneById(ownerId: string): Promise<IUserToken | undefined> {

@@ -8,8 +8,8 @@ class Route {
         const router: Router = Router()
 
         // GLOBAL
-        new CreateUserRoute().register(router, '/register')
-        new AuthenticateUserRoute().register(router, '/signin')
+        new CreateUserRoute().register(router, '/user/register')
+        new AuthenticateUserRoute().register(router, '/user/signin')
 
         // EMOTION
         new CreateEmotionRoute().register(router, '/emotion/create')

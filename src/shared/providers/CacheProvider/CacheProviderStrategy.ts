@@ -1,4 +1,4 @@
-import { container, DependencyContainer } from 'tsyringe'
+import { container } from 'tsyringe'
 import { ICacheProvider } from './models/ICacheProvider'
 import { RedisCacheProvider } from './services/RedisCacheProvider'
 import { IORedisCacheProvider } from './services/IORedisCacheProvider'

@@ -1,7 +1,7 @@
 interface ICreateEmotionDTO {
     ownerId: string
     emotion: string
-    description: string | null
+    description: string
 }
 
 export { ICreateEmotionDTO }
