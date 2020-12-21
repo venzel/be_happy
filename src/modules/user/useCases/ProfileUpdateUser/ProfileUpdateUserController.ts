@@ -5,6 +5,7 @@ import { IUserRepository } from '@modules/user/shared/repositories/IUserReposito
 import { IHashProvider } from '@modules/user/shared/providers/HashProvider/models/IHashProvider'
 import { ProfileUpdateUserService } from './ProfileUpdateUserService'
 import { IUser } from '@modules/user/shared/entities/IUser'
+import { statusMessage } from '@shared/libs/Utils'
 
 class ProfileUpdateUserController {
     public async patch(req: Request, res: Response): Promise<Response> {
@@ -24,11 +25,7 @@ class ProfileUpdateUserController {
             current_password,
         })
 
-        const status = {
-            error: false,
-            code: 200,
-            message: 'User profile updated successfully!',
-        }
+        const status = statusMessage(false, 200, 'Succesfully profile updated user!')
 
         return res.status(200).json({ status, doc: classToClass(userProfileUpdated) })
     }

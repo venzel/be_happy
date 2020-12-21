@@ -6,6 +6,7 @@ import { IEmotionReportRepository } from '@modules/emotion/shared/repositories/I
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
 import { CreateEmotionService } from './CreateEmotionService'
 import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
+import { statusMessage } from '@shared/libs/Utils'
 
 class CreateEmotionController {
     public async create(req: Request, res: Response): Promise<Response> {
@@ -31,11 +32,7 @@ class CreateEmotionController {
             description,
         })
 
-        const status = {
-            error: false,
-            code: 201,
-            message: 'Succesfully created emotion!',
-        }
+        const status = statusMessage(false, 201, 'Succesfully created emotion!')
 
         return res.status(201).json({ status, doc: classToClass(emotionCreated) })
     }

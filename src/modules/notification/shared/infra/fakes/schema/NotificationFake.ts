@@ -5,8 +5,8 @@ class NotificationFake implements INotification {
     public owner_id: string
     public content: string
     public read: boolean
-    public createdAt: Date
-    public updatedAt: Date
+    public created_at: Date
+    public updated_at: Date
 }
 
 export { NotificationFake }

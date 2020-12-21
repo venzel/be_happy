@@ -6,6 +6,7 @@ import { IUserRepository } from '@modules/user/shared/repositories/IUserReposito
 import { IHashProvider } from '@modules/user/shared/providers/HashProvider/models/IHashProvider'
 import { ITokenProvider } from '@modules/user/shared/providers/TokenProvider/models/ITokenProvider'
 import { AuthenticateUserService } from './AuthenticateUserService'
+import { statusMessage } from '@shared/libs/Utils'
 
 class AuthenticateUserController {
     public async authenticate(req: Request, res: Response): Promise<Response> {
@@ -21,15 +22,11 @@ class AuthenticateUserController {
             tokenProvider
         )
 
-        const userAuthenticate: IUser = await authenticateUserService.execute({ email, password })
+        const userAuthenticated: IUser = await authenticateUserService.execute({ email, password })
 
-        const status = {
-            error: false,
-            code: 200,
-            message: 'User found successfully!',
-        }
+        const status = statusMessage(false, 200, 'Succesfully authenticated user!')
 
-        return res.status(200).json({ status, doc: classToClass(userAuthenticate) })
+        return res.status(200).json({ status, doc: classToClass(userAuthenticated) })
     }
 }
 

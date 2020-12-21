@@ -11,8 +11,8 @@ class NotificationRepositoryFake implements INotificationRepository {
         this._repository = []
     }
 
-    public async findOneById(notificationId: string): Promise<INotification | undefined> {
-        return this._repository.find((data) => data._id === new ObjectID(notificationId))
+    public async findOneById(notification_id: string): Promise<INotification | undefined> {
+        return this._repository.find((data) => data._id === new ObjectID(notification_id))
     }
 
     public async create(data: ICreateNotificationDTO): Promise<INotification> {
@@ -33,7 +33,7 @@ class NotificationRepositoryFake implements INotificationRepository {
         if (notificationIndex !== -1) {
             const currentDate = new Date()
 
-            notification.updatedAt = currentDate
+            notification.updated_at = currentDate
 
             this._repository[notificationIndex] = notification
         }
@@ -47,7 +47,7 @@ class NotificationRepositoryFake implements INotificationRepository {
         if (notificationIndex !== -1) {
             const currentDate = new Date()
 
-            notification.updatedAt = currentDate
+            notification.updated_at = currentDate
             notification.read = true
 
             this._repository[notificationIndex] = notification

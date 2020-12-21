@@ -2,15 +2,16 @@ import { injectable, inject } from 'tsyringe'
 import { IUser } from '@modules/user/shared/entities/IUser'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { AppException } from '@shared/exceptions/AppException'
+import { IShowUserDTO } from '@modules/user/shared/dtos/IShowUserDTO'
 
 @injectable()
 class ShowUserService {
     constructor(@inject('UserRepository') private _userRepository: IUserRepository) {}
 
-    public async execute(data: IAuth, queryUserId: string): Promise<IUser> {
-        const { owner_id, role } = data
+    public async execute(data: IShowUserDTO): Promise<IUser> {
+        const { query_user_id, owner_id, role } = data
 
-        const existsUserWithId: IUser | undefined = await this._userRepository.findOneById(queryUserId)
+        const existsUserWithId: IUser | undefined = await this._userRepository.findOneById(query_user_id)
 
         if (!existsUserWithId) throw new AppException('User not found!', 404)
 

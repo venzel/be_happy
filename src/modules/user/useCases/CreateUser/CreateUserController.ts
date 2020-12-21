@@ -7,6 +7,7 @@ import { ITokenProvider } from '@modules/user/shared/providers/TokenProvider/mod
 import { IQueueProvider } from '@shared/providers/QueueProvider/models/IQueueProvider'
 import { CreateUserService } from './CreateUserService'
 import { IUser } from '@modules/user/shared/entities/IUser'
+import { statusMessage } from '@shared/libs/Utils'
 
 class CreateUserController {
     public async create(req: Request, res: Response): Promise<Response> {
@@ -24,17 +25,9 @@ class CreateUserController {
             queueProvider
         )
 
-        const userCreated: IUser = await createUserService.execute({
-            name,
-            email,
-            password,
-        })
+        const userCreated: IUser = await createUserService.execute({ name, email, password })
 
-        const status = {
-            error: false,
-            code: 201,
-            message: 'Succesfully created user!',
-        }
+        const status = statusMessage(false, 201, 'Succesfully created user!')
 
         return res.status(201).json({ status, doc: classToClass(userCreated) })
     }
