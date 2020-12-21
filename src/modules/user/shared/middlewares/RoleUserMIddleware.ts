@@ -5,7 +5,7 @@ import { AppException } from '@shared/exceptions/AppException'
 class RoleUserMiddleware {
     role(roles: IRoleDTO[]): any {
         return function (req: Request, res: Response, next: NextFunction): any {
-            const role: string = req.auth.role
+            const { role } = req.auth
 
             if (!roles.includes(role as IRoleDTO))
                 throw new AppException(`Not authorized for this sector, only: ${roles.join(', ')}!`, 403)

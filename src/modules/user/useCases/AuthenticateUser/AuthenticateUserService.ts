@@ -23,6 +23,8 @@ class AuthenticateUserService {
 
         if (!existsUserWithEmail.allowed) throw new AppException('User not allowed!', 403)
 
+        if (existsUserWithEmail.deleted_at) throw new AppException('User not exists!', 403)
+
         const passwordEquals: boolean = await this._hashProvider.compareHash(
             password,
             existsUserWithEmail.password
@@ -32,11 +34,7 @@ class AuthenticateUserService {
 
         const { id, role, activated } = existsUserWithEmail
 
-        const token: string = await this._tokenProvider.generateToken({
-            owner_id: id,
-            role,
-            activated,
-        })
+        const token: string = await this._tokenProvider.generateToken({ owner_id: id, role, activated })
 
         Object.assign(existsUserWithEmail, { token })
 
