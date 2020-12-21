@@ -15,7 +15,7 @@ class CacheProviderStrategy {
         if (!this._strategies.hasOwnProperty(service))
             throw new Error('Service provider not found in strategies!')
 
-        container.registerSingleton<ICacheProvider>('MailProvider', this._strategies[service])
+        container.registerSingleton<ICacheProvider>('CacheProvider', this._strategies[service])
     }
 }
 
