@@ -3,27 +3,17 @@ import { IQueueProvider } from './models/IQueueProvider'
 import { BullQueueProvider } from './services/BullQueueProvider'
 
 class QueueProviderStrategy {
-    private _map: Map<string, any>
+    private _strategies: any = {}
 
     constructor() {
-        this._init()
-        this._setup()
-    }
-
-    private _init(): void {
-        this._map = new Map<string, any>()
-    }
-
-    private _setup(): void {
-        this._map.set('bull', BullQueueProvider)
+        this._strategies['redis'] = BullQueueProvider
     }
 
     public setStrategy(service: string): void {
-        const provider: any | undefined = this._map.get(service)
+        if (!this._strategies.hasOwnProperty(service))
+            throw new Error('Service provider not found in strategies!')
 
-        if (!provider) throw new Error('Service provider not found!')
-
-        container.registerSingleton<IQueueProvider>('QueueProvider', provider)
+        container.registerSingleton<IQueueProvider>('QueueProvider', this._strategies[service])
     }
 }
 

@@ -1,29 +1,21 @@
-import { container } from 'tsyringe'
+import { container, DependencyContainer } from 'tsyringe'
 import { ICacheProvider } from './models/ICacheProvider'
 import { RedisCacheProvider } from './services/RedisCacheProvider'
+import { IORedisCacheProvider } from './services/IORedisCacheProvider'
 
 class CacheProviderStrategy {
-    private _map: Map<string, any>
+    private _strategies: any = {}
 
     constructor() {
-        this._init()
-        this._setup()
-    }
-
-    private _init(): void {
-        this._map = new Map<string, any>()
-    }
-
-    private _setup(): void {
-        this._map.set('redis', RedisCacheProvider)
+        this._strategies['redis'] = RedisCacheProvider
+        this._strategies['ioredis'] = IORedisCacheProvider
     }
 
     public setStrategy(service: string): void {
-        const provider: any | undefined = this._map.get(service)
+        if (!this._strategies.hasOwnProperty(service))
+            throw new Error('Service provider not found in strategies!')
 
-        if (!provider) throw new Error('Service provider not found!')
-
-        container.registerSingleton<ICacheProvider>('CacheProvider', provider)
+        container.registerSingleton<ICacheProvider>('MailProvider', this._strategies[service])
     }
 }
 
