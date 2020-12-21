@@ -1,19 +1,10 @@
-import { container } from 'tsyringe'
+import { CacheProviderStrategy } from './CacheProvider/CacheProviderStrategy'
+import { MailProviderStrategy } from './MailProvider/MailProviderStrategy'
+import { QueueProviderStrategy } from './QueueProvider/QueueProviderStrategy'
+import { StorageProviderStrategy } from './StorageProvider/StorageProviderStrategy'
+import { cache_provider, mail_provider, queue_provider, storage_provider } from '@configs/Providers'
 
-import { ICacheProvider } from './CacheProvider/models/ICacheProvider'
-import { RedisCacheProvider } from './CacheProvider/services/RedisCacheProvider'
-
-import { IMailProvider } from './MailProvider/models/IMailProvider'
-import { MailTrapMailProvider } from './MailProvider/services/MailTrapMailProvider'
-
-import { IQueueProvider } from './QueueProvider/models/IQueueProvider'
-import { BullQueueProvider } from './QueueProvider/services/BullQueueProvider'
-
-import { IStorageProvider } from './StorageProvider/models/IStorageProvider'
-import { LocalStorageProvider } from './StorageProvider/services/LocalStorageProvider'
-
-container.registerSingleton<ICacheProvider>('CacheProvider', RedisCacheProvider)
-container.registerSingleton<IMailProvider>('MailProvider', MailTrapMailProvider)
-container.registerSingleton<IMailProvider>('MailJobProvider', MailTrapMailProvider)
-container.registerSingleton<IQueueProvider>('QueueProvider', BullQueueProvider)
-container.registerSingleton<IStorageProvider>('StorageProvider', LocalStorageProvider)
+new CacheProviderStrategy().setStrategy(cache_provider)
+new MailProviderStrategy().setStrategy(mail_provider)
+new QueueProviderStrategy().setStrategy(queue_provider)
+new StorageProviderStrategy().setStrategy(storage_provider)

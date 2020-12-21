@@ -11,7 +11,7 @@ class EmotionRepository implements IEmotionRepository {
         this._repository = getRepository(Emotion, 'postgres')
     }
 
-    public async findById(emotionId: string): Promise<IEmotion | undefined> {
+    public async findOneById(emotionId: string): Promise<IEmotion | undefined> {
         return await this._repository.findOne({ where: { id: emotionId, deletedAt: null } })
     }
 

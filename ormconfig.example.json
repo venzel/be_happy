@@ -1,5 +1,6 @@
 [
     {
+        "name": "postgres",
         "type": "postgres",
         "host": "localhost",
         "port": 6870,
@@ -13,6 +14,7 @@
         }
     },
     {
+        "name": "mongo",
         "type": "mongodb",
         "host": "localhost",
         "port": 27017,
