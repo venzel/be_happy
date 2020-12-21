@@ -5,6 +5,9 @@ import { IUserRepository } from '@modules/user/shared/repositories/IUserReposito
 import { IQueueProvider } from '@shared/providers/QueueProvider/models/IQueueProvider'
 import { ICreateUserDTO } from '@modules/user/shared/dtos/ICreateUserDTO'
 import { IUser } from '@modules/user/shared/entities/IUser'
+import { ICreatePayloadDTO } from '@modules/user/shared/dtos/ICreatePayloadDTO'
+import { IRoleDTO } from '@modules/user/shared/dtos/IRoleDTO'
+import { environment } from '@configs/Geral'
 import { AppException } from '@shared/exceptions/AppException'
 
 @injectable()
@@ -17,34 +20,33 @@ class CreateUserService {
     ) {}
 
     public async execute(data: ICreateUserDTO): Promise<IUser> {
-        const { name, email, password, role } = data
+        const { name, email, password } = data
 
         const existsUserWithEmail: IUser | undefined = await this._userRepository.findOneByEmail(email)
 
-        if (existsUserWithEmail) throw new AppException('User already exists!', 400)
+        if (existsUserWithEmail) throw new AppException('User email already exists!', 400)
 
         const hashPassword: string = await this._hashProvider.gererateHash(password)
 
-        const createdUser: IUser = await this._userRepository.create({
+        const activated: boolean = environment === 'development' ? true : false
+
+        const role: IRoleDTO = environment === 'development' ? 'ADMIN' : 'USER'
+
+        const userCreated: IUser = await this._userRepository.create({
             name,
             email,
             password: hashPassword,
+            activated,
             role,
         })
 
-        // const { id: owner_id, activated } = createdUser
+        const payload: ICreatePayloadDTO = { owner_id: userCreated.id, role, activated }
 
-        // const payload: ICreatePayloadDTO = { owner_id, role, activated }
+        const token: string = await this._tokenProvider.generateToken(payload)
 
-        // const token = await this.tokenProvider.generateToken(payload)
+        Object.assign(userCreated, { token })
 
-        // Object.assign(newUser, { token })
-
-        // const dataMailJob = { data: { name, email } }
-
-        // await this.queueProvider.enqueue('MailTrap', dataMailJob)
-
-        return createdUser
+        return userCreated
     }
 }
 

@@ -28,7 +28,6 @@ class CreateUserController {
             name,
             email,
             password,
-            role: 'USER',
         })
 
         const status = {

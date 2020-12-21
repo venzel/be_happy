@@ -4,7 +4,7 @@ import { ITokenProvider } from '../providers/TokenProvider/models/ITokenProvider
 import { IPayloadDTO } from '../dtos/IPayloadDTO'
 import { AppException } from '@shared/exceptions/AppException'
 
-class AuthenticateUser {
+class AuthenticateUserMiddleware {
     public authenticate(req: Request, res: Response, next: NextFunction): any {
         const schemaToken: string | undefined = req.headers.authorization
 
@@ -28,4 +28,4 @@ class AuthenticateUser {
     }
 }
 
-export { AuthenticateUser }
+export { AuthenticateUserMiddleware }

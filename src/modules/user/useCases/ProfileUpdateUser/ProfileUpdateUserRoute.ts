@@ -1,11 +1,11 @@
 import { Router } from 'express'
-import { AuthenticateUser } from '@modules/user/shared/middlewares/AuthenticateUser'
+import { AuthenticateUserMiddleware } from '@modules/user/shared/middlewares/AuthenticateUserMiddleware'
 import { ProfileUpdateUserValidator } from './ProfileUpdateUserValidator'
 import { ProfileUpdateUserController } from './ProfileUpdateUserController'
 
 class ProfileUpdateUser {
     public register(router: Router, path: string): void {
-        const { authenticate } = new AuthenticateUser()
+        const { authenticate } = new AuthenticateUserMiddleware()
         const { validator } = new ProfileUpdateUserValidator()
         const { patch } = new ProfileUpdateUserController()
 

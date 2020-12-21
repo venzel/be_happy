@@ -1,15 +1,15 @@
 import { Router } from 'express'
 import { CreateEmotionValidator } from './CreateEmotionValidator'
 import { CreateEmotionController } from './CreateEmotionController'
-import { AuthenticateUser } from '@modules/user/shared/middlewares/AuthenticateUser'
-import { RoleUser } from '@modules/user/shared/middlewares/RoleUser'
-import { ActivatedUser } from '@modules/user/shared/middlewares/ActivatedUser'
+import { AuthenticateUserMiddleware } from '@modules/user/shared/middlewares/AuthenticateUserMiddleware'
+import { RoleUserMiddleware } from '@modules/user/shared/middlewares/RoleUserMIddleware'
+import { ActivatedUserMiddleware } from '@modules/user/shared/middlewares/ActivatedUserMiddleware'
 
 class CreateEmotionRoute {
     public register(router: Router, path: string): void {
-        const { authenticate } = new AuthenticateUser()
-        const { role } = new RoleUser()
-        const { activated } = new ActivatedUser()
+        const { authenticate } = new AuthenticateUserMiddleware()
+        const { role } = new RoleUserMiddleware()
+        const { activated } = new ActivatedUserMiddleware()
         const { validator } = new CreateEmotionValidator()
         const { create } = new CreateEmotionController()
 

@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express'
 import { IRoleDTO } from '../dtos/IRoleDTO'
 import { AppException } from '@shared/exceptions/AppException'
 
-class RoleUser {
+class RoleUserMiddleware {
     role(roles: IRoleDTO[]): any {
         return function (req: Request, res: Response, next: NextFunction): any {
             const role: string = req.auth.role
@@ -15,4 +15,4 @@ class RoleUser {
     }
 }
 
-export { RoleUser }
+export { RoleUserMiddleware }

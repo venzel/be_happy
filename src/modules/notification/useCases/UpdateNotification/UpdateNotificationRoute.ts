@@ -1,13 +1,13 @@
 import { Router } from 'express'
-import { AuthenticateUser } from '@modules/user/shared/middlewares/AuthenticateUser'
-import { ActivatedUser } from '@modules/user/shared/middlewares/ActivatedUser'
+import { AuthenticateUserMiddleware } from '@modules/user/shared/middlewares/AuthenticateUserMiddleware'
+import { ActivatedUserMiddleware } from '@modules/user/shared/middlewares/ActivatedUserMiddleware'
 import { UpdateNotificationValidator } from './UpdateNotificationValidator'
 import { UpdateNotificationController } from './UpdateNotificationController'
 
 class UpdateNotificationRoute {
     public register(router: Router, path: string): void {
-        const { authenticate } = new AuthenticateUser()
-        const { activated } = new ActivatedUser()
+        const { authenticate } = new AuthenticateUserMiddleware()
+        const { activated } = new ActivatedUserMiddleware()
         const { validator } = new UpdateNotificationValidator()
         const { update } = new UpdateNotificationController()
 
