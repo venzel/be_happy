@@ -2,13 +2,13 @@ import { IUser } from '@modules/user/shared/entities/IUser'
 
 interface IEmotion {
     id: string
-    ownerId: string
+    owner_id: string
     owner: IUser
     emotion: string
     description: string
-    createdAt: Date
-    updatedAt: Date
-    deletedAt: Date | null
+    created_at: Date
+    updated_at: Date
+    deleted_at: Date | null
 }
 
 export { IEmotion }

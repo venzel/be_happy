@@ -1,5 +1,5 @@
 interface ICreateUserTokenDTO {
-    ownerId: string
+    owner_id: string
     token: string
 }
 

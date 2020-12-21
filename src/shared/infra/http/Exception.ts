@@ -11,10 +11,10 @@ class Exception {
         next: NextFunction
     ): Promise<Response> {
         if (err instanceof AppException) {
-            return res.status(err.statusCode).json({
+            return res.status(err.status_code).json({
                 status: {
                     error: true,
-                    code: err.statusCode,
+                    code: err.status_code,
                     message: err.message,
                 },
             })

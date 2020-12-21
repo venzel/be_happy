@@ -15,29 +15,29 @@ import { Emotion } from './Emotion'
 
 @Entity('emotionreport')
 class EmotionReport implements IEmotionReport {
-    @Expose({ name: 'emotionId' })
+    @Expose({ name: 'emotion_id' })
     @PrimaryGeneratedColumn('uuid')
     public id: string
 
     @Column()
-    public emotionId: string
+    public emotion_id: string
 
     @ManyToOne(() => Emotion)
-    @JoinColumn({ name: 'emotionId' })
-    public emotionOwner: IEmotion
+    @JoinColumn({ name: 'emotion_id' })
+    public emotion_owner: IEmotion
 
     @Column()
-    public ownerId: string
+    public owner_id: string
 
     @Column()
     public read: boolean
 
     @CreateDateColumn()
-    public createdAt: Date
+    public created_at: Date
 
     @Exclude()
     @DeleteDateColumn()
-    public deletedAt: Date | null
+    public deleted_at: Date | null
 }
 
 export { EmotionReport }

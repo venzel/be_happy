@@ -11,16 +11,16 @@ class UserRepositoryFake implements IUserRepository {
         this._repository = []
     }
 
-    public async findOneById(userId: string): Promise<IUser | undefined> {
-        return this._repository.find((user) => user.id === userId)
+    public async findOneById(user_id: string): Promise<IUser | undefined> {
+        return this._repository.find((user) => user.id === user_id)
     }
 
-    public async findByName(userName: string): Promise<IUser | undefined> {
-        return this._repository.find((user) => user.name === userName)
+    public async findOneByName(user_name: string): Promise<IUser | undefined> {
+        return this._repository.find((user) => user.name === user_name)
     }
 
-    public async findByEmail(userEmail: string): Promise<IUser | undefined> {
-        return this._repository.find((user) => user.email === userEmail)
+    public async findOneByEmail(user_email: string): Promise<IUser | undefined> {
+        return this._repository.find((user) => user.email === user_email)
     }
 
     public async create(user: ICreateUserDTO): Promise<IUser> {
@@ -49,7 +49,7 @@ class UserRepositoryFake implements IUserRepository {
         if (userIndex !== -1) {
             const currentDate = new Date()
 
-            user.updatedAt = currentDate
+            user.updated_at = currentDate
 
             this._repository[userIndex] = user
         }
@@ -63,8 +63,8 @@ class UserRepositoryFake implements IUserRepository {
         if (userIndex !== -1) {
             const currentDate = new Date()
 
-            user.updatedAt = currentDate
-            user.deletedAt = currentDate
+            user.updated_at = currentDate
+            user.deleted_at = currentDate
 
             this._repository[userIndex] = user
         }

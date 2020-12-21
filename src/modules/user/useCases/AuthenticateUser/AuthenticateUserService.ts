@@ -17,30 +17,30 @@ class AuthenticateUserService {
     public async execute(data: IAuthenticateUserDTO): Promise<IUser> {
         const { email, password } = data
 
-        const existsUser: IUser | undefined = await this._userRepository.findByEmail(email)
+        const existsUserWithEmail: IUser | undefined = await this._userRepository.findOneByEmail(email)
 
-        if (!existsUser) throw new AppException('Email or password invalid!', 403)
+        if (!existsUserWithEmail) throw new AppException('Email or password invalid!', 403)
 
-        if (!existsUser.allowed) throw new AppException('User not allowed!', 403)
+        if (!existsUserWithEmail.allowed) throw new AppException('User not allowed!', 403)
 
         const passwordEquals: boolean = await this._hashProvider.compareHash(
             password,
-            existsUser.password
+            existsUserWithEmail.password
         )
 
         if (!passwordEquals) throw new AppException('Email or password invalid!', 403)
 
-        const { id, role, activated } = existsUser
+        const { id, role, activated } = existsUserWithEmail
 
         const token: string = await this._tokenProvider.generateToken({
-            ownerId: id,
+            owner_id: id,
             role,
             activated,
         })
 
-        Object.assign(existsUser, { token })
+        Object.assign(existsUserWithEmail, { token })
 
-        return existsUser
+        return existsUserWithEmail
     }
 }
 

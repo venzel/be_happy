@@ -7,7 +7,7 @@ import { IUser } from '@modules/user/shared/entities/IUser'
 
 class DeleteUserController {
     public async destroy(req: Request, res: Response): Promise<Response> {
-        const { ownerId, role } = req.auth
+        const { owner_id, role } = req.auth
 
         const queryUserId = req.query.id as string
 
@@ -15,7 +15,7 @@ class DeleteUserController {
 
         const deleteUserService = new DeleteUserService(userRepository)
 
-        const owner = { ownerId, role } as IAuth
+        const owner = { owner_id, role } as IAuth
 
         const userDeleted: IUser = await deleteUserService.execute(owner, queryUserId)
 

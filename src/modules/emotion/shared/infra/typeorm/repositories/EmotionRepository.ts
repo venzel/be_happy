@@ -16,9 +16,9 @@ class EmotionRepository implements IEmotionRepository {
     }
 
     public async create(data: ICreateEmotionDTO): Promise<IEmotion> {
-        const { ownerId, emotion, description } = data
+        const { owner_id, emotion, description } = data
 
-        const emotionCreated = this._repository.create({ ownerId, emotion, description })
+        const emotionCreated = this._repository.create({ owner_id, emotion, description })
 
         await this._repository.save(emotionCreated)
 
@@ -28,7 +28,7 @@ class EmotionRepository implements IEmotionRepository {
     public async save(emotion: IEmotion): Promise<IEmotion> {
         const currentDate = new Date()
 
-        emotion.updatedAt = currentDate
+        emotion.updated_at = currentDate
 
         await this._repository.save(emotion)
 
@@ -38,7 +38,7 @@ class EmotionRepository implements IEmotionRepository {
     public async delete(emotion: IEmotion): Promise<IEmotion> {
         const currentDate = new Date()
 
-        emotion.deletedAt = currentDate
+        emotion.deleted_at = currentDate
 
         await this.save(emotion)
 

@@ -1,6 +1,6 @@
 interface ICreateEmotionReportDTO {
-    emotionId: string
-    ownerId: string
+    emotion_id: string
+    owner_id: string
 }
 
 export { ICreateEmotionReportDTO }

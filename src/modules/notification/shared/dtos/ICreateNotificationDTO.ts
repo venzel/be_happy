@@ -1,5 +1,5 @@
 interface ICreateNotificationDTO {
-    ownerId: string
+    owner_id: string
     content: string
 }
 

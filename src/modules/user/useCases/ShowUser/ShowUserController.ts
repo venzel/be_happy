@@ -7,7 +7,7 @@ import { IUser } from '@modules/user/shared/entities/IUser'
 
 class ShowUserController {
     public async show(req: Request, res: Response): Promise<Response> {
-        const { ownerId, role } = req.auth
+        const { owner_id, role } = req.auth
 
         const queryUserId = req.query.id as string
 
@@ -15,7 +15,7 @@ class ShowUserController {
 
         const showUserService = new ShowUserService(userRepository)
 
-        const owner = { ownerId, role } as IAuth
+        const owner = { owner_id, role } as IAuth
 
         const userShowed: IUser = await showUserService.execute(owner, queryUserId)
 

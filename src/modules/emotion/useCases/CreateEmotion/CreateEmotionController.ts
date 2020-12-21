@@ -9,7 +9,7 @@ import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
 
 class CreateEmotionController {
     public async create(req: Request, res: Response): Promise<Response> {
-        const { ownerId } = req.auth
+        const { owner_id } = req.auth
 
         const { emotion, description } = req.body
 
@@ -26,7 +26,7 @@ class CreateEmotionController {
         )
 
         const emotionCreated: IEmotion = await createEmotionService.execute({
-            ownerId,
+            owner_id,
             emotion,
             description,
         })

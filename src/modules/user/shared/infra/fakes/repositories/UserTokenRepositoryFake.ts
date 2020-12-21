@@ -11,27 +11,27 @@ class UserTokenRepositoryFake implements IUserTokenRepository {
         this._repository = []
     }
 
-    public async findOneById(ownerId: string): Promise<IUserToken | undefined> {
-        return this._repository.find((user) => user.id === ownerId)
+    public async findOneById(owner_id: string): Promise<IUserToken | undefined> {
+        return this._repository.find((user) => user.id === owner_id)
     }
 
     public async create(data: ICreateUserTokenDTO): Promise<IUserToken> {
-        const { ownerId } = data
+        const { owner_id } = data
 
         const userToken = new UserTokenFake()
 
-        Object.assign(userToken, { id: uuid(), ownerId })
+        Object.assign(userToken, { id: uuid(), owner_id })
 
         this._repository.push(userToken)
 
         return userToken
     }
 
-    public async save(userToken: IUserToken): Promise<void> {
-        const userIndex: number = this._repository.indexOf(userToken)
+    public async save(user_token: IUserToken): Promise<void> {
+        const userIndex: number = this._repository.indexOf(user_token)
 
         if (userIndex !== -1) {
-            this._repository[userIndex] = userToken
+            this._repository[userIndex] = user_token
         }
     }
 }

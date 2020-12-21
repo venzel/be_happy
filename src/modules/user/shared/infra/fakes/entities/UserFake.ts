@@ -9,9 +9,9 @@ class FakeUser implements IUser {
     public avatar: string
     public allowed: boolean
     public activated: boolean
-    public createdAt: Date
-    public updatedAt: Date
-    public deletedAt: Date | null
+    public created_at: Date
+    public updated_at: Date
+    public deleted_at: Date | null
 }
 
 export { FakeUser }

@@ -12,14 +12,14 @@ class NotificationRepository implements INotificationRepository {
         this._repository = getMongoRepository(Notification, 'mongo')
     }
 
-    public async findOneById(notificationId: string): Promise<INotification | undefined> {
-        return await this._repository.findOne({ _id: new ObjectID(notificationId) })
+    public async findOneById(notification_id: string): Promise<INotification | undefined> {
+        return await this._repository.findOne({ _id: new ObjectID(notification_id) })
     }
 
     public async create(data: ICreateNotificationDTO): Promise<INotification> {
-        const { ownerId, content } = data
+        const { owner_id, content } = data
 
-        const notificationCreated = this._repository.create({ ownerId, content })
+        const notificationCreated = this._repository.create({ owner_id, content })
 
         await this._repository.save(notificationCreated)
 
@@ -29,7 +29,7 @@ class NotificationRepository implements INotificationRepository {
     public async save(notification: INotification): Promise<INotification> {
         const currentDate = new Date()
 
-        notification.updatedAt = currentDate
+        notification.updated_at = currentDate
 
         await this._repository.save(notification)
 

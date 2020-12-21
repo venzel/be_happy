@@ -2,7 +2,7 @@ import { INotification } from '@modules/notification/shared/entities/INotificati
 
 class NotificationFake implements INotification {
     public _id: any
-    public ownerId: string
+    public owner_id: string
     public content: string
     public read: boolean
     public createdAt: Date

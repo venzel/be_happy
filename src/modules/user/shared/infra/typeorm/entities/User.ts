@@ -12,7 +12,7 @@ import { IUser } from '@modules/user/shared/entities/IUser'
 
 @Entity('users')
 class User implements IUser {
-    @Expose({ name: 'userId' })
+    @Expose({ name: 'user_id' })
     @PrimaryGeneratedColumn('uuid')
     public id: string
 
@@ -29,11 +29,11 @@ class User implements IUser {
     @Column()
     public role: string
 
-    @Expose({ name: 'avatarFile' })
+    @Expose({ name: 'avatar_file' })
     @Column()
     public avatar: string
 
-    @Expose({ name: 'avatarUrl' })
+    @Expose({ name: 'avatar_url' })
     get getAvatarUrl(): string | null {
         return this.avatar ? `${api_host}/file/${this.avatar}` : null
     }
@@ -47,14 +47,14 @@ class User implements IUser {
     public activated: boolean
 
     @CreateDateColumn()
-    public createdAt: Date
+    public created_at: Date
 
     @UpdateDateColumn()
-    public updatedAt: Date
+    public updated_at: Date
 
     @Exclude()
     @DeleteDateColumn()
-    public deletedAt: Date | null
+    public deleted_at: Date | null
 }
 
 export { User }

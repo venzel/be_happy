@@ -2,11 +2,11 @@ import { ICreateUserDTO } from '../dtos/ICreateUserDTO'
 import { IUser } from '../entities/IUser'
 
 interface IUserRepository {
-    findOneById(userId: string): Promise<IUser | undefined>
+    findOneById(user_id: string): Promise<IUser | undefined>
 
-    findByName(userName: string): Promise<IUser | undefined>
+    findOneByName(unser_name: string): Promise<IUser | undefined>
 
-    findByEmail(userEmail: string): Promise<IUser | undefined>
+    findOneByEmail(user_email: string): Promise<IUser | undefined>
 
     create(data: ICreateUserDTO): Promise<IUser>
 

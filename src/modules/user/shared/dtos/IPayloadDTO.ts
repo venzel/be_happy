@@ -1,6 +1,6 @@
 interface IPayloadDTO {
     user: {
-        ownerId: string
+        owner_id: string
         role: string
         activated: boolean
     }

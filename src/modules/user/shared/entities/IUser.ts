@@ -7,9 +7,9 @@ interface IUser {
     avatar: string
     allowed: boolean
     activated: boolean
-    createdAt: Date
-    updatedAt: Date
-    deletedAt: Date | null
+    created_at: Date
+    updated_at: Date
+    deleted_at: Date | null
 }
 
 export { IUser }

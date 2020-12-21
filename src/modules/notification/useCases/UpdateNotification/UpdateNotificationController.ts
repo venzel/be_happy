@@ -7,7 +7,7 @@ import { INotification } from '@modules/notification/shared/entities/INotificati
 
 class UpdateNotificationController {
     public async update(req: Request, res: Response): Promise<Response> {
-        const { ownerId, role } = req.auth
+        const { owner_id, role } = req.auth
 
         const { notificationId } = req.body
 
@@ -17,7 +17,7 @@ class UpdateNotificationController {
 
         const updateNotificationService = new UpdateNotificationService(notificationRepository)
 
-        const owner = { ownerId, role } as IAuth
+        const owner = { owner_id, role } as IAuth
 
         const data = { notificationId }
 

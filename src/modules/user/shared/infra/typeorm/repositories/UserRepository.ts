@@ -11,16 +11,16 @@ class UserRepository implements IUserRepository {
         this._repository = getRepository(User, 'default')
     }
 
-    public async findOneById(userId: string): Promise<IUser | undefined> {
-        return await this._repository.findOne({ where: { id: userId, deletedAt: null } })
+    public async findOneById(user_id: string): Promise<IUser | undefined> {
+        return await this._repository.findOne({ where: { id: user_id, deleted_at: null } })
     }
 
-    public async findByName(userName: string): Promise<IUser | undefined> {
-        return await this._repository.findOne({ where: { name: userName, deletedAt: null } })
+    public async findOneByName(user_name: string): Promise<IUser | undefined> {
+        return await this._repository.findOne({ where: { name: user_name, deleted_at: null } })
     }
 
-    public async findByEmail(userEmail: string): Promise<IUser | undefined> {
-        return await this._repository.findOne({ where: { email: userEmail, deletedAt: null } })
+    public async findOneByEmail(user_email: string): Promise<IUser | undefined> {
+        return await this._repository.findOne({ where: { email: user_email, deleted_at: null } })
     }
 
     public async create(data: ICreateUserDTO): Promise<IUser> {
@@ -36,7 +36,7 @@ class UserRepository implements IUserRepository {
     public async save(user: IUser): Promise<IUser> {
         const currentDate = new Date()
 
-        user.updatedAt = currentDate
+        user.updated_at = currentDate
 
         await this._repository.save(user)
 
@@ -47,7 +47,7 @@ class UserRepository implements IUserRepository {
         const currentDate = new Date()
 
         user.allowed = false
-        user.deletedAt = currentDate
+        user.deleted_at = currentDate
 
         await this.save(user)
 

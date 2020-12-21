@@ -16,11 +16,11 @@ class NotificationRepositoryFake implements INotificationRepository {
     }
 
     public async create(data: ICreateNotificationDTO): Promise<INotification> {
-        const { ownerId, content } = data
+        const { owner_id, content } = data
 
         const notificationFake = new NotificationFake()
 
-        Object.assign(notificationFake, { _id: new ObjectID(), ownerId, content })
+        Object.assign(notificationFake, { _id: new ObjectID(), owner_id, content })
 
         this._repository.push(notificationFake)
 

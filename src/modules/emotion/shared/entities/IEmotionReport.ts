@@ -2,12 +2,12 @@ import { IEmotion } from './IEmotion'
 
 interface IEmotionReport {
     id: string
-    emotionId: string
-    emotionOwner: IEmotion
-    ownerId: string
+    emotion_id: string
+    emotion_owner: IEmotion
+    owner_id: string
     read: boolean
-    createdAt: Date
-    deletedAt: Date | null
+    created_at: Date
+    deleted_at: Date | null
 }
 
 export { IEmotionReport }

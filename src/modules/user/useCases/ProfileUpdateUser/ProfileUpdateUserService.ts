@@ -12,29 +12,31 @@ class ProfileUpdateUserService {
         @inject('HashProvider') private _hashProvider: IHashProvider
     ) {}
 
-    public async execute(owner: IAuth, data: IProfileUpdateUserDTO): Promise<IUser> {
-        const { ownerId, role } = owner
+    public async execute(data: IProfileUpdateUserDTO): Promise<IUser> {
+        const { owner_id, name, email, current_password } = data
 
-        const { userId, name, email, oldPassword, newPassword } = data
+        const existsUserWithEmail: IUser | undefined = await this._userRepository.findOneByEmail(email)
 
-        const existsUser: IUser | undefined = await this._userRepository.findOneById(userId)
+        if (existsUserWithEmail && existsUserWithEmail.id !== owner_id)
+            throw new AppException('User email already exists!', 400)
 
-        if (!existsUser) throw new AppException('User not exists!', 404)
+        const existsUserWithId: IUser | undefined = await this._userRepository.findOneById(owner_id)
 
-        if (role === 'USER' && existsUser.id !== ownerId)
-            throw new AppException('It is not allowed to change another users data!', 400)
+        if (!existsUserWithId) throw new AppException('User not exists!', 404)
 
-        if (oldPassword !== existsUser.password) throw new AppException('Password not equals!', 400)
+        const passwordEquals: boolean = await this._hashProvider.compareHash(
+            current_password,
+            existsUserWithId.password
+        )
 
-        const generateHash: string = await this._hashProvider.gererateHash(newPassword)
+        if (!passwordEquals) throw new AppException('Password not equals!', 400)
 
-        existsUser.name = name
-        existsUser.email = email
-        existsUser.password = generateHash
+        existsUserWithId.name = name
+        existsUserWithId.email = email
 
-        await this._userRepository.save(existsUser)
+        const user = await this._userRepository.save(existsUserWithId)
 
-        return existsUser
+        return user
     }
 }
 

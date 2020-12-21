@@ -1,10 +1,10 @@
 interface INotification {
     _id: any
-    ownerId: string
+    owner_id: string
     content: string
     read: boolean
-    createdAt: Date
-    updatedAt: Date
+    created_at: Date
+    updated_at: Date
 }
 
 export { INotification }

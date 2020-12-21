@@ -8,16 +8,16 @@ class ShowUserService {
     constructor(@inject('UserRepository') private _userRepository: IUserRepository) {}
 
     public async execute(data: IAuth, queryUserId: string): Promise<IUser> {
-        const { ownerId, role } = data
+        const { owner_id, role } = data
 
-        const existsUser: IUser | undefined = await this._userRepository.findOneById(queryUserId)
+        const existsUserWithId: IUser | undefined = await this._userRepository.findOneById(queryUserId)
 
-        if (!existsUser) throw new AppException('User not found!', 404)
+        if (!existsUserWithId) throw new AppException('User not found!', 404)
 
-        if (role === 'USER' && existsUser.id !== ownerId)
+        if (role === 'USER' && existsUserWithId.id !== owner_id)
             throw new AppException('It is not possible to show data another user!', 403)
 
-        return existsUser
+        return existsUserWithId
     }
 }
 

@@ -1,5 +1,5 @@
 interface IUpdateEmotionDTO {
-    ownerId: string
+    owner_id: string
     description: string
 }
 

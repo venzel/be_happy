@@ -15,7 +15,7 @@ export default class CreateEmotions1608048084284 implements MigrationInterface {
                         default: 'uuid_generate_v4()',
                     },
                     {
-                        name: 'ownerId',
+                        name: 'owner_id',
                         type: 'uuid',
                         isNullable: true,
                     },
@@ -30,19 +30,19 @@ export default class CreateEmotions1608048084284 implements MigrationInterface {
                         isNullable: true,
                     },
                     {
-                        name: 'createdAt',
+                        name: 'created_at',
                         type: 'timestamp',
                         isNullable: false,
                         default: 'now()',
                     },
                     {
-                        name: 'updatedAt',
+                        name: 'updated_at',
                         type: 'timestamp',
                         isNullable: false,
                         default: 'now()',
                     },
                     {
-                        name: 'deletedAt',
+                        name: 'deleted_at',
                         type: 'timestamp',
                         isNullable: true,
                         default: null,
@@ -55,8 +55,8 @@ export default class CreateEmotions1608048084284 implements MigrationInterface {
         await queryRunner.createForeignKey(
             'emotions',
             new TableForeignKey({
-                name: 'emotionOwner',
-                columnNames: ['ownerId'],
+                name: 'emotion_owner',
+                columnNames: ['owner_id'],
                 referencedColumnNames: ['id'],
                 referencedTableName: 'users',
                 onDelete: 'SET NULL',

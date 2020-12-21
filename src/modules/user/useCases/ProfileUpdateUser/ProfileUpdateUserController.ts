@@ -8,20 +8,21 @@ import { IUser } from '@modules/user/shared/entities/IUser'
 
 class ProfileUpdateUserController {
     public async patch(req: Request, res: Response): Promise<Response> {
-        const { ownerId, role } = req.auth
+        const { owner_id } = req.auth
 
-        const { userId, name, email, oldPassword, newPassword } = req.body
+        const { name, email, current_password } = req.body
 
         const userRepository = container.resolve<IUserRepository>('UserRepository')
         const hashProvider = container.resolve<IHashProvider>('HashProvider')
 
         const profileUpdateUserService = new ProfileUpdateUserService(userRepository, hashProvider)
 
-        const owner = { ownerId, role } as IAuth
-
-        const data = { userId, name, email, oldPassword, newPassword }
-
-        const userProfileUpdated: IUser = await profileUpdateUserService.execute(owner, data)
+        const userProfileUpdated: IUser = await profileUpdateUserService.execute({
+            owner_id,
+            name,
+            email,
+            current_password,
+        })
 
         const status = {
             error: false,

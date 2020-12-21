@@ -1,10 +1,10 @@
 class AppException {
     public readonly message: string
-    public readonly statusCode: number
+    public readonly status_code: number
 
-    constructor(message?: string, statusCode?: number) {
+    constructor(message?: string, status_code?: number) {
         this.message = message || 'Error by user!'
-        this.statusCode = statusCode || 400
+        this.status_code = status_code || 400
     }
 }
 

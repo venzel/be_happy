@@ -2,11 +2,11 @@ import { IUserToken } from '../../../entities/IUserToken'
 
 class UserTokenFake implements IUserToken {
     public id: string
-    public ownerId: string
+    public owner_id: string
     public token: string
-    public createdAt: Date
-    public updatedAt: Date
-    public deletedAt: Date | null
+    public created_at: Date
+    public updated_at: Date
+    public deleted_at: Date | null
 }
 
 export { UserTokenFake }

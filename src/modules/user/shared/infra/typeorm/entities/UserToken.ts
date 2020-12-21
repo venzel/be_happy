@@ -12,26 +12,26 @@ import { IUserToken } from '@modules/user/shared/entities/IUserToken'
 
 @Entity('users')
 class UserToken implements IUserToken {
-    @Expose({ name: 'tokenUserId' })
+    @Expose({ name: 'token_user_Id' })
     @PrimaryGeneratedColumn('uuid')
     public id: string
 
     @Column()
-    public ownerId: string
+    public owner_id: string
 
     @Column()
     @Generated('uuid')
     public token: string
 
     @CreateDateColumn()
-    public createdAt: Date
+    public created_at: Date
 
     @UpdateDateColumn()
-    public updatedAt: Date
+    public updated_at: Date
 
     @Exclude()
     @DeleteDateColumn()
-    public deletedAt: Date | null
+    public deleted_at: Date | null
 }
 
 export { UserToken }

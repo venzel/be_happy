@@ -13,22 +13,22 @@ class UpdateNotificationService {
     }
 
     public async execute(owner: IAuth, data: IUpdateNotificationDTO): Promise<INotification> {
-        const { ownerId, role } = owner
+        const { owner_id, role } = owner
 
         const { notificationId } = data
 
-        const existsNotification:
-            | INotification
-            | undefined = await this._notificationRepository.findOneById(notificationId)
+        const notification: INotification | undefined = await this._notificationRepository.findOneById(
+            notificationId
+        )
 
-        if (!existsNotification) throw new AppException('Notification not found!', 404)
+        if (!notification) throw new AppException('Notification not found!', 404)
 
-        if (role === 'USER' && existsNotification.ownerId !== ownerId)
+        if (role === 'USER' && notification.owner_id !== owner_id)
             throw new AppException('It not permited update another notification user id!', 403)
 
-        await this._notificationRepository.markAsRead(existsNotification)
+        await this._notificationRepository.markAsRead(notification)
 
-        return existsNotification
+        return notification
     }
 }
 

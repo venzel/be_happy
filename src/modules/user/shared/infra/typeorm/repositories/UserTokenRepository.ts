@@ -11,14 +11,14 @@ class UserTokenRepository implements IUserTokenRepository {
         this._repository = getRepository(UserToken, 'default')
     }
 
-    public async findOneById(ownerId: string): Promise<IUserToken | undefined> {
-        return await this._repository.findOne({ where: { ownerId } })
+    public async findOneById(owner_id: string): Promise<IUserToken | undefined> {
+        return await this._repository.findOne({ where: { owner_id } })
     }
 
     public async create(data: ICreateUserTokenDTO): Promise<IUserToken> {
-        const { ownerId } = data
+        const { owner_id } = data
 
-        const userTokenCreated = this._repository.create({ ownerId })
+        const userTokenCreated = this._repository.create({ owner_id })
 
         await this._repository.save(userTokenCreated)
 

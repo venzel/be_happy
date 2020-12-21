@@ -16,11 +16,11 @@ class EmotionRepositoryFake implements IEmotionRepository {
     }
 
     public async create(data: ICreateEmotionDTO): Promise<IEmotion> {
-        const { ownerId, emotion, description } = data
+        const { owner_id, emotion, description } = data
 
         const emotionFake = new EmotionFake()
 
-        Object.assign(emotionFake, { id: uuid(), ownerId, emotion, description })
+        Object.assign(emotionFake, { id: uuid(), owner_id, emotion, description })
 
         this._repository.push(emotionFake)
 
@@ -43,8 +43,8 @@ class EmotionRepositoryFake implements IEmotionRepository {
         if (emotionIndex !== -1) {
             const currentDate = new Date()
 
-            emotion.updatedAt = currentDate
-            emotion.deletedAt = currentDate
+            emotion.updated_at = currentDate
+            emotion.deleted_at = currentDate
 
             this._repository[emotionIndex] = emotion
         }

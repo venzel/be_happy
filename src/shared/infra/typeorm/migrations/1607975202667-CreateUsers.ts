@@ -50,19 +50,19 @@ export default class CreateUsers1607975202667 implements MigrationInterface {
                         default: false,
                     },
                     {
-                        name: 'createdAt',
+                        name: 'created_at',
                         type: 'timestamp',
                         isNullable: false,
                         default: 'now()',
                     },
                     {
-                        name: 'updatedAt',
+                        name: 'updated_at',
                         type: 'timestamp',
                         isNullable: false,
                         default: 'now()',
                     },
                     {
-                        name: 'deletedAt',
+                        name: 'deleted_at',
                         type: 'timestamp',
                         isNullable: true,
                         default: null,

@@ -19,9 +19,9 @@ class CreateUserService {
     public async execute(data: ICreateUserDTO): Promise<IUser> {
         const { name, email, password, role } = data
 
-        const existsUser: IUser | undefined = await this._userRepository.findByEmail(email)
+        const existsUserWithEmail: IUser | undefined = await this._userRepository.findOneByEmail(email)
 
-        if (existsUser) throw new AppException('User already exists!', 400)
+        if (existsUserWithEmail) throw new AppException('User already exists!', 400)
 
         const hashPassword: string = await this._hashProvider.gererateHash(password)
 
@@ -32,9 +32,9 @@ class CreateUserService {
             role,
         })
 
-        // const { id: ownerId, activated } = createdUser
+        // const { id: owner_id, activated } = createdUser
 
-        // const payload: ICreatePayloadDTO = { ownerId, role, activated }
+        // const payload: ICreatePayloadDTO = { owner_id, role, activated }
 
         // const token = await this.tokenProvider.generateToken(payload)
 

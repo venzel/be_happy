@@ -12,12 +12,12 @@ import { INotification } from '@modules/notification/shared/entities/INotificati
 
 @Entity('notification')
 class Notification implements INotification {
-    @Expose({ name: 'notificationId' })
+    @Expose({ name: 'notification_id' })
     @ObjectIdColumn()
     public _id: ObjectID
 
     @Column('uuid')
-    public ownerId: string
+    public owner_id: string
 
     @Column()
     public content: string
@@ -31,10 +31,10 @@ class Notification implements INotification {
     }
 
     @CreateDateColumn()
-    public createdAt: Date
+    public created_at: Date
 
     @UpdateDateColumn()
-    public updatedAt: Date
+    public updated_at: Date
 }
 
 export { Notification }

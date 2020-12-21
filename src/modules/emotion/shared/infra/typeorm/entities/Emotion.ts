@@ -14,15 +14,15 @@ import { Expose, Exclude } from 'class-transformer'
 
 @Entity('emotions')
 class Emotion implements IEmotion {
-    @Expose({ name: 'emotionId' })
+    @Expose({ name: 'emotion_id' })
     @PrimaryGeneratedColumn('uuid')
     public id: string
 
     @Column()
-    public ownerId: string
+    public owner_id: string
 
     @ManyToOne(() => User)
-    @JoinColumn({ name: 'ownerId' })
+    @JoinColumn({ name: 'owner_id' })
     public owner: User
 
     @Column()
@@ -32,14 +32,14 @@ class Emotion implements IEmotion {
     public description: string
 
     @CreateDateColumn()
-    public createdAt: Date
+    public created_at: Date
 
     @UpdateDateColumn()
-    public updatedAt: Date
+    public updated_at: Date
 
     @Exclude()
     @DeleteDateColumn()
-    public deletedAt: Date | null
+    public deleted_at: Date | null
 }
 
 export { Emotion }

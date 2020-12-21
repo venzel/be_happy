@@ -3,12 +3,12 @@ import { IEmotionReport } from '@modules/emotion/shared/entities/IEmotionReport'
 
 class EmotionReportFake implements IEmotionReport {
     public id: string
-    public emotionId: string
-    public emotionOwner: IEmotion
-    public ownerId: string
+    public emotion_id: string
+    public emotion_owner: IEmotion
+    public owner_id: string
     public read: boolean
-    public createdAt: Date
-    public deletedAt: Date | null
+    public created_at: Date
+    public deleted_at: Date | null
 }
 
 export { EmotionReportFake }

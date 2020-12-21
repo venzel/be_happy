@@ -4,9 +4,9 @@ import { IEmotionRepository } from '@modules/emotion/shared/repositories/IEmotio
 
 class UpdateEmotionController {
     public async update(req: Request, res: Response): Promise<Response> {
-        const { ownerId, role } = req.auth
+        const { owner_id, role } = req.auth
 
-        const { emotionId, description } = req.body
+        const { emotion_id, description } = req.body
 
         const emotionRepository = container.resolve<IEmotionRepository>('EmotionRepository')
 

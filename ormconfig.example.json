@@ -7,6 +7,7 @@
         "username": "",
         "password": "",
         "database": "",
+        "synchronize": true,
         "entities": ["./src/modules/**/shared/infra/typeorm/entities/*.ts"],
         "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
         "cli": {

@@ -10,11 +10,11 @@ class UpdateEmotionService {
     constructor(@inject('emotionRepository') private _emotionRepository: IEmotionRepository) {}
 
     public async execute(data: IUpdateEmotionDTO): Promise<IEmotion> {
-        const { ownerId, description: descriptionAlias } = data
+        const { description } = data
 
-        const description: string | null = descriptionAlias || null
-
-        const existsEmotion: IEmotion | undefined = await this._emotionRepository.findOneById(emotionId)
+        const existsEmotion: IEmotion | undefined = await this._emotionRepository.findOneById(
+            'falta!!!!'
+        )
 
         if (!existsEmotion) throw new AppException('Emotion not found!', 404)
 
