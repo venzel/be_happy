@@ -7,7 +7,7 @@ import {
     DeleteDateColumn,
 } from 'typeorm'
 import { Exclude, Expose } from 'class-transformer'
-import { api_url } from '@configs/Geral'
+import { api_host } from '@configs/Geral'
 import { IUser } from '@modules/user/shared/entities/IUser'
 
 @Entity('users')
@@ -35,7 +35,7 @@ class User implements IUser {
 
     @Expose({ name: 'avatarUrl' })
     get getAvatarUrl(): string | null {
-        return this.avatar ? `${api_url}/file/${this.avatar}` : null
+        return this.avatar ? `${api_host}/file/${this.avatar}` : null
     }
 
     @Exclude()
