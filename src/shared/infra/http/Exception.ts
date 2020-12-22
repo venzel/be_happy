@@ -1,35 +1,23 @@
-import Youch from 'youch'
 import { Errback, Request, Response, NextFunction } from 'express'
+import Youch from 'youch'
 import { AppException } from '@shared/exceptions/AppException'
 import { environment, email_admin } from '@configs/Geral'
+import { statusMessage } from '@shared/libs/Utils'
 
 class Exception {
-    static async execute(
-        err: Errback,
-        req: Request,
-        res: Response,
-        next: NextFunction
-    ): Promise<Response> {
+    static async execute(err: Errback, req: Request, res: Response, _: NextFunction): Promise<Response> {
         if (err instanceof AppException) {
-            return res.status(err.status_code).json({
-                status: {
-                    error: true,
-                    code: err.status_code,
-                    message: err.message,
-                },
-            })
+            const status = statusMessage(true, err.code, err.message)
+
+            return res.status(err.code).json({ status })
         }
 
         if (environment === 'development')
             return res.status(500).json(await new Youch(err, req).toJSON())
 
-        return res.status(500).json({
-            status: {
-                error: true,
-                code: 500,
-                message: `Error in system, contact admin: ${email_admin}`,
-            },
-        })
+        const status = statusMessage(true, 500, `Error in system, contact admin: ${email_admin}`)
+
+        return res.status(500).json({ status })
     }
 }
 
