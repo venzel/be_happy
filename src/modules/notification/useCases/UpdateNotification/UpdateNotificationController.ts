@@ -10,7 +10,7 @@ class UpdateNotificationController {
     public async update(req: Request, res: Response): Promise<Response> {
         const { owner_id, role } = req.auth
 
-        const { notificationId } = req.body
+        const query_notification_id = String(req.query.id)
 
         const notificationRepository = container.resolve<INotificationRepository>(
             'NotificationRepository'
@@ -18,11 +18,11 @@ class UpdateNotificationController {
 
         const updateNotificationService = new UpdateNotificationService(notificationRepository)
 
-        const owner = { owner_id, role } as IAuth
-
-        const data = { notificationId }
-
-        const notificationUpdated: INotification = await updateNotificationService.execute(owner, data)
+        const notificationUpdated: INotification = await updateNotificationService.execute({
+            query_notification_id,
+            owner_id,
+            role,
+        })
 
         const status = statusMessage(false, 200, 'Succesfully updated notification!')
 

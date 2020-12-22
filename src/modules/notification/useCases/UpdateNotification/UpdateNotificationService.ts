@@ -6,29 +6,27 @@ import { AppException } from '@shared/exceptions/AppException'
 
 @injectable()
 class UpdateNotificationService {
-    private _notificationRepository: INotificationRepository
+    constructor(
+        @inject('NotificationRepository') private _notificationRepository: INotificationRepository
+    ) {}
 
-    constructor(@inject('NotificationRepository') notificationRepository: INotificationRepository) {
-        this._notificationRepository = notificationRepository
-    }
+    public async execute(data: IUpdateNotificationDTO): Promise<INotification> {
+        const { query_notification_id, owner_id, role } = data
 
-    public async execute(owner: IAuth, data: IUpdateNotificationDTO): Promise<INotification> {
-        const { owner_id, role } = owner
-
-        const { notificationId } = data
-
-        const notification: INotification | undefined = await this._notificationRepository.findOneById(
-            notificationId
+        const existsNotificationWithId = await this._notificationRepository.findOneById(
+            query_notification_id
         )
 
-        if (!notification) throw new AppException('Notification not found!', 404)
+        if (!existsNotificationWithId) throw new AppException('Notification not found!', 404)
 
-        if (role === 'USER' && notification.owner_id !== owner_id)
+        if (role === 'USER' && existsNotificationWithId.owner_id !== owner_id)
             throw new AppException('It not permited update another notification user id!', 403)
 
-        await this._notificationRepository.markAsRead(notification)
+        const notificationMarkedAsRead = await this._notificationRepository.markAsRead(
+            existsNotificationWithId
+        )
 
-        return notification
+        return notificationMarkedAsRead
     }
 }
 

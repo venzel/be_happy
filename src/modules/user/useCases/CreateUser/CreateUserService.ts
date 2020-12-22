@@ -26,7 +26,7 @@ class CreateUserService {
 
         if (existsUserWithEmail) throw new AppException('User email already exists!', 400)
 
-        const hashPassword: string = await this._hashProvider.gererateHash(password)
+        const generateHashPassword: string = await this._hashProvider.gererateHash(password)
 
         const activated: boolean = environment === 'development' ? true : false
 
@@ -35,7 +35,7 @@ class CreateUserService {
         const userCreated: IUser = await this._userRepository.create({
             name,
             email,
-            password: hashPassword,
+            password: generateHashPassword,
             activated,
             role,
         })
