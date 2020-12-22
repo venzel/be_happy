@@ -18,9 +18,9 @@ class DeleteUserService {
         if (role === 'USER' && existsUserWithId.id !== owner_id)
             throw new AppException('It not permited delete another user id!', 403)
 
-        const userDeleted: IUser = await this._userRepository.delete(existsUserWithId)
+        const deletedUser: IUser = await this._userRepository.delete(existsUserWithId)
 
-        return userDeleted
+        return deletedUser
     }
 }
 

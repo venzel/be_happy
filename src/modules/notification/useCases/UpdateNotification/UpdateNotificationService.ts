@@ -22,11 +22,11 @@ class UpdateNotificationService {
         if (role === 'USER' && existsNotificationWithId.owner_id !== owner_id)
             throw new AppException('It not permited update another notification user id!', 403)
 
-        const notificationMarkedAsRead = await this._notificationRepository.markAsRead(
+        const markedAsReadNotification = await this._notificationRepository.markAsRead(
             existsNotificationWithId
         )
 
-        return notificationMarkedAsRead
+        return markedAsReadNotification
     }
 }
 

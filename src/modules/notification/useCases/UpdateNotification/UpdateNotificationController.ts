@@ -4,7 +4,7 @@ import { classToClass } from 'class-transformer'
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
 import { UpdateNotificationService } from './UpdateNotificationService'
 import { INotification } from '@modules/notification/shared/entities/INotification'
-import { statusMessage } from '@shared/libs/Utils'
+import { generateStatus } from '@shared/libs/Utils'
 
 class UpdateNotificationController {
     public async update(req: Request, res: Response): Promise<Response> {
@@ -24,7 +24,7 @@ class UpdateNotificationController {
             role,
         })
 
-        const status = statusMessage(false, 200, 'Succesfully updated notification!')
+        const status = generateStatus(false, 200, 'Succesfully updated notification!')
 
         return res.status(200).json({ status, doc: classToClass(notificationUpdated) })
     }

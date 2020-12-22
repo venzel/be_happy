@@ -26,27 +26,27 @@ class CreateUserService {
 
         if (existsUserWithEmail) throw new AppException('User email already exists!', 400)
 
-        const generateHashPassword: string = await this._hashProvider.gererateHash(password)
+        const generatedHashPassword: string = await this._hashProvider.gererateHash(password)
 
         const activated: boolean = environment === 'development' ? true : false
 
         const role: IRoleDTO = environment === 'development' ? 'ADMIN' : 'USER'
 
-        const userCreated: IUser = await this._userRepository.create({
+        const createdUser: IUser = await this._userRepository.create({
             name,
             email,
-            password: generateHashPassword,
+            password: generatedHashPassword,
             activated,
             role,
         })
 
-        const payload: ICreatePayloadDTO = { owner_id: userCreated.id, role, activated }
+        const generatedPayload: ICreatePayloadDTO = { owner_id: createdUser.id, role, activated }
 
-        const token: string = await this._tokenProvider.generateToken(payload)
+        const generatedToken: string = await this._tokenProvider.generateToken(generatedPayload)
 
-        Object.assign(userCreated, { token })
+        Object.assign(createdUser, { token: generatedToken })
 
-        return userCreated
+        return createdUser
     }
 }
 

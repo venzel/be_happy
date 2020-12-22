@@ -4,7 +4,7 @@ import { classToClass } from 'class-transformer'
 import { DeleteUserService } from './DeleteUserService'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { IUser } from '@modules/user/shared/entities/IUser'
-import { statusMessage } from '@shared/libs/Utils'
+import { generateStatus } from '@shared/libs/Utils'
 
 class DeleteUserController {
     public async destroy(req: Request, res: Response): Promise<Response> {
@@ -16,11 +16,11 @@ class DeleteUserController {
 
         const deleteUserService = new DeleteUserService(userRepository)
 
-        const userDeleted: IUser = await deleteUserService.execute({ query_user_id, owner_id, role })
+        const deletedUser: IUser = await deleteUserService.execute({ query_user_id, owner_id, role })
 
-        const status = statusMessage(false, 200, 'Succesfully deleted user!')
+        const status = generateStatus(false, 200, 'Succesfully deleted user!')
 
-        return res.status(201).json({ status, doc: classToClass(userDeleted) })
+        return res.status(201).json({ status, doc: classToClass(deletedUser) })
     }
 }
 

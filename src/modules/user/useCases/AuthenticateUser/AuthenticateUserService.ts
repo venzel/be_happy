@@ -34,9 +34,13 @@ class AuthenticateUserService {
 
         const { id, role, activated } = existsUserWithEmail
 
-        const token: string = await this._tokenProvider.generateToken({ owner_id: id, role, activated })
+        const generatedToken: string = await this._tokenProvider.generateToken({
+            owner_id: id,
+            role,
+            activated,
+        })
 
-        Object.assign(existsUserWithEmail, { token })
+        Object.assign(existsUserWithEmail, { token: generatedToken })
 
         return existsUserWithEmail
     }

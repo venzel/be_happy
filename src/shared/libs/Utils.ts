@@ -1,9 +1,9 @@
 class Utils {
-    public statusMessage(error: boolean, code: number, message: string): any {
+    public generateStatus(error: boolean, code: number, message: string): any {
         return { error, code, message }
     }
 }
 
-const { statusMessage } = new Utils()
+const { generateStatus } = new Utils()
 
-export { statusMessage }
+export { generateStatus }

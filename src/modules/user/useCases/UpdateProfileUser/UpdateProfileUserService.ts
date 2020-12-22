@@ -34,9 +34,9 @@ class UpdateProfileUserService {
         existsUserWithId.name = name
         existsUserWithId.email = email
 
-        const userSaved = await this._userRepository.save(existsUserWithId)
+        const savedUser = await this._userRepository.save(existsUserWithId)
 
-        return userSaved
+        return savedUser
     }
 }
 
