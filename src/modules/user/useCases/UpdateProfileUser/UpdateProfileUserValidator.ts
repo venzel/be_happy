@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express'
 import { isUUIDValid, isEmailValid, isPasswordValid } from '@shared/libs/RegEx'
 import { AppException } from '@shared/exceptions/AppException'
 
-class ProfileUpdateUserValidator {
+class UpdateProfileUserValidator {
     public validator(req: Request, res: Response, next: NextFunction): any {
         const { name, email, current_password } = req.body
 
@@ -16,4 +16,4 @@ class ProfileUpdateUserValidator {
     }
 }
 
-export { ProfileUpdateUserValidator }
+export { UpdateProfileUserValidator }

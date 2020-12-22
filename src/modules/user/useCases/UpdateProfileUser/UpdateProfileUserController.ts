@@ -3,11 +3,11 @@ import { container } from 'tsyringe'
 import { classToClass } from 'class-transformer'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { IHashProvider } from '@modules/user/shared/providers/HashProvider/models/IHashProvider'
-import { ProfileUpdateUserService } from './ProfileUpdateUserService'
+import { UpdateProfileUserService } from './UpdateProfileUserService'
 import { IUser } from '@modules/user/shared/entities/IUser'
 import { statusMessage } from '@shared/libs/Utils'
 
-class ProfileUpdateUserController {
+class UpdateProfileUserController {
     public async patch(req: Request, res: Response): Promise<Response> {
         const { owner_id } = req.auth
 
@@ -16,9 +16,9 @@ class ProfileUpdateUserController {
         const userRepository = container.resolve<IUserRepository>('UserRepository')
         const hashProvider = container.resolve<IHashProvider>('HashProvider')
 
-        const profileUpdateUserService = new ProfileUpdateUserService(userRepository, hashProvider)
+        const updateProfileUserService = new UpdateProfileUserService(userRepository, hashProvider)
 
-        const userProfileUpdated: IUser = await profileUpdateUserService.execute({
+        const userProfileUpdated: IUser = await updateProfileUserService.execute({
             owner_id,
             name,
             email,
@@ -31,4 +31,4 @@ class ProfileUpdateUserController {
     }
 }
 
-export { ProfileUpdateUserController }
+export { UpdateProfileUserController }

@@ -6,7 +6,7 @@ import { IHashProvider } from '@modules/user/shared/providers/HashProvider/model
 import { AppException } from '@shared/exceptions/AppException'
 
 @injectable()
-class ProfileUpdateUserService {
+class UpdateProfileUserService {
     constructor(
         @inject('UserRepository') private _userRepository: IUserRepository,
         @inject('HashProvider') private _hashProvider: IHashProvider
@@ -40,4 +40,4 @@ class ProfileUpdateUserService {
     }
 }
 
-export { ProfileUpdateUserService }
+export { UpdateProfileUserService }
