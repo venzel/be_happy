@@ -10,6 +10,13 @@ class Providers {
         this.setup()
     }
 
+    public setup(): void {
+        this._cacheprovider()
+        this._mailprovider()
+        this._queueprovider()
+        this._storageprovider()
+    }
+
     private _cacheprovider(): void {
         const env: string | undefined = process.env.CACHE_PROVIDER
 
@@ -40,13 +47,6 @@ class Providers {
         if (!env) throw new Error('Error in var ambient: STORAGE_PROVIDER!')
 
         this.storage_provider = env
-    }
-
-    public setup(): void {
-        this._cacheprovider()
-        this._mailprovider()
-        this._queueprovider()
-        this._storageprovider()
     }
 }
 

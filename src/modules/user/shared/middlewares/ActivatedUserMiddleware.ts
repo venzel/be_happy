@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from 'express'
 
 class ActivatedUserMiddleware {
     public activated(req: Request, res: Response, next: NextFunction): any {
-        const activated: boolean = req.auth.activated
+        const { activated } = req.auth
 
         if (!activated) throw new AppException('User not activated!')
 

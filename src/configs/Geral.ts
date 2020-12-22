@@ -15,6 +15,18 @@ class Geral {
         this.setup()
     }
 
+    public setup(): void {
+        this._environment()
+        this._port()
+        this._apihost()
+        this._emailadmin()
+        this._basedir()
+        this._tokensecret()
+        this._tokensecretrefresh()
+        this._tokenexpires()
+        this._sentrydsn()
+    }
+
     private _environment(): void {
         const env: string | undefined = process.env.NODE_ENV
 
@@ -81,18 +93,6 @@ class Geral {
         if (!env) throw new Error('Error in var ambient: EMAIL_ADMIN!')
 
         this.email_admin = env
-    }
-
-    public setup(): void {
-        this._environment()
-        this._port()
-        this._apihost()
-        this._emailadmin()
-        this._basedir()
-        this._tokensecret()
-        this._tokensecretrefresh()
-        this._tokenexpires()
-        this._sentrydsn()
     }
 }
 

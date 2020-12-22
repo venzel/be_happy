@@ -8,6 +8,6 @@ class DateFn {
     }
 }
 
-const formatDate = DateFn.formatDate
+const { formatDate } = DateFn
 
 export { formatDate }
