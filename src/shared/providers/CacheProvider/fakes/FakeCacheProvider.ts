@@ -1,15 +1,61 @@
 import { ICacheProvider } from '../models/ICacheProvider'
+import { ICacheFake } from './ICacheFake'
+import { cache_key_prefix } from '@configs/cache'
 
 class FakeCacheProvider implements ICacheProvider {
-    public async save(key: string, value: string, time_to_expires: number): Promise<void> {}
+    private _cache: ICacheFake[]
 
-    public async recovery(key: string): Promise<JSON | null> {
-        return null
+    constructor() {
+        this._cache = []
     }
 
-    public async invalidate(key: string): Promise<void> {}
+    private _findByKey(key: string): number {
+        return this._cache.findIndex((data) => data.key === key)
+    }
 
-    public async clearByPrefix(prefix: string): Promise<void> {}
+    private _findByPrefix(prefix: string): number[] | null {
+        const caches: number[] = []
+
+        this._cache.forEach((cacheValue, cacheIndex) => {
+            const parts = cacheValue.value.split(':')
+
+            if (parts[1] === prefix) {
+                caches.push(cacheIndex)
+            }
+        })
+
+        return caches.length ? caches : null
+    }
+
+    public async save(key: string, value: string, time_to_expires: number): Promise<void> {
+        value = JSON.stringify(`${cache_key_prefix}:${value}`)
+
+        const dataCache = { key, value, time_to_expires }
+
+        this._cache.push(dataCache)
+    }
+
+    public async recovery(key: string): Promise<JSON | null> {
+        const dataCacheIndex: number = this._findByKey(key)
+
+        return dataCacheIndex !== -1 ? JSON.parse(this._cache[dataCacheIndex].value) : null
+    }
+
+    public async invalidate(key: string): Promise<void> {
+        const dataCacheIndex: number = this._findByKey(key)
+
+        if (dataCacheIndex !== -1) {
+            this._cache.splice(dataCacheIndex, 1)
+        }
+    }
+
+    public async clearAllCacheByPrefix(prefix: string): Promise<void> {
+        const caches: number[] | null = this._findByPrefix(prefix)
+
+        if (caches) {
+            caches.forEach((cacheIndex) => this._cache.splice(cacheIndex, 1))
+        }
+    }
 }
 
 export { FakeCacheProvider }

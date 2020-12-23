@@ -5,7 +5,7 @@ interface ICacheProvider {
 
     invalidate(key: string): Promise<void>
 
-    clearByPrefix(prefix: string): Promise<void>
+    clearAllCacheByPrefix(prefix: string): Promise<void>
 }
 
 export { ICacheProvider }

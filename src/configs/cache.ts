@@ -6,10 +6,10 @@ const _cacheHost = (): string => {
     return env
 }
 
-const _cachePort = (): string => {
+const _cachePort = (): number => {
     const env = process.env.CACHE_PORT
     if (!env) throw new Error('Error in var ambient: CACHE_PORT!')
-    return env
+    return Number(env)
 }
 
 const _cacheKeyPrefix = (): string => {
