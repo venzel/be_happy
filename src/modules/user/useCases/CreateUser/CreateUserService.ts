@@ -54,6 +54,8 @@ class CreateUserService {
 
         const activated: boolean = environment === 'development' ? true : false
 
+        console.log(activated)
+
         /* User created */
 
         const createdUser: IUser = await this._userRepository.create({

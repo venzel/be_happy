@@ -42,7 +42,6 @@ class User implements IUser {
     @Column()
     public allowed: boolean
 
-    @Exclude()
     @Column()
     public activated: boolean
 

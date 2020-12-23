@@ -28,7 +28,7 @@ class UserRepositoryFake implements IUserRepository {
     }
 
     public async create(user: ICreateUserDTO): Promise<IUser> {
-        const { name, email, password, role } = user
+        const { name, email, password, role, activated } = user
 
         const fakeUser: IUser = new FakeUser()
 
@@ -38,8 +38,7 @@ class UserRepositoryFake implements IUserRepository {
             email,
             password,
             role,
-            activated: true,
-            allowed: true,
+            activated,
         })
 
         this._repository.push(fakeUser)
