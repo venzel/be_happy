@@ -3,7 +3,7 @@ import { IRoleDTO } from '../dtos/IRoleDTO'
 import { AppException } from '@shared/exceptions/AppException'
 
 class RoleUserMiddleware {
-    role(roles: IRoleDTO[]): any {
+    public role(roles: IRoleDTO[]): any {
         return function (req: Request, res: Response, next: NextFunction): any {
             const { role } = req.auth
 
