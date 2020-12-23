@@ -1,4 +1,9 @@
-import { IProvidersConfigDTO } from './dtos/IProvidersConfigDTO'
+interface IProvidersConfigDTO {
+    cache_provider: string
+    mail_provider: string
+    queue_provider: string
+    storage_provider: string
+}
 
 const _cacheProvider = (): string => {
     const env = process.env.CACHE_PROVIDER

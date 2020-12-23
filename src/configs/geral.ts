@@ -1,4 +1,10 @@
-import { IGeralConfigDTO } from './dtos/IGeralConfigDTO'
+interface IGeralConfigDTO {
+    environment: string
+    server_port: string
+    api_host: string
+    api_url: string
+    email_admin: string
+}
 
 const _environment = (): string => {
     const env = process.env.NODE_ENV

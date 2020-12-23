@@ -1,4 +1,8 @@
-import { ITokenConfigDTO } from './dtos/ITokenConfigDTO'
+interface ITokenConfigDTO {
+    token_secret: string
+    token_secret_refresh: string
+    token_expires: number
+}
 
 const _tokenSecret = (): string => {
     const env = process.env.TOKEN_SECRET

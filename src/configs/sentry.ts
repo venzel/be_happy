@@ -1,4 +1,6 @@
-import { ISentryConfigDTO } from './dtos/ISentryConfigDTO'
+interface ISentryConfigDTO {
+    sentry_dsn: string
+}
 
 const _sentryDSN = (): string => {
     const env = process.env.SENTRY_DSN

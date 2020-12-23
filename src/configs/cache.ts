@@ -1,4 +1,8 @@
-import { ICacheConfigDTO } from './dtos/ICacheConfigDTO'
+interface ICacheConfigDTO {
+    cache_host: string
+    cache_port: number
+    cache_key_prefix: string
+}
 
 const _cacheHost = (): string => {
     const env = process.env.CACHE_HOST

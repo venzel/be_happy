@@ -1,9 +1,14 @@
 import { ICacheProvider } from '../models/ICacheProvider'
-import { ICacheFake } from './ICacheFake'
 import { cache_key_prefix } from '@configs/cache'
 
+interface ICache {
+    key: string
+    value: string
+    time_to_expires: number
+}
+
 class FakeCacheProvider implements ICacheProvider {
-    private _cache: ICacheFake[]
+    private _cache: ICache[]
 
     constructor() {
         this._cache = []

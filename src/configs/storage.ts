@@ -1,10 +1,14 @@
-import multer, { StorageEngine, FileFilterCallback, Options } from 'multer'
+import multer, { StorageEngine, Options } from 'multer'
 import { Request } from 'express'
 import { resolve } from 'path'
 import { randomBytes } from 'crypto'
 import { extname } from 'path'
-import { IStorageConfigDTO } from './dtos/IStorageConfigDTO'
 import { AppException } from '@shared/exceptions/AppException'
+
+interface IStorageConfigDTO {
+    uploads_folder: string
+    avatars_folder: string
+}
 
 const _tmpPath = (): string => {
     return resolve(__dirname, '..', '..', 'tmp')
