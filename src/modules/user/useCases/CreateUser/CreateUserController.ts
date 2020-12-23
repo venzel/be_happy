@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import { container } from 'tsyringe'
 import { classToClass } from 'class-transformer'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
+import { ICacheProvider } from '@shared/providers/CacheProvider/models/ICacheProvider'
 import { IHashProvider } from '@modules/user/shared/providers/HashProvider/models/IHashProvider'
 import { ITokenProvider } from '@modules/user/shared/providers/TokenProvider/models/ITokenProvider'
 import { IQueueProvider } from '@shared/providers/QueueProvider/models/IQueueProvider'
@@ -14,12 +15,14 @@ class CreateUserController {
         const { name, email, password } = req.body
 
         const userRepository = container.resolve<IUserRepository>('UserRepository')
+        const cacheProvider = container.resolve<ICacheProvider>('CacheProvider')
         const hashProvider = container.resolve<IHashProvider>('HashProvider')
         const tokenProvider = container.resolve<ITokenProvider>('TokenProvider')
         const queueProvider = container.resolve<IQueueProvider>('QueueProvider')
 
         const createUserService = new CreateUserService(
             userRepository,
+            cacheProvider,
             hashProvider,
             tokenProvider,
             queueProvider

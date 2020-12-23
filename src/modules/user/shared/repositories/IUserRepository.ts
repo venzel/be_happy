@@ -2,6 +2,8 @@ import { ICreateUserDTO } from '../dtos/ICreateUserDTO'
 import { IUser } from '../entities/IUser'
 
 interface IUserRepository {
+    count(): Promise<number>
+
     findOneById(user_id: string): Promise<IUser | undefined>
 
     findOneByName(unser_name: string): Promise<IUser | undefined>

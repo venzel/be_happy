@@ -14,7 +14,7 @@ class FakeCacheProvider implements ICacheProvider {
         this._cache = []
     }
 
-    private _findByKey(key: string): number {
+    private _findIndexByKey(key: string): number {
         return this._cache.findIndex((data) => data.key === key)
     }
 
@@ -40,14 +40,14 @@ class FakeCacheProvider implements ICacheProvider {
         this._cache.push(dataCache)
     }
 
-    public async recovery(key: string): Promise<JSON | null> {
-        const dataCacheIndex: number = this._findByKey(key)
+    public async findByKey(key: string): Promise<JSON | null> {
+        const dataCacheIndex: number = this._findIndexByKey(key)
 
         return dataCacheIndex !== -1 ? JSON.parse(this._cache[dataCacheIndex].value) : null
     }
 
     public async invalidate(key: string): Promise<void> {
-        const dataCacheIndex: number = this._findByKey(key)
+        const dataCacheIndex: number = this._findIndexByKey(key)
 
         if (dataCacheIndex !== -1) {
             this._cache.splice(dataCacheIndex, 1)

@@ -17,9 +17,9 @@ const _cachePort = (): number => {
 }
 
 const _cacheKeyPrefix = (): string => {
-    const env = process.env.cache_KEY_PREFIX
+    const env = process.env.CACHE_KEY_PREFIX
     if (!env) throw new Error('Error in var ambient: CACHE_KEY_PREFIX!')
-    return env
+    return env + ':'
 }
 
 const config: ICacheConfigDTO = {

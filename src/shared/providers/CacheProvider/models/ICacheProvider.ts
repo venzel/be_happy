@@ -1,7 +1,7 @@
 interface ICacheProvider {
-    save(key: string, value: string, time_to_expires: number): Promise<void>
+    save(key: string, value: string | boolean, time_to_expires: number): Promise<void>
 
-    recovery(key: string): Promise<JSON | null>
+    findByKey(key: string): Promise<JSON | null>
 
     invalidate(key: string): Promise<void>
 

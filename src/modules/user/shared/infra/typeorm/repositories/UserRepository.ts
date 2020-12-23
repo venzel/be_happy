@@ -11,6 +11,10 @@ class UserRepository implements IUserRepository {
         this._repository = getRepository(User, 'default')
     }
 
+    public async count(): Promise<number> {
+        return this._repository.count({ where: { deleted_at: null } })
+    }
+
     public async findOneById(user_id: string): Promise<IUser | undefined> {
         return await this._repository.findOne({ where: { id: user_id, deleted_at: null } })
     }

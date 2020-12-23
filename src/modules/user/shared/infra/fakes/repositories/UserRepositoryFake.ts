@@ -11,6 +11,10 @@ class UserRepositoryFake implements IUserRepository {
         this._repository = []
     }
 
+    public async count(): Promise<number> {
+        return this._repository.length
+    }
+
     public async findOneById(user_id: string): Promise<IUser | undefined> {
         return this._repository.find((user) => user.id === user_id)
     }
