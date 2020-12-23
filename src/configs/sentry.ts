@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import { ISentryConfigDTO } from './dtos/ISentryConfigDTO'
 
 const _sentryDSN = (): string => {

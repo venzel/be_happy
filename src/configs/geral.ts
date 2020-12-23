@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import { IGeralConfigDTO } from './dtos/IGeralConfigDTO'
 
 const _environment = (): string => {

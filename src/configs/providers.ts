@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import { IProvidersConfigDTO } from './dtos/IProvidersConfigDTO'
 
 const _cacheProvider = (): string => {

@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import { ITokenConfigDTO } from './dtos/ITokenConfigDTO'
 
 const _tokenSecret = (): string => {
