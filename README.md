@@ -11,3 +11,13 @@
 -   [TypeORM](documentation/typeorm.md)
 -   [Typescript](documentation/typescript.md)
 -   [VS Code : snippets](documentation/vscode.md)
+
+## Fazer
+
+-   static file
+-   functions libs
+-   alguns providers
+-   role com redis
+-   testar insercoes
+-   registrar rotas
+-   analise de requisitos

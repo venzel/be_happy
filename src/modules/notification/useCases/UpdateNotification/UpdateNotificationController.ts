@@ -4,7 +4,7 @@ import { classToClass } from 'class-transformer'
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
 import { UpdateNotificationService } from './UpdateNotificationService'
 import { INotification } from '@modules/notification/shared/entities/INotification'
-import { generateStatus } from '@shared/libs/Utils'
+import { generateStatus } from '@shared/libs/utils'
 
 class UpdateNotificationController {
     public async update(req: Request, res: Response): Promise<Response> {

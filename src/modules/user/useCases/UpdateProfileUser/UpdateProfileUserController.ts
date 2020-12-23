@@ -5,7 +5,7 @@ import { IUserRepository } from '@modules/user/shared/repositories/IUserReposito
 import { IHashProvider } from '@modules/user/shared/providers/HashProvider/models/IHashProvider'
 import { UpdateProfileUserService } from './UpdateProfileUserService'
 import { IUser } from '@modules/user/shared/entities/IUser'
-import { generateStatus } from '@shared/libs/Utils'
+import { generateStatus } from '@shared/libs/utils'
 
 class UpdateProfileUserController {
     public async patch(req: Request, res: Response): Promise<Response> {

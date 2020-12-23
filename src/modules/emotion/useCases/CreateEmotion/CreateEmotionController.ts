@@ -6,7 +6,7 @@ import { IEmotionReportRepository } from '@modules/emotion/shared/repositories/I
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
 import { CreateEmotionService } from './CreateEmotionService'
 import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
-import { generateStatus } from '@shared/libs/Utils'
+import { generateStatus } from '@shared/libs/utils'
 
 class CreateEmotionController {
     public async create(req: Request, res: Response): Promise<Response> {

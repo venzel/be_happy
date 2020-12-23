@@ -2,7 +2,7 @@ import { Errback, Request, Response, NextFunction } from 'express'
 import Youch from 'youch'
 import { AppException } from '@shared/exceptions/AppException'
 import { environment, email_admin } from '@configs/geral'
-import { generateStatus } from '@shared/libs/Utils'
+import { generateStatus } from '@shared/libs/utils'
 
 class Exception {
     static async execute(err: Errback, req: Request, res: Response, _: NextFunction): Promise<Response> {

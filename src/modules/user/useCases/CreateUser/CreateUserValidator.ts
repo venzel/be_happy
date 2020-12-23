@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { isEmailValid, isPasswordValid } from '@shared/libs/RegEx'
+import { isEmailValid, isPasswordValid } from '@shared/libs/regex'
 import { AppException } from '@shared/exceptions/AppException'
 
 class CreateUserValidator {

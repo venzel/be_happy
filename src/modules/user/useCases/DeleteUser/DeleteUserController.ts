@@ -4,7 +4,7 @@ import { classToClass } from 'class-transformer'
 import { DeleteUserService } from './DeleteUserService'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { IUser } from '@modules/user/shared/entities/IUser'
-import { generateStatus } from '@shared/libs/Utils'
+import { generateStatus } from '@shared/libs/utils'
 
 class DeleteUserController {
     public async destroy(req: Request, res: Response): Promise<Response> {

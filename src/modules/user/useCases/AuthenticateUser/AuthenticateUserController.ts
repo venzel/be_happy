@@ -6,7 +6,7 @@ import { IUserRepository } from '@modules/user/shared/repositories/IUserReposito
 import { IHashProvider } from '@modules/user/shared/providers/HashProvider/models/IHashProvider'
 import { ITokenProvider } from '@modules/user/shared/providers/TokenProvider/models/ITokenProvider'
 import { AuthenticateUserService } from './AuthenticateUserService'
-import { generateStatus } from '@shared/libs/Utils'
+import { generateStatus } from '@shared/libs/utils'
 
 class AuthenticateUserController {
     public async authenticate(req: Request, res: Response): Promise<Response> {

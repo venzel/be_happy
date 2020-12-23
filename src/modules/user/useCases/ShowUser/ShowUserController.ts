@@ -4,7 +4,7 @@ import { classToClass } from 'class-transformer'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { ShowUserService } from './ShowUserService'
 import { IUser } from '@modules/user/shared/entities/IUser'
-import { generateStatus } from '@shared/libs/Utils'
+import { generateStatus } from '@shared/libs/utils'
 
 class ShowUserController {
     public async show(req: Request, res: Response): Promise<Response> {

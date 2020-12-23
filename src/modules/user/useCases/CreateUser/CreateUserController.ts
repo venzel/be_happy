@@ -7,7 +7,7 @@ import { ITokenProvider } from '@modules/user/shared/providers/TokenProvider/mod
 import { IQueueProvider } from '@shared/providers/QueueProvider/models/IQueueProvider'
 import { CreateUserService } from './CreateUserService'
 import { IUser } from '@modules/user/shared/entities/IUser'
-import { generateStatus } from '@shared/libs/Utils'
+import { generateStatus } from '@shared/libs/utils'
 
 class CreateUserController {
     public async create(req: Request, res: Response): Promise<Response> {

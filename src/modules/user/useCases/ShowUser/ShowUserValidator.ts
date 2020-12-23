@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { isUUIDValid } from '@shared/libs/RegEx'
+import { isUUIDValid } from '@shared/libs/regex'
 import { AppException } from '@shared/exceptions/AppException'
 
 class ShowUserValidator {

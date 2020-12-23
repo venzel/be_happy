@@ -5,7 +5,7 @@ import { IUserRepository } from '@modules/user/shared/repositories/IUserReposito
 import { IStorageProvider } from '@shared/providers/StorageProvider/models/IStorageProvider'
 import { UpdateAvatarUserService } from './UpdateAvatarUserService'
 import { IUser } from '@modules/user/shared/entities/IUser'
-import { generateStatus } from '@shared/libs/Utils'
+import { generateStatus } from '@shared/libs/utils'
 
 class UpdateAvatarUserController {
     public async update(req: Request, res: Response): Promise<Response> {

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { isIdMongooseValid } from '@shared/libs/RegEx'
+import { isIdMongooseValid } from '@shared/libs/regex'
 import { AppException } from '@shared/exceptions/AppException'
 
 class UpdateNotificationValidator {
