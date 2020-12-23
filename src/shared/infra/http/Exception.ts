@@ -1,7 +1,7 @@
 import { Errback, Request, Response, NextFunction } from 'express'
 import Youch from 'youch'
 import { AppException } from '@shared/exceptions/AppException'
-import { environment, email_admin } from '@configs/Geral'
+import { environment, email_admin } from '@configs/geral'
 import { generateStatus } from '@shared/libs/Utils'
 
 class Exception {

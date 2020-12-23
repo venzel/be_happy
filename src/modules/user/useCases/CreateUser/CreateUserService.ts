@@ -7,7 +7,7 @@ import { ICreateUserDTO } from '@modules/user/shared/dtos/ICreateUserDTO'
 import { IUser } from '@modules/user/shared/entities/IUser'
 import { ICreatePayloadDTO } from '@modules/user/shared/dtos/ICreatePayloadDTO'
 import { IRoleDTO } from '@modules/user/shared/dtos/IRoleDTO'
-import { environment } from '@configs/Geral'
+import { environment } from '@configs/geral'
 import { AppException } from '@shared/exceptions/AppException'
 
 @injectable()

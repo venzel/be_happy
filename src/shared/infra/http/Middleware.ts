@@ -5,7 +5,8 @@ import helmet from 'helmet'
 import 'express-async-errors'
 import '@shared/containers'
 import * as Sentry from '@sentry/node'
-import { environment, sentry_dsn } from '@configs/Geral'
+import { sentry_dsn } from '@configs/sentry'
+import { environment } from '@configs/geral'
 import { exception } from './Exception'
 
 class Middleware {

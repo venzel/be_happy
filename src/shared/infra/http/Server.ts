@@ -1,5 +1,5 @@
 import { app } from './App'
-import { server_port } from '@configs/Geral'
+import { server_port } from '@configs/geral'
 
 class Server {
     public static execute(): void {

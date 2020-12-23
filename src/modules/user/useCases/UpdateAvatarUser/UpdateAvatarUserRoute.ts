@@ -2,11 +2,11 @@ import { Router } from 'express'
 import multer from 'multer'
 import { AuthenticateUserMiddleware } from '@modules/user/shared/middlewares/AuthenticateUserMiddleware'
 import { UpdateAvatarUserController } from './UpdateAvatarUserController'
-import storage from '@configs/Storage'
+import options from '@configs/storage'
 
 class UpdateAvatarUserRoute {
     public register(router: Router, path: string) {
-        const upload = multer(storage)
+        const upload = multer(options)
 
         const { authenticate } = new AuthenticateUserMiddleware()
         const { update } = new UpdateAvatarUserController()

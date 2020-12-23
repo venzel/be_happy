@@ -7,7 +7,7 @@ import {
     DeleteDateColumn,
 } from 'typeorm'
 import { Exclude, Expose } from 'class-transformer'
-import { api_host } from '@configs/Geral'
+import { api_host } from '@configs/geral'
 import { IUser } from '@modules/user/shared/entities/IUser'
 
 @Entity('users')
