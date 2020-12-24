@@ -10,7 +10,7 @@ class UpdateProfileUserValidator {
 
         if (!email || !isEmailValid(email)) throw new AppException('Email invalid!', 400)
 
-        if (!current_password) throw new AppException('Current passoword invalid!')
+        if (!current_password) throw new AppException('Current passoword invalid!', 400)
 
         return next()
     }

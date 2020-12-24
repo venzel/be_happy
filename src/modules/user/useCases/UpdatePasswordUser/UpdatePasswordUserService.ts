@@ -1,24 +1,19 @@
 import { injectable, inject } from 'tsyringe'
-import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
-import { IProfileUpdateUserDTO } from '@modules/user/shared/dtos/IProfileUpdateUserDTO'
-import { IUser } from '@modules/user/shared/entities/IUser'
 import { IHashProvider } from '@modules/user/shared/providers/HashProvider/models/IHashProvider'
+import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
+import { IUpdatePasswordDTO } from '@modules/user/shared/dtos/IUpdatePasswordDTO'
+import { IUser } from '@modules/user/shared/entities/IUser'
 import { AppException } from '@shared/exceptions/AppException'
 
 @injectable()
-class UpdateProfileUserService {
+class UpdatePasswordUserService {
     constructor(
         @inject('UserRepository') private _userRepository: IUserRepository,
         @inject('HashProvider') private _hashProvider: IHashProvider
     ) {}
 
-    public async execute(data: IProfileUpdateUserDTO): Promise<IUser> {
-        const { owner_id, name, email, current_password } = data
-
-        const existsUserWithEmail: IUser | undefined = await this._userRepository.findOneByEmail(email)
-
-        if (existsUserWithEmail && existsUserWithEmail.id !== owner_id)
-            throw new AppException('User email already exists!', 400)
+    public async execute(data: IUpdatePasswordDTO): Promise<IUser> {
+        const { current_password, new_password, owner_id } = data
 
         const existsUserWithId: IUser | undefined = await this._userRepository.findOneById(owner_id)
 
@@ -31,10 +26,11 @@ class UpdateProfileUserService {
 
         if (!isPasswordEquals) throw new AppException('Password not equals!', 400)
 
+        const generatedHashPassword = await this._hashProvider.gererateHash(new_password)
+
         /* Data updated */
 
-        existsUserWithId.name = name
-        existsUserWithId.email = email
+        existsUserWithId.password = generatedHashPassword
 
         /* End data updated */
 
@@ -44,4 +40,4 @@ class UpdateProfileUserService {
     }
 }
 
-export { UpdateProfileUserService }
+export { UpdatePasswordUserService }

@@ -19,13 +19,13 @@ class UpdateProfileUserController {
         const updateProfileUserService = new UpdateProfileUserService(userRepository, hashProvider)
 
         const updatedProfileUser: IUser = await updateProfileUserService.execute({
-            owner_id,
             name,
             email,
             current_password,
+            owner_id,
         })
 
-        const status = generateStatus(false, 200, 'Succesfully profile updated user!')
+        const status = generateStatus(false, 200, 'Succesfully profile user, updated!')
 
         return res.status(200).json({ status, doc: classToClass(updatedProfileUser) })
     }
