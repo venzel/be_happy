@@ -4,7 +4,6 @@ import {
     Column,
     CreateDateColumn,
     UpdateDateColumn,
-    DeleteDateColumn,
     Generated,
 } from 'typeorm'
 import { Expose } from 'class-transformer'

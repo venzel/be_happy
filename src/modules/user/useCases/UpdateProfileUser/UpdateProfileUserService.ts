@@ -31,8 +31,12 @@ class UpdateProfileUserService {
 
         if (!passwordEquals) throw new AppException('Password not equals!', 400)
 
+        /* Data updated */
+
         existsUserWithId.name = name
         existsUserWithId.email = email
+
+        /* End data updated */
 
         const savedUser = await this._userRepository.save(existsUserWithId)
 

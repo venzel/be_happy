@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { CreateUserRoute } from '@modules/user/useCases/CreateUser/CreateUserRoute'
 import { AuthenticateUserRoute } from '@modules/user/useCases/AuthenticateUser/AuthenticateUserRoute'
+import { ForgotPasswordUserRoute } from '@modules/user/useCases/ForgotPasswordUser/ForgotPasswordUserRoute'
 import { CreateEmotionRoute } from '@modules/emotion/useCases/CreateEmotion/CreateEmotionRoute'
 import { UpdateAvatarUserRoute } from '@modules/user/useCases/UpdateAvatarUser/UpdateAvatarUserRoute'
 
@@ -11,6 +12,7 @@ class Route {
         // GLOBAL
         new CreateUserRoute().register(router, '/user/register')
         new AuthenticateUserRoute().register(router, '/user/signin')
+        new ForgotPasswordUserRoute().register(router, '/user/forgot_password')
         new UpdateAvatarUserRoute().register(router, '/user/update_avatar')
 
         // EMOTION

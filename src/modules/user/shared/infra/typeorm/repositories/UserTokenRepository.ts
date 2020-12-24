@@ -14,16 +14,12 @@ class UserTokenRepository implements IUserTokenRepository {
         return await this._repository.findOne({ where: { token } })
     }
 
-    public async create(owner_id: string): Promise<IUserToken> {
+    public async generateToken(owner_id: string): Promise<string> {
         const createdUserToken = this._repository.create({ owner_id })
 
-        await this._repository.save(createdUserToken)
+        const { token } = await this._repository.save(createdUserToken)
 
-        return createdUserToken
-    }
-
-    public async save(user_token: IUserToken): Promise<void> {
-        await this._repository.save(user_token)
+        return token
     }
 }
 

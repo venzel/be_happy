@@ -14,7 +14,7 @@ class UserTokenRepositoryFake implements IUserTokenRepository {
         return this._repository.find((user) => user.token === token)
     }
 
-    public async create(owner_id: string): Promise<IUserToken> {
+    public async generateToken(owner_id: string): Promise<IUserToken> {
         const userToken = new UserTokenFake()
 
         Object.assign(userToken, { id: uuid(), owner_id })
@@ -22,14 +22,6 @@ class UserTokenRepositoryFake implements IUserTokenRepository {
         this._repository.push(userToken)
 
         return userToken
-    }
-
-    public async save(user_token: IUserToken): Promise<void> {
-        const userIndex: number = this._repository.indexOf(user_token)
-
-        if (userIndex !== -1) {
-            this._repository[userIndex] = user_token
-        }
     }
 }
 

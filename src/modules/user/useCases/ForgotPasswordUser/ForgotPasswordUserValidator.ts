@@ -2,18 +2,14 @@ import { Request, Response, NextFunction } from 'express'
 import { isEmailValid } from '@shared/libs/regex'
 import { AppException } from '@shared/exceptions/AppException'
 
-class UpdateProfileUserValidator {
+class ForgotPasswordUserValidator {
     public validator(req: Request, res: Response, next: NextFunction): any {
-        const { name, email, current_password } = req.body
-
-        if (!name) throw new AppException('Name invalid!', 400)
+        const { email } = req.body
 
         if (!email || !isEmailValid(email)) throw new AppException('Email invalid!', 400)
-
-        if (!current_password) throw new AppException('Current passoword invalid!')
 
         return next()
     }
 }
 
-export { UpdateProfileUserValidator }
+export { ForgotPasswordUserValidator }
