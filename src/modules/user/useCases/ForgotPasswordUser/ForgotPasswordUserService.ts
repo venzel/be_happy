@@ -13,12 +13,16 @@ class ForgotPasswordUserService {
         @inject('QueueProvider') private _queueProvider: IQueueProvider
     ) {}
 
-    public async execute(email: string): Promise<void> {
+    public async execute(email: string): Promise<string> {
         const existsUserWithEmail: IUser | undefined = await this._userRepository.findOneByEmail(email)
 
         if (!existsUserWithEmail) throw new AppException('User does not exists!', 404)
 
-        await this._userTokenRepository.generateToken(existsUserWithEmail.id)
+        const generetadToken: string = await this._userTokenRepository.generateToken(
+            existsUserWithEmail.id
+        )
+
+        return generetadToken
     }
 }
 

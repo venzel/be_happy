@@ -20,11 +20,11 @@ class ForgotPasswordUserController {
             queueProvider
         )
 
-        await forgotPasswordUserService.execute(email)
+        const generatedToken: string = await forgotPasswordUserService.execute(email)
 
         const status = generateStatus(false, 200, 'Succesfully forgot password user!')
 
-        return res.status(200).json({ status })
+        return res.status(200).json({ status, doc: { token: generatedToken } })
     }
 }
 

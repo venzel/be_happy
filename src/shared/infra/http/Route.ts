@@ -3,8 +3,9 @@ import { CreateUserRoute } from '@modules/user/useCases/CreateUser/CreateUserRou
 import { AuthenticateUserRoute } from '@modules/user/useCases/AuthenticateUser/AuthenticateUserRoute'
 import { UpdatePasswordUserRoute } from '@modules/user/useCases/UpdatePasswordUser/UpdatePasswordUserRoute'
 import { ForgotPasswordUserRoute } from '@modules/user/useCases/ForgotPasswordUser/ForgotPasswordUserRoute'
-import { CreateEmotionRoute } from '@modules/emotion/useCases/CreateEmotion/CreateEmotionRoute'
+import { ResetPasswordUserRoute } from '@modules/user/useCases/ResetPasswordUser/ResetPasswordUserRoute'
 import { UpdateAvatarUserRoute } from '@modules/user/useCases/UpdateAvatarUser/UpdateAvatarUserRoute'
+import { CreateEmotionRoute } from '@modules/emotion/useCases/CreateEmotion/CreateEmotionRoute'
 
 class Route {
     public static execute(): Router {
@@ -15,6 +16,7 @@ class Route {
         new AuthenticateUserRoute().register(router, '/user/signin')
         new UpdatePasswordUserRoute().register(router, '/user/update_password')
         new ForgotPasswordUserRoute().register(router, '/user/forgot_password')
+        new ResetPasswordUserRoute().register(router, '/user/reset_password')
         new UpdateAvatarUserRoute().register(router, '/user/update_avatar')
 
         // EMOTION

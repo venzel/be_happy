@@ -1,6 +1,7 @@
 import { injectable, inject } from 'tsyringe'
 import { IHashProvider } from '@modules/user/shared/providers/HashProvider/models/IHashProvider'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
+import { IUserTokenRepository } from '@modules/user/shared/repositories/IUserTokenRepository'
 import { IUpdatePasswordDTO } from '@modules/user/shared/dtos/IUpdatePasswordDTO'
 import { IUser } from '@modules/user/shared/entities/IUser'
 import { AppException } from '@shared/exceptions/AppException'
@@ -9,6 +10,7 @@ import { AppException } from '@shared/exceptions/AppException'
 class UpdatePasswordUserService {
     constructor(
         @inject('UserRepository') private _userRepository: IUserRepository,
+        @inject('UserTokenRepository') private _userTokenRepository: IUserTokenRepository,
         @inject('HashProvider') private _hashProvider: IHashProvider
     ) {}
 
@@ -24,9 +26,9 @@ class UpdatePasswordUserService {
             existsUserWithId.password
         )
 
-        if (!isPasswordEquals) throw new AppException('Password not equals!', 400)
+        if (!isPasswordEquals) throw new AppException('Password different from registered user!', 400)
 
-        const generatedHashPassword = await this._hashProvider.gererateHash(new_password)
+        const generatedHashPassword: string = await this._hashProvider.gererateHash(new_password)
 
         /* Data updated */
 
@@ -35,6 +37,12 @@ class UpdatePasswordUserService {
         /* End data updated */
 
         const savedUser: IUser = await this._userRepository.save(existsUserWithId)
+
+        /* Delete all tokens */
+
+        await this._userTokenRepository.deleteTokensByOwnerId(owner_id)
+
+        /* End delete all tokens */
 
         return savedUser
     }
