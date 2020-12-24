@@ -23,8 +23,6 @@ class AuthenticateUserService {
 
         if (!existsUserWithEmail.allowed) throw new AppException('User not allowed!', 403)
 
-        if (existsUserWithEmail.deleted_at) throw new AppException('User not exists!', 403)
-
         const passwordEquals: boolean = await this._hashProvider.compareHash(
             password,
             existsUserWithEmail.password

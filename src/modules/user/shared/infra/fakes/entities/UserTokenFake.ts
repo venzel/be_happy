@@ -1,4 +1,4 @@
-import { IUserToken } from '../../../entities/IUserToken'
+import { IUserToken } from '@modules/user/shared/entities/IUserToken'
 
 class UserTokenFake implements IUserToken {
     public id: string
@@ -6,7 +6,6 @@ class UserTokenFake implements IUserToken {
     public token: string
     public created_at: Date
     public updated_at: Date
-    public deleted_at: Date | null
 }
 
 export { UserTokenFake }

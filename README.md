@@ -18,6 +18,7 @@
 -   functions libs
 -   alguns providers
 -   role com redis
+
 -   testar insercoes
 -   registrar rotas
 -   analise de requisitos

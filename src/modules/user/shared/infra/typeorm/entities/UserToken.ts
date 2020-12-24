@@ -7,10 +7,10 @@ import {
     DeleteDateColumn,
     Generated,
 } from 'typeorm'
-import { Expose, Exclude } from 'class-transformer'
+import { Expose } from 'class-transformer'
 import { IUserToken } from '@modules/user/shared/entities/IUserToken'
 
-@Entity('users')
+@Entity('user_tokens')
 class UserToken implements IUserToken {
     @Expose({ name: 'token_user_Id' })
     @PrimaryGeneratedColumn('uuid')
@@ -28,10 +28,6 @@ class UserToken implements IUserToken {
 
     @UpdateDateColumn()
     public updated_at: Date
-
-    @Exclude()
-    @DeleteDateColumn()
-    public deleted_at: Date | null
 }
 
 export { UserToken }

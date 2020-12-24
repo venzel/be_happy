@@ -1,10 +1,10 @@
-import { MigrationInterface, QueryRunner, TableForeignKey, Table } from 'typeorm'
+import { MigrationInterface, QueryRunner, Table } from 'typeorm'
 
-export default class CreateEmotions1608048084284 implements MigrationInterface {
+export default class CreateUserTokens1608781060450 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'emotions',
+                name: 'user_tokens',
                 columns: [
                     {
                         name: 'id',
@@ -17,17 +17,14 @@ export default class CreateEmotions1608048084284 implements MigrationInterface {
                     {
                         name: 'owner_id',
                         type: 'uuid',
-                        isNullable: true,
-                    },
-                    {
-                        name: 'emotion',
-                        type: 'varchar',
                         isNullable: false,
                     },
                     {
-                        name: 'description',
-                        type: 'varchar',
-                        isNullable: true,
+                        name: 'token',
+                        type: 'uuid',
+                        isNullable: false,
+                        generationStrategy: 'uuid',
+                        default: 'uuid_generate_v4()',
                     },
                     {
                         name: 'created_at',
@@ -41,30 +38,22 @@ export default class CreateEmotions1608048084284 implements MigrationInterface {
                         isNullable: false,
                         default: 'now()',
                     },
+                ],
+                foreignKeys: [
                     {
-                        name: 'deleted_at',
-                        type: 'timestamp',
-                        isNullable: true,
-                        default: null,
+                        name: 'UserTokens',
+                        referencedTableName: 'users',
+                        referencedColumnNames: ['id'],
+                        columnNames: ['owner_id'],
+                        onDelete: 'CASCADE',
+                        onUpdate: 'CASCADE',
                     },
                 ],
-            })
-        )
-
-        await queryRunner.createForeignKey(
-            'emotions',
-            new TableForeignKey({
-                name: 'Emotions',
-                referencedTableName: 'users',
-                referencedColumnNames: ['id'],
-                columnNames: ['owner_id'],
-                onDelete: 'CASCADE',
-                onUpdate: 'CASCADE',
             })
         )
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('emotions')
+        await queryRunner.dropTable('user_tokens')
     }
 }
