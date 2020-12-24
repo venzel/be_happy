@@ -12,7 +12,8 @@ class UpdatePasswordUserValidator {
         if (!new_password || !isPasswordValid(new_password))
             throw new AppException('New password invalid!', 400)
 
-        if (current_password !== new_password) throw new AppException('Password not equals!', 400)
+        if (current_password === new_password)
+            throw new AppException('Equals password, this is not possible!', 400)
 
         return next()
     }

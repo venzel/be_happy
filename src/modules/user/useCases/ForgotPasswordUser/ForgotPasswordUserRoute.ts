@@ -5,9 +5,9 @@ import { ForgotPasswordUserValidator } from './ForgotPasswordUserValidator'
 class ForgotPasswordUserRoute {
     public register(router: Router, path: string): void {
         const { validator } = new ForgotPasswordUserValidator()
-        const { patch } = new ForgotPasswordUserController()
+        const { update } = new ForgotPasswordUserController()
 
-        router.patch(path, validator, patch)
+        router.put(path, validator, update)
     }
 }
 

@@ -6,7 +6,7 @@ import { UpdatePasswordUserService } from './UpdatePasswordUserService'
 import { generateStatus } from '@shared/libs/utils'
 
 class UpdatePasswordUserController {
-    public async patch(req: Request, res: Response): Promise<Response> {
+    public async update(req: Request, res: Response): Promise<Response> {
         const { owner_id } = req.auth
 
         const { current_password, new_password } = req.body

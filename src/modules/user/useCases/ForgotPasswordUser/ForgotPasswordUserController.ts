@@ -7,7 +7,7 @@ import { IQueueProvider } from '@shared/providers/QueueProvider/models/IQueuePro
 import { ForgotPasswordUserService } from './ForgotPasswordUserService'
 
 class ForgotPasswordUserController {
-    public async patch(req: Request, res: Response): Promise<Response> {
+    public async update(req: Request, res: Response): Promise<Response> {
         const { email } = req.body
 
         const userRepository = container.resolve<IUserRepository>('UserRepository')
