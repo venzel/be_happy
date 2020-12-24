@@ -9,7 +9,6 @@ import {
 } from 'typeorm'
 import { IEmotionReport } from '@modules/emotion/shared/entities/IEmotionReport'
 import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
-import { User } from '@modules/user/shared/infra/typeorm/entities/User'
 import { Expose, Exclude } from 'class-transformer'
 import { Emotion } from './Emotion'
 

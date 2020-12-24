@@ -6,7 +6,7 @@ interface ICacheConfigDTO {
 
 const _cacheHost = (): string => {
     const env = process.env.CACHE_HOST
-    if (!env) throw new Error('Error in var ambient: REDIS_HOST!')
+    if (!env) throw new Error('Error in var ambient: CACHE_HOST!')
     return env
 }
 

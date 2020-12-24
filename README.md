@@ -14,11 +14,9 @@
 
 ## Fazer
 
--   static file
--   functions libs
--   alguns providers
--   role com redis
-
--   testar insercoes
--   registrar rotas
+-   Alterar o password do usuario
+-   Resetar a senha do usuario
+-   Listar os usuarios
+-   Validar o nome do usuario
+-   Inserir outras rotas restantes
 -   analise de requisitos
