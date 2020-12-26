@@ -5,9 +5,9 @@ import { AuthenticateUserController } from './AuthenticateUserController'
 class AuthenticateUserRoute {
     public register(router: Router, path: string): void {
         const { validator } = new AuthenticateUserValidator()
-        const { authenticate } = new AuthenticateUserController()
+        const { handle } = new AuthenticateUserController()
 
-        router.post(path, validator, authenticate)
+        router.post(path, validator, handle)
     }
 }
 

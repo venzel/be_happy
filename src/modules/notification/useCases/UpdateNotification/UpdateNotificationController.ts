@@ -7,7 +7,7 @@ import { INotification } from '@modules/notification/shared/entities/INotificati
 import { generateStatus } from '@shared/libs/utils'
 
 class UpdateNotificationController {
-    public async update(req: Request, res: Response): Promise<Response> {
+    public async handle(req: Request, res: Response): Promise<Response> {
         const { owner_id, role } = req.auth
 
         const query_notification_id = String(req.query.id)

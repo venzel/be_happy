@@ -8,7 +8,7 @@ import { IUser } from '@modules/user/shared/entities/IUser'
 import { generateStatus } from '@shared/libs/utils'
 
 class UpdateProfileUserController {
-    public async update(req: Request, res: Response): Promise<Response> {
+    public async handle(req: Request, res: Response): Promise<Response> {
         const { owner_id } = req.auth
 
         const { name, email, current_password } = req.body

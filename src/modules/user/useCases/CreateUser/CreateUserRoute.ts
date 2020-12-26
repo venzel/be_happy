@@ -5,9 +5,9 @@ import { CreateUserController } from './CreateUserController'
 class CreateUserRoute {
     public register(router: Router, path: string): void {
         const { validator } = new CreateUserValidator()
-        const { create } = new CreateUserController()
+        const { handle } = new CreateUserController()
 
-        router.post(path, validator, create)
+        router.post(path, validator, handle)
     }
 }
 

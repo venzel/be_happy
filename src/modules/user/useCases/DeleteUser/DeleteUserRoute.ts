@@ -9,9 +9,9 @@ class DeleteUserRoute {
         const { authenticate } = new AuthenticateUserMiddleware()
         const { role } = new RoleUserMiddleware()
         const { validator } = new DeleteUserValidator()
-        const { destroy } = new DeleteUserController()
+        const { handle } = new DeleteUserController()
 
-        router.delete(path, authenticate, role(['ADMIN']), validator, destroy)
+        router.delete(path, authenticate, role(['ADMIN']), validator, handle)
     }
 }
 

@@ -9,9 +9,9 @@ class UpdateNotificationRoute {
         const { authenticate } = new AuthenticateUserMiddleware()
         const { activated } = new ActivatedUserMiddleware()
         const { validator } = new UpdateNotificationValidator()
-        const { update } = new UpdateNotificationController()
+        const { handle } = new UpdateNotificationController()
 
-        router.patch(path, authenticate, activated, validator, update)
+        router.patch(path, authenticate, activated, validator, handle)
     }
 }
 

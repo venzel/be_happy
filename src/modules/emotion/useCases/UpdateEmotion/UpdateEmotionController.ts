@@ -3,7 +3,7 @@ import { Request, Response } from 'express'
 import { IEmotionRepository } from '@modules/emotion/shared/repositories/IEmotionRepository'
 
 class UpdateEmotionController {
-    public async update(req: Request, res: Response): Promise<Response> {
+    public async handle(req: Request, res: Response): Promise<Response> {
         const { owner_id, role } = req.auth
 
         const { emotion_id, description } = req.body

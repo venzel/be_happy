@@ -7,7 +7,7 @@ import { ResetPasswordUserService } from './ResetPasswordUserService'
 import { generateStatus } from '@shared/libs/utils'
 
 class ResetPasswordUserController {
-    public async patch(req: Request, res: Response): Promise<Response> {
+    public async handle(req: Request, res: Response): Promise<Response> {
         const { new_password, token } = req.body
 
         const userRepository = container.resolve<IUserRepository>('UserRepository')
@@ -22,7 +22,7 @@ class ResetPasswordUserController {
 
         await resetPasswordUserService.execute({ new_password, token })
 
-        const status = generateStatus(false, 200, 'Succesfully password user updated!')
+        const status = generateStatus(false, 200, 'Succesfully password user reseted!')
 
         return res.status(200).json({ status })
     }

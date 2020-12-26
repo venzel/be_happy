@@ -11,7 +11,7 @@ import { IUser } from '@modules/user/shared/entities/IUser'
 import { generateStatus } from '@shared/libs/utils'
 
 class CreateUserController {
-    public async create(req: Request, res: Response): Promise<Response> {
+    public async handle(req: Request, res: Response): Promise<Response> {
         const { name, email, password } = req.body
 
         const userRepository = container.resolve<IUserRepository>('UserRepository')

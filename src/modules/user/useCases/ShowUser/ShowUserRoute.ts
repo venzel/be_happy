@@ -7,9 +7,9 @@ class ShowUserRoute {
     public register(router: Router, path: string): void {
         const { authenticate } = new AuthenticateUserMiddleware()
         const { validator } = new ShowUserValidator()
-        const { show } = new ShowUserController()
+        const { handle } = new ShowUserController()
 
-        router.get(path, authenticate, validator, show)
+        router.get(path, authenticate, validator, handle)
     }
 }
 

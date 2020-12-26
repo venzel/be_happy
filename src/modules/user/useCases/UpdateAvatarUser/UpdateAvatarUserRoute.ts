@@ -9,9 +9,9 @@ class UpdateAvatarUserRoute {
         const upload = multer(options)
 
         const { authenticate } = new AuthenticateUserMiddleware()
-        const { update } = new UpdateAvatarUserController()
+        const { handle } = new UpdateAvatarUserController()
 
-        router.patch(path, authenticate, upload.single('avatar'), update)
+        router.patch(path, authenticate, upload.single('avatar'), handle)
     }
 }
 

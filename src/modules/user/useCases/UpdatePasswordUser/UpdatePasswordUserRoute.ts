@@ -7,9 +7,9 @@ class UpdatePasswordUserRoute {
     public register(router: Router, path: string): void {
         const { authenticate } = new AuthenticateUserMiddleware()
         const { validator } = new UpdatePasswordUserValidator()
-        const { update } = new UpdatePasswordUserController()
+        const { handle } = new UpdatePasswordUserController()
 
-        router.put(path, authenticate, validator, update)
+        router.put(path, authenticate, validator, handle)
     }
 }
 

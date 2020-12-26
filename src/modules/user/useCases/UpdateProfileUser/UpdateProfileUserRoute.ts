@@ -7,9 +7,9 @@ class UpdateProfileUser {
     public register(router: Router, path: string): void {
         const { authenticate } = new AuthenticateUserMiddleware()
         const { validator } = new UpdateProfileUserValidator()
-        const { update } = new UpdateProfileUserController()
+        const { handle } = new UpdateProfileUserController()
 
-        router.put(path, authenticate, validator, update)
+        router.put(path, authenticate, validator, handle)
     }
 }
 

@@ -6,9 +6,9 @@ import { ResetPasswordUserController } from './ResetPasswordUserController'
 class ResetPasswordUserRoute {
     public register(router: Router, path: string): void {
         const { validator } = new ResetPasswordUserValidator()
-        const { patch } = new ResetPasswordUserController()
+        const { handle } = new ResetPasswordUserController()
 
-        router.patch(path, validator, patch)
+        router.patch(path, validator, handle)
     }
 }
 

@@ -7,7 +7,7 @@ import { IUser } from '@modules/user/shared/entities/IUser'
 import { generateStatus } from '@shared/libs/utils'
 
 class DeleteUserController {
-    public async destroy(req: Request, res: Response): Promise<Response> {
+    public async handle(req: Request, res: Response): Promise<Response> {
         const { owner_id, role } = req.auth
 
         const query_user_id = String(req.query.id)

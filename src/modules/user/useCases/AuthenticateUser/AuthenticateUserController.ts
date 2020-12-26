@@ -9,7 +9,7 @@ import { AuthenticateUserService } from './AuthenticateUserService'
 import { generateStatus } from '@shared/libs/utils'
 
 class AuthenticateUserController {
-    public async authenticate(req: Request, res: Response): Promise<Response> {
+    public async handle(req: Request, res: Response): Promise<Response> {
         const { email, password } = req.body
 
         const userRepository: IUserRepository = container.resolve<IUserRepository>('UserRepository')

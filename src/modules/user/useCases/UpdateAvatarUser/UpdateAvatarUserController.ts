@@ -8,7 +8,7 @@ import { IUser } from '@modules/user/shared/entities/IUser'
 import { generateStatus } from '@shared/libs/utils'
 
 class UpdateAvatarUserController {
-    public async update(req: Request, res: Response): Promise<Response> {
+    public async handle(req: Request, res: Response): Promise<Response> {
         const { owner_id } = req.auth
 
         const { filename } = req.file
