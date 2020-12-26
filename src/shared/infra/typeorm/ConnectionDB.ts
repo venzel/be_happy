@@ -2,7 +2,7 @@ import { Express } from 'express'
 import { createConnections } from 'typeorm'
 
 class ConnectionDB {
-    public static async execute(app: Express): Promise<void> {
+    public async use(app: Express): Promise<void> {
         await createConnections()
             .then(() => {
                 app.emit('connected')
@@ -13,6 +13,6 @@ class ConnectionDB {
     }
 }
 
-const dbConnection = ConnectionDB.execute
+const dbConnection = new ConnectionDB()
 
 export { dbConnection }

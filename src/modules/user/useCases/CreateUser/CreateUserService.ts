@@ -26,7 +26,7 @@ class CreateUserService {
 
         /* Find only user by email */
 
-        const existsUserWithEmail: IUser | undefined = await this._userRepository.findOneByEmail(email)
+        const existsUserWithEmail = await this._userRepository.findOneByEmail(email)
 
         /* Exception estrategy guard */
 
@@ -56,7 +56,7 @@ class CreateUserService {
 
         /* User created */
 
-        const createdUser: IUser = await this._userRepository.create({
+        const createdUser = await this._userRepository.create({
             name,
             email,
             password: generatedHashPassword,

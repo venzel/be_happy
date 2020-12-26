@@ -5,17 +5,17 @@ import { dbConnection } from '../typeorm/ConnectionDB'
 import { middleware } from './Middleware'
 
 class App {
-    public static execute(): Express {
+    public execute(): Express {
         const app: Express = express()
 
-        dbConnection(app)
+        dbConnection.use(app)
 
-        middleware(app)
+        middleware.use(app)
 
         return app
     }
 }
 
-const app: Express = App.execute()
+const app = new App()
 
 export { app }

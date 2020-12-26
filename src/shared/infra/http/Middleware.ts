@@ -12,7 +12,7 @@ import { avatars_folder } from '@configs/storage'
 import { exception } from './Exception'
 
 class Middleware {
-    public static execute(app: Express): void {
+    public use(app: Express): void {
         app.use(cors())
 
         if (environment !== 'development') {
@@ -31,7 +31,7 @@ class Middleware {
 
         app.use(express.json())
 
-        app.use(route())
+        app.use(route.execute())
 
         if (environment !== 'development') {
             app.use(Sentry.Handlers.errorHandler())
@@ -41,6 +41,6 @@ class Middleware {
     }
 }
 
-const middleware = Middleware.execute
+const middleware = new Middleware()
 
 export { middleware }

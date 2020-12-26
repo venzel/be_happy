@@ -17,7 +17,7 @@ class AuthenticateUserService {
     public async execute(data: IAuthenticateUserDTO): Promise<IUser> {
         const { email, password } = data
 
-        const existsUserWithEmail: IUser | undefined = await this._userRepository.findOneByEmail(email)
+        const existsUserWithEmail = await this._userRepository.findOneByEmail(email)
 
         if (!existsUserWithEmail) throw new AppException('Email or password invalid!', 403)
 
