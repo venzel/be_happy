@@ -15,13 +15,9 @@ class CreateEmotionService {
     ) {}
 
     public async execute(data: ICreateEmotionDTO): Promise<IEmotion> {
-        const { owner_id, emotion, description } = data
+        const { emotion, description, owner_id } = data
 
-        const createdEmotion: IEmotion = await this._emotionRepository.create({
-            owner_id,
-            emotion,
-            description,
-        })
+        const createdEmotion = await this._emotionRepository.create({ emotion, description, owner_id })
 
         const emotion_id = createdEmotion.id
 

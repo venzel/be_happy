@@ -1,0 +1,3 @@
+class EmotouRoute {}
+
+export { EmotouRoute }
