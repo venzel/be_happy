@@ -1,13 +1,13 @@
 import { getRepository, Repository } from 'typeorm'
 import { IUserToken } from '@modules/user/shared/entities/IUserToken'
-import { UserToken } from '../entities/UserToken'
+import { TypeormUserToken } from '../entities/TypeormUserToken'
 import { IUserTokenRepository } from '@modules/user/shared/repositories/IUserTokenRepository'
 
-class UserTokenRepository implements IUserTokenRepository {
+class TypeormUserTokenRepository implements IUserTokenRepository {
     private _repository: Repository<IUserToken>
 
     constructor() {
-        this._repository = getRepository(UserToken, 'default')
+        this._repository = getRepository(TypeormUserToken, 'default')
     }
 
     public async findOneByToken(token: string): Promise<IUserToken | undefined> {
@@ -27,4 +27,4 @@ class UserTokenRepository implements IUserTokenRepository {
     }
 }
 
-export { UserTokenRepository }
+export { TypeormUserTokenRepository }

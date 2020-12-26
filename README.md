@@ -1,5 +1,7 @@
 # README.md
 
+## Arquitetura: Package by feature
+
 -   [Requeriments Analysis](documentation/requirements_analysis.md)
 -   [Commitizen](documentation/commitizen.md)
 -   [Docker](documentation/docker.md)

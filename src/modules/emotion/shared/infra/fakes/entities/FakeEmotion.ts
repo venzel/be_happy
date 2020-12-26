@@ -1,7 +1,7 @@
 import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
 import { IUser } from '@modules/user/shared/entities/IUser'
 
-class EmotionFake implements IEmotion {
+class FakeEmotion implements IEmotion {
     public id: string
     public owner_id: string
     public owner: IUser
@@ -12,4 +12,4 @@ class EmotionFake implements IEmotion {
     public deleted_at: Date | null
 }
 
-export { EmotionFake }
+export { FakeEmotion }

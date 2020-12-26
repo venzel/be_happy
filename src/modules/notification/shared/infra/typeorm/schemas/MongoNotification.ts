@@ -11,7 +11,7 @@ import { Expose } from 'class-transformer'
 import { INotification } from '@modules/notification/shared/entities/INotification'
 
 @Entity('notification')
-class Notification implements INotification {
+class MongoNotification implements INotification {
     @Expose({ name: 'notification_id' })
     @ObjectIdColumn()
     public _id: ObjectID
@@ -37,4 +37,4 @@ class Notification implements INotification {
     public updated_at: Date
 }
 
-export { Notification }
+export { MongoNotification }

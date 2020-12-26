@@ -1,7 +1,7 @@
 import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
 import { IEmotionReport } from '@modules/emotion/shared/entities/IEmotionReport'
 
-class EmotionReportFake implements IEmotionReport {
+class FakeEmotionReport implements IEmotionReport {
     public id: string
     public emotion_id: string
     public emotion_owner: IEmotion
@@ -11,4 +11,4 @@ class EmotionReportFake implements IEmotionReport {
     public deleted_at: Date | null
 }
 
-export { EmotionReportFake }
+export { FakeEmotionReport }

@@ -5,41 +5,38 @@ import {
     ManyToOne,
     JoinColumn,
     CreateDateColumn,
-    UpdateDateColumn,
     DeleteDateColumn,
 } from 'typeorm'
+import { IEmotionReport } from '@modules/emotion/shared/entities/IEmotionReport'
 import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
-import { User } from '@modules/user/shared/infra/typeorm/entities/User'
 import { Expose, Exclude } from 'class-transformer'
+import { TypeormEmotion } from './TypeormEmotion'
 
-@Entity('emotions')
-class Emotion implements IEmotion {
+@Entity('emotions_report')
+class TypeormEmotionReport implements IEmotionReport {
     @Expose({ name: 'emotion_id' })
     @PrimaryGeneratedColumn('uuid')
     public id: string
 
     @Column()
+    public emotion_id: string
+
+    @ManyToOne(() => TypeormEmotion)
+    @JoinColumn({ name: 'emotion_id' })
+    public emotion_owner: IEmotion
+
+    @Column()
     public owner_id: string
 
-    @ManyToOne(() => User)
-    @JoinColumn({ name: 'owner_id' })
-    public owner: User
-
     @Column()
-    public emotion: string
-
-    @Column()
-    public description: string
+    public read: boolean
 
     @CreateDateColumn()
     public created_at: Date
-
-    @UpdateDateColumn()
-    public updated_at: Date
 
     @Exclude()
     @DeleteDateColumn()
     public deleted_at: Date | null
 }
 
-export { Emotion }
+export { TypeormEmotionReport }

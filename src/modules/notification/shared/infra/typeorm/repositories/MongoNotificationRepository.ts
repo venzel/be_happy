@@ -2,14 +2,14 @@ import { MongoRepository, getMongoRepository } from 'typeorm'
 import { ObjectID } from 'mongodb'
 import { ICreateNotificationDTO } from '@modules/notification/shared/dtos/ICreateNotificationDTO'
 import { INotification } from '@modules/notification/shared/entities/INotification'
-import { Notification } from '@modules/notification/shared/infra/typeorm/schemas/Notification'
+import { MongoNotification } from '@modules/notification/shared/infra/typeorm/schemas/MongoNotification'
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
 
-class NotificationRepository implements INotificationRepository {
+class MongoNotificationRepository implements INotificationRepository {
     private _repository: MongoRepository<INotification>
 
     constructor() {
-        this._repository = getMongoRepository(Notification, 'mongo')
+        this._repository = getMongoRepository(MongoNotification, 'mongo')
     }
 
     public async findOneById(notification_id: string): Promise<INotification | undefined> {
@@ -49,4 +49,4 @@ class NotificationRepository implements INotificationRepository {
     }
 }
 
-export { NotificationRepository }
+export { MongoNotificationRepository }

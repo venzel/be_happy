@@ -2,9 +2,9 @@ import { ObjectID } from 'mongodb'
 import { ICreateNotificationDTO } from '@modules/notification/shared/dtos/ICreateNotificationDTO'
 import { INotification } from '@modules/notification/shared/entities/INotification'
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
-import { NotificationFake } from '../schema/NotificationFake'
+import { FakeNotification } from '../schema/FakeNotification'
 
-class NotificationRepositoryFake implements INotificationRepository {
+class FakeNotificationRepository implements INotificationRepository {
     private _repository: INotification[]
 
     constructor() {
@@ -18,7 +18,7 @@ class NotificationRepositoryFake implements INotificationRepository {
     public async create(data: ICreateNotificationDTO): Promise<INotification> {
         const { owner_id, content } = data
 
-        const notificationFake = new NotificationFake()
+        const notificationFake = new FakeNotification()
 
         Object.assign(notificationFake, { _id: new ObjectID(), owner_id, content })
 
@@ -61,4 +61,4 @@ class NotificationRepositoryFake implements INotificationRepository {
     }
 }
 
-export { NotificationRepositoryFake }
+export { FakeNotificationRepository }

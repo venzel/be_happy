@@ -1,10 +1,10 @@
 import { v4 as uuid } from 'uuid'
 import { ICreateEmotionReportDTO } from '@modules/emotion/shared/dtos/ICreateEmotionReportDTO'
 import { IEmotionReport } from '@modules/emotion/shared/entities/IEmotionReport'
-import { EmotionReport } from '../../typeorm/entities/EmotionReport'
+import { TypeormEmotionReport } from '../../typeorm/entities/TypeormEmotionReport'
 import { IEmotionReportRepository } from '@modules/emotion/shared/repositories/IEmotionReportRepository'
 
-class EmotionReportRepositoryFake implements IEmotionReportRepository {
+class FakeEmotionReportRepository implements IEmotionReportRepository {
     private _repository: IEmotionReport[]
 
     constructor() {
@@ -18,7 +18,7 @@ class EmotionReportRepositoryFake implements IEmotionReportRepository {
     public async create(data: ICreateEmotionReportDTO): Promise<IEmotionReport> {
         const { emotion_id, owner_id } = data
 
-        const emotionReport: IEmotionReport = new EmotionReport()
+        const emotionReport: IEmotionReport = new TypeormEmotionReport()
 
         Object.assign(emotionReport, { id: uuid(), emotion_id, owner_id })
 
@@ -56,4 +56,4 @@ class EmotionReportRepositoryFake implements IEmotionReportRepository {
     }
 }
 
-export { EmotionReportRepositoryFake }
+export { FakeEmotionReportRepository }

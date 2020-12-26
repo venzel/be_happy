@@ -4,22 +4,28 @@ import '@shared/providers'
 import '@modules/user/shared/providers'
 
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
-import { UserRepository } from '@modules/user/shared/infra/typeorm/repositories/UserRepository'
+import { UserTypeormRepository } from '@modules/user/shared/infra/typeorm/repositories/TypeormUserRepository'
 
 import { IUserTokenRepository } from '@modules/user/shared/repositories/IUserTokenRepository'
-import { UserTokenRepository } from '@modules/user/shared/infra/typeorm/repositories/UserTokenRepository'
+import { TypeormUserTokenRepository } from '@modules/user/shared/infra/typeorm/repositories/TypeormUserTokenRepository'
 
 import { IEmotionRepository } from '@modules/emotion/shared/repositories/IEmotionRepository'
-import { EmotionRepository } from '@modules/emotion/shared/infra/typeorm/repositories/EmotionRepository'
+import { TypeormEmotionRepository } from '@modules/emotion/shared/infra/typeorm/repositories/TypeormEmotionRepository'
 
 import { IEmotionReportRepository } from '@modules/emotion/shared/repositories/IEmotionReportRepository'
-import { EmotionReportRepository } from '@modules/emotion/shared/infra/typeorm/repositories/EmotionReportRepository'
+import { TypeormEmotionReportRepository } from '@modules/emotion/shared/infra/typeorm/repositories/TypeormEmotionReportRepository'
 
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
-import { NotificationRepository } from '@modules/notification/shared/infra/typeorm/repositories/NotificationRepository'
+import { MongoNotificationRepository } from '@modules/notification/shared/infra/typeorm/repositories/MongoNotificationRepository'
 
-container.registerSingleton<IUserRepository>('UserRepository', UserRepository)
-container.registerSingleton<IUserTokenRepository>('UserTokenRepository', UserTokenRepository)
-container.registerSingleton<IEmotionRepository>('EmotionRepository', EmotionRepository)
-container.registerSingleton<IEmotionReportRepository>('EmotionRepository', EmotionReportRepository)
-container.registerSingleton<INotificationRepository>('NotificationRepository', NotificationRepository)
+container.registerSingleton<IUserRepository>('UserRepository', UserTypeormRepository)
+container.registerSingleton<IUserTokenRepository>('UserTokenRepository', TypeormUserTokenRepository)
+container.registerSingleton<IEmotionRepository>('EmotionRepository', TypeormEmotionRepository)
+container.registerSingleton<IEmotionReportRepository>(
+    'EmotionRepository',
+    TypeormEmotionReportRepository
+)
+container.registerSingleton<INotificationRepository>(
+    'NotificationRepository',
+    MongoNotificationRepository
+)

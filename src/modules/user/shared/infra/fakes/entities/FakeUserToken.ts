@@ -1,6 +1,6 @@
 import { IUserToken } from '@modules/user/shared/entities/IUserToken'
 
-class UserTokenFake implements IUserToken {
+class FakeUserToken implements IUserToken {
     public id: string
     public owner_id: string
     public token: string
@@ -8,4 +8,4 @@ class UserTokenFake implements IUserToken {
     public updated_at: Date
 }
 
-export { UserTokenFake }
+export { FakeUserToken }

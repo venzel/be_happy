@@ -1,14 +1,14 @@
 import { getRepository, Repository } from 'typeorm'
 import { ICreateEmotionDTO } from '@modules/emotion/shared/dtos/ICreateEmotionDTO'
 import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
-import { Emotion } from '../entities/Emotion'
+import { TypeormEmotion } from '../entities/TypeormEmotion'
 import { IEmotionRepository } from '@modules/emotion/shared/repositories/IEmotionRepository'
 
-class EmotionRepository implements IEmotionRepository {
+class TypeormEmotionRepository implements IEmotionRepository {
     private _repository: Repository<IEmotion>
 
     constructor() {
-        this._repository = getRepository(Emotion, 'default')
+        this._repository = getRepository(TypeormEmotion, 'default')
     }
 
     public async findOneById(emotionId: string): Promise<IEmotion | undefined> {
@@ -50,4 +50,4 @@ class EmotionRepository implements IEmotionRepository {
     }
 }
 
-export { EmotionRepository }
+export { TypeormEmotionRepository }

@@ -1,15 +1,15 @@
 import { MongoRepository, getMongoRepository } from 'typeorm'
 import { ObjectID } from 'mongodb'
 import { IEmotionReport } from '@modules/emotion/shared/entities/IEmotionReport'
-import { EmotionReport } from '../entities/EmotionReport'
+import { TypeormEmotionReport } from '../entities/TypeormEmotionReport'
 import { IEmotionReportRepository } from '@modules/emotion/shared/repositories/IEmotionReportRepository'
 import { ICreateEmotionReportDTO } from '@modules/emotion/shared/dtos/ICreateEmotionReportDTO'
 
-class EmotionReportRepository implements IEmotionReportRepository {
+class TypeormEmotionReportRepository implements IEmotionReportRepository {
     private _repository: MongoRepository<IEmotionReport>
 
     constructor() {
-        this._repository = getMongoRepository(EmotionReport, 'mongo')
+        this._repository = getMongoRepository(TypeormEmotionReport, 'mongo')
     }
 
     public async filterByOwnerId(owner_id: string): Promise<IEmotionReport[]> {
@@ -47,4 +47,4 @@ class EmotionReportRepository implements IEmotionReportRepository {
     }
 }
 
-export { EmotionReportRepository }
+export { TypeormEmotionReportRepository }

@@ -2,9 +2,9 @@ import { v4 as uuid } from 'uuid'
 import { ICreateEmotionDTO } from '@modules/emotion/shared/dtos/ICreateEmotionDTO'
 import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
 import { IEmotionRepository } from '@modules/emotion/shared/repositories/IEmotionRepository'
-import { EmotionFake } from '../entities/EmotionFake'
+import { FakeEmotion } from '../entities/FakeEmotion'
 
-class EmotionRepositoryFake implements IEmotionRepository {
+class FakeEmotionRepository implements IEmotionRepository {
     private _repository: IEmotion[]
 
     constructor() {
@@ -18,7 +18,7 @@ class EmotionRepositoryFake implements IEmotionRepository {
     public async create(data: ICreateEmotionDTO): Promise<IEmotion> {
         const { owner_id, emotion, description } = data
 
-        const emotionFake = new EmotionFake()
+        const emotionFake = new FakeEmotion()
 
         Object.assign(emotionFake, { id: uuid(), owner_id, emotion, description })
 
@@ -57,4 +57,4 @@ class EmotionRepositoryFake implements IEmotionRepository {
     }
 }
 
-export { EmotionRepositoryFake }
+export { FakeEmotionRepository }
