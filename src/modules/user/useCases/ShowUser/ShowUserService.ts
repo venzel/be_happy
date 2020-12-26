@@ -1,8 +1,8 @@
 import { injectable, inject } from 'tsyringe'
 import { IUser } from '@modules/user/shared/entities/IUser'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
+import { IShowUserDTO } from './IShowUserDTO'
 import { AppException } from '@shared/exceptions/AppException'
-import { IShowUserDTO } from '@modules/user/shared/dtos/IShowUserDTO'
 
 @injectable()
 class ShowUserService {
@@ -11,7 +11,7 @@ class ShowUserService {
     public async execute(data: IShowUserDTO): Promise<IUser> {
         const { query_user_id, owner_id, role } = data
 
-        const existsUserWithId: IUser | undefined = await this._userRepository.findOneById(query_user_id)
+        const existsUserWithId = await this._userRepository.findOneById(query_user_id)
 
         if (!existsUserWithId) throw new AppException('User not found!', 404)
 

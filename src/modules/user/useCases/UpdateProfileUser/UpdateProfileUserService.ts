@@ -1,6 +1,6 @@
 import { injectable, inject } from 'tsyringe'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
-import { IProfileUpdateUserDTO } from '@modules/user/shared/dtos/IProfileUpdateUserDTO'
+import { IProfileUpdateUserDTO } from './IUpdateProfileUserDTO'
 import { IUser } from '@modules/user/shared/entities/IUser'
 import { IHashProvider } from '@modules/user/shared/providers/HashProvider/models/IHashProvider'
 import { AppException } from '@shared/exceptions/AppException'
@@ -13,32 +13,34 @@ class UpdateProfileUserService {
     ) {}
 
     public async execute(data: IProfileUpdateUserDTO): Promise<IUser> {
-        const { owner_id, name, email, current_password } = data
+        const { name, email, current_password, owner_id } = data
 
-        const existsUserWithEmail: IUser | undefined = await this._userRepository.findOneByEmail(email)
+        const existsUserWithEmail = await this._userRepository.findOneByEmail(email)
 
         if (existsUserWithEmail && existsUserWithEmail.id !== owner_id)
             throw new AppException('User email already exists!', 400)
 
-        const existsUserWithId: IUser | undefined = await this._userRepository.findOneById(owner_id)
+        const existsUserWithId = await this._userRepository.findOneById(owner_id)
 
         if (!existsUserWithId) throw new AppException('User not exists!', 404)
 
+        const userDataPassword = existsUserWithId.password
+
         const isPasswordEquals: boolean = await this._hashProvider.compareHash(
             current_password,
-            existsUserWithId.password
+            userDataPassword
         )
 
         if (!isPasswordEquals) throw new AppException('Password not equals!', 400)
 
-        /* Data updated */
+        /* Data update */
 
         existsUserWithId.name = name
         existsUserWithId.email = email
 
-        /* End data updated */
+        /* End data update */
 
-        const savedUser: IUser = await this._userRepository.save(existsUserWithId)
+        const savedUser = await this._userRepository.save(existsUserWithId)
 
         return savedUser
     }

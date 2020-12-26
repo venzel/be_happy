@@ -14,7 +14,9 @@ class CreateUserController {
 
         const status = generateStatus(false, 201, 'Succesfully created user!')
 
-        return res.status(201).json({ status, doc: classToClass(user) })
+        const doc = classToClass(user)
+
+        return res.status(201).json({ status, doc })
     }
 }
 

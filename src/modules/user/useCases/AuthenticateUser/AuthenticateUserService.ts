@@ -3,7 +3,7 @@ import { IHashProvider } from '@modules/user/shared/providers/HashProvider/model
 import { ITokenProvider } from '@modules/user/shared/providers/TokenProvider/models/ITokenProvider'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { IUser } from '@modules/user/shared/entities/IUser'
-import { IAuthenticateUserDTO } from '@modules/user/shared/dtos/IAuthenticateUserDTO'
+import { IAuthenticateUserDTO } from './IAuthenticateUserDTO'
 import { AppException } from '@shared/exceptions/AppException'
 
 @injectable()
@@ -21,16 +21,16 @@ class AuthenticateUserService {
 
         if (!existsUserWithEmail) throw new AppException('Email or password invalid!', 403)
 
-        if (!existsUserWithEmail.allowed) throw new AppException('User not allowed!', 403)
+        const { id, role, activated, allowed, password: userDataPassword } = existsUserWithEmail
+
+        if (!allowed) throw new AppException('User not allowed!', 403)
 
         const isPasswordEquals: boolean = await this._hashProvider.compareHash(
             password,
-            existsUserWithEmail.password
+            userDataPassword
         )
 
         if (!isPasswordEquals) throw new AppException('Email or password invalid!', 403)
-
-        const { id, role, activated } = existsUserWithEmail
 
         const generatedToken: string = await this._tokenProvider.generateToken({
             owner_id: id,

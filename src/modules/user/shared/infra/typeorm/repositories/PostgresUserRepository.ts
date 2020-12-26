@@ -1,6 +1,6 @@
 import { getRepository, Repository } from 'typeorm'
-import { IUser } from '@modules/user/shared/entities/IUser'
 import { ICreateUserDTO } from '@modules/user/shared/dtos/ICreateUserDTO'
+import { IUser } from '@modules/user/shared/entities/IUser'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { PostgresUser } from '../entities/PostgresUser'
 

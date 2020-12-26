@@ -1,7 +1,7 @@
 import { injectable, inject } from 'tsyringe'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { IStorageProvider } from '@shared/providers/StorageProvider/models/IStorageProvider'
-import { IUpdateAvatarUserDTO } from '@modules/user/shared/dtos/IUpdateAvatarUserDTO'
+import { IUpdateAvatarUserDTO } from './IUpdateAvatarUserDTO'
 import { IUser } from '@modules/user/shared/entities/IUser'
 import { AppException } from '@shared/exceptions/AppException'
 
@@ -15,17 +15,23 @@ class UpdateAvatarUserService {
     async execute(data: IUpdateAvatarUserDTO): Promise<IUser> {
         const { filename, owner_id } = data
 
-        const existsUserWithId: IUser | undefined = await this._userRepository.findOneById(owner_id)
+        const existsUserWithId = await this._userRepository.findOneById(owner_id)
 
         if (!existsUserWithId) throw new AppException('User not exists!', 404)
 
-        if (existsUserWithId.avatar) await this._storageProvider.deleteFile(existsUserWithId.avatar)
+        const { avatar } = existsUserWithId
+
+        if (avatar) await this._storageProvider.deleteFile(avatar)
 
         const nameFileSaved: string = await this._storageProvider.saveFile(filename)
 
+        /* Update data */
+
         existsUserWithId.avatar = nameFileSaved
 
-        const savedUser: IUser = await this._userRepository.save(existsUserWithId)
+        /* End update data */
+
+        const savedUser = await this._userRepository.save(existsUserWithId)
 
         return savedUser
     }

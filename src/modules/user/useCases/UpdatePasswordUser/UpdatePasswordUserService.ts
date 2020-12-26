@@ -2,9 +2,9 @@ import { injectable, inject } from 'tsyringe'
 import { IHashProvider } from '@modules/user/shared/providers/HashProvider/models/IHashProvider'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { IUserTokenRepository } from '@modules/user/shared/repositories/IUserTokenRepository'
-import { IUpdatePasswordDTO } from '@modules/user/shared/dtos/IUpdatePasswordDTO'
 import { IUser } from '@modules/user/shared/entities/IUser'
 import { AppException } from '@shared/exceptions/AppException'
+import { IUpdatePasswordDTO } from './IUpdatePasswordDTO'
 
 @injectable()
 class UpdatePasswordUserService {
@@ -17,13 +17,15 @@ class UpdatePasswordUserService {
     public async execute(data: IUpdatePasswordDTO): Promise<IUser> {
         const { current_password, new_password, owner_id } = data
 
-        const existsUserWithId: IUser | undefined = await this._userRepository.findOneById(owner_id)
+        const existsUserWithId = await this._userRepository.findOneById(owner_id)
 
         if (!existsUserWithId) throw new AppException('User not exists!', 404)
 
+        const userDataPassword = existsUserWithId.password
+
         const isPasswordEquals: boolean = await this._hashProvider.compareHash(
             current_password,
-            existsUserWithId.password
+            userDataPassword
         )
 
         if (!isPasswordEquals) throw new AppException('Password different from registered user!', 400)
@@ -36,7 +38,7 @@ class UpdatePasswordUserService {
 
         /* End data updated */
 
-        const savedUser: IUser = await this._userRepository.save(existsUserWithId)
+        const savedUser = await this._userRepository.save(existsUserWithId)
 
         /* Delete all tokens */
 

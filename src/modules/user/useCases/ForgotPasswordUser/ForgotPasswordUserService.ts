@@ -14,7 +14,7 @@ class ForgotPasswordUserService {
     ) {}
 
     public async execute(email: string): Promise<string> {
-        const existsUserWithEmail: IUser | undefined = await this._userRepository.findOneByEmail(email)
+        const existsUserWithEmail = await this._userRepository.findOneByEmail(email)
 
         if (!existsUserWithEmail) throw new AppException('User does not exists!', 404)
 

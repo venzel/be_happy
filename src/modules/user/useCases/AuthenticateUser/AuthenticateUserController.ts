@@ -12,9 +12,11 @@ class AuthenticateUserController {
 
         const user = await authenticateUserService.execute({ email, password })
 
-        const generatedStatus = generateStatus(false, 200, 'Succesfully authenticated user!')
+        const status = generateStatus(false, 200, 'Succesfully authenticated user!')
 
-        return res.status(200).json({ status: generatedStatus, doc: user })
+        const doc = classToClass(user)
+
+        return res.status(200).json({ status, doc })
     }
 }
 

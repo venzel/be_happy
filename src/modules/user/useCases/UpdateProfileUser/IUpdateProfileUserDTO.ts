@@ -1,8 +1,8 @@
 interface IProfileUpdateUserDTO {
-    owner_id: string
     name: string
     email: string
     current_password: string
+    owner_id: string
 }
 
 export { IProfileUpdateUserDTO }
