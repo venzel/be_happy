@@ -1,5 +1,4 @@
 import { ICreateEmotionReportDTO } from '../dtos/ICreateEmotionReportDTO'
-import { IEmotion } from '../entities/IEmotion'
 import { IEmotionReport } from '../entities/IEmotionReport'
 
 interface IEmotionReportRepository {

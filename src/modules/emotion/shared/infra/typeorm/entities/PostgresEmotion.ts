@@ -9,11 +9,11 @@ import {
     DeleteDateColumn,
 } from 'typeorm'
 import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
-import { TypeormUser } from '@modules/user/shared/infra/typeorm/entities/TypeormUser'
+import { PostgresUser } from '@modules/user/shared/infra/typeorm/entities/PostgresUser'
 import { Expose, Exclude } from 'class-transformer'
 
 @Entity('emotions')
-class TypeormEmotion implements IEmotion {
+class PostgresEmotion implements IEmotion {
     @Expose({ name: 'emotion_id' })
     @PrimaryGeneratedColumn('uuid')
     public id: string
@@ -21,9 +21,9 @@ class TypeormEmotion implements IEmotion {
     @Column()
     public owner_id: string
 
-    @ManyToOne(() => TypeormUser)
+    @ManyToOne(() => PostgresUser)
     @JoinColumn({ name: 'owner_id' })
-    public owner: TypeormUser
+    public owner: PostgresUser
 
     @Column()
     public emotion: string
@@ -42,4 +42,4 @@ class TypeormEmotion implements IEmotion {
     public deleted_at: Date | null
 }
 
-export { TypeormEmotion }
+export { PostgresEmotion }

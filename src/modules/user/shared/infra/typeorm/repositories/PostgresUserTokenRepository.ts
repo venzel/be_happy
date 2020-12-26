@@ -1,13 +1,14 @@
+import 'reflect-metadata'
 import { getRepository, Repository } from 'typeorm'
 import { IUserToken } from '@modules/user/shared/entities/IUserToken'
-import { TypeormUserToken } from '../entities/TypeormUserToken'
+import { PostgresUserToken } from '../entities/PostgresUserToken'
 import { IUserTokenRepository } from '@modules/user/shared/repositories/IUserTokenRepository'
 
-class TypeormUserTokenRepository implements IUserTokenRepository {
+class PostgresUserTokenRepository implements IUserTokenRepository {
     private _repository: Repository<IUserToken>
 
     constructor() {
-        this._repository = getRepository(TypeormUserToken, 'default')
+        this._repository = getRepository(PostgresUserToken, 'default')
     }
 
     public async findOneByToken(token: string): Promise<IUserToken | undefined> {
@@ -27,4 +28,4 @@ class TypeormUserTokenRepository implements IUserTokenRepository {
     }
 }
 
-export { TypeormUserTokenRepository }
+export { PostgresUserTokenRepository }

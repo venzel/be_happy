@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { AuthenticateUserValidator } from './AuthenticateUserValidator'
-import { AuthenticateUserController } from './AuthenticateUserController'
+import { AuthenticateUserController } from '@modules/user/useCases/AuthenticateUser/AuthenticateUserController'
 
 class AuthenticateUserRoute {
     public register(router: Router, path: string): void {

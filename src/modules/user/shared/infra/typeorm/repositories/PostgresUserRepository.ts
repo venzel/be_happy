@@ -1,14 +1,14 @@
-import { getRepository, Repository, Not } from 'typeorm'
+import { getRepository, Repository } from 'typeorm'
 import { IUser } from '@modules/user/shared/entities/IUser'
-import { TypeormUser } from '../entities/TypeormUser'
 import { ICreateUserDTO } from '@modules/user/shared/dtos/ICreateUserDTO'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
+import { PostgresUser } from '../entities/PostgresUser'
 
-class TypeormUserRepository implements IUserRepository {
+class PostgresUserRepository implements IUserRepository {
     private _repository: Repository<IUser>
 
     constructor() {
-        this._repository = getRepository(TypeormUser, 'default')
+        this._repository = getRepository<IUser>(PostgresUser, 'default')
     }
 
     public async count(): Promise<number> {
@@ -63,4 +63,4 @@ class TypeormUserRepository implements IUserRepository {
     }
 }
 
-export { TypeormUserRepository }
+export { PostgresUserRepository }

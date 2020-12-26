@@ -10,10 +10,10 @@ import {
 import { IEmotionReport } from '@modules/emotion/shared/entities/IEmotionReport'
 import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
 import { Expose, Exclude } from 'class-transformer'
-import { TypeormEmotion } from './TypeormEmotion'
+import { PostgresEmotion } from './PostgresEmotion'
 
 @Entity('emotions_report')
-class TypeormEmotionReport implements IEmotionReport {
+class PostgresEmotionReport implements IEmotionReport {
     @Expose({ name: 'emotion_id' })
     @PrimaryGeneratedColumn('uuid')
     public id: string
@@ -21,7 +21,7 @@ class TypeormEmotionReport implements IEmotionReport {
     @Column()
     public emotion_id: string
 
-    @ManyToOne(() => TypeormEmotion)
+    @ManyToOne(() => PostgresEmotion)
     @JoinColumn({ name: 'emotion_id' })
     public emotion_owner: IEmotion
 
@@ -39,4 +39,4 @@ class TypeormEmotionReport implements IEmotionReport {
     public deleted_at: Date | null
 }
 
-export { TypeormEmotionReport }
+export { PostgresEmotionReport }

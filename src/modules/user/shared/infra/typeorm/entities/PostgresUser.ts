@@ -11,7 +11,7 @@ import { api_url } from '@configs/geral'
 import { IUser } from '@modules/user/shared/entities/IUser'
 
 @Entity('users')
-class TypeormUser implements IUser {
+class PostgresUser implements IUser {
     @Expose({ name: 'user_id' })
     @PrimaryGeneratedColumn('uuid')
     public id: string
@@ -56,4 +56,4 @@ class TypeormUser implements IUser {
     public deleted_at: Date | null
 }
 
-export { TypeormUser }
+export { PostgresUser }

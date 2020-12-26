@@ -10,7 +10,7 @@ import { Expose } from 'class-transformer'
 import { IUserToken } from '@modules/user/shared/entities/IUserToken'
 
 @Entity('user_tokens')
-class TypeormUserToken implements IUserToken {
+class PostgresUserToken implements IUserToken {
     @Expose({ name: 'token_user_Id' })
     @PrimaryGeneratedColumn('uuid')
     public id: string
@@ -29,4 +29,4 @@ class TypeormUserToken implements IUserToken {
     public updated_at: Date
 }
 
-export { TypeormUserToken }
+export { PostgresUserToken }

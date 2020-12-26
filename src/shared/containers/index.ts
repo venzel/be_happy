@@ -4,26 +4,26 @@ import '@shared/providers'
 import '@modules/user/shared/providers'
 
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
-import { UserTypeormRepository } from '@modules/user/shared/infra/typeorm/repositories/TypeormUserRepository'
+import { PostgresUserRepository } from '@modules/user/shared/infra/typeorm/repositories/PostgresUserRepository'
 
 import { IUserTokenRepository } from '@modules/user/shared/repositories/IUserTokenRepository'
-import { TypeormUserTokenRepository } from '@modules/user/shared/infra/typeorm/repositories/TypeormUserTokenRepository'
+import { PostgresUserTokenRepository } from '@modules/user/shared/infra/typeorm/repositories/PostgresUserTokenRepository'
 
 import { IEmotionRepository } from '@modules/emotion/shared/repositories/IEmotionRepository'
-import { TypeormEmotionRepository } from '@modules/emotion/shared/infra/typeorm/repositories/TypeormEmotionRepository'
+import { PostgresEmotionRepository } from '@modules/emotion/shared/infra/typeorm/repositories/PostgresEmotionRepository'
 
 import { IEmotionReportRepository } from '@modules/emotion/shared/repositories/IEmotionReportRepository'
-import { TypeormEmotionReportRepository } from '@modules/emotion/shared/infra/typeorm/repositories/TypeormEmotionReportRepository'
+import { PostgresEmotionReportRepository } from '@modules/emotion/shared/infra/typeorm/repositories/PostgresEmotionReportRepository'
 
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
 import { MongoNotificationRepository } from '@modules/notification/shared/infra/typeorm/repositories/MongoNotificationRepository'
 
-container.registerSingleton<IUserRepository>('UserRepository', UserTypeormRepository)
-container.registerSingleton<IUserTokenRepository>('UserTokenRepository', TypeormUserTokenRepository)
-container.registerSingleton<IEmotionRepository>('EmotionRepository', TypeormEmotionRepository)
+container.registerSingleton<IUserRepository>('UserRepository', PostgresUserRepository)
+container.registerSingleton<IUserTokenRepository>('UserTokenRepository', PostgresUserTokenRepository)
+container.registerSingleton<IEmotionRepository>('EmotionRepository', PostgresEmotionRepository)
 container.registerSingleton<IEmotionReportRepository>(
     'EmotionRepository',
-    TypeormEmotionReportRepository
+    PostgresEmotionReportRepository
 )
 container.registerSingleton<INotificationRepository>(
     'NotificationRepository',

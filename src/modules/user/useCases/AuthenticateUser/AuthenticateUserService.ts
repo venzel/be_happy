@@ -10,8 +10,8 @@ import { AppException } from '@shared/exceptions/AppException'
 class AuthenticateUserService {
     constructor(
         @inject('UserRepository') private _userRepository: IUserRepository,
-        @inject('HashProvider') private _hashProvider: IHashProvider,
-        @inject('TokenProvider') private _tokenProvider: ITokenProvider
+        @inject('TokenProvider') private _tokenProvider: ITokenProvider,
+        @inject('HashProvider') private _hashProvider: IHashProvider
     ) {}
 
     public async execute(data: IAuthenticateUserDTO): Promise<IUser> {
