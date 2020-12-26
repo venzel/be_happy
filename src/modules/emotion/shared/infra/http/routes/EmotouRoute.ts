@@ -1,3 +1,0 @@
-class EmotouRoute {}
-
-export { EmotouRoute }
