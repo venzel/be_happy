@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-class ListEmotionRoute {
+class ListEmotionMiddleware {
     public register(router: Router, path: string): void {
         router.get(path, (req, res) => {
             return res.json({ listEmotions: true })
@@ -8,4 +8,4 @@ class ListEmotionRoute {
     }
 }
 
-export { ListEmotionRoute }
+export { ListEmotionMiddleware }

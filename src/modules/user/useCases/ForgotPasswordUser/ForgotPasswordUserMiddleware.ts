@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { ForgotPasswordUserController } from './ForgotPasswordUserController'
 import { ForgotPasswordUserValidator } from './ForgotPasswordUserValidator'
 
-class ForgotPasswordUserRoute {
+class ForgotPasswordUserMiddleware {
     public register(router: Router, path: string): void {
         const { validator } = new ForgotPasswordUserValidator()
         const { handle } = new ForgotPasswordUserController()
@@ -11,4 +11,4 @@ class ForgotPasswordUserRoute {
     }
 }
 
-export { ForgotPasswordUserRoute }
+export { ForgotPasswordUserMiddleware }

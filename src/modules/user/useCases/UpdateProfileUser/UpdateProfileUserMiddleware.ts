@@ -3,7 +3,7 @@ import { AuthenticateUserMiddleware } from '@modules/user/shared/middlewares/Aut
 import { UpdateProfileUserValidator } from './UpdateProfileUserValidator'
 import { UpdateProfileUserController } from './UpdateProfileUserController'
 
-class UpdateProfileUser {
+class UpdateProfileUserMiddleware {
     public register(router: Router, path: string): void {
         const { authenticate } = new AuthenticateUserMiddleware()
         const { validator } = new UpdateProfileUserValidator()
@@ -13,4 +13,4 @@ class UpdateProfileUser {
     }
 }
 
-export { UpdateProfileUser }
+export { UpdateProfileUserMiddleware }

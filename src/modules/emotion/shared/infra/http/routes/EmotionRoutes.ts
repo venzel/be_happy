@@ -1,15 +1,15 @@
 import { Router } from 'express'
-import { ListEmotionRoute } from '@modules/emotion/useCases/ListEmotions/ListEmotionsRoute'
-import { CreateEmotionRoute } from '@modules/emotion/useCases/CreateEmotion/CreateEmotionRoute'
-import { UpdateEmotionRoute } from '@modules/emotion/useCases/UpdateEmotion/UpdateEmotionRoute'
+import { ListEmotionMiddleware } from '@modules/emotion/useCases/ListEmotions/ListEmotionsMiddleware'
+import { CreateEmotionMiddleware } from '@modules/emotion/useCases/CreateEmotion/CreateEmotionMiddleware'
+import { UpdateEmotionMiddleware } from '@modules/emotion/useCases/UpdateEmotion/UpdateEmotionMiddleware'
 
 class EmotionRoutes {
     public registerAll(router: Router): void {
-        new ListEmotionRoute().register(router, '/emotions')
+        new ListEmotionMiddleware().register(router, '/emotions')
 
-        new CreateEmotionRoute().register(router, '/emotion/create')
+        new CreateEmotionMiddleware().register(router, '/emotion/create')
 
-        new UpdateEmotionRoute().register(router, '/emotion/update')
+        new UpdateEmotionMiddleware().register(router, '/emotion/update')
     }
 }
 

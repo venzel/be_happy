@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { CreateUserValidator } from './CreateUserValidator'
 import { CreateUserController } from './CreateUserController'
 
-class CreateUserRoute {
+class CreateUserMiddleware {
     public register(router: Router, path: string): void {
         const { validator } = new CreateUserValidator()
         const { handle } = new CreateUserController()
@@ -11,4 +11,4 @@ class CreateUserRoute {
     }
 }
 
-export { CreateUserRoute }
+export { CreateUserMiddleware }

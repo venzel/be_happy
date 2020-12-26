@@ -4,7 +4,7 @@ import { AuthenticateUserMiddleware } from '@modules/user/shared/middlewares/Aut
 import { UpdateAvatarUserController } from './UpdateAvatarUserController'
 import options from '@configs/storage'
 
-class UpdateAvatarUserRoute {
+class UpdateAvatarUserMiddleware {
     public register(router: Router, path: string) {
         const upload = multer(options)
 
@@ -15,4 +15,4 @@ class UpdateAvatarUserRoute {
     }
 }
 
-export { UpdateAvatarUserRoute }
+export { UpdateAvatarUserMiddleware }

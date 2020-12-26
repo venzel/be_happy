@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { AuthenticateUserValidator } from './AuthenticateUserValidator'
 import { AuthenticateUserController } from '@modules/user/useCases/AuthenticateUser/AuthenticateUserController'
 
-class AuthenticateUserRoute {
+class AuthenticateUserMiddleware {
     public register(router: Router, path: string): void {
         const { validator } = new AuthenticateUserValidator()
         const { handle } = new AuthenticateUserController()
@@ -11,4 +11,4 @@ class AuthenticateUserRoute {
     }
 }
 
-export { AuthenticateUserRoute }
+export { AuthenticateUserMiddleware }

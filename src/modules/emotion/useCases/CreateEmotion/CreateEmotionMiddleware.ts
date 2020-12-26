@@ -5,7 +5,7 @@ import { AuthenticateUserMiddleware } from '@modules/user/shared/middlewares/Aut
 import { RoleUserMiddleware } from '@modules/user/shared/middlewares/RoleUserMIddleware'
 import { ActivatedUserMiddleware } from '@modules/user/shared/middlewares/ActivatedUserMiddleware'
 
-class CreateEmotionRoute {
+class CreateEmotionMiddleware {
     public register(router: Router, path: string): void {
         const { authenticate } = new AuthenticateUserMiddleware()
         const { role } = new RoleUserMiddleware()
@@ -17,4 +17,4 @@ class CreateEmotionRoute {
     }
 }
 
-export { CreateEmotionRoute }
+export { CreateEmotionMiddleware }

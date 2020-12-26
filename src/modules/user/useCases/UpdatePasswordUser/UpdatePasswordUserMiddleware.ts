@@ -3,7 +3,7 @@ import { AuthenticateUserMiddleware } from '@modules/user/shared/middlewares/Aut
 import { UpdatePasswordUserValidator } from './UpdatePasswordUserValidator'
 import { UpdatePasswordUserController } from './UpdatePasswordUserController'
 
-class UpdatePasswordUserRoute {
+class UpdatePasswordUserMiddleware {
     public register(router: Router, path: string): void {
         const { authenticate } = new AuthenticateUserMiddleware()
         const { validator } = new UpdatePasswordUserValidator()
@@ -13,4 +13,4 @@ class UpdatePasswordUserRoute {
     }
 }
 
-export { UpdatePasswordUserRoute }
+export { UpdatePasswordUserMiddleware }

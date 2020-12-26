@@ -11,23 +11,23 @@ class FakeUserTokenRepository implements IUserTokenRepository {
     }
 
     public async findOneByToken(token: string): Promise<IUserToken | undefined> {
-        return this._repository.find((user) => user.token === token)
+        return this._repository.find((data) => data.token === token)
     }
 
-    // TODO: aqui
     public async generateToken(owner_id: string): Promise<string> {
         const fakeUserToken = new FakeUserToken()
 
-        Object.assign(fakeUserToken, { id: uuid(), owner_id })
+        const token: string = uuid()
+
+        Object.assign(fakeUserToken, { id: uuid(), token, owner_id })
 
         this._repository.push(fakeUserToken)
 
-        return 'c'
+        return token
     }
 
-    // TODO: aqui
     public async deleteTokensByOwnerId(owner_id: string): Promise<void> {
-        throw new Error('Method not implemented.')
+        this._repository = this._repository.filter((data) => data.owner_id !== owner_id)
     }
 }
 

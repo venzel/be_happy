@@ -4,7 +4,7 @@ import { ActivatedUserMiddleware } from '@modules/user/shared/middlewares/Activa
 import { UpdateNotificationValidator } from './UpdateNotificationValidator'
 import { UpdateNotificationController } from './UpdateNotificationController'
 
-class UpdateNotificationRoute {
+class UpdateNotificationMiddleware {
     public register(router: Router, path: string): void {
         const { authenticate } = new AuthenticateUserMiddleware()
         const { activated } = new ActivatedUserMiddleware()
@@ -15,4 +15,4 @@ class UpdateNotificationRoute {
     }
 }
 
-export { UpdateNotificationRoute }
+export { UpdateNotificationMiddleware }
