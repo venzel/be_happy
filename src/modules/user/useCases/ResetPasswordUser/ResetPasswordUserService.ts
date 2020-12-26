@@ -35,8 +35,6 @@ class ResetPasswordUserService {
         /* Delete all tokens */
 
         await this._userTokenRepository.deleteTokensByOwnerId(owner_id)
-
-        /* End delete all tokens */
     }
 }
 
