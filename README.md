@@ -16,9 +16,69 @@
 
 ## Fazer
 
--   Alterar o password do usuario
--   Resetar a senha do usuario
--   Listar os usuarios
 -   Validar o nome do usuario
--   Inserir outras rotas restantes
+-   Validar o email do usuario
+-   Alterar o campo emotion
+-   Documentar o typeorm migration nova criada
+-   Substituir a geracao de ids
+-   Moficar nas migrations o uuid function
+-   Criar a migration de relatorio de emotions
+-   Listar os emotions
+-   Atualizar os emotions
 -   analise de requisitos
+
+## Fazer
+
+-   Fazer o mail provider
+-   Implementar partes do sistema com mail provider
+-   Criar o queue provider
+-   Implementar parte do sistema com o queue
+-   Implementar o mail provider com servico externo
+-   Implementar o storage provider com servico externo
+
+## Fazer
+
+-   Implementar caches:
+    -   Login e senha
+
+## Outros
+
+-   Iniciar os testes da aplicacao
+
+## Outros
+
+-   Seguranca na aplicacao
+-   Recupear apenas 3 senhas por vez
+-   Efetuar o logout
+
+## Outros
+
+-   Informar outras rotas na api quando realizar requisicoes
+
+## Outros
+
+-   Iniciar a documentacao para rodar a app
+
+## Outros
+
+-   Criar um logo e um git mais profissional
+
+## Outros
+
+-   Criar configuracoes de release
+
+## Outros
+
+-   Criar paginacao
+
+## Pesquisar
+
+-   Make file ou arquivo .sh
+-   Aplicacao de limpeza de redis cache
+-   Aplicacao de dados fakes no banco de dados
+-   Criar o arquivo de configuracao do docker
+-   Testar o cors
+-   Testar a integracao continua com o travis
+-   Configurar a app para o pos build devido os @
+-   Pequisar como se faz busca com regEx
+-   Teste de carga no sistema
