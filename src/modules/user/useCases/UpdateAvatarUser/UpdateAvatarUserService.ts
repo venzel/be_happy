@@ -12,7 +12,7 @@ class UpdateAvatarUserService {
         @inject('StorageProvider') private _storageProvider: IStorageProvider
     ) {}
 
-    async execute(data: IUpdateAvatarUserDTO): Promise<IUser> {
+    public async execute(data: IUpdateAvatarUserDTO): Promise<IUser> {
         const { filename, owner_id } = data
 
         const existsUserWithId = await this._userRepository.findOneById(owner_id)

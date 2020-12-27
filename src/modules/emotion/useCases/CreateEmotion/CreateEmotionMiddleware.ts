@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { CreateEmotionValidator } from './CreateEmotionValidator'
 import { CreateEmotionController } from './CreateEmotionController'
 import { AuthenticateUserMiddleware } from '@modules/user/shared/middlewares/AuthenticateUserMiddleware'
-import { RoleUserMiddleware } from '@modules/user/shared/middlewares/RoleUserMIddleware'
+import { RoleUserMiddleware } from '@modules/user/shared/middlewares/RoleUserMiddleware'
 import { ActivatedUserMiddleware } from '@modules/user/shared/middlewares/ActivatedUserMiddleware'
 
 class CreateEmotionMiddleware {

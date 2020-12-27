@@ -1,5 +1,4 @@
 import { Router } from 'express'
-import { AuthenticateUserMiddleware } from '@modules/user/shared/middlewares/AuthenticateUserMiddleware'
 import { ResetPasswordUserValidator } from './ResetPasswordUserValidator'
 import { ResetPasswordUserController } from './ResetPasswordUserController'
 

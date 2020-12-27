@@ -1,4 +1,3 @@
-import 'reflect-metadata'
 import { getRepository, Repository } from 'typeorm'
 import { IUserToken } from '@modules/user/shared/entities/IUserToken'
 import { PostgresUserToken } from '../entities/PostgresUserToken'

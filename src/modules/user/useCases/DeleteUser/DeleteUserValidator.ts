@@ -12,9 +12,6 @@ class DeleteUserValidator {
 
         if (owner_id === query_user_id) throw new AppException('It is not possible to delete yourself!')
 
-        if (role === 'USER' && owner_id !== query_user_id)
-            throw new AppException('It is not possible to delete another user!')
-
         return next()
     }
 }

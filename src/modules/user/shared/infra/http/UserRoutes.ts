@@ -5,6 +5,8 @@ import { UpdatePasswordUserMiddleware } from '@modules/user/useCases/UpdatePassw
 import { ForgotPasswordUserMiddleware } from '@modules/user/useCases/ForgotPasswordUser/ForgotPasswordUserMiddleware'
 import { UpdateAvatarUserMiddleware } from '@modules/user/useCases/UpdateAvatarUser/UpdateAvatarUserMiddleware'
 import { UpdateProfileUserMiddleware } from '@modules/user/useCases/UpdateProfileUser/UpdateProfileUserMiddleware'
+import { ToggleRoleUserMiddleware } from '@modules/user/useCases/ToggleRoleUser/ToggleUserMiddleware'
+import { DeleteUserMiddleware } from '@modules/user/useCases/DeleteUser/DeleteUserMiddleware'
 import { ListUsersMiddleware } from '@modules/user/useCases/ListUsers/ListUsersMiddleware'
 
 class UserRoutes {
@@ -23,7 +25,11 @@ class UserRoutes {
 
         new UpdateProfileUserMiddleware().register(router, '/user/update_profiler')
 
-        new ListUsersMiddleware().register(router, '/users')
+        new ToggleRoleUserMiddleware().register(router, '/user/toggle_role?:id')
+
+        new DeleteUserMiddleware().register(router, '/user/delete?:id')
+
+        new ListUsersMiddleware().register(router, '/users?:count')
     }
 }
 

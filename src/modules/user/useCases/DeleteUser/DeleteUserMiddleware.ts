@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { AuthenticateUserMiddleware } from '@modules/user/shared/middlewares/AuthenticateUserMiddleware'
-import { RoleUserMiddleware } from '@modules/user/shared/middlewares/RoleUserMIddleware'
+import { RoleUserMiddleware } from '@modules/user/shared/middlewares/RoleUserMiddleware'
 import { DeleteUserValidator } from './DeleteUserValidator'
 import { DeleteUserController } from './DeleteUserController'
 

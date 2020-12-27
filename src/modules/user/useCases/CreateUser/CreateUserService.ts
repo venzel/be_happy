@@ -78,7 +78,7 @@ class CreateUserService {
 
         /* Cache register */
 
-        if (!existsKeyExistsUsers) await this._cacheProvider.save('exists_user', true, 30000)
+        if (!existsKeyExistsUsers) await this._cacheProvider.save('exists_user', true, 300)
 
         /* Return final */
 

@@ -8,7 +8,7 @@ class ListUsersService {
     constructor(@inject('UserRepository') private _userRepository: IUserRepository) {}
 
     public async execute(data: IListUsersDTO): Promise<IUser[]> {
-        const {} = data
+        const { query_count, owner_id } = data
 
         const users = await this._userRepository.list()
 
