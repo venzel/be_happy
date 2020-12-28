@@ -3,9 +3,11 @@ import { AuthenticateUserMiddleware } from '@modules/user/useCases/AuthenticateU
 import { CreateUserMiddleware } from '@modules/user/useCases/CreateUser/CreateUserMiddleware'
 import { UpdatePasswordUserMiddleware } from '@modules/user/useCases/UpdatePasswordUser/UpdatePasswordUserMiddleware'
 import { ForgotPasswordUserMiddleware } from '@modules/user/useCases/ForgotPasswordUser/ForgotPasswordUserMiddleware'
+import { ResetPasswordUserMiddleware } from '@modules/user/useCases/ResetPasswordUser/ResetPasswordUserMiddleware'
 import { UpdateAvatarUserMiddleware } from '@modules/user/useCases/UpdateAvatarUser/UpdateAvatarUserMiddleware'
 import { UpdateProfileUserMiddleware } from '@modules/user/useCases/UpdateProfileUser/UpdateProfileUserMiddleware'
 import { ToggleRoleUserMiddleware } from '@modules/user/useCases/ToggleRoleUser/ToggleRoleUserMiddleware'
+import { ShowUserMiddleware } from '@modules/user/useCases/ShowUser/ShowUserMiddleware'
 import { DeleteUserMiddleware } from '@modules/user/useCases/DeleteUser/DeleteUserMiddleware'
 import { ListUsersMiddleware } from '@modules/user/useCases/ListUsers/ListUsersMiddleware'
 
@@ -19,13 +21,15 @@ class UserRoutes {
 
         new ForgotPasswordUserMiddleware().register(router, '/user/forgot_password')
 
-        new ForgotPasswordUserMiddleware().register(router, '/user/reset_password')
+        new ResetPasswordUserMiddleware().register(router, '/user/reset_password')
 
         new UpdateAvatarUserMiddleware().register(router, '/user/update_avatar')
 
         new UpdateProfileUserMiddleware().register(router, '/user/update_profiler')
 
         new ToggleRoleUserMiddleware().register(router, '/user/toggle_role?:id')
+
+        new ShowUserMiddleware().register(router, '/user/show?:id')
 
         new DeleteUserMiddleware().register(router, '/user/delete?:id')
 

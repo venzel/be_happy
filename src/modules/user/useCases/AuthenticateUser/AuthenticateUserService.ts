@@ -39,6 +39,7 @@ class AuthenticateUserService {
         }
 
         /* Generate token by provider */
+
         const generatedToken: string = await this._tokenProvider.generateToken({
             owner_id: id,
             role,

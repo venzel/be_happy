@@ -18,12 +18,13 @@ Lembrar do node nas versoes acima da 14.5.0 devido ao uuid
 
 ## Fazer
 
+-   Organizar todas as rotas no insomnia
 -   Validar o nome do usuario
 -   Validar o email do usuario
--   Alterar o campo emotion
--   Documentar o typeorm migration nova criada
--   Substituir a geracao de ids
--   Moficar nas migrations o uuid function
+-   [x] Alterar o campo emotion
+-   [x] Documentar o typeorm migration nova criada
+-   [x] Substituir a geracao de ids
+-   [x] Moficar nas migrations o uuid function
 -   Criar a migration de relatorio de emotions
 -   Listar os emotions
 -   Atualizar os emotions

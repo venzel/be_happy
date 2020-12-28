@@ -46,7 +46,7 @@ class CreateUserService {
             role = 'USER'
         }
 
-        if (existsKeyExistsUsers === null) {
+        if (!existsKeyExistsUsers === null) {
             const countUsersInRepository: number = await this._userRepository.count()
 
             if (countUsersInRepository >= 1) {

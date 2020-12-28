@@ -80,11 +80,10 @@ export default class CreateUsers1607975202667 implements MigrationInterface {
                 columns: [
                     {
                         name: 'id',
-                        type: 'uuid',
+                        type: 'varchar',
                         isUnique: true,
                         isPrimary: true,
                         isNullable: false,
-                        default: 'uuid_generate_v4()',
                     },
                     {
                         name: 'name',
@@ -164,19 +163,18 @@ export default class CreateEmotions1608048084284 implements MigrationInterface {
                 columns: [
                     {
                         name: 'id',
-                        type: 'uuid',
+                        type: 'varchar',
                         isUnique: true,
                         isPrimary: true,
                         isNullable: false,
-                        default: 'uuid_generate_v4()',
                     },
                     {
                         name: 'owner_id',
-                        type: 'uuid',
+                        type: 'varchar',
                         isNullable: true,
                     },
                     {
-                        name: 'emotion',
+                        name: 'type',
                         type: 'varchar',
                         isNullable: false,
                     },
@@ -215,7 +213,7 @@ export default class CreateEmotions1608048084284 implements MigrationInterface {
                 columnNames: ['owner_id'],
                 referencedColumnNames: ['id'],
                 referencedTableName: 'users',
-                onDelete: 'SET NULL',
+                onDelete: 'CASCADE',
                 onUpdate: 'CASCADE',
             })
         )
@@ -223,6 +221,67 @@ export default class CreateEmotions1608048084284 implements MigrationInterface {
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable('emotions')
+    }
+}
+```
+
+## Exeplo de uma migration com relações
+
+```typescript
+import { MigrationInterface, QueryRunner, Table } from 'typeorm'
+
+export default class CreateUserTokens1608781060450 implements MigrationInterface {
+    public async up(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.createTable(
+            new Table({
+                name: 'user_tokens',
+                columns: [
+                    {
+                        name: 'id',
+                        type: 'varchar',
+                        isUnique: true,
+                        isPrimary: true,
+                        isNullable: false,
+                    },
+                    {
+                        name: 'owner_id',
+                        type: 'varchar',
+                        isNullable: false,
+                    },
+                    {
+                        name: 'token',
+                        type: 'varchar',
+                        isNullable: false,
+                    },
+                    {
+                        name: 'created_at',
+                        type: 'timestamp',
+                        isNullable: false,
+                        default: 'now()',
+                    },
+                    {
+                        name: 'updated_at',
+                        type: 'timestamp',
+                        isNullable: false,
+                        default: 'now()',
+                    },
+                ],
+                foreignKeys: [
+                    {
+                        name: 'UserTokens',
+                        referencedTableName: 'users',
+                        referencedColumnNames: ['id'],
+                        columnNames: ['owner_id'],
+                        onDelete: 'CASCADE',
+                        onUpdate: 'CASCADE',
+                    },
+                ],
+            })
+        )
+    }
+
+    public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropTable('user_tokens')
     }
 }
 ```
