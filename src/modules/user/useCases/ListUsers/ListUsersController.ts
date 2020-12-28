@@ -10,11 +10,12 @@ class ListUsersController {
 
         const { count } = req.query
 
+        // TODO: aqui
         const query_count = Number(count)
 
-        const listUsersService = container.resolve(ListUsersService)
+        const service = container.resolve(ListUsersService)
 
-        const users = await listUsersService.execute({ query_count, owner_id })
+        const users = await service.execute({ query_count, owner_id })
 
         const status = generateStatus(false, 200, 'Succesfully listed users!')
 

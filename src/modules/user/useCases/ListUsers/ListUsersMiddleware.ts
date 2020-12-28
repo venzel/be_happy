@@ -8,10 +8,10 @@ class ListUsersMiddleware {
     public register(router: Router, path: string): void {
         const { authenticate } = new AuthenticateUserMiddleware()
         const { role } = new RoleUserMiddleware()
-        const { validator } = new ListUsersValidator()
+        const { validate } = new ListUsersValidator()
         const { handle } = new ListUsersController()
 
-        router.get(path, authenticate, role(['ADMIN']), validator, handle)
+        router.get(path, authenticate, role(['ADMIN']), validate, handle)
     }
 }
 

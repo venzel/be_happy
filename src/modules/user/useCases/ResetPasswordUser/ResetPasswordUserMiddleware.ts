@@ -1,13 +1,13 @@
 import { Router } from 'express'
-import { ResetPasswordUserValidator } from './ResetPasswordUserValidator'
 import { ResetPasswordUserController } from './ResetPasswordUserController'
+import { ResetPasswordUserValidator } from './ResetPasswordUserValidator'
 
 class ResetPasswordUserMiddleware {
     public register(router: Router, path: string): void {
-        const { validator } = new ResetPasswordUserValidator()
+        const { validate } = new ResetPasswordUserValidator()
         const { handle } = new ResetPasswordUserController()
 
-        router.patch(path, validator, handle)
+        router.patch(path, validate, handle)
     }
 }
 

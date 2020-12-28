@@ -13,10 +13,13 @@ class ShowUserService {
 
         const existsUserWithId = await this._userRepository.findOneById(query_user_id)
 
-        if (!existsUserWithId) throw new AppException('User not found!', 404)
+        if (!existsUserWithId) {
+            throw new AppException('User not found!', 404)
+        }
 
-        if (role === 'USER' && existsUserWithId.id !== owner_id)
+        if (role === 'USER' && existsUserWithId.id !== owner_id) {
             throw new AppException('It is not possible to show data another user!', 403)
+        }
 
         return existsUserWithId
     }

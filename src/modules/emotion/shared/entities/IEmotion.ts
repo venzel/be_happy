@@ -4,7 +4,7 @@ interface IEmotion {
     id: string
     owner_id: string
     owner: IUser
-    emotion: string
+    type: string
     description: string
     created_at: Date
     updated_at: Date

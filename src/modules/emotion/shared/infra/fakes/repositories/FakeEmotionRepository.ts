@@ -16,11 +16,13 @@ class FakeEmotionRepository implements IEmotionRepository {
     }
 
     public async create(data: ICreateEmotionDTO): Promise<IEmotion> {
-        const { owner_id, emotion, description } = data
+        const { owner_id, type, description } = data
 
         const emotionFake = new FakeEmotion()
 
-        Object.assign(emotionFake, { id: uuid(), owner_id, emotion, description })
+        const id = uuid()
+
+        Object.assign(emotionFake, { id, owner_id, type, description })
 
         this._repository.push(emotionFake)
 

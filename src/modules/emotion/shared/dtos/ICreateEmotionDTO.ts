@@ -1,5 +1,6 @@
 interface ICreateEmotionDTO {
-    emotion: string
+    emotion_id?: string
+    type: string
     description: string
     owner_id: string
 }

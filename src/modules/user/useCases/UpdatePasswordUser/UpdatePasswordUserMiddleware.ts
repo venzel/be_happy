@@ -6,10 +6,10 @@ import { UpdatePasswordUserController } from './UpdatePasswordUserController'
 class UpdatePasswordUserMiddleware {
     public register(router: Router, path: string): void {
         const { authenticate } = new AuthenticateUserMiddleware()
-        const { validator } = new UpdatePasswordUserValidator()
+        const { validate } = new UpdatePasswordUserValidator()
         const { handle } = new UpdatePasswordUserController()
 
-        router.put(path, authenticate, validator, handle)
+        router.put(path, authenticate, validate, handle)
     }
 }
 

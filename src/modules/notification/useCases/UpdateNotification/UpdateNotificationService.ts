@@ -17,10 +17,14 @@ class UpdateNotificationService {
             query_notification_id
         )
 
-        if (!existsNotificationWithId) throw new AppException('Notification not found!', 404)
+        if (!existsNotificationWithId) {
+            throw new AppException('Notification not found!', 404)
+        }
 
-        if (role === 'USER' && existsNotificationWithId.owner_id !== owner_id)
+        // TODO: aqui
+        if (role === 'USER' && existsNotificationWithId.owner_id !== owner_id) {
             throw new AppException('It not permited update another notification user id!', 403)
+        }
 
         const markedAsReadNotification = await this._notificationRepository.markAsRead(
             existsNotificationWithId

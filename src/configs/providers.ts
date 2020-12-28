@@ -3,6 +3,13 @@ interface IProvidersConfigDTO {
     mail_provider: string
     queue_provider: string
     storage_provider: string
+    generate_id_provider: string
+}
+
+const _generateIdProvider = (): string => {
+    const env = process.env.GENERATE_ID_PROVIDER
+    if (!env) throw new Error('Error in var ambient: GENERATE_ID_PROVIDER!')
+    return env
 }
 
 const _cacheProvider = (): string => {
@@ -30,14 +37,16 @@ const _storageProvider = (): string => {
 }
 
 const configs: IProvidersConfigDTO = {
+    generate_id_provider: _generateIdProvider(),
     cache_provider: _cacheProvider(),
     mail_provider: _mailProvider(),
     queue_provider: _queueProvider(),
     storage_provider: _storageProvider(),
 }
 
-const { cache_provider, mail_provider, queue_provider, storage_provider } = configs
+const { generate_id_provider, cache_provider, mail_provider, queue_provider, storage_provider } = configs
 
+export { generate_id_provider }
 export { cache_provider }
 export { mail_provider }
 export { queue_provider }

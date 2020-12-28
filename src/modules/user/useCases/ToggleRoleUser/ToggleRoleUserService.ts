@@ -10,7 +10,9 @@ class ToggleRoleUserService {
     public async execute(query_user_id: string): Promise<IUser> {
         const existsUserWithId = await this._userRepository.findOneById(query_user_id)
 
-        if (!existsUserWithId) throw new AppException('User not exists!', 404)
+        if (!existsUserWithId) {
+            throw new AppException('User not exists!', 404)
+        }
 
         const toggleRole = existsUserWithId.role === 'ADMIN' ? 'USER' : 'ADMIN'
 
@@ -18,7 +20,7 @@ class ToggleRoleUserService {
 
         existsUserWithId.role = toggleRole
 
-        /* End data updata */
+        /* End data update */
 
         const savedUser = await this._userRepository.save(existsUserWithId)
 

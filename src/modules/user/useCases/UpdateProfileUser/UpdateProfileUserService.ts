@@ -17,12 +17,15 @@ class UpdateProfileUserService {
 
         const existsUserWithEmail = await this._userRepository.findOneByEmail(email)
 
-        if (existsUserWithEmail && existsUserWithEmail.id !== owner_id)
+        if (existsUserWithEmail && existsUserWithEmail.id !== owner_id) {
             throw new AppException('User email already exists!', 400)
+        }
 
         const existsUserWithId = await this._userRepository.findOneById(owner_id)
 
-        if (!existsUserWithId) throw new AppException('User not exists!', 404)
+        if (!existsUserWithId) {
+            throw new AppException('User not exists!', 404)
+        }
 
         const userDataPassword = existsUserWithId.password
 
@@ -31,7 +34,9 @@ class UpdateProfileUserService {
             userDataPassword
         )
 
-        if (!isPasswordEquals) throw new AppException('Password not equals!', 400)
+        if (!isPasswordEquals) {
+            throw new AppException('Password not equals!', 400)
+        }
 
         /* Data update */
 

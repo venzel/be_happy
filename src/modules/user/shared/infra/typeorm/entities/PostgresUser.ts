@@ -13,7 +13,7 @@ import { IUser } from '@modules/user/shared/entities/IUser'
 @Entity('users')
 class PostgresUser implements IUser {
     @Expose({ name: 'user_id' })
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn('rowid')
     public id: string
 
     @Column()

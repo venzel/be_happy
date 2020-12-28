@@ -1,5 +1,4 @@
 import { MongoRepository, getMongoRepository } from 'typeorm'
-import { ObjectID } from 'mongodb'
 import { IEmotionReport } from '@modules/emotion/shared/entities/IEmotionReport'
 import { PostgresEmotionReport } from '../entities/PostgresEmotionReport'
 import { IEmotionReportRepository } from '@modules/emotion/shared/repositories/IEmotionReportRepository'

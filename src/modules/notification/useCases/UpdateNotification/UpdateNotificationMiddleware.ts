@@ -8,10 +8,10 @@ class UpdateNotificationMiddleware {
     public register(router: Router, path: string): void {
         const { authenticate } = new AuthenticateUserMiddleware()
         const { activated } = new ActivatedUserMiddleware()
-        const { validator } = new UpdateNotificationValidator()
+        const { validate } = new UpdateNotificationValidator()
         const { handle } = new UpdateNotificationController()
 
-        router.patch(path, authenticate, activated, validator, handle)
+        router.patch(path, authenticate, activated, validate, handle)
     }
 }
 

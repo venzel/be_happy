@@ -18,13 +18,21 @@ class ResetPasswordUserService {
 
         const existsUserToken = await this._userTokenRepository.findOneByToken(token)
 
-        if (!existsUserToken) throw new AppException('User token does not exists!', 404)
+        if (!existsUserToken) {
+            throw new AppException('User token does not exists!', 404)
+        }
+
+        /* Var owner_id used in two locals */
 
         const { owner_id } = existsUserToken
 
         const existsUserWithId = await this._userRepository.findOneById(owner_id)
 
-        if (!existsUserWithId) throw new AppException('User does not exists!', 404)
+        if (!existsUserWithId) {
+            throw new AppException('User does not exists!', 404)
+        }
+
+        /* Generate hash password by provider */
 
         const generatedHashPassword: string = await this._hashProvider.gererateHash(new_password)
 

@@ -20,7 +20,9 @@ class FakeEmotionReportRepository implements IEmotionReportRepository {
 
         const emotionReport: IEmotionReport = new PostgresEmotionReport()
 
-        Object.assign(emotionReport, { id: uuid(), emotion_id, owner_id })
+        const id = uuid()
+
+        Object.assign(emotionReport, { id, emotion_id, owner_id })
 
         this._repository.push(emotionReport)
 

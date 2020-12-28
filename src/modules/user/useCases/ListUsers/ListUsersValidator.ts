@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from 'express'
 
 class ListUsersValidator {
-    public validator(req: Request, res: Response, next: NextFunction): any {
+    public validate(req: Request, res: Response, next: NextFunction): any {
+        // TODO: aqui
         const { count } = req.query
 
         return next()

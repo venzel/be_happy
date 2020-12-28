@@ -1,4 +1,4 @@
-// import { v4 as uuid } from 'uuid'
+import { v4 as uuid } from 'uuid'
 import { ICreateUserDTO } from '@modules/user/shared/dtos/ICreateUserDTO'
 import { IUser } from '@modules/user/shared/entities/IUser'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
@@ -32,7 +32,9 @@ class FakeUserRepository implements IUserRepository {
 
         const fakeUser: IUser = new FakeUser()
 
-        Object.assign(fakeUser, { id: '10', name, email, password, role, activated })
+        const id: string = uuid()
+
+        Object.assign(fakeUser, { id, name, email, password, role, activated })
 
         this._repository.push(fakeUser)
 

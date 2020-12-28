@@ -12,7 +12,7 @@ import { IUserToken } from '@modules/user/shared/entities/IUserToken'
 @Entity('user_tokens')
 class PostgresUserToken implements IUserToken {
     @Expose({ name: 'token_user_Id' })
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn('rowid')
     public id: string
 
     @Column()

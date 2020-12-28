@@ -4,10 +4,10 @@ import { AuthenticateUserController } from '@modules/user/useCases/AuthenticateU
 
 class AuthenticateUserMiddleware {
     public register(router: Router, path: string): void {
-        const { validator } = new AuthenticateUserValidator()
+        const { validate } = new AuthenticateUserValidator()
         const { handle } = new AuthenticateUserController()
 
-        router.post(path, validator, handle)
+        router.post(path, validate, handle)
     }
 }
 

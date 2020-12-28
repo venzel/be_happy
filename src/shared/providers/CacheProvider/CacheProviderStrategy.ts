@@ -6,14 +6,17 @@ class CacheProviderStrategy {
     private _strategies: any = {}
 
     constructor() {
-        this._strategies['redis'] = RedisCacheProvider
+        this._strategies['redis'] = () => RedisCacheProvider
     }
 
     public setStrategy(service: string): void {
-        if (!this._strategies.hasOwnProperty(service))
-            throw new Error('Service provider not found in strategies!')
+        const existsStrategy = this._strategies.hasOwnProperty(service)
 
-        container.registerSingleton<ICacheProvider>('CacheProvider', this._strategies[service])
+        if (!existsStrategy) {
+            throw new Error('Service provider not found in strategies!')
+        }
+
+        container.registerSingleton<ICacheProvider>('CacheProvider', this._strategies[service]())
     }
 }
 

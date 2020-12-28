@@ -13,7 +13,9 @@ class UpdateEmotionService {
 
         const existsEmotionWithId = await this._emotionRepository.findOneById(emotion_id)
 
-        if (!existsEmotionWithId) throw new AppException('Emotion not found!', 404)
+        if (!existsEmotionWithId) {
+            throw new AppException('Emotion not found!', 404)
+        }
 
         /* Data update */
 

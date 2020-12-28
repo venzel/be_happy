@@ -1,5 +1,7 @@
 # README.md
 
+Lembrar do node nas versoes acima da 14.5.0 devido ao uuid
+
 ## Arquitetura: Package by feature
 
 -   [Requeriments Analysis](documentation/requirements_analysis.md)

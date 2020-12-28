@@ -10,11 +10,13 @@ import { ICreatePayloadDTO } from '@modules/user/shared/dtos/ICreatePayloadDTO'
 import { IRoleDTO } from '@modules/user/shared/dtos/IRoleDTO'
 import { environment } from '@configs/geral'
 import { AppException } from '@shared/exceptions/AppException'
+import { IGenerateIdProvider } from '@shared/providers/generateIdProvider/model/IGenerateIdProvider'
 
 @injectable()
 class CreateUserService {
     constructor(
         @inject('UserRepository') private _userRepository: IUserRepository,
+        @inject('GenerateIdProvider') private _generateIdProvider: IGenerateIdProvider,
         @inject('CacheProvider') private _cacheProvider: ICacheProvider,
         @inject('HashProvider') private _hashProvider: IHashProvider,
         @inject('TokenProvider') private _tokenProvider: ITokenProvider,
@@ -30,7 +32,9 @@ class CreateUserService {
 
         /* Exception estrategy guard */
 
-        if (existsUserWithEmail) throw new AppException('User email already exists!', 400)
+        if (existsUserWithEmail) {
+            throw new AppException('User email already exists!', 400)
+        }
 
         /* Cache to state var role */
 
@@ -38,25 +42,35 @@ class CreateUserService {
 
         const existsKeyExistsUsers: JSON | null = await this._cacheProvider.findByKey('exists_user')
 
-        if (existsKeyExistsUsers !== null) role = 'USER'
+        if (existsKeyExistsUsers !== null) {
+            role = 'USER'
+        }
 
         if (existsKeyExistsUsers === null) {
             const countUsersInRepository: number = await this._userRepository.count()
 
-            if (countUsersInRepository >= 1) role = 'USER'
+            if (countUsersInRepository >= 1) {
+                role = 'USER'
+            }
         }
 
-        /* Hash password */
+        /* Generate user id by provider */
+
+        const generatedUserId: string = this._generateIdProvider.generateId()
+
+        /* Generate hash password by provider */
 
         const generatedHashPassword: string = await this._hashProvider.gererateHash(password)
 
         /* Activated */
 
+        // TODO: aqui
         const activated: boolean = environment === 'development' ? true : false
 
         /* User created */
 
         const createdUser = await this._userRepository.create({
+            user_id: generatedUserId,
             name,
             email,
             password: generatedHashPassword,
@@ -78,9 +92,11 @@ class CreateUserService {
 
         /* Cache register */
 
-        if (!existsKeyExistsUsers) await this._cacheProvider.save('exists_user', true, 300)
+        if (!existsKeyExistsUsers) {
+            await this._cacheProvider.save('exists_user', true, 300)
+        }
 
-        /* Return final */
+        /* End cache register */
 
         return createdUser
     }

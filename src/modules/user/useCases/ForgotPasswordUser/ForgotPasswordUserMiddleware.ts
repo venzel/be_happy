@@ -4,10 +4,10 @@ import { ForgotPasswordUserValidator } from './ForgotPasswordUserValidator'
 
 class ForgotPasswordUserMiddleware {
     public register(router: Router, path: string): void {
-        const { validator } = new ForgotPasswordUserValidator()
+        const { validate } = new ForgotPasswordUserValidator()
         const { handle } = new ForgotPasswordUserController()
 
-        router.put(path, validator, handle)
+        router.put(path, validate, handle)
     }
 }
 

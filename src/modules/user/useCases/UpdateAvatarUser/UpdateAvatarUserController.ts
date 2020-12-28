@@ -10,9 +10,9 @@ class UpdateAvatarUserController {
 
         const { filename } = req.file
 
-        const updateAvatarUserService = container.resolve(UpdateAvatarUserService)
+        const service = container.resolve(UpdateAvatarUserService)
 
-        const user = await updateAvatarUserService.execute({ filename, owner_id })
+        const user = await service.execute({ filename, owner_id })
 
         const status = generateStatus(false, 200, 'Succesfully updated avatar user!')
 

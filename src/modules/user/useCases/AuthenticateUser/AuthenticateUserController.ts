@@ -8,9 +8,9 @@ class AuthenticateUserController {
     public async handle(req: Request, res: Response): Promise<Response> {
         const { email, password } = req.body
 
-        const authenticateUserService = container.resolve(AuthenticateUserService)
+        const service = container.resolve(AuthenticateUserService)
 
-        const user = await authenticateUserService.execute({ email, password })
+        const user = await service.execute({ email, password })
 
         const status = generateStatus(false, 200, 'Succesfully authenticated user!')
 

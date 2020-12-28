@@ -8,10 +8,10 @@ class ToggleRoleUserMiddleware {
     public register(router: Router, path: string) {
         const { authenticate } = new AuthenticateUserMiddleware()
         const { role } = new RoleUserMiddleware()
-        const { validator } = new ToggleRoleUserValidator()
+        const { validate } = new ToggleRoleUserValidator()
         const { handle } = new ToggleRoleUserController()
 
-        router.patch(path, authenticate, role(['ADMIN']), validator, handle)
+        router.patch(path, authenticate, role(['ADMIN']), validate, handle)
     }
 }
 

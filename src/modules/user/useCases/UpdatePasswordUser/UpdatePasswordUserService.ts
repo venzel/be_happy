@@ -19,7 +19,9 @@ class UpdatePasswordUserService {
 
         const existsUserWithId = await this._userRepository.findOneById(owner_id)
 
-        if (!existsUserWithId) throw new AppException('User not exists!', 404)
+        if (!existsUserWithId) {
+            throw new AppException('User not exists!', 404)
+        }
 
         const userDataPassword = existsUserWithId.password
 
@@ -28,7 +30,9 @@ class UpdatePasswordUserService {
             userDataPassword
         )
 
-        if (!isPasswordEquals) throw new AppException('Password different from registered user!', 400)
+        if (!isPasswordEquals) {
+            throw new AppException('Password different from registered user!', 400)
+        }
 
         const generatedHashPassword: string = await this._hashProvider.gererateHash(new_password)
 

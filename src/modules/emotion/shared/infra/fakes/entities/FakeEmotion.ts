@@ -5,7 +5,7 @@ class FakeEmotion implements IEmotion {
     public id: string
     public owner_id: string
     public owner: IUser
-    public emotion: string
+    public type: string
     public description: string
     public created_at: Date
     public updated_at: Date

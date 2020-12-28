@@ -7,9 +7,9 @@ class ForgotPasswordUserController {
     public async handle(req: Request, res: Response): Promise<Response> {
         const { email } = req.body
 
-        const forgotPasswordUserService = container.resolve(ForgotPasswordUserService)
+        const service = container.resolve(ForgotPasswordUserService)
 
-        const token: string = await forgotPasswordUserService.execute(email)
+        const token: string = await service.execute(email)
 
         const status = generateStatus(false, 200, 'Succesfully forgot user password!')
 

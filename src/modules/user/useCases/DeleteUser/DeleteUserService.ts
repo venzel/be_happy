@@ -13,7 +13,9 @@ class DeleteUserService {
 
         const existsUserWithId = await this._userRepository.findOneById(query_user_id)
 
-        if (!existsUserWithId) throw new AppException('User not found!', 404)
+        if (!existsUserWithId) {
+            throw new AppException('User not found!', 404)
+        }
 
         const deletedUser = await this._userRepository.delete(existsUserWithId)
 

@@ -15,7 +15,7 @@ import { Expose, Exclude } from 'class-transformer'
 @Entity('emotions')
 class PostgresEmotion implements IEmotion {
     @Expose({ name: 'emotion_id' })
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn('rowid')
     public id: string
 
     @Column()
@@ -26,7 +26,7 @@ class PostgresEmotion implements IEmotion {
     public owner: PostgresUser
 
     @Column()
-    public emotion: string
+    public type: string
 
     @Column()
     public description: string

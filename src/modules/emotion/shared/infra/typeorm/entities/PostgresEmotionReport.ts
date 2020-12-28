@@ -15,7 +15,7 @@ import { PostgresEmotion } from './PostgresEmotion'
 @Entity('emotions_report')
 class PostgresEmotionReport implements IEmotionReport {
     @Expose({ name: 'emotion_id' })
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn('rowid')
     public id: string
 
     @Column()

@@ -8,9 +8,9 @@ class CreateUserController {
     public async handle(req: Request, res: Response): Promise<Response> {
         const { name, email, password } = req.body
 
-        const createUserService = container.resolve(CreateUserService)
+        const sevice = container.resolve(CreateUserService)
 
-        const user = await createUserService.execute({ name, email, password })
+        const user = await sevice.execute({ name, email, password })
 
         const status = generateStatus(false, 201, 'Succesfully created user!')
 

@@ -2,6 +2,7 @@ import { v4 as uuid } from 'uuid'
 import { IUserToken } from '@modules/user/shared/entities/IUserToken'
 import { IUserTokenRepository } from '@modules/user/shared/repositories/IUserTokenRepository'
 import { FakeUserToken } from '../entities/FakeUserToken'
+import { IGenerateTokenDTO } from '@modules/user/shared/dtos/IGenerateTokenDTO'
 
 class FakeUserTokenRepository implements IUserTokenRepository {
     private _repository: IUserToken[]
@@ -14,12 +15,16 @@ class FakeUserTokenRepository implements IUserTokenRepository {
         return this._repository.find((data) => data.token === token)
     }
 
-    public async generateToken(owner_id: string): Promise<string> {
+    public async generateToken(data: IGenerateTokenDTO): Promise<string> {
+        const { owner_id } = data
+
         const fakeUserToken = new FakeUserToken()
 
         const token: string = uuid()
 
-        Object.assign(fakeUserToken, { id: uuid(), token, owner_id })
+        const id: string = uuid()
+
+        Object.assign(fakeUserToken, { id, token, owner_id })
 
         this._repository.push(fakeUserToken)
 

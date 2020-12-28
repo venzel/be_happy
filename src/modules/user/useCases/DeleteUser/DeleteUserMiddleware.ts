@@ -8,10 +8,10 @@ class DeleteUserMiddleware {
     public register(router: Router, path: string): void {
         const { authenticate } = new AuthenticateUserMiddleware()
         const { role } = new RoleUserMiddleware()
-        const { validator } = new DeleteUserValidator()
+        const { validate } = new DeleteUserValidator()
         const { handle } = new DeleteUserController()
 
-        router.delete(path, authenticate, role(['ADMIN']), validator, handle)
+        router.delete(path, authenticate, role(['ADMIN']), validate, handle)
     }
 }
 

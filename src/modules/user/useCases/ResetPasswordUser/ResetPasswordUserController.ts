@@ -7,9 +7,9 @@ class ResetPasswordUserController {
     public async handle(req: Request, res: Response): Promise<Response> {
         const { new_password, token } = req.body
 
-        const resetPasswordUserService = container.resolve(ResetPasswordUserService)
+        const service = container.resolve(ResetPasswordUserService)
 
-        await resetPasswordUserService.execute({ new_password, token })
+        await service.execute({ new_password, token })
 
         const status = generateStatus(false, 200, 'Succesfully password user reseted!')
 

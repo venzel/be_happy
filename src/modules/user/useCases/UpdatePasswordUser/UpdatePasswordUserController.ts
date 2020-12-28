@@ -9,9 +9,9 @@ class UpdatePasswordUserController {
 
         const { current_password, new_password } = req.body
 
-        const updatePasswordUserService = container.resolve(UpdatePasswordUserService)
+        const service = container.resolve(UpdatePasswordUserService)
 
-        await updatePasswordUserService.execute({ current_password, new_password, owner_id })
+        await service.execute({ current_password, new_password, owner_id })
 
         const status = generateStatus(false, 200, 'Succesfully password user updated!')
 

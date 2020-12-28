@@ -10,9 +10,9 @@ class ShowUserController {
 
         const query_user_id = String(req.query.id)
 
-        const showUserService = container.resolve(ShowUserService)
+        const service = container.resolve(ShowUserService)
 
-        const user = await showUserService.execute({ query_user_id, owner_id, role })
+        const user = await service.execute({ query_user_id, owner_id, role })
 
         const status = generateStatus(false, 200, 'Succesfully showed user!')
 

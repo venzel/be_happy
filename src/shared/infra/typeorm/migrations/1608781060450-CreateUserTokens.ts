@@ -8,23 +8,20 @@ export default class CreateUserTokens1608781060450 implements MigrationInterface
                 columns: [
                     {
                         name: 'id',
-                        type: 'uuid',
+                        type: 'varchar',
                         isUnique: true,
                         isPrimary: true,
                         isNullable: false,
-                        default: 'uuid_generate_v4()',
                     },
                     {
                         name: 'owner_id',
-                        type: 'uuid',
+                        type: 'varchar',
                         isNullable: false,
                     },
                     {
                         name: 'token',
-                        type: 'uuid',
+                        type: 'varchar',
                         isNullable: false,
-                        generationStrategy: 'uuid',
-                        default: 'uuid_generate_v4()',
                     },
                     {
                         name: 'created_at',

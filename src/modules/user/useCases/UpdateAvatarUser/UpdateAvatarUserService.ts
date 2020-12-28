@@ -17,7 +17,9 @@ class UpdateAvatarUserService {
 
         const existsUserWithId = await this._userRepository.findOneById(owner_id)
 
-        if (!existsUserWithId) throw new AppException('User not exists!', 404)
+        if (!existsUserWithId) {
+            throw new AppException('User not exists!', 404)
+        }
 
         const { avatar } = existsUserWithId
 

@@ -8,15 +8,14 @@ export default class CreateEmotions1608048084284 implements MigrationInterface {
                 columns: [
                     {
                         name: 'id',
-                        type: 'uuid',
+                        type: 'varchar',
                         isUnique: true,
                         isPrimary: true,
                         isNullable: false,
-                        default: 'uuid_generate_v4()',
                     },
                     {
                         name: 'owner_id',
-                        type: 'uuid',
+                        type: 'varchar',
                         isNullable: true,
                     },
                     {

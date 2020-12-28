@@ -10,18 +10,13 @@ class UpdateProfileUserController {
 
         const { name, email, current_password } = req.body
 
-        const updateProfileUserService = container.resolve(UpdateProfileUserService)
+        const service = container.resolve(UpdateProfileUserService)
 
-        const updatedProfileUser = await updateProfileUserService.execute({
-            name,
-            email,
-            current_password,
-            owner_id,
-        })
+        const user = await service.execute({ name, email, current_password, owner_id })
 
         const status = generateStatus(false, 200, 'Succesfully profile user, updated!')
 
-        const doc = classToClass(updatedProfileUser)
+        const doc = classToClass(user)
 
         return res.status(200).json({ status, doc })
     }

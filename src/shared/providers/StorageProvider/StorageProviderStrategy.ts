@@ -6,14 +6,15 @@ class StorageProviderStrategy {
     private _strategies: any = {}
 
     constructor() {
-        this._strategies['local'] = LocalStorageProvider
+        this._strategies['local'] = () => LocalStorageProvider
     }
 
     public setStrategy(service: string): void {
-        if (!this._strategies.hasOwnProperty(service))
-            throw new Error('Service provider not found in strategies!')
+        const existsStrategy = this._strategies.hasOwnProperty(service)
 
-        container.registerSingleton<IStorageProvider>('StorageProvider', this._strategies[service])
+        if (!existsStrategy) throw new Error('Service provider not found in strategies!')
+
+        container.registerSingleton<IStorageProvider>('StorageProvider', this._strategies[service]())
     }
 }
 

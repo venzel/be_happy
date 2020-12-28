@@ -10,9 +10,9 @@ class UpdateEmotionController {
 
         const { emotion_id, description } = req.body
 
-        const updateEmotionService = container.resolve(UpdateEmotionService)
+        const service = container.resolve(UpdateEmotionService)
 
-        const emotion = await updateEmotionService.execute({ emotion_id, description, owner_id })
+        const emotion = await service.execute({ emotion_id, description, owner_id })
 
         const status = generateStatus(false, 201, 'Succesfully created emotion!')
 

@@ -5,7 +5,7 @@ import { UpdatePasswordUserMiddleware } from '@modules/user/useCases/UpdatePassw
 import { ForgotPasswordUserMiddleware } from '@modules/user/useCases/ForgotPasswordUser/ForgotPasswordUserMiddleware'
 import { UpdateAvatarUserMiddleware } from '@modules/user/useCases/UpdateAvatarUser/UpdateAvatarUserMiddleware'
 import { UpdateProfileUserMiddleware } from '@modules/user/useCases/UpdateProfileUser/UpdateProfileUserMiddleware'
-import { ToggleRoleUserMiddleware } from '@modules/user/useCases/ToggleRoleUser/ToggleUserMiddleware'
+import { ToggleRoleUserMiddleware } from '@modules/user/useCases/ToggleRoleUser/ToggleRoleUserMiddleware'
 import { DeleteUserMiddleware } from '@modules/user/useCases/DeleteUser/DeleteUserMiddleware'
 import { ListUsersMiddleware } from '@modules/user/useCases/ListUsers/ListUsersMiddleware'
 

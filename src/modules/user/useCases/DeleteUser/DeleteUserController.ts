@@ -10,9 +10,9 @@ class DeleteUserController {
 
         const query_user_id = String(req.query.id)
 
-        const deleteUserService = container.resolve(DeleteUserService)
+        const service = container.resolve(DeleteUserService)
 
-        const user = await deleteUserService.execute({ query_user_id, owner_id, role })
+        const user = await service.execute({ query_user_id, owner_id, role })
 
         const status = generateStatus(false, 200, 'Succesfully deleted user!')
 

@@ -6,10 +6,10 @@ import { ShowUserValidator } from './ShowUserValidator'
 class ShowUserMiddleware {
     public register(router: Router, path: string): void {
         const { authenticate } = new AuthenticateUserMiddleware()
-        const { validator } = new ShowUserValidator()
+        const { validate } = new ShowUserValidator()
         const { handle } = new ShowUserController()
 
-        router.get(path, authenticate, validator, handle)
+        router.get(path, authenticate, validate, handle)
     }
 }
 
