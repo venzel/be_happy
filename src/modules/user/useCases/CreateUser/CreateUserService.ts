@@ -28,11 +28,11 @@ class CreateUserService {
 
         /* Find only user by email */
 
-        const existsUserWithEmail = await this._userRepository.findOneByEmail(email)
+        const existsUser = await this._userRepository.findOneByEmail(email)
 
         /* Exception estrategy guard */
 
-        if (existsUserWithEmail) {
+        if (existsUser) {
             throw new AppException('User email already exists!', 400)
         }
 

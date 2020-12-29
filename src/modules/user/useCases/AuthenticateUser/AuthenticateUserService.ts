@@ -17,13 +17,13 @@ class AuthenticateUserService {
     public async execute(data: IAuthenticateUserDTO): Promise<IUser> {
         const { email, password } = data
 
-        const existsUserWithEmail = await this._userRepository.findOneByEmail(email)
+        const existsUser = await this._userRepository.findOneByEmail(email)
 
-        if (!existsUserWithEmail) {
+        if (!existsUser) {
             throw new AppException('Email or password invalid!', 403)
         }
 
-        const { id, role, activated, allowed, password: userDataPassword } = existsUserWithEmail
+        const { id, role, activated, allowed, password: userDataPassword } = existsUser
 
         if (!allowed) {
             throw new AppException('User not allowed!', 403)
@@ -48,9 +48,9 @@ class AuthenticateUserService {
 
         /* End generate token by provider */
 
-        Object.assign(existsUserWithEmail, { token: generatedToken })
+        Object.assign(existsUser, { token: generatedToken })
 
-        return existsUserWithEmail
+        return existsUser
     }
 }
 

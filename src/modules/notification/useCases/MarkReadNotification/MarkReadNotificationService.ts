@@ -11,23 +11,20 @@ class MarkReadNotificationService {
     ) {}
 
     public async execute(data: IUpdateNotificationDTO): Promise<INotification> {
-        const { query_notification_id, owner_id, role } = data
+        const { query_notification_id, owner_id } = data
 
-        const existsNotificationWithId = await this._notificationRepository.findOneById(
-            query_notification_id
-        )
+        const existsNotification = await this._notificationRepository.findOneById(query_notification_id)
 
-        if (!existsNotificationWithId) {
+        if (!existsNotification) {
             throw new AppException('Notification not found!', 404)
         }
 
-        // TODO: aqui
-        if (role === 'USER' && existsNotificationWithId.owner_id !== owner_id) {
+        if (existsNotification.owner_id !== owner_id) {
             throw new AppException('It not permited update another notification user id!', 403)
         }
 
         const markedAsReadNotification = await this._notificationRepository.markAsRead(
-            existsNotificationWithId
+            existsNotification
         )
 
         return markedAsReadNotification

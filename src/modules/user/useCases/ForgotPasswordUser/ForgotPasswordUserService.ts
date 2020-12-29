@@ -15,9 +15,9 @@ class ForgotPasswordUserService {
     ) {}
 
     public async execute(email: string): Promise<string> {
-        const existsUserWithEmail = await this._userRepository.findOneByEmail(email)
+        const existsUser = await this._userRepository.findOneByEmail(email)
 
-        if (!existsUserWithEmail) {
+        if (!existsUser) {
             throw new AppException('User does not exists!', 404)
         }
 
@@ -27,7 +27,7 @@ class ForgotPasswordUserService {
 
         /* End generate token id by provider */
 
-        const owner_id: string = existsUserWithEmail.id
+        const owner_id: string = existsUser.id
 
         const generetadToken: string = await this._userTokenRepository.generateToken({
             token_id,

@@ -11,13 +11,13 @@ class DeleteUserService {
     public async execute(data: IDeleteUserDTO): Promise<IUser> {
         const { query_user_id } = data
 
-        const existsUserWithId = await this._userRepository.findOneById(query_user_id)
+        const existsUser = await this._userRepository.findOneById(query_user_id)
 
-        if (!existsUserWithId) {
+        if (!existsUser) {
             throw new AppException('User not found!', 404)
         }
 
-        const deletedUser = await this._userRepository.delete(existsUserWithId)
+        const deletedUser = await this._userRepository.delete(existsUser)
 
         return deletedUser
     }

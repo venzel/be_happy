@@ -16,15 +16,15 @@ class ResetPasswordUserService {
     public async execute(data: IResetPasswordUserDTO): Promise<void> {
         const { new_password, token } = data
 
-        const existsUserToken = await this._userTokenRepository.findOneByToken(token)
+        const existsUserWithToken = await this._userTokenRepository.findOneByToken(token)
 
-        if (!existsUserToken) {
+        if (!existsUserWithToken) {
             throw new AppException('User token does not exists!', 404)
         }
 
         /* Var owner_id used in two locals */
 
-        const { owner_id } = existsUserToken
+        const { owner_id } = existsUserWithToken
 
         const existsUserWithId = await this._userRepository.findOneById(owner_id)
 

@@ -15,13 +15,13 @@ class UpdateAvatarUserService {
     public async execute(data: IUpdateAvatarUserDTO): Promise<IUser> {
         const { filename, owner_id } = data
 
-        const existsUserWithId = await this._userRepository.findOneById(owner_id)
+        const existsUser = await this._userRepository.findOneById(owner_id)
 
-        if (!existsUserWithId) {
+        if (!existsUser) {
             throw new AppException('User not exists!', 404)
         }
 
-        const { avatar } = existsUserWithId
+        const { avatar } = existsUser
 
         if (avatar) await this._storageProvider.deleteFile(avatar)
 
@@ -29,11 +29,11 @@ class UpdateAvatarUserService {
 
         /* Update data */
 
-        existsUserWithId.avatar = nameFileSaved
+        existsUser.avatar = nameFileSaved
 
         /* End update data */
 
-        const savedUser = await this._userRepository.save(existsUserWithId)
+        const savedUser = await this._userRepository.save(existsUser)
 
         return savedUser
     }

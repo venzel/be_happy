@@ -17,13 +17,13 @@ class UpdatePasswordUserService {
     public async execute(data: IUpdatePasswordDTO): Promise<IUser> {
         const { current_password, new_password, owner_id } = data
 
-        const existsUserWithId = await this._userRepository.findOneById(owner_id)
+        const existsUser = await this._userRepository.findOneById(owner_id)
 
-        if (!existsUserWithId) {
+        if (!existsUser) {
             throw new AppException('User not exists!', 404)
         }
 
-        const userDataPassword = existsUserWithId.password
+        const userDataPassword = existsUser.password
 
         const isPasswordEquals: boolean = await this._hashProvider.compareHash(
             current_password,
@@ -38,11 +38,11 @@ class UpdatePasswordUserService {
 
         /* Data updated */
 
-        existsUserWithId.password = generatedHashPassword
+        existsUser.password = generatedHashPassword
 
         /* End data updated */
 
-        const savedUser = await this._userRepository.save(existsUserWithId)
+        const savedUser = await this._userRepository.save(existsUser)
 
         /* Delete all tokens */
 

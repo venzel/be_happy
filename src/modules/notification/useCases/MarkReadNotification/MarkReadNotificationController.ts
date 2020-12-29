@@ -6,13 +6,13 @@ import { generateStatus } from '@shared/helpers/status'
 
 class MarkReadNotificationController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const { owner_id, role } = req.auth
+        const { owner_id } = req.auth
 
         const query_notification_id = String(req.query.id)
 
         const service = container.resolve(MarkReadNotificationService)
 
-        const notification = await service.execute({ query_notification_id, owner_id, role })
+        const notification = await service.execute({ query_notification_id, owner_id })
 
         const status = generateStatus(false, 200, 'Succesfully updated notification!')
 

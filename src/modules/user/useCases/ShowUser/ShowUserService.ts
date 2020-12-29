@@ -11,17 +11,17 @@ class ShowUserService {
     public async execute(data: IShowUserDTO): Promise<IUser> {
         const { query_user_id, owner_id, role } = data
 
-        const existsUserWithId = await this._userRepository.findOneById(query_user_id)
+        const existsUser = await this._userRepository.findOneById(query_user_id)
 
-        if (!existsUserWithId) {
+        if (!existsUser) {
             throw new AppException('User not found!', 404)
         }
 
-        if (role === 'USER' && existsUserWithId.id !== owner_id) {
+        if (role === 'USER' && existsUser.id !== owner_id) {
             throw new AppException('It is not possible to show data another user!', 403)
         }
 
-        return existsUserWithId
+        return existsUser
     }
 }
 

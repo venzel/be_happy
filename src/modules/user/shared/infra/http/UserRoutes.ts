@@ -10,6 +10,7 @@ import { ToggleRoleUserMiddleware } from '@modules/user/useCases/ToggleRoleUser/
 import { ShowUserMiddleware } from '@modules/user/useCases/ShowUser/ShowUserMiddleware'
 import { DeleteUserMiddleware } from '@modules/user/useCases/DeleteUser/DeleteUserMiddleware'
 import { ListUsersMiddleware } from '@modules/user/useCases/ListUsers/ListUsersMiddleware'
+import { ToggleAllowUserMiddleware } from '@modules/user/useCases/ToogleAllowUser/ToggleAllowUserMiddleware'
 
 class UserRoutes {
     public registerAll(router: Router): void {
@@ -45,6 +46,9 @@ class UserRoutes {
 
         // patch
         new ToggleRoleUserMiddleware().register(router, '/user/toggle_role?:id')
+
+        // patch
+        new ToggleAllowUserMiddleware().register(router, '/user/toggle_allow?:id')
     }
 }
 

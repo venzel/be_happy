@@ -6,7 +6,7 @@ class MarkReadNotificationValidator {
     public validate(req: Request, res: Response, next: NextFunction): any {
         const notification_id = req.query.id?.toString()
 
-        if (!notification_id || !isIdValid(notification_id, 'mongo')) {
+        if (!isIdValid(notification_id, 'mongo')) {
             throw new AppException('Notification id invalid!')
         }
 

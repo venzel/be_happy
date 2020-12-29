@@ -16,6 +16,11 @@ Lembrar do node nas versoes acima da 14.5.0 devido ao uuid
 -   [Typescript](documentation/typescript.md)
 -   [VS Code : snippets](documentation/vscode.md)
 
+## COLORS THEME
+
+    - #31CF97
+    - #FFD2B6
+
 ## Fazer
 
 -   [x] Organizar todas as rotas no insomnia
@@ -25,7 +30,7 @@ Lembrar do node nas versoes acima da 14.5.0 devido ao uuid
 -   [x] Documentar o typeorm migration nova criada
 -   [x] Substituir a geracao de ids
 -   [x] Moficar nas migrations o uuid function
--   Mark read repository ajeitar nomes e tirar do repoistorio a funcao
+-   [x] Mark read repository ajeitar nomes e tirar do repoistorio a funcao
 -   Fazer o toggle do user allowed
 -   Criar a migration de relatorio de emotions
 -   Listar os emotions

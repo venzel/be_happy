@@ -4,7 +4,7 @@ import { IUser } from '@modules/user/shared/entities/IUser'
 import { AppException } from '@shared/exceptions/AppException'
 
 @injectable()
-class ToggleRoleUserService {
+class ToggleAllowUserService {
     constructor(@inject('UserRepository') private _userRepository: IUserRepository) {}
 
     public async execute(query_user_id: string): Promise<IUser> {
@@ -14,11 +14,11 @@ class ToggleRoleUserService {
             throw new AppException('User not exists!', 404)
         }
 
-        const toggleRole = existsUser.role === 'ADMIN' ? 'USER' : 'ADMIN'
+        const toggleAllow = existsUser.allowed === true ? false : true
 
         /* Data update */
 
-        existsUser.role = toggleRole
+        existsUser.allowed = toggleAllow
 
         /* End data update */
 
@@ -28,4 +28,4 @@ class ToggleRoleUserService {
     }
 }
 
-export { ToggleRoleUserService }
+export { ToggleAllowUserService }
