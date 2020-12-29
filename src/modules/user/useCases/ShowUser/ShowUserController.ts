@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { container } from 'tsyringe'
 import { classToClass } from 'class-transformer'
 import { ShowUserService } from './ShowUserService'
-import { generateStatus } from '@shared/libs/utils'
+import { generateStatus } from '@shared/helpers/status'
 
 class ShowUserController {
     public async handle(req: Request, res: Response): Promise<Response> {

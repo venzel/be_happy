@@ -5,7 +5,7 @@ import { IUpdateNotificationDTO } from '@modules/notification/shared/dtos/IUpdat
 import { AppException } from '@shared/exceptions/AppException'
 
 @injectable()
-class UpdateNotificationService {
+class MarkReadNotificationService {
     constructor(
         @inject('NotificationRepository') private _notificationRepository: INotificationRepository
     ) {}
@@ -34,4 +34,4 @@ class UpdateNotificationService {
     }
 }
 
-export { UpdateNotificationService }
+export { MarkReadNotificationService }

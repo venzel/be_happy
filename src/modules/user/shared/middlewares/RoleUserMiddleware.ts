@@ -7,8 +7,9 @@ class RoleUserMiddleware {
         return function (req: Request, res: Response, next: NextFunction): any {
             const { role } = req.auth
 
-            if (!roles.includes(role as IRoleDTO))
+            if (!roles.includes(role as IRoleDTO)) {
                 throw new AppException(`Not authorized for this sector, only: ${roles.join(', ')}!`, 403)
+            }
 
             return next()
         }

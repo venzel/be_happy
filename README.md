@@ -18,7 +18,7 @@ Lembrar do node nas versoes acima da 14.5.0 devido ao uuid
 
 ## Fazer
 
--   Organizar todas as rotas no insomnia
+-   [x] Organizar todas as rotas no insomnia
 -   Validar o nome do usuario
 -   Validar o email do usuario
 -   [x] Alterar o campo emotion
@@ -29,6 +29,7 @@ Lembrar do node nas versoes acima da 14.5.0 devido ao uuid
 -   Listar os emotions
 -   Atualizar os emotions
 -   analise de requisitos
+-   Mark read repository ajeitar nomes
 
 ## Fazer
 

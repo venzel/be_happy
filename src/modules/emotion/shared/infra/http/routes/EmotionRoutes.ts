@@ -5,10 +5,13 @@ import { UpdateEmotionMiddleware } from '@modules/emotion/useCases/UpdateEmotion
 
 class EmotionRoutes {
     public registerAll(router: Router): void {
+        // get
         new ListEmotionMiddleware().register(router, '/emotions?:count')
 
+        // post
         new CreateEmotionMiddleware().register(router, '/emotion/create')
 
+        // put
         new UpdateEmotionMiddleware().register(router, '/emotion/update')
     }
 }

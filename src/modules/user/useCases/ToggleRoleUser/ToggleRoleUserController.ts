@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { container } from 'tsyringe'
 import { classToClass } from 'class-transformer'
 import { ToggleRoleUserService } from './ToggleRoleUserService'
-import { generateStatus } from '@shared/libs/utils'
+import { generateStatus } from '@shared/helpers/status'
 
 class ToggleRoleUserController {
     public async handle(req: Request, res: Response): Promise<Response> {

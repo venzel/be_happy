@@ -13,27 +13,38 @@ import { ListUsersMiddleware } from '@modules/user/useCases/ListUsers/ListUsersM
 
 class UserRoutes {
     public registerAll(router: Router): void {
-        new AuthenticateUserMiddleware().register(router, '/user/login')
+        // get
+        new ListUsersMiddleware().register(router, '/users?:count')
 
-        new CreateUserMiddleware().register(router, '/user/register')
-
-        new UpdatePasswordUserMiddleware().register(router, '/user/update_password')
-
-        new ForgotPasswordUserMiddleware().register(router, '/user/forgot_password')
-
-        new ResetPasswordUserMiddleware().register(router, '/user/reset_password')
-
-        new UpdateAvatarUserMiddleware().register(router, '/user/update_avatar')
-
-        new UpdateProfileUserMiddleware().register(router, '/user/update_profiler')
-
-        new ToggleRoleUserMiddleware().register(router, '/user/toggle_role?:id')
-
+        // get
         new ShowUserMiddleware().register(router, '/user/show?:id')
 
+        // delete
         new DeleteUserMiddleware().register(router, '/user/delete?:id')
 
-        new ListUsersMiddleware().register(router, '/users?:count')
+        // post
+        new AuthenticateUserMiddleware().register(router, '/user/login')
+
+        // post
+        new CreateUserMiddleware().register(router, '/user/register')
+
+        // put
+        new UpdatePasswordUserMiddleware().register(router, '/user/update_password')
+
+        // put
+        new ForgotPasswordUserMiddleware().register(router, '/user/forgot_password')
+
+        // patch
+        new ResetPasswordUserMiddleware().register(router, '/user/reset_password')
+
+        // patch
+        new UpdateAvatarUserMiddleware().register(router, '/user/update_avatar')
+
+        // put
+        new UpdateProfileUserMiddleware().register(router, '/user/update_profiler')
+
+        // patch
+        new ToggleRoleUserMiddleware().register(router, '/user/toggle_role?:id')
     }
 }
 

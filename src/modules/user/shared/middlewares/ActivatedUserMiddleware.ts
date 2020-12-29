@@ -5,7 +5,9 @@ class ActivatedUserMiddleware {
     public activated(req: Request, res: Response, next: NextFunction): any {
         const { activated } = req.auth
 
-        if (!activated) throw new AppException('User not activated!')
+        if (!activated) {
+            throw new AppException('User not activated!')
+        }
 
         return next()
     }

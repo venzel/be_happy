@@ -3,10 +3,11 @@ import { AppException } from '@shared/exceptions/AppException'
 
 class CreateEmotionValidator {
     public validate(req: Request, res: Response, next: NextFunction): any {
-        const { emotion } = req.body
+        const { type } = req.body
 
-        if (!emotion) {
-            throw new AppException('Emotion invalid!', 400)
+        // TODO: aqui
+        if (!type) {
+            throw new AppException('Emotion type invalid!', 400)
         }
 
         return next()

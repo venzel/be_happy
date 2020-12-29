@@ -1,16 +1,16 @@
 import { Request, Response } from 'express'
 import { container } from 'tsyringe'
 import { classToClass } from 'class-transformer'
-import { UpdateNotificationService } from './UpdateNotificationService'
-import { generateStatus } from '@shared/libs/utils'
+import { MarkReadNotificationService } from './MarkReadNotificationService'
+import { generateStatus } from '@shared/helpers/status'
 
-class UpdateNotificationController {
+class MarkReadNotificationController {
     public async handle(req: Request, res: Response): Promise<Response> {
         const { owner_id, role } = req.auth
 
         const query_notification_id = String(req.query.id)
 
-        const service = container.resolve(UpdateNotificationService)
+        const service = container.resolve(MarkReadNotificationService)
 
         const notification = await service.execute({ query_notification_id, owner_id, role })
 
@@ -22,4 +22,4 @@ class UpdateNotificationController {
     }
 }
 
-export { UpdateNotificationController }
+export { MarkReadNotificationController }

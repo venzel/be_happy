@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { container } from 'tsyringe'
-import { generateStatus } from '@shared/libs/utils'
+import { generateStatus } from '@shared/helpers/status'
 import { ForgotPasswordUserService } from './ForgotPasswordUserService'
 
 class ForgotPasswordUserController {

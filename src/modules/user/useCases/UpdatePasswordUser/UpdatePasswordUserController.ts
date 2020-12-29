@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { container } from 'tsyringe'
 import { UpdatePasswordUserService } from './UpdatePasswordUserService'
-import { generateStatus } from '@shared/libs/utils'
+import { generateStatus } from '@shared/helpers/status'
 
 class UpdatePasswordUserController {
     public async handle(req: Request, res: Response): Promise<Response> {

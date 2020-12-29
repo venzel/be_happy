@@ -1,16 +1,16 @@
 import { Request, Response, NextFunction } from 'express'
-import { isPasswordValid } from '@shared/libs/regex'
+import { isPasswordValid } from '@shared/helpers/validator'
 import { AppException } from '@shared/exceptions/AppException'
 
 class UpdatePasswordUserValidator {
     public validate(req: Request, res: Response, next: NextFunction): any {
         const { current_password, new_password } = req.body
 
-        if (!current_password || !isPasswordValid(current_password)) {
+        if (!isPasswordValid(current_password)) {
             throw new AppException('Current passoword invalid!', 400)
         }
 
-        if (!new_password || !isPasswordValid(new_password)) {
+        if (!isPasswordValid(new_password)) {
             throw new AppException('New password invalid!', 400)
         }
 

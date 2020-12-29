@@ -8,19 +8,26 @@ class AuthenticateUserMiddleware {
     public authenticate(req: Request, res: Response, next: NextFunction): any {
         const schemaToken: string | undefined = req.headers.authorization
 
-        if (!schemaToken) throw new AppException('Token not provided!', 404)
+        if (!schemaToken) {
+            throw new AppException('Token not provided!', 404)
+        }
 
         const parts: string[] = schemaToken.split(' ')
 
-        if (parts.length !== 2) throw new AppException('Token parts invalid!', 403)
+        if (parts.length !== 2) {
+            throw new AppException('Token parts invalid!', 403)
+        }
 
         const [schema, token] = parts
 
-        if (schema !== 'Bearer') throw new AppException('Token parts invalid!', 403)
+        if (schema !== 'Bearer') {
+            throw new AppException('Token parts invalid!', 403)
+        }
 
-        const tokenProvider: ITokenProvider = container.resolve<ITokenProvider>('TokenProvider')
+        // TODO: aqui
+        const tokenProvider = container.resolve<ITokenProvider>('TokenProvider')
 
-        const payload: IPayloadDTO = tokenProvider.validateToken(token)
+        const payload = tokenProvider.validateToken(token)
 
         req.auth = payload.user
 

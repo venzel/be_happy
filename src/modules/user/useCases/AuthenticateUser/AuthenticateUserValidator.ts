@@ -1,12 +1,12 @@
 import { Request, Response, NextFunction } from 'express'
-import { isEmailValid } from '@shared/libs/regex'
+import { isEmailValid } from '@shared/helpers/validator'
 import { AppException } from '@shared/exceptions/AppException'
 
 class AuthenticateUserValidator {
     public validate(req: Request, res: Response, next: NextFunction): any {
         const { email, password } = req.body
 
-        if (!email || !isEmailValid(email)) {
+        if (!isEmailValid(email)) {
             throw new AppException('Email invalid!', 403)
         }
 

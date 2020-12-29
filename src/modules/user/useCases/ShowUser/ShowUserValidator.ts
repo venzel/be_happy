@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { isUUIDValid } from '@shared/libs/regex'
+import { isIdValid } from '@shared/helpers/validator'
 import { AppException } from '@shared/exceptions/AppException'
 
 class ShowUserValidator {
@@ -8,7 +8,7 @@ class ShowUserValidator {
 
         const query_user_id = req.query.id?.toString()
 
-        if (!query_user_id || !isUUIDValid(query_user_id)) {
+        if (!isIdValid(query_user_id, 'uuid')) {
             throw new AppException('User id invalid!')
         }
 
