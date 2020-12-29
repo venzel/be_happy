@@ -31,7 +31,7 @@ Lembrar do node nas versoes acima da 14.5.0 devido ao uuid
 -   [x] Substituir a geracao de ids
 -   [x] Moficar nas migrations o uuid function
 -   [x] Mark read repository ajeitar nomes e tirar do repoistorio a funcao
--   Fazer o toggle do user allowed
+-   [x] Fazer o toggle do user allowed
 -   Criar a migration de relatorio de emotions
 -   Listar os emotions
 -   Atualizar os emotions

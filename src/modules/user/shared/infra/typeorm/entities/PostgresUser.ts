@@ -38,7 +38,6 @@ class PostgresUser implements IUser {
         return this.avatar ? `${api_url}/file/${this.avatar}` : null
     }
 
-    @Exclude()
     @Column()
     public allowed: boolean
 
