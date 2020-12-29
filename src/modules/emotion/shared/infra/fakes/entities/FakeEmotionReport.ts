@@ -1,5 +1,5 @@
 import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
-import { IEmotionReport } from '@modules/emotion/shared/entities/IEmotionReport'
+import { IEmotionReport } from '@modules/emotion/shared/schemas/IEmotionReport'
 
 class FakeEmotionReport implements IEmotionReport {
     public id: string

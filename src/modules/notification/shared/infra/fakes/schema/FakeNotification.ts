@@ -1,4 +1,4 @@
-import { INotification } from '@modules/notification/shared/entities/INotification'
+import { INotification } from '@modules/notification/shared/schemas/INotification'
 
 class FakeNotification implements INotification {
     public _id: any

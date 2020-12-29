@@ -1,6 +1,6 @@
 import { ObjectID } from 'mongodb'
 import { ICreateNotificationDTO } from '@modules/notification/shared/dtos/ICreateNotificationDTO'
-import { INotification } from '@modules/notification/shared/entities/INotification'
+import { INotification } from '@modules/notification/shared/schemas/INotification'
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
 import { FakeNotification } from '../schema/FakeNotification'
 

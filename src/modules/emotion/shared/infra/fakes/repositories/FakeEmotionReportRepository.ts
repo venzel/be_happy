@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid'
 import { ICreateEmotionReportDTO } from '@modules/emotion/shared/dtos/ICreateEmotionReportDTO'
-import { IEmotionReport } from '@modules/emotion/shared/entities/IEmotionReport'
-import { PostgresEmotionReport } from '../../typeorm/entities/PostgresEmotionReport'
+import { IEmotionReport } from '@modules/emotion/shared/schemas/IEmotionReport'
+import { MongoEmotionReport } from '../../mongodb/schemas/MongoEmotionReport'
 import { IEmotionReportRepository } from '@modules/emotion/shared/repositories/IEmotionReportRepository'
 
 class FakeEmotionReportRepository implements IEmotionReportRepository {
@@ -18,7 +18,8 @@ class FakeEmotionReportRepository implements IEmotionReportRepository {
     public async create(data: ICreateEmotionReportDTO): Promise<IEmotionReport> {
         const { emotion_id, owner_id } = data
 
-        const emotionReport: IEmotionReport = new PostgresEmotionReport()
+        // TODO: akii
+        const emotionReport: IEmotionReport = new MongoEmotionReport()
 
         const id = uuid()
 

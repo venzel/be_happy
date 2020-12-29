@@ -1,9 +1,6 @@
-import { IEmotion } from './IEmotion'
-
 interface IEmotionReport {
-    id: string
+    _id: any
     emotion_id: string
-    emotion_owner: IEmotion
     owner_id: string
     read: boolean
     created_at: Date

@@ -19,7 +19,7 @@ export default class CreateEmotions1608048084284 implements MigrationInterface {
                         isNullable: true,
                     },
                     {
-                        name: 'emotion',
+                        name: 'type',
                         type: 'varchar',
                         isNullable: false,
                     },

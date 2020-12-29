@@ -13,17 +13,17 @@ import { IEmotionRepository } from '@modules/emotion/shared/repositories/IEmotio
 import { PostgresEmotionRepository } from '@modules/emotion/shared/infra/typeorm/repositories/PostgresEmotionRepository'
 
 import { IEmotionReportRepository } from '@modules/emotion/shared/repositories/IEmotionReportRepository'
-import { PostgresEmotionReportRepository } from '@modules/emotion/shared/infra/typeorm/repositories/PostgresEmotionReportRepository'
+import { MongoEmotionReportRepository } from '@modules/emotion/shared/infra/mongodb/repositories/MongoEmotionReportRepository'
 
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
-import { MongoNotificationRepository } from '@modules/notification/shared/infra/typeorm/repositories/MongoNotificationRepository'
+import { MongoNotificationRepository } from '@modules/notification/shared/infra/mongodb/repositories/MongoNotificationRepository'
 
 container.registerSingleton<IUserRepository>('UserRepository', PostgresUserRepository)
 container.registerSingleton<IUserTokenRepository>('UserTokenRepository', PostgresUserTokenRepository)
 container.registerSingleton<IEmotionRepository>('EmotionRepository', PostgresEmotionRepository)
 container.registerSingleton<IEmotionReportRepository>(
-    'EmotionRepository',
-    PostgresEmotionReportRepository
+    'EmotionReportRepository',
+    MongoEmotionReportRepository
 )
 container.registerSingleton<INotificationRepository>(
     'NotificationRepository',

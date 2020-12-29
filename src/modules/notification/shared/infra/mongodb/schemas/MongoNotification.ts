@@ -8,15 +8,15 @@ import {
     UpdateDateColumn,
 } from 'typeorm'
 import { Expose } from 'class-transformer'
-import { INotification } from '@modules/notification/shared/entities/INotification'
+import { INotification } from '@modules/notification/shared/schemas/INotification'
 
-@Entity('notification')
+@Entity('notifications')
 class MongoNotification implements INotification {
     @Expose({ name: 'notification_id' })
     @ObjectIdColumn()
     public _id: ObjectID
 
-    @Column('uuid')
+    @Column()
     public owner_id: string
 
     @Column()

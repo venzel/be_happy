@@ -1,5 +1,5 @@
 import { ICreateNotificationDTO } from '../dtos/ICreateNotificationDTO'
-import { INotification } from '../entities/INotification'
+import { INotification } from '../schemas/INotification'
 
 interface INotificationRepository {
     findOneById(notification_id: string): Promise<INotification | undefined>
