@@ -42,7 +42,7 @@ class UserRoutes {
         new UpdateAvatarUserMiddleware().register(router, '/user/update_avatar')
 
         // put
-        new UpdateProfileUserMiddleware().register(router, '/user/update_profiler')
+        new UpdateProfileUserMiddleware().register(router, '/user/update_profile')
 
         // patch
         new ToggleRoleUserMiddleware().register(router, '/user/toggle_role?:id')

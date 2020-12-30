@@ -10,7 +10,7 @@ class ForgotPasswordUserService {
     constructor(
         @inject('UserRepository') private _userRepository: IUserRepository,
         @inject('UserTokenRepository') private _userTokenRepository: IUserTokenRepository,
-        @inject('GenerrateIdProvider') private _generateIdProvider: IGenerateIdProvider,
+        @inject('GenerateIdProvider') private _generateIdProvider: IGenerateIdProvider,
         @inject('QueueProvider') private _queueProvider: IQueueProvider
     ) {}
 
