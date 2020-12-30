@@ -8,10 +8,10 @@ import {
     UpdateDateColumn,
 } from 'typeorm'
 import { Expose } from 'class-transformer'
-import { INotification } from '@modules/notification/shared/models/schemas/INotification'
+import { INotificationSchema } from '@modules/notification/shared/models/schemas/INotificationSchema'
 
 @Entity('notifications')
-class MongoNotification implements INotification {
+class MongoNotificationSchema implements INotificationSchema {
     @Expose({ name: 'notification_id' })
     @ObjectIdColumn()
     public _id: ObjectID
@@ -37,4 +37,4 @@ class MongoNotification implements INotification {
     public updated_at: Date
 }
 
-export { MongoNotification }
+export { MongoNotificationSchema }

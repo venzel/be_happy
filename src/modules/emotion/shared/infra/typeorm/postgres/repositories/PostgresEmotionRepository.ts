@@ -1,21 +1,21 @@
 import { getRepository, Repository } from 'typeorm'
 import { ICreateEmotionDTO } from '@modules/emotion/shared/dtos/ICreateEmotionDTO'
-import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
-import { PostgresEmotion } from '../entities/PostgresEmotion'
+import { IEmotionEntity } from '@modules/emotion/shared/models/entities/IEmotionEntity'
+import { PostgresEmotionEntity } from '../entities/PostgresEmotionEntity'
 import { IEmotionRepository } from '@modules/emotion/shared/repositories/IEmotionRepository'
 
 class PostgresEmotionRepository implements IEmotionRepository {
-    private _repository: Repository<IEmotion>
+    private _repository: Repository<IEmotionEntity>
 
     constructor() {
-        this._repository = getRepository(PostgresEmotion, 'default')
+        this._repository = getRepository(PostgresEmotionEntity, 'default')
     }
 
-    public async findOneById(emotionId: string): Promise<IEmotion | undefined> {
+    public async findOneById(emotionId: string): Promise<IEmotionEntity | undefined> {
         return await this._repository.findOne({ where: { id: emotionId, deletedAt: null } })
     }
 
-    public async create(data: ICreateEmotionDTO): Promise<IEmotion> {
+    public async create(data: ICreateEmotionDTO): Promise<IEmotionEntity> {
         const { emotion_id: id, owner_id, type, description } = data
 
         const emotionCreated = this._repository.create({ id, owner_id, type, description })
@@ -25,7 +25,7 @@ class PostgresEmotionRepository implements IEmotionRepository {
         return emotionCreated
     }
 
-    public async save(emotion: IEmotion): Promise<IEmotion> {
+    public async save(emotion: IEmotionEntity): Promise<IEmotionEntity> {
         const currentDate = new Date()
 
         emotion.updated_at = currentDate
@@ -35,7 +35,7 @@ class PostgresEmotionRepository implements IEmotionRepository {
         return emotion
     }
 
-    public async delete(emotion: IEmotion): Promise<IEmotion> {
+    public async delete(emotion: IEmotionEntity): Promise<IEmotionEntity> {
         const currentDate = new Date()
 
         emotion.deleted_at = currentDate
@@ -45,7 +45,7 @@ class PostgresEmotionRepository implements IEmotionRepository {
         return emotion
     }
 
-    public async list(): Promise<IEmotion[]> {
+    public async list(): Promise<IEmotionEntity[]> {
         return await this._repository.find()
     }
 }

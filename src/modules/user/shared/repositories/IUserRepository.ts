@@ -1,22 +1,22 @@
 import { ICreateUserDTO } from '../dtos/ICreateUserDTO'
-import { IUser } from '../models/entities/IUser'
+import { IUserEntity } from '../models/entities/IUserEntity'
 
 interface IUserRepository {
     count(): Promise<number>
 
-    findOneById(user_id: string): Promise<IUser | undefined>
+    findOneById(user_id: string): Promise<IUserEntity | undefined>
 
-    findOneByName(user_name: string): Promise<IUser | undefined>
+    findOneByName(user_name: string): Promise<IUserEntity | undefined>
 
-    findOneByEmail(user_email: string): Promise<IUser | undefined>
+    findOneByEmail(user_email: string): Promise<IUserEntity | undefined>
 
-    create(data: ICreateUserDTO): Promise<IUser>
+    create(data: ICreateUserDTO): Promise<IUserEntity>
 
-    save(user: IUser): Promise<IUser>
+    save(user: IUserEntity): Promise<IUserEntity>
 
-    delete(user: IUser): Promise<IUser>
+    delete(user: IUserEntity): Promise<IUserEntity>
 
-    list(): Promise<IUser[]>
+    list(): Promise<IUserEntity[]>
 }
 
 export { IUserRepository }

@@ -8,12 +8,12 @@ import {
     UpdateDateColumn,
     DeleteDateColumn,
 } from 'typeorm'
-import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
-import { PostgresUser } from '@modules/user/shared/infra/typeorm/postgres/entities/PostgresUser'
+import { IEmotionEntity } from '@modules/emotion/shared/models/entities/IEmotionEntity'
+import { PostgresUserEntity } from '@modules/user/shared/infra/typeorm/postgres/entities/PostgresUserEntity'
 import { Expose, Exclude } from 'class-transformer'
 
 @Entity('emotions')
-class PostgresEmotion implements IEmotion {
+class PostgresEmotionEntity implements IEmotionEntity {
     @Expose({ name: 'emotion_id' })
     @PrimaryGeneratedColumn('rowid')
     public id: string
@@ -21,9 +21,9 @@ class PostgresEmotion implements IEmotion {
     @Column()
     public owner_id: string
 
-    @ManyToOne(() => PostgresUser)
+    @ManyToOne(() => PostgresUserEntity)
     @JoinColumn({ name: 'owner_id' })
-    public owner: PostgresUser
+    public owner: PostgresUserEntity
 
     @Column()
     public type: string
@@ -42,4 +42,4 @@ class PostgresEmotion implements IEmotion {
     public deleted_at: Date | null
 }
 
-export { PostgresEmotion }
+export { PostgresEmotionEntity }

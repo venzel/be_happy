@@ -1,6 +1,6 @@
-import { IUserToken } from '@modules/user/shared/models/schemas/IUserToken'
+import { IUserTokenSchema } from '@modules/user/shared/models/schemas/IUserTokenSchema'
 
-class FakeUserToken implements IUserToken {
+class FakeUserTokenSchema implements IUserTokenSchema {
     public _id: string
     public owner_id: string
     public token: string
@@ -8,4 +8,4 @@ class FakeUserToken implements IUserToken {
     public updated_at: Date
 }
 
-export { FakeUserToken }
+export { FakeUserTokenSchema }

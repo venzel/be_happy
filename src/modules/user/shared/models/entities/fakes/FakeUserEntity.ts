@@ -1,6 +1,6 @@
-import { IUser } from '@modules/user/shared/models/entities/IUser'
+import { IUserEntity } from '@modules/user/shared/models/entities/IUserEntity'
 
-class FakeUser implements IUser {
+class FakeUserEntity implements IUserEntity {
     public id: string
     public name: string
     public email: string
@@ -14,4 +14,4 @@ class FakeUser implements IUser {
     public deleted_at: Date | null
 }
 
-export { FakeUser }
+export { FakeUserEntity }

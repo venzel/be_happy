@@ -1,6 +1,6 @@
-import { IEmotionReport } from '../IEmotionReport'
+import { IEmotionReportSchema } from '../IEmotionReportSchema'
 
-class FakeEmotionReport implements IEmotionReport {
+class FakeEmotionReportSchema implements IEmotionReportSchema {
     public _id: string
     public emotion_id: string
     public emotion_owner: string
@@ -10,4 +10,4 @@ class FakeEmotionReport implements IEmotionReport {
     public deleted_at: Date | null
 }
 
-export { FakeEmotionReport }
+export { FakeEmotionReportSchema }

@@ -2,7 +2,7 @@ import { injectable, inject } from 'tsyringe'
 import { IHashProvider } from '@modules/user/shared/providers/HashProvider/models/IHashProvider'
 import { ITokenProvider } from '@modules/user/shared/providers/TokenProvider/models/ITokenProvider'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
-import { IUser } from '@modules/user/shared/models/entities/IUser'
+import { IUserEntity } from '@modules/user/shared/models/entities/IUserEntity'
 import { IAuthenticateUserDTO } from './IAuthenticateUserDTO'
 import { AppException } from '@shared/exceptions/AppException'
 
@@ -14,7 +14,7 @@ class AuthenticateUserService {
         @inject('HashProvider') private _hashProvider: IHashProvider
     ) {}
 
-    public async execute(data: IAuthenticateUserDTO): Promise<IUser> {
+    public async execute(data: IAuthenticateUserDTO): Promise<IUserEntity> {
         const { email, password } = data
 
         const existsUser = await this._userRepository.findOneByEmail(email)

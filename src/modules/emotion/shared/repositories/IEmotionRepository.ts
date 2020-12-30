@@ -1,16 +1,16 @@
-import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
+import { IEmotionEntity } from '@modules/emotion/shared/models/entities/IEmotionEntity'
 import { ICreateEmotionDTO } from '../dtos/ICreateEmotionDTO'
 
 interface IEmotionRepository {
-    findOneById(emotion_id: string): Promise<IEmotion | undefined>
+    findOneById(emotion_id: string): Promise<IEmotionEntity | undefined>
 
-    create(data: ICreateEmotionDTO): Promise<IEmotion>
+    create(data: ICreateEmotionDTO): Promise<IEmotionEntity>
 
-    save(emotion: IEmotion): Promise<IEmotion>
+    save(emotion: IEmotionEntity): Promise<IEmotionEntity>
 
-    delete(emotion: IEmotion): Promise<IEmotion>
+    delete(emotion: IEmotionEntity): Promise<IEmotionEntity>
 
-    list(): Promise<IEmotion[]>
+    list(): Promise<IEmotionEntity[]>
 }
 
 export { IEmotionRepository }

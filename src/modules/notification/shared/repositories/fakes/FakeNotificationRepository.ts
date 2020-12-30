@@ -1,24 +1,24 @@
 import { ObjectID } from 'mongodb'
 import { ICreateNotificationDTO } from '@modules/notification/shared/dtos/ICreateNotificationDTO'
-import { INotification } from '@modules/notification/shared/models/schemas/INotification'
+import { INotificationSchema } from '@modules/notification/shared/models/schemas/INotificationSchema'
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
-import { FakeNotification } from '../../models/schemas/fakes/FakeNotification'
+import { FakeNotificationSchema } from '../../models/schemas/fakes/FakeNotificationSchema'
 
 class FakeNotificationRepository implements INotificationRepository {
-    private _repository: INotification[]
+    private _repository: INotificationSchema[]
 
     constructor() {
         this._repository = []
     }
 
-    public async findOneById(notification_id: string): Promise<INotification | undefined> {
+    public async findOneById(notification_id: string): Promise<INotificationSchema | undefined> {
         return this._repository.find((data) => data._id === new ObjectID(notification_id))
     }
 
-    public async create(data: ICreateNotificationDTO): Promise<INotification> {
+    public async create(data: ICreateNotificationDTO): Promise<INotificationSchema> {
         const { owner_id, content } = data
 
-        const notificationFake = new FakeNotification()
+        const notificationFake = new FakeNotificationSchema()
 
         Object.assign(notificationFake, { _id: new ObjectID(), owner_id, content })
 
@@ -27,7 +27,7 @@ class FakeNotificationRepository implements INotificationRepository {
         return notificationFake
     }
 
-    public async save(notification: INotification): Promise<INotification> {
+    public async save(notification: INotificationSchema): Promise<INotificationSchema> {
         const notificationIndex = this._repository.indexOf(notification)
 
         if (notificationIndex !== -1) {
@@ -41,7 +41,7 @@ class FakeNotificationRepository implements INotificationRepository {
         return notification
     }
 
-    public async markAsRead(notification: INotification): Promise<INotification> {
+    public async markAsRead(notification: INotificationSchema): Promise<INotificationSchema> {
         const notificationIndex = this._repository.indexOf(notification)
 
         if (notificationIndex !== -1) {
@@ -56,7 +56,7 @@ class FakeNotificationRepository implements INotificationRepository {
         return notification
     }
 
-    public async list(): Promise<INotification[]> {
+    public async list(): Promise<INotificationSchema[]> {
         return this._repository
     }
 }

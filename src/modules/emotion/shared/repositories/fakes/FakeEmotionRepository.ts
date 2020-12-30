@@ -1,24 +1,24 @@
 import { v4 as uuid } from 'uuid'
 import { ICreateEmotionDTO } from '@modules/emotion/shared/dtos/ICreateEmotionDTO'
-import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
+import { IEmotionEntity } from '@modules/emotion/shared/models/entities/IEmotionEntity'
 import { IEmotionRepository } from '@modules/emotion/shared/repositories/IEmotionRepository'
-import { FakeEmotion } from '../../entities/fakes/FakeEmotion'
+import { FakeEmotionEntity } from '../../models/entities/fakes/FakeEmotionEntity'
 
 class FakeEmotionRepository implements IEmotionRepository {
-    private _repository: IEmotion[]
+    private _repository: IEmotionEntity[]
 
     constructor() {
         this._repository = []
     }
 
-    public async findOneById(emotionId: string): Promise<IEmotion | undefined> {
+    public async findOneById(emotionId: string): Promise<IEmotionEntity | undefined> {
         return this._repository.find((emotion) => emotion.id === emotionId)
     }
 
-    public async create(data: ICreateEmotionDTO): Promise<IEmotion> {
+    public async create(data: ICreateEmotionDTO): Promise<IEmotionEntity> {
         const { owner_id, type, description } = data
 
-        const emotionFake = new FakeEmotion()
+        const emotionFake = new FakeEmotionEntity()
 
         const id = uuid()
 
@@ -29,7 +29,7 @@ class FakeEmotionRepository implements IEmotionRepository {
         return emotionFake
     }
 
-    public async save(emotion: IEmotion): Promise<IEmotion> {
+    public async save(emotion: IEmotionEntity): Promise<IEmotionEntity> {
         const emotionIndex: number = this._repository.indexOf(emotion)
 
         if (emotionIndex !== -1) {
@@ -39,7 +39,7 @@ class FakeEmotionRepository implements IEmotionRepository {
         return emotion
     }
 
-    public async delete(emotion: IEmotion): Promise<IEmotion> {
+    public async delete(emotion: IEmotionEntity): Promise<IEmotionEntity> {
         const emotionIndex: number = this._repository.indexOf(emotion)
 
         if (emotionIndex !== -1) {
@@ -54,7 +54,7 @@ class FakeEmotionRepository implements IEmotionRepository {
         return emotion
     }
 
-    public async list(): Promise<IEmotion[]> {
+    public async list(): Promise<IEmotionEntity[]> {
         return this._repository
     }
 }

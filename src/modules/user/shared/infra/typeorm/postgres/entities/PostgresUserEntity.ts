@@ -8,10 +8,10 @@ import {
 } from 'typeorm'
 import { Exclude, Expose } from 'class-transformer'
 import { api_url } from '@configs/geral'
-import { IUser } from '@modules/user/shared/models/entities/IUser'
+import { IUserEntity } from '@modules/user/shared/models/entities/IUserEntity'
 
 @Entity('users')
-class PostgresUser implements IUser {
+class PostgresUserEntity implements IUserEntity {
     @Expose({ name: 'user_id' })
     @PrimaryGeneratedColumn('rowid')
     public id: string
@@ -55,4 +55,4 @@ class PostgresUser implements IUser {
     public deleted_at: Date | null
 }
 
-export { PostgresUser }
+export { PostgresUserEntity }

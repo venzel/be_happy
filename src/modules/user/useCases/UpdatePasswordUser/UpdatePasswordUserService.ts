@@ -2,7 +2,7 @@ import { injectable, inject } from 'tsyringe'
 import { IHashProvider } from '@modules/user/shared/providers/HashProvider/models/IHashProvider'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { IUserTokenRepository } from '@modules/user/shared/repositories/IUserTokenRepository'
-import { IUser } from '@modules/user/shared/models/entities/IUser'
+import { IUserEntity } from '@modules/user/shared/models/entities/IUserEntity'
 import { AppException } from '@shared/exceptions/AppException'
 import { IUpdatePasswordDTO } from './IUpdatePasswordDTO'
 
@@ -14,7 +14,7 @@ class UpdatePasswordUserService {
         @inject('HashProvider') private _hashProvider: IHashProvider
     ) {}
 
-    public async execute(data: IUpdatePasswordDTO): Promise<IUser> {
+    public async execute(data: IUpdatePasswordDTO): Promise<IUserEntity> {
         const { current_password, new_password, owner_id } = data
 
         const existsUser = await this._userRepository.findOneById(owner_id)

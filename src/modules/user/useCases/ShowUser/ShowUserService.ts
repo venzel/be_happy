@@ -1,5 +1,5 @@
 import { injectable, inject } from 'tsyringe'
-import { IUser } from '@modules/user/shared/models/entities/IUser'
+import { IUserEntity } from '@modules/user/shared/models/entities/IUserEntity'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { IShowUserDTO } from './IShowUserDTO'
 import { AppException } from '@shared/exceptions/AppException'
@@ -8,7 +8,7 @@ import { AppException } from '@shared/exceptions/AppException'
 class ShowUserService {
     constructor(@inject('UserRepository') private _userRepository: IUserRepository) {}
 
-    public async execute(data: IShowUserDTO): Promise<IUser> {
+    public async execute(data: IShowUserDTO): Promise<IUserEntity> {
         const { query_user_id, owner_id, role } = data
 
         const existsUser = await this._userRepository.findOneById(query_user_id)

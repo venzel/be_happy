@@ -1,6 +1,6 @@
 import { injectable, inject } from 'tsyringe'
 import { formatDate } from '@shared/helpers/date'
-import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
+import { IEmotionEntity } from '@modules/emotion/shared/models/entities/IEmotionEntity'
 import { IEmotionRepository } from '@modules/emotion/shared/repositories/IEmotionRepository'
 import { IEmotionReportRepository } from '@modules/emotion/shared/repositories/IEmotionReportRepository'
 import { IGenerateIdProvider } from '@shared/providers/generateIdProvider/model/IGenerateIdProvider'
@@ -16,7 +16,7 @@ class CreateEmotionService {
         @inject('GenerateIdProvider') private _generateIdProvider: IGenerateIdProvider
     ) {}
 
-    public async execute(data: ICreateEmotionDTO): Promise<IEmotion> {
+    public async execute(data: ICreateEmotionDTO): Promise<IEmotionEntity> {
         const { type, description, owner_id } = data
 
         /* Generate emotion id provider */

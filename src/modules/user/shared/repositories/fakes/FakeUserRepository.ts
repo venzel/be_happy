@@ -1,11 +1,11 @@
 import { v4 as uuid } from 'uuid'
 import { ICreateUserDTO } from '@modules/user/shared/dtos/ICreateUserDTO'
-import { IUser } from '@modules/user/shared/models/entities/IUser'
+import { IUserEntity } from '@modules/user/shared/models/entities/IUserEntity'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
-import { FakeUser } from '../../models/entities/fakes/FakeUser'
+import { FakeUserEntity } from '../../models/entities/fakes/FakeUserEntity'
 
 class FakeUserRepository implements IUserRepository {
-    private _repository: IUser[]
+    private _repository: IUserEntity[]
 
     constructor() {
         this._repository = []
@@ -15,22 +15,22 @@ class FakeUserRepository implements IUserRepository {
         return this._repository.length
     }
 
-    public async findOneById(user_id: string): Promise<IUser | undefined> {
+    public async findOneById(user_id: string): Promise<IUserEntity | undefined> {
         return this._repository.find((user) => user.id === user_id)
     }
 
-    public async findOneByName(user_name: string): Promise<IUser | undefined> {
+    public async findOneByName(user_name: string): Promise<IUserEntity | undefined> {
         return this._repository.find((user) => user.name === user_name)
     }
 
-    public async findOneByEmail(user_email: string): Promise<IUser | undefined> {
+    public async findOneByEmail(user_email: string): Promise<IUserEntity | undefined> {
         return this._repository.find((user) => user.email === user_email)
     }
 
-    public async create(user: ICreateUserDTO): Promise<IUser> {
+    public async create(user: ICreateUserDTO): Promise<IUserEntity> {
         const { name, email, password, role, activated } = user
 
-        const fakeUser: IUser = new FakeUser()
+        const fakeUser: IUserEntity = new FakeUserEntity()
 
         const id: string = uuid()
 
@@ -41,7 +41,7 @@ class FakeUserRepository implements IUserRepository {
         return fakeUser
     }
 
-    public async save(user: IUser): Promise<IUser> {
+    public async save(user: IUserEntity): Promise<IUserEntity> {
         const userIndex: number = this._repository.indexOf(user)
 
         if (userIndex !== -1) {
@@ -55,7 +55,7 @@ class FakeUserRepository implements IUserRepository {
         return user
     }
 
-    public async delete(user: IUser): Promise<IUser> {
+    public async delete(user: IUserEntity): Promise<IUserEntity> {
         const userIndex: number = this._repository.indexOf(user)
 
         if (userIndex !== -1) {
@@ -70,7 +70,7 @@ class FakeUserRepository implements IUserRepository {
         return user
     }
 
-    public async list(): Promise<IUser[]> {
+    public async list(): Promise<IUserEntity[]> {
         return this._repository
     }
 }

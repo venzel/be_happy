@@ -1,4 +1,4 @@
-interface IEmotionReport {
+interface IEmotionReportSchema {
     _id: any
     emotion_id: string
     owner_id: string
@@ -7,4 +7,4 @@ interface IEmotionReport {
     deleted_at: Date | null
 }
 
-export { IEmotionReport }
+export { IEmotionReportSchema }

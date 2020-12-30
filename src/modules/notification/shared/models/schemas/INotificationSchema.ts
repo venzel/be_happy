@@ -1,4 +1,4 @@
-interface INotification {
+interface INotificationSchema {
     _id: any
     owner_id: string
     content: string
@@ -7,4 +7,4 @@ interface INotification {
     updated_at: Date
 }
 
-export { INotification }
+export { INotificationSchema }

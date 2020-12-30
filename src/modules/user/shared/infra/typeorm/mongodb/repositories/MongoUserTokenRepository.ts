@@ -1,17 +1,17 @@
 import { MongoRepository, getMongoRepository } from 'typeorm'
-import { IUserToken } from '@modules/user/shared/models/schemas/IUserToken'
-import { MongoUserToken } from '../schemas/MongoUserToken'
+import { IUserTokenSchema } from '@modules/user/shared/models/schemas/IUserTokenSchema'
+import { MongoUserTokenSchema } from '../schemas/MongoUserTokenSchema'
 import { IUserTokenRepository } from '@modules/user/shared/repositories/IUserTokenRepository'
 import { ICreateTokenDTO } from '@modules/user/shared/dtos/ICreateTokenDTO'
 
 class MongoUserTokenRepository implements IUserTokenRepository {
-    private _repository: MongoRepository<IUserToken>
+    private _repository: MongoRepository<IUserTokenSchema>
 
     constructor() {
-        this._repository = getMongoRepository(MongoUserToken, 'mongodb')
+        this._repository = getMongoRepository(MongoUserTokenSchema, 'mongodb')
     }
 
-    public async findOneByToken(token: string): Promise<IUserToken | undefined> {
+    public async findOneByToken(token: string): Promise<IUserTokenSchema | undefined> {
         return await this._repository.findOne({ where: { token } })
     }
 

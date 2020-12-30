@@ -1,7 +1,7 @@
 import { injectable, inject } from 'tsyringe'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { IProfileUpdateUserDTO } from './IUpdateProfileUserDTO'
-import { IUser } from '@modules/user/shared/models/entities/IUser'
+import { IUserEntity } from '@modules/user/shared/models/entities/IUserEntity'
 import { IHashProvider } from '@modules/user/shared/providers/HashProvider/models/IHashProvider'
 import { AppException } from '@shared/exceptions/AppException'
 
@@ -12,7 +12,7 @@ class UpdateProfileUserService {
         @inject('HashProvider') private _hashProvider: IHashProvider
     ) {}
 
-    public async execute(data: IProfileUpdateUserDTO): Promise<IUser> {
+    public async execute(data: IProfileUpdateUserDTO): Promise<IUserEntity> {
         const { name, email, current_password, owner_id } = data
 
         const existsUserWithEmail = await this._userRepository.findOneByEmail(email)

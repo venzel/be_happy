@@ -1,4 +1,4 @@
-interface IUserToken {
+interface IUserTokenSchema {
     _id: any
     owner_id: string
     token: string
@@ -6,4 +6,4 @@ interface IUserToken {
     updated_at: Date
 }
 
-export { IUserToken }
+export { IUserTokenSchema }

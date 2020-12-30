@@ -1,16 +1,16 @@
 import { ICreateEmotionReportDTO } from '../dtos/ICreateEmotionReportDTO'
-import { IEmotionReport } from '../models/schemas/IEmotionReport'
+import { IEmotionReportSchema } from '../models/schemas/IEmotionReportSchema'
 
 interface IEmotionReportRepository {
-    filterByOwnerId(owner_id: string): Promise<IEmotionReport[]>
+    filterByOwnerId(owner_id: string): Promise<IEmotionReportSchema[]>
 
-    create(data: ICreateEmotionReportDTO): Promise<IEmotionReport>
+    create(data: ICreateEmotionReportDTO): Promise<IEmotionReportSchema>
 
-    save(emotion_report: IEmotionReport): Promise<IEmotionReport>
+    save(emotion_report: IEmotionReportSchema): Promise<IEmotionReportSchema>
 
-    delete(emotion_report: IEmotionReport): Promise<IEmotionReport>
+    delete(emotion_report: IEmotionReportSchema): Promise<IEmotionReportSchema>
 
-    list(): Promise<IEmotionReport[]>
+    list(): Promise<IEmotionReportSchema[]>
 }
 
 export { IEmotionReportRepository }

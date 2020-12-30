@@ -5,7 +5,7 @@ import { IUserRepository } from '@modules/user/shared/repositories/IUserReposito
 import { ICacheProvider } from '@shared/providers/CacheProvider/models/ICacheProvider'
 import { IQueueProvider } from '@shared/providers/QueueProvider/models/IQueueProvider'
 import { ICreateUserDTO } from '@modules/user/shared/dtos/ICreateUserDTO'
-import { IUser } from '@modules/user/shared/models/entities/IUser'
+import { IUserEntity } from '@modules/user/shared/models/entities/IUserEntity'
 import { ICreatePayloadDTO } from '@modules/user/shared/dtos/ICreatePayloadDTO'
 import { IRoleDTO } from '@modules/user/shared/dtos/IRoleDTO'
 import { environment } from '@configs/geral'
@@ -23,7 +23,7 @@ class CreateUserService {
         @inject('QueueProvider') private _queueProvider: IQueueProvider
     ) {}
 
-    public async execute(data: ICreateUserDTO): Promise<IUser> {
+    public async execute(data: ICreateUserDTO): Promise<IUserEntity> {
         const { name, email, password } = data
 
         /* Find only user by email */

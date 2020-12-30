@@ -2,7 +2,7 @@ import { injectable, inject } from 'tsyringe'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { IStorageProvider } from '@shared/providers/StorageProvider/models/IStorageProvider'
 import { IUpdateAvatarUserDTO } from './IUpdateAvatarUserDTO'
-import { IUser } from '@modules/user/shared/models/entities/IUser'
+import { IUserEntity } from '@modules/user/shared/models/entities/IUserEntity'
 import { AppException } from '@shared/exceptions/AppException'
 
 @injectable()
@@ -12,7 +12,7 @@ class UpdateAvatarUserService {
         @inject('StorageProvider') private _storageProvider: IStorageProvider
     ) {}
 
-    public async execute(data: IUpdateAvatarUserDTO): Promise<IUser> {
+    public async execute(data: IUpdateAvatarUserDTO): Promise<IUserEntity> {
         const { filename, owner_id } = data
 
         const existsUser = await this._userRepository.findOneById(owner_id)

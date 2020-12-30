@@ -1,16 +1,16 @@
 import { ICreateNotificationDTO } from '../dtos/ICreateNotificationDTO'
-import { INotification } from '../models/schemas/INotification'
+import { INotificationSchema } from '../models/schemas/INotificationSchema'
 
 interface INotificationRepository {
-    findOneById(notification_id: string): Promise<INotification | undefined>
+    findOneById(notification_id: string): Promise<INotificationSchema | undefined>
 
-    create(data: ICreateNotificationDTO): Promise<INotification>
+    create(data: ICreateNotificationDTO): Promise<INotificationSchema>
 
-    save(notification: INotification): Promise<INotification>
+    save(notification: INotificationSchema): Promise<INotificationSchema>
 
-    markAsRead(notification: INotification): Promise<INotification>
+    markAsRead(notification: INotificationSchema): Promise<INotificationSchema>
 
-    list(): Promise<INotification[]>
+    list(): Promise<INotificationSchema[]>
 }
 
 export { INotificationRepository }

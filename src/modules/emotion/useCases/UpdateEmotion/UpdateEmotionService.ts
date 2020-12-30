@@ -1,5 +1,5 @@
 import { injectable, inject } from 'tsyringe'
-import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
+import { IEmotionEntity } from '@modules/emotion/shared/models/entities/IEmotionEntity'
 import { IEmotionRepository } from '@modules/emotion/shared/repositories/IEmotionRepository'
 import { AppException } from '@shared/exceptions/AppException'
 import { IUpdateEmotionDTO } from './IUpdateEmotionDTO'
@@ -8,7 +8,7 @@ import { IUpdateEmotionDTO } from './IUpdateEmotionDTO'
 class UpdateEmotionService {
     constructor(@inject('EmotionRepository') private _emotionRepository: IEmotionRepository) {}
 
-    public async execute(data: IUpdateEmotionDTO): Promise<IEmotion> {
+    public async execute(data: IUpdateEmotionDTO): Promise<IEmotionEntity> {
         const { emotion_id, description } = data
 
         const existsEmotionWithId = await this._emotionRepository.findOneById(emotion_id)

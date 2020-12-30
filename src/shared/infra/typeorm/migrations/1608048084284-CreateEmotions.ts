@@ -53,7 +53,7 @@ export default class CreateEmotions1608048084284 implements MigrationInterface {
         await queryRunner.createForeignKey(
             'emotions',
             new TableForeignKey({
-                name: 'Emotions',
+                name: 'EmotionsOwner',
                 referencedTableName: 'users',
                 referencedColumnNames: ['id'],
                 columnNames: ['owner_id'],

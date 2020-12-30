@@ -1,9 +1,9 @@
 import { Entity, ObjectIdColumn, Column, CreateDateColumn, DeleteDateColumn, ObjectID } from 'typeorm'
-import { IEmotionReport } from '@modules/emotion/shared/models/schemas/IEmotionReport'
+import { IEmotionReportSchema } from '@modules/emotion/shared/models/schemas/IEmotionReportSchema'
 import { Expose, Exclude } from 'class-transformer'
 
 @Entity('emotions_report')
-class MongoEmotionReport implements IEmotionReport {
+class MongoEmotionReportSchema implements IEmotionReportSchema {
     @Expose({ name: 'emotion_report_id' })
     @ObjectIdColumn()
     public _id: ObjectID
@@ -25,4 +25,4 @@ class MongoEmotionReport implements IEmotionReport {
     public deleted_at: Date | null
 }
 
-export { MongoEmotionReport }
+export { MongoEmotionReportSchema }

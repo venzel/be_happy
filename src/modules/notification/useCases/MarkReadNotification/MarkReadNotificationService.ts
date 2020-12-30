@@ -1,5 +1,5 @@
 import { injectable, inject } from 'tsyringe'
-import { INotification } from '@modules/notification/shared/models/schemas/INotification'
+import { INotificationSchema } from '@modules/notification/shared/models/schemas/INotificationSchema'
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
 import { IUpdateNotificationDTO } from '@modules/notification/shared/dtos/IUpdateNotificationDTO'
 import { AppException } from '@shared/exceptions/AppException'
@@ -10,7 +10,7 @@ class MarkReadNotificationService {
         @inject('NotificationRepository') private _notificationRepository: INotificationRepository
     ) {}
 
-    public async execute(data: IUpdateNotificationDTO): Promise<INotification> {
+    public async execute(data: IUpdateNotificationDTO): Promise<INotificationSchema> {
         const { query_notification_id, owner_id } = data
 
         const existsNotification = await this._notificationRepository.findOneById(query_notification_id)

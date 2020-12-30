@@ -1,4 +1,4 @@
-interface IUser {
+interface IUserEntity {
     id: string
     name: string
     email: string
@@ -12,4 +12,4 @@ interface IUser {
     deleted_at: Date | null
 }
 
-export { IUser }
+export { IUserEntity }
