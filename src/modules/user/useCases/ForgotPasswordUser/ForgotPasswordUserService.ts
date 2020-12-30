@@ -23,18 +23,16 @@ class ForgotPasswordUserService {
 
         /* Generate token id by provider */
 
-        const token_id = this._generateIdProvider.generateId()
+        const generatedToken: string = this._generateIdProvider.generateId()
 
         /* End generate token id by provider */
 
-        const owner_id: string = existsUser.id
-
-        const generetadToken: string = await this._userTokenRepository.generateToken({
-            token_id,
-            owner_id,
+        const createdToken: string = await this._userTokenRepository.create({
+            token: generatedToken,
+            owner_id: existsUser.id,
         })
 
-        return generetadToken
+        return createdToken
     }
 }
 

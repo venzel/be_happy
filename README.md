@@ -19,6 +19,8 @@ Lembrar do node nas versoes acima da 14.5.0 devido ao uuid
 ## COLORS THEME
 
     - #31CF97
+    - #28FE9A
+    - #FFF1C9
     - #FFD2B6
 
 ## Fazer

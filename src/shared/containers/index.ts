@@ -7,7 +7,7 @@ import { IUserRepository } from '@modules/user/shared/repositories/IUserReposito
 import { PostgresUserRepository } from '@modules/user/shared/infra/typeorm/repositories/PostgresUserRepository'
 
 import { IUserTokenRepository } from '@modules/user/shared/repositories/IUserTokenRepository'
-import { PostgresUserTokenRepository } from '@modules/user/shared/infra/typeorm/repositories/PostgresUserTokenRepository'
+import { MongoUserTokenRepository } from '@modules/user/shared/infra/mongodb/repositories/MongoUserTokenRepository'
 
 import { IEmotionRepository } from '@modules/emotion/shared/repositories/IEmotionRepository'
 import { PostgresEmotionRepository } from '@modules/emotion/shared/infra/typeorm/repositories/PostgresEmotionRepository'
@@ -18,13 +18,22 @@ import { MongoEmotionReportRepository } from '@modules/emotion/shared/infra/mong
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
 import { MongoNotificationRepository } from '@modules/notification/shared/infra/mongodb/repositories/MongoNotificationRepository'
 
+// postgres
 container.registerSingleton<IUserRepository>('UserRepository', PostgresUserRepository)
-container.registerSingleton<IUserTokenRepository>('UserTokenRepository', PostgresUserTokenRepository)
+
+// mongo
+container.registerSingleton<IUserTokenRepository>('UserTokenRepository', MongoUserTokenRepository)
+
+// postgres
 container.registerSingleton<IEmotionRepository>('EmotionRepository', PostgresEmotionRepository)
+
+// mongo
 container.registerSingleton<IEmotionReportRepository>(
     'EmotionReportRepository',
     MongoEmotionReportRepository
 )
+
+// mongo
 container.registerSingleton<INotificationRepository>(
     'NotificationRepository',
     MongoNotificationRepository
