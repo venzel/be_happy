@@ -9,8 +9,8 @@ import { IUserEntity } from '@modules/user/shared/models/entities/IUserEntity'
 import { ICreatePayloadDTO } from '@modules/user/shared/dtos/ICreatePayloadDTO'
 import { IRoleDTO } from '@modules/user/shared/dtos/IRoleDTO'
 import { environment } from '@configs/geral'
-import { AppException } from '@shared/exceptions/AppException'
 import { IGenerateIdProvider } from '@shared/providers/generateIdProvider/model/IGenerateIdProvider'
+import { AppException } from '@shared/exceptions/AppException'
 
 @injectable()
 class CreateUserService {

@@ -21,11 +21,11 @@ class ForgotPasswordUserService {
             throw new AppException('User does not exists!', 404)
         }
 
-        /* Generate token id by provider */
+        /* Generate token by provider */
 
         const generatedToken: string = this._generateIdProvider.generateId()
 
-        /* End generate token id by provider */
+        /* End generate token by provider */
 
         const createdToken: string = await this._userTokenRepository.create({
             token: generatedToken,

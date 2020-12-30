@@ -36,8 +36,12 @@ Lembrar do node nas versoes acima da 14.5.0 devido ao uuid
 -   [x] Fazer o toggle do user allowed
 -   [x] Criar a migration de relatorio de emotions
 -   Listar os emotions
--   Atualizar os emotions
--   analise de requisitos
+-   Listar notificacoes
+-   Atualizar o emotion
+-   Ajeitar Documentacao, instalacao node/nvm
+-   Implementar caches: login e senha
+-   Fazer o modulo settings
+-   Ajeitar bugs do create user
 
 ## Fazer
 
@@ -50,8 +54,7 @@ Lembrar do node nas versoes acima da 14.5.0 devido ao uuid
 
 ## Fazer
 
--   Implementar caches:
-    -   Login e senha
+-   analise de requisitos
 
 ## Outros
 
