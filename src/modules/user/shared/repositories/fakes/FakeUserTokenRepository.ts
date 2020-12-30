@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid'
-import { IUserToken } from '@modules/user/shared/schemas/IUserToken'
+import { IUserToken } from '@modules/user/shared/models/schemas/IUserToken'
 import { IUserTokenRepository } from '@modules/user/shared/repositories/IUserTokenRepository'
-import { FakeUserToken } from '../../schemas/fakes/FakeUserToken'
+import { FakeUserToken } from '../../models/schemas/fakes/FakeUserToken'
 import { ICreateTokenDTO } from '@modules/user/shared/dtos/ICreateTokenDTO'
 
 class FakeUserTokenRepository implements IUserTokenRepository {

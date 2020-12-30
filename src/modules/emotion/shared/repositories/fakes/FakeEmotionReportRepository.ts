@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid'
 import { ICreateEmotionReportDTO } from '@modules/emotion/shared/dtos/ICreateEmotionReportDTO'
-import { IEmotionReport } from '@modules/emotion/shared/schemas/IEmotionReport'
-import { MongoEmotionReport } from '../../infra/mongodb/schemas/MongoEmotionReport'
+import { IEmotionReport } from '@modules/emotion/shared/models/schemas/IEmotionReport'
+import { MongoEmotionReport } from '../../infra/typeorm/mongodb/schemas/MongoEmotionReport'
 import { IEmotionReportRepository } from '@modules/emotion/shared/repositories/IEmotionReportRepository'
 
 class FakeEmotionReportRepository implements IEmotionReportRepository {

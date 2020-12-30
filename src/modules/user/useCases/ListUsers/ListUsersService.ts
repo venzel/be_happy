@@ -1,7 +1,7 @@
 import { injectable, inject } from 'tsyringe'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { IListUsersDTO } from './IListUsersDTO'
-import { IUser } from '@modules/user/shared/entities/IUser'
+import { IUser } from '@modules/user/shared/models/entities/IUser'
 
 @injectable()
 class ListUsersService {

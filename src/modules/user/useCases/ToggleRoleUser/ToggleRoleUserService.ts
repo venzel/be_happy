@@ -1,6 +1,6 @@
 import { injectable, inject } from 'tsyringe'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
-import { IUser } from '@modules/user/shared/entities/IUser'
+import { IUser } from '@modules/user/shared/models/entities/IUser'
 import { AppException } from '@shared/exceptions/AppException'
 
 @injectable()

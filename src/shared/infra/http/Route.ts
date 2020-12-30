@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { UserRoutes } from '@modules/user/shared/infra/http/UserRoutes'
+import { UserRoutes } from '@modules/user/shared/infra/http/routes/UserRoutes'
 import { EmotionRoutes } from '@modules/emotion/shared/infra/http/routes/EmotionRoutes'
 import { NotificationRoutes } from '@modules/notification/shared/infra/http/routes/NotificationRoutes'
 

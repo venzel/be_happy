@@ -1,4 +1,4 @@
-import { IUser } from '@modules/user/shared/entities/IUser'
+import { IUser } from '@modules/user/shared/models/entities/IUser'
 
 interface IEmotion {
     id: string

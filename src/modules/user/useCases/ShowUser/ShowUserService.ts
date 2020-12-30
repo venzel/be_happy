@@ -1,5 +1,5 @@
 import { injectable, inject } from 'tsyringe'
-import { IUser } from '@modules/user/shared/entities/IUser'
+import { IUser } from '@modules/user/shared/models/entities/IUser'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { IShowUserDTO } from './IShowUserDTO'
 import { AppException } from '@shared/exceptions/AppException'

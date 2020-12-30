@@ -1,5 +1,5 @@
 import { IEmotion } from '@modules/emotion/shared/entities/IEmotion'
-import { IUser } from '@modules/user/shared/entities/IUser'
+import { IUser } from '@modules/user/shared/models/entities/IUser'
 
 class FakeEmotion implements IEmotion {
     public id: string

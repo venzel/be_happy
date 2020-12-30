@@ -2,7 +2,7 @@ import { injectable, inject } from 'tsyringe'
 import { IHashProvider } from '@modules/user/shared/providers/HashProvider/models/IHashProvider'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { IUserTokenRepository } from '@modules/user/shared/repositories/IUserTokenRepository'
-import { IUser } from '@modules/user/shared/entities/IUser'
+import { IUser } from '@modules/user/shared/models/entities/IUser'
 import { AppException } from '@shared/exceptions/AppException'
 import { IUpdatePasswordDTO } from './IUpdatePasswordDTO'
 

@@ -1,4 +1,4 @@
-import { IUserToken } from '../schemas/IUserToken'
+import { IUserToken } from '../models/schemas/IUserToken'
 import { ICreateTokenDTO } from '../dtos/ICreateTokenDTO'
 
 interface IUserTokenRepository {

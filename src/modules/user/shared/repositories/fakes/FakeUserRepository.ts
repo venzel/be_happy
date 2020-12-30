@@ -1,8 +1,8 @@
 import { v4 as uuid } from 'uuid'
 import { ICreateUserDTO } from '@modules/user/shared/dtos/ICreateUserDTO'
-import { IUser } from '@modules/user/shared/entities/IUser'
+import { IUser } from '@modules/user/shared/models/entities/IUser'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
-import { FakeUser } from '../../entities/fakes/FakeUser'
+import { FakeUser } from '../../models/entities/fakes/FakeUser'
 
 class FakeUserRepository implements IUserRepository {
     private _repository: IUser[]

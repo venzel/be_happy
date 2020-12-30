@@ -6,14 +6,17 @@ class TokenProviderStrategy {
     private _strategies: any = {}
 
     constructor() {
-        this._strategies['jwt'] = JWTTokenProvider
+        this._strategies['jwt'] = () => JWTTokenProvider
     }
 
     public setStrategy(service: string): void {
-        if (!this._strategies.hasOwnProperty(service))
-            throw new Error('Service provider not found in strategies!')
+        const existsStrategy = this._strategies.hasOwnProperty(service)
 
-        container.registerSingleton<ITokenProvider>('TokenProvider', this._strategies[service])
+        if (!existsStrategy) {
+            throw new Error('Service provider not found in strategies!')
+        }
+
+        container.registerSingleton<ITokenProvider>('TokenProvider', this._strategies[service]())
     }
 }
 

@@ -1,5 +1,5 @@
 import { ICreateEmotionReportDTO } from '../dtos/ICreateEmotionReportDTO'
-import { IEmotionReport } from '../schemas/IEmotionReport'
+import { IEmotionReport } from '../models/schemas/IEmotionReport'
 
 interface IEmotionReportRepository {
     filterByOwnerId(owner_id: string): Promise<IEmotionReport[]>

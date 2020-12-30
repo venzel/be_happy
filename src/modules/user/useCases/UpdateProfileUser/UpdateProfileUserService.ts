@@ -1,7 +1,7 @@
 import { injectable, inject } from 'tsyringe'
 import { IUserRepository } from '@modules/user/shared/repositories/IUserRepository'
 import { IProfileUpdateUserDTO } from './IUpdateProfileUserDTO'
-import { IUser } from '@modules/user/shared/entities/IUser'
+import { IUser } from '@modules/user/shared/models/entities/IUser'
 import { IHashProvider } from '@modules/user/shared/providers/HashProvider/models/IHashProvider'
 import { AppException } from '@shared/exceptions/AppException'
 

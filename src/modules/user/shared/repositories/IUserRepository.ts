@@ -1,5 +1,5 @@
 import { ICreateUserDTO } from '../dtos/ICreateUserDTO'
-import { IUser } from '../entities/IUser'
+import { IUser } from '../models/entities/IUser'
 
 interface IUserRepository {
     count(): Promise<number>

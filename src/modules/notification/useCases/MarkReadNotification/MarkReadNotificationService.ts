@@ -1,5 +1,5 @@
 import { injectable, inject } from 'tsyringe'
-import { INotification } from '@modules/notification/shared/schemas/INotification'
+import { INotification } from '@modules/notification/shared/models/schemas/INotification'
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
 import { IUpdateNotificationDTO } from '@modules/notification/shared/dtos/IUpdateNotificationDTO'
 import { AppException } from '@shared/exceptions/AppException'
