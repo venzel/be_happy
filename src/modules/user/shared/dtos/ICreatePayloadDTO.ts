@@ -1,7 +1,7 @@
 interface ICreatePayloadDTO {
     owner_id: string
-    role: string
     activated: boolean
+    role: string
 }
 
 export { ICreatePayloadDTO }
