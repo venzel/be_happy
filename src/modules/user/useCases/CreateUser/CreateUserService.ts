@@ -22,7 +22,7 @@ class CreateUserService {
     public async execute(data: ICreateUserDTO): Promise<IUserEntity> {
         const { name, email, password, activated, role } = data
 
-        /* Find only user by email */
+        /* Find user by email */
 
         const existsUser = await this._userRepository.findOneByEmail(email)
 

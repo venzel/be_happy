@@ -26,7 +26,7 @@ class CreateUserServiceProxy {
 
         const authKeyCache = `exists_user`
 
-        const timeToExpiresCache = 30
+        const timeToExpiresCache = environment === 'development' ? 30 : 3000
 
         /* Init cache */
 
