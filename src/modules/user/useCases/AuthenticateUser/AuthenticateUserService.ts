@@ -23,16 +23,13 @@ class AuthenticateUserService {
             throw new AppException('Email or password invalid!', 403)
         }
 
-        const { id, role, activated, allowed, password: userDataPassword } = existsUser
+        const { id: data_id, role, activated, allowed, password: data_password } = existsUser
 
         if (!allowed) {
             throw new AppException('User not allowed!', 403)
         }
 
-        const isPasswordEquals: boolean = await this._hashProvider.compareHash(
-            password,
-            userDataPassword
-        )
+        const isPasswordEquals: boolean = await this._hashProvider.compareHash(password, data_password)
 
         if (!isPasswordEquals) {
             throw new AppException('Email or password invalid!', 403)
@@ -41,7 +38,7 @@ class AuthenticateUserService {
         /* Generate token by provider */
 
         const generatedToken: string = await this._tokenProvider.generateToken({
-            owner_id: id,
+            owner_id: data_id,
             role,
             activated,
         })
@@ -49,6 +46,8 @@ class AuthenticateUserService {
         /* End generate token by provider */
 
         Object.assign(existsUser, { token: generatedToken })
+
+        /* Return user*/
 
         return existsUser
     }

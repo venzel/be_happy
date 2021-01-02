@@ -1,16 +1,16 @@
 import { Request, Response } from 'express'
 import { container } from 'tsyringe'
 import { classToClass } from 'class-transformer'
-import { AuthenticateUserService } from './AuthenticateUserService'
+import { AuthenticateUserServiceProxy } from './AuthenticateUserServiceProxy'
 import { generateStatus } from '@shared/helpers/status'
 
 class AuthenticateUserController {
     public async handle(req: Request, res: Response): Promise<Response> {
         const { email, password } = req.body
 
-        const service = container.resolve(AuthenticateUserService)
+        const serviceProxy = container.resolve(AuthenticateUserServiceProxy)
 
-        const user = await service.execute({ email, password })
+        const user = await serviceProxy.execute({ email, password })
 
         const status = generateStatus(false, 200, 'Succesfully authenticated user!')
 

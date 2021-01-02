@@ -9,16 +9,14 @@ class RedisCacheProvider implements ICacheProvider {
         this._cache = new IORedis(cache_port, cache_host, { keyPrefix: cache_key_prefix })
     }
 
-    public async save(key: string, value: string | boolean, time_to_expires: number): Promise<void> {
-        value = JSON.stringify(value)
-
+    public async save(key: string, value: string, time_to_expires: number): Promise<void> {
         await this._cache.set(key, value, 'EX', time_to_expires)
     }
 
-    public async findByKey(key: string): Promise<JSON | null> {
+    public async findByKey(key: string): Promise<string | null> {
         const cache: string | null = await this._cache.get(key)
 
-        return cache ? JSON.parse(cache) : null
+        return cache || null
     }
 
     public async invalidate(key: string): Promise<void> {
