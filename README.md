@@ -1,9 +1,12 @@
 # README.md
 
-Lembrar do node nas versoes acima da 14.5.0 devido ao uuid
+> **Atencao:** desconsiderar o uso de acentos
+
+> **Atencao:** Node.js nas versoes acima da 14.5.0 devido ao uuid
 
 ## Arquitetura: Package by feature
 
+-   [Links](documentation/links.md)
 -   [Analise de requisitos](documentation/analise-de-requisitos.md)
 -   [Commitizen](documentation/commitizen.md)
 -   [Packages](documentation/packages.md)
@@ -19,14 +22,19 @@ Lembrar do node nas versoes acima da 14.5.0 devido ao uuid
 -   [TypeORM](documentation/typeorm.md)
 -   [Typescript](documentation/typescript.md)
 -   [VS Code : snippets](documentation/vscode-snippets.md)
+-   [Linux](documentation/linux.md)
+-   [SSH](documentation/ssh.md)
+-   [ZSH](documentation/zsh.md)
 -   [Insomnia](documentation/insomnia.md)
 
 ## COLORS THEME
 
+    - #A881E4
     - #31CF97
     - #28FE9A
     - #FFF1C9
     - #FFD2B6
+    - #FFDFA4
 
 ## Fazer
 

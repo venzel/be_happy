@@ -2,6 +2,8 @@
 
 [INICIO](../README.md)
 
+> **Atencao:** desconsiderar o uso de acentos
+
 > **Documentacao:** https://jonatasoliveira.me/como-instalar-node-nvm/
 
 ## [Instalacao]

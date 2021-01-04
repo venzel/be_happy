@@ -2,6 +2,8 @@
 
 [README.md](../README.md)
 
+> **Atencao:** desconsiderar o uso de acentos
+
 > **Documentacao:** https://github.com/commitizen/cz-cli
 
 ## Instala de forma global o commitizen

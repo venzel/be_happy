@@ -2,7 +2,7 @@
 
 [INICIO](../README.md)
 
-> **Atencao:** desconsidere o uso de acentos
+> **Atencao:** desconsiderar o uso de acentos
 
 ## [INSTALACAO]
 

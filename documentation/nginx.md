@@ -1,6 +1,8 @@
-# Nginx - Instalacao e configuracoes
+# Nginx
 
 [INICIO](../README.md)
+
+> **Atencao:** desconsiderar o uso de acentos
 
 > **Documentacao:** [digitalocean.com...](https://www.digitalocean.com/community/tutorials/how-to-increase-pagespeed-score-by-changing-your-nginx-configuration-on-ubuntu-16-04)
 

@@ -1,6 +1,8 @@
-# Tests: JEST
+# Tests
 
 [README.md](../README.md)
+
+> **Atencao:** desconsiderar o uso de acentos
 
 ## JEST inicialização
 

@@ -2,6 +2,8 @@
 
 [README.md](../README.md)
 
+> **Atencao:** desconsiderar o uso de acentos
+
 ## Registrar a CLI e outros através de scripts
 
 ```JSON

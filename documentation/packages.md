@@ -2,6 +2,8 @@
 
 [README.md](../README.md)
 
+> **Atencao:** desconsiderar o uso de acentos
+
 ## Inicializar um novo projeto
 
 ```bash

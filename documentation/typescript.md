@@ -2,6 +2,8 @@
 
 [README.md](../README.md)
 
+> **Atencao:** desconsiderar o uso de acentos
+
 ## Inicializa o projeto typescript
 
 ```bash
