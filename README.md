@@ -4,17 +4,22 @@ Lembrar do node nas versoes acima da 14.5.0 devido ao uuid
 
 ## Arquitetura: Package by feature
 
--   [Requeriments Analysis](documentation/requirements_analysis.md)
+-   [Analise de requisitos](documentation/analise-de-requisitos.md)
 -   [Commitizen](documentation/commitizen.md)
--   [Docker](documentation/docker.md)
--   [GIT](documentation/git.md)
--   [NGINX](documentation/nginx.md)
 -   [Packages](documentation/packages.md)
+-   [GIT](documentation/git.md)
+-   [Node](documentation/node.md)
+-   [Yarn](documentation/yarn.md)
+-   [Docker](documentation/docker.md)
+-   [NGINX](documentation/nginx.md)
 -   [PM2](documentation/pm2.md)
+-   [CI/CD](documentation/ci-cd.md)
 -   [Tests](documentation/tests.md)
+-   [Eslint](documentation/eslint.md)
 -   [TypeORM](documentation/typeorm.md)
 -   [Typescript](documentation/typescript.md)
--   [VS Code : snippets](documentation/vscode.md)
+-   [VS Code : snippets](documentation/vscode-snippets.md)
+-   [Insomnia](documentation/insomnia.md)
 
 ## COLORS THEME
 
@@ -35,13 +40,18 @@ Lembrar do node nas versoes acima da 14.5.0 devido ao uuid
 -   [x] Mark read repository ajeitar nomes e tirar do repoistorio a funcao
 -   [x] Fazer o toggle do user allowed
 -   [x] Criar a migration de relatorio de emotions
+-   Configurar o eslint
+-   Documentacao do eslint
+-   Colocar as vars ambient no insominia, principalmente a key e documentar
+-   [x] Fazer o script migrations
+
 -   Listar os emotions
 -   Listar notificacoes
 -   Atualizar o emotion
 -   Ajeitar Documentacao, instalacao node/nvm
--   Implementar caches: login e senha
+-   [x] Implementar caches: login e senha
 -   Fazer o modulo settings
--   Ajeitar bugs do create user
+-   [x] Ajeitar bugs do create user
 
 ## Fazer
 

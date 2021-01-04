@@ -22,4 +22,5 @@
 # [ctrl + k u] -> close all files in editor
 # [ctrl + w] -> close tab
 # [ctrl + tab] -> change tab
+# [alt + p] -> pin and unpin
 ```

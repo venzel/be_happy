@@ -11,7 +11,7 @@ $ yarn init -y
 ### Dependências de desenvolvimento
 
 ```bash
-$ yarn add nodemon typescript tsconfig-paths ts-node-dev npm-run-all eslint-import-resolver-typescript prettier eslint-config-prettier eslint-plugin-prettier jest  ts-jest supertest -D
+$ yarn add nodemon typescript tsconfig-paths ts-node-dev npm-run-all eslint-import-resolver-typescript jest ts-jest supertest -D
 ```
 
 ### Dependências de desenvolvimento: types
@@ -78,13 +78,9 @@ $ npm update
         "@types/supertest": "^2.0.10",
         "@types/uuid": "^8.3.0",
         "cz-conventional-changelog": "3.3.0",
-        "eslint-config-prettier": "^7.0.0",
-        "eslint-import-resolver-typescript": "^2.3.0",
-        "eslint-plugin-prettier": "^3.2.0",
         "jest": "^26.6.3",
         "nodemon": "^2.0.6",
         "npm-run-all": "^4.1.5",
-        "prettier": "^2.2.1",
         "supertest": "^6.0.1",
         "ts-jest": "^26.4.4",
         "ts-node-dev": "^1.1.1",

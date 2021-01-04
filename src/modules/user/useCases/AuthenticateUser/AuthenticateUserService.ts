@@ -47,7 +47,7 @@ class AuthenticateUserService {
 
         Object.assign(existsUser, { token: generatedToken })
 
-        /* Return user*/
+        /* Return user */
 
         return existsUser
     }
