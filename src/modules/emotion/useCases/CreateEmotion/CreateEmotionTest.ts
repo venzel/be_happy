@@ -1,3 +1,0 @@
-class CreateEmotionTest {}
-
-export { CreateEmotionTest }
