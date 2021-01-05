@@ -44,6 +44,12 @@ $ source ~/.bashrc
 $ bash install_nvm.sh
 ```
 
+### Recarrega o arquivo
+
+```bash
+$ source ~/.zshrc
+```
+
 ### Lista as versoes existentes do NodeJS
 
 ```bash

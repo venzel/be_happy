@@ -25,31 +25,6 @@ $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/d
 ```bash
 # Edita o arquivo
 $ nano ~/.zshrc
-
-  # ALTERA
-  plugins=(git docker docker-compose)
-
-  # INSERE DEPOIS DE: End of Zinit's installer chunk
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-zinit light zdharma/fast-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-history-substring-search
-zinit light zsh-users/zsh-completions
-zinit light buonomo/yarn-completion
-
-pasteinit() {
-OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
-zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
-}
-
-pastefinish() {
-zle -N self-insert \$OLD_SELF_INSERT
-}
-zstyle :bracketed-paste-magic paste-init pasteinit
-zstyle :bracketed-paste-magic paste-finish pastefinish
 ```
 
 ### [SPACESHIP]
@@ -65,67 +40,77 @@ $ git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/the
 # Cria um link simbolico
 $ ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 
-# Edita
-$ nano ~/.zshrc
+### ROOT
 
-  # ALTERA
-  ZSH_THEME="spaceship"
+alias c='clear'
+alias e='exit'
+alias l='ls -la'
+alias ss='sudo su'
+alias pf='poweroff'
+alias upd="apt-get update"
+alias upg="apt-get upgrade"
+alias updu="apt-get dist-upgrade"
 
-  # INSERE
-  SPACESHIP_PROMPT_ORDER=(
-    user          # Username section
-    dir           # Current directory section
-    host          # Hostname section
-    git           # Git section (git_branch + git_status)
-    hg            # Mercurial section (hg_branch  + hg_status)
-    exec_time     # Execution time
-    line_sep      # Line break
-    vi_mode       # Vi-mode indicator
-    jobs          # Background jobs indicator
-    exit_code     # Exit code section
-    char          # Prompt character
-  )
+export ZSH="/root/.oh-my-zsh"
 
-  SPACESHIP_USER_SHOW=always
-  SPACESHIP_PROMPT_ADD_NEWLINE=false
-  SPACESHIP_CHAR_SYMBOL="🦍 ➜"
-  #SPACESHIP_CHAR_SYMBOL="⭐ ➜"
-  #SPACESHIP_CHAR_SYMBOL="🤖 ➜"
-  #SPACESHIP_CHAR_SYMBOL="☂️ ➜"
-  #SPACESHIP_CHAR_SYMBOL_ROOT="🦍 ➜"
-  #SPACESHIP_CHAR_SYMBOL_ROOT="⭐ ➜"
-  #SPACESHIP_CHAR_SYMBOL_ROOT="🤖 ➜"
-  #SPACESHIP_CHAR_SYMBOL_ROOT="☂️ ➜"
-  SPACESHIP_CHAR_SUFFIX=" "
+ZSH_THEME="spaceship"
 
-  # Simplify prompt if we're using Hyper
-  if [[ "$TERM_PROGRAM" == "Hyper" ]]; then
-    SPACESHIP_PROMPT_SEPARATE_LINE=false
-    SPACESHIP_DIR_SHOW=false
-    SPACESHIP_GIT_BRANCH_SHOW=false
-  fi
-```
+plugins=(git)
 
-### [DRACULA]
+source $ZSH/oh-my-zsh.sh
 
-> **Documentacao:** https://draculatheme.com/zsh
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-```bash
-# Vai para root e baixa o arquivo
-$ cd ~ && pwd && wget https://github.com/dracula/zsh/archive/master.zip
+if [[ ! -d $HOME/.zplugin/bin ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing Zplugin…%f"
+    command mkdir -p $HOME/.zplugin
+    command git clone https://github.com/zdharma/zplugin $HOME/.zplugin/bin && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%F" || \
+        print -P "%F{160}▓▒░ The clone has failed.%F"
+fi
 
-# Descompacta
-$ unzip master.zip && cd zsh-master
+source "$HOME/.zplugin/bin/zplugin.zsh"
 
-# Copia o arquivo dracula.zsh-theme para themes da .oh-my-zsh
-$ cp dracula.zsh-theme ../.oh-my-zsh/themes
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
 
-# Copia toda pasta lib para para themes da .oh-my-zsh
-$ cp -r lib ../.oh-my-zsh/themes
+zplugin light zdharma/fast-syntax-highlighting
+zplugin light zsh-users/zsh-autosuggestions
+zplugin light zsh-users/zsh-history-substring-search
+zplugin light zsh-users/zsh-completions
+zplugin light buonomo/yarn-completion
 
-# Vai para raiz e edita
-$ cd ~ && nano .zshrc
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
 
-  # ALTERA
-  ZSH_THEME="dracula"
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+
+SPACESHIP_PROMPT_ORDER=(
+  user          # Username section
+  dir           # Current directory section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  hg            # Mercurial section (hg_branch  + hg_status)
+  exec_time     # Execution time
+  line_sep      # Line break
+  vi_mode       # Vi-mode indicator
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+)
+SPACESHIP_USER_SHOW=always
+SPACESHIP_PROMPT_ADD_NEWLINE=false
+#SPACESHIP_CHAR_SYMBOL="❯"
+SPACESHIP_CHAR_SUFFIX=" "
+
+export NVM_DIR="/root/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 ```

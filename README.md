@@ -21,7 +21,7 @@
 -   [Eslint](documentation/eslint.md)
 -   [TypeORM](documentation/typeorm.md)
 -   [Typescript](documentation/typescript.md)
--   [VS Code : snippets](documentation/vscode-snippets.md)
+-   [VS Code : snippets](documentation/vscode.md)
 -   [Linux](documentation/linux.md)
 -   [SSH](documentation/ssh.md)
 -   [ZSH](documentation/zsh.md)

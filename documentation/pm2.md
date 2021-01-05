@@ -30,7 +30,7 @@ $ npm install pm2 -g
 
 ```bash
 # Alert: before, enter folder behappy
-$ pm2 start src/Server.js --name node-behappy-server
+$ sudo pm2 start /opt/project-test/dist/Server.js --name node-behappy-server
 ```
 
 ### Stop server pm2
