@@ -48,6 +48,7 @@
 -   [x] Mark read repository ajeitar nomes e tirar do repoistorio a funcao
 -   [x] Fazer o toggle do user allowed
 -   [x] Criar a migration de relatorio de emotions
+-   Configurar o husky
 -   Configurar o eslint
 -   Documentacao do eslint
 -   Colocar as vars ambient no insominia, principalmente a key e documentar
@@ -56,9 +57,8 @@
 -   Listar os emotions
 -   Listar notificacoes
 -   Atualizar o emotion
--   Ajeitar Documentacao, instalacao node/nvm
+-   [x] Ajeitar Documentacao, instalacao node/nvm
 -   [x] Implementar caches: login e senha
--   Fazer o modulo settings
 -   [x] Ajeitar bugs do create user
 
 ## Fazer
@@ -106,12 +106,11 @@
 
 ## Pesquisar
 
--   Make file ou arquivo .sh
 -   Aplicacao de limpeza de redis cache
 -   Aplicacao de dados fakes no banco de dados
 -   Criar o arquivo de configuracao do docker
 -   Testar o cors
--   Testar a integracao continua com o travis
+-   [x] Testar a integracao continua com codeship
 -   Configurar a app para o pos build devido os @
 -   Pequisar como se faz busca com regEx
 -   Teste de carga no sistema
