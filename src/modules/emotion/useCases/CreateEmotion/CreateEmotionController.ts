@@ -5,14 +5,14 @@ import { CreateEmotionService } from './CreateEmotionService'
 import { generateStatus } from '@shared/helpers/status'
 
 class CreateEmotionController {
-    public async create(req: Request, res: Response): Promise<Response> {
+    public async handle(req: Request, res: Response): Promise<Response> {
         const { owner_id } = req.auth
 
         const { type, description } = req.body
 
         const service = container.resolve(CreateEmotionService)
 
-        const emotion = await service.execute({ type, description, owner_id })
+        const emotion = await service.handle({ type, description, owner_id })
 
         const status = generateStatus(false, 201, 'Succesfully created emotion!')
 

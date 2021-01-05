@@ -11,8 +11,12 @@ class FakeEmotionRepository implements IEmotionRepository {
         this._repository = []
     }
 
-    public async findOneById(emotionId: string): Promise<IEmotionEntity | undefined> {
-        return this._repository.find((emotion) => emotion.id === emotionId)
+    public async findOneById(emotion_id: string): Promise<IEmotionEntity | undefined> {
+        return this._repository.find((data) => data.id === emotion_id)
+    }
+
+    public async filterByOwnerId(owner_id: string): Promise<IEmotionEntity[]> {
+        return this._repository.filter((data) => data.owner_id === owner_id)
     }
 
     public async create(data: ICreateEmotionDTO): Promise<IEmotionEntity> {

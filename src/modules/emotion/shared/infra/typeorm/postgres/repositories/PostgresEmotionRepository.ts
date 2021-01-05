@@ -15,6 +15,10 @@ class PostgresEmotionRepository implements IEmotionRepository {
         return await this._repository.findOne({ where: { id: emotionId, deletedAt: null } })
     }
 
+    public async filterByOwnerId(owner_id: string): Promise<IEmotionEntity[]> {
+        return this._repository.find({ where: { owner_id } })
+    }
+
     public async create(data: ICreateEmotionDTO): Promise<IEmotionEntity> {
         const { emotion_id: id, owner_id, type, description } = data
 
