@@ -6,7 +6,7 @@ import { UpdateEmotionMiddleware } from '@modules/emotion/useCases/UpdateEmotion
 class EmotionRoutes {
     public registerAll(router: Router): void {
         // get
-        new ListEmotionMiddleware().register(router, '/emotions?:count')
+        new ListEmotionMiddleware().register(router, '/emotions?:user_id')
 
         // post
         new CreateEmotionMiddleware().register(router, '/emotion/create')

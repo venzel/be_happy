@@ -11,9 +11,9 @@ class CreateEmotionMiddleware {
         const { role } = new RoleUserMiddleware()
         const { activated } = new ActivatedUserMiddleware()
         const { validate } = new CreateEmotionValidator()
-        const { create } = new CreateEmotionController()
+        const { handle } = new CreateEmotionController()
 
-        router.post(path, authenticate, role(['USER']), activated, validate, create)
+        router.post(path, authenticate, role(['USER']), activated, validate, handle)
     }
 }
 

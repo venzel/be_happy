@@ -16,7 +16,7 @@ class CreateEmotionService {
         @inject('GenerateIdProvider') private _generateIdProvider: IGenerateIdProvider
     ) {}
 
-    public async execute(data: ICreateEmotionDTO): Promise<IEmotionEntity> {
+    public async handle(data: ICreateEmotionDTO): Promise<IEmotionEntity> {
         const { type, description, owner_id } = data
 
         /* Generate emotion id provider */
