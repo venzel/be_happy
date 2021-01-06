@@ -3,6 +3,7 @@ import { ListEmotionsMiddleware } from '@modules/emotion/useCases/ListEmotions/L
 import { ShowEmotionMiddleware } from '@modules/emotion/useCases/ShowEmotion/ShowEmotionMiddleware'
 import { CreateEmotionMiddleware } from '@modules/emotion/useCases/CreateEmotion/CreateEmotionMiddleware'
 import { UpdateEmotionMiddleware } from '@modules/emotion/useCases/UpdateEmotion/UpdateEmotionMiddleware'
+import { DeleteEmotionMiddleware } from '@modules/emotion/useCases/DeleteEmotion/DeleteEmotionMiddleware'
 
 class EmotionRoutes {
     public registerAll(router: Router): void {
@@ -17,6 +18,9 @@ class EmotionRoutes {
 
         // put
         new UpdateEmotionMiddleware().register(router, '/emotion/update')
+
+        // delete
+        new DeleteEmotionMiddleware().register(router, '/emotion/delete?:id')
     }
 }
 

@@ -2,41 +2,37 @@ import { injectable, inject } from 'tsyringe'
 import { formatDate } from '@shared/helpers/date'
 import { IEmotionRepository } from '@modules/emotion/shared/repositories/IEmotionRepository'
 import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
-import { IUpdateEmotionDTO } from './IUpdateEmotionDTO'
+import { IDeleteEmotionDTO } from './IDeleteEmotionDTO'
 import { IEmotionEntity } from '@modules/emotion/shared/models/entities/IEmotionEntity'
 import { AppException } from '@shared/exceptions/AppException'
 
 @injectable()
-class UpdateEmotionService {
+class DeleteEmotionService {
     constructor(
         @inject('EmotionRepository') private _emotionRepository: IEmotionRepository,
         @inject('NotificationRepository') private _notificationRepository: INotificationRepository
     ) {}
 
-    public async execute(data: IUpdateEmotionDTO): Promise<IEmotionEntity> {
-        const { emotion_id, description, owner_id } = data
+    public async execute(data: IDeleteEmotionDTO): Promise<IEmotionEntity> {
+        const { query_emotion_id, owner_id, role } = data
 
-        const existsEmotion = await this._emotionRepository.findOneById(emotion_id)
+        const existsEmotion = await this._emotionRepository.findOneById(query_emotion_id)
 
         if (!existsEmotion) {
-            throw new AppException('Emotion not found!', 404)
+            throw new AppException('Emotion not exists!', 404)
         }
 
-        if (owner_id !== existsEmotion.owner_id) {
-            throw new AppException('It is not possible to update another users emotion!', 403)
+        if (role === 'USER' && owner_id !== existsEmotion.owner_id) {
+            throw new AppException('It is not possible to delete another users emotion!', 403)
         }
 
-        /* Data update */
+        /* Data delete (update) in repository */
 
-        existsEmotion.description = description
-
-        /* Data saved in repository */
-
-        await this._emotionRepository.save(existsEmotion)
+        await this._emotionRepository.delete(existsEmotion)
 
         /* Create notification */
 
-        const content = `Emotion updated in ${formatDate(new Date())}`
+        const content = `Emotion deleted in ${formatDate(new Date())}`
 
         await this._notificationRepository.create({ owner_id, content })
 
@@ -46,4 +42,4 @@ class UpdateEmotionService {
     }
 }
 
-export { UpdateEmotionService }
+export { DeleteEmotionService }

@@ -44,7 +44,7 @@ class CreateEmotionService {
 
         await this._notificationRepository.create({ owner_id, content })
 
-        /* End create notification */
+        /* Return the emotion created */
 
         return createdEmotion
     }
