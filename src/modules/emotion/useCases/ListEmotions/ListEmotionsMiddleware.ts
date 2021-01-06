@@ -12,7 +12,7 @@ class ListEmotionMiddleware {
         const { validate } = new ListEmotionsValidator()
         const { handle } = new ListEmotionsController()
 
-        router.get(path, authenticate, validate, activated, handle)
+        router.get(path, authenticate, activated, validate, handle)
     }
 }
 
