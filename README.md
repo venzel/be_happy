@@ -80,7 +80,8 @@
 
 ## Fazer
 
--   analise de requisitos
+-   Verificar os status code de update e delete
+-   Melhorar o new Date(), tentar um metodo estatico
 
 ## Outros
 
