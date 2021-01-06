@@ -14,6 +14,7 @@
 -   [Node](documentation/node.md)
 -   [Yarn](documentation/yarn.md)
 -   [Docker](documentation/docker.md)
+-   [Docker compose](documentation/docker-compose.md)
 -   [NGINX](documentation/nginx.md)
 -   [PM2](documentation/pm2.md)
 -   [CI/CD](documentation/ci-cd.md)
