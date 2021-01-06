@@ -14,7 +14,7 @@ class UpdateEmotionController {
 
         const emotion = await service.execute({ emotion_id, description, owner_id })
 
-        const status = generateStatus(false, 201, 'Succesfully created emotion!')
+        const status = generateStatus(false, 201, 'Succesfully updated emotion!')
 
         const doc = classToClass(emotion)
 

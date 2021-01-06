@@ -9,23 +9,27 @@ class UpdateEmotionService {
     constructor(@inject('EmotionRepository') private _emotionRepository: IEmotionRepository) {}
 
     public async execute(data: IUpdateEmotionDTO): Promise<IEmotionEntity> {
-        const { emotion_id, description } = data
+        const { emotion_id, description, owner_id } = data
 
-        const existsEmotionWithId = await this._emotionRepository.findOneById(emotion_id)
+        const existsEmotion = await this._emotionRepository.findOneById(emotion_id)
 
-        if (!existsEmotionWithId) {
+        if (!existsEmotion) {
             throw new AppException('Emotion not found!', 404)
+        }
+
+        if (owner_id !== existsEmotion.owner_id) {
+            throw new AppException('It is not possible to update another users emotion!', 403)
         }
 
         /* Data update */
 
-        existsEmotionWithId.description = description
+        existsEmotion.description = description
 
         /* End Data update */
 
-        const savedEmotion = await this._emotionRepository.save(existsEmotionWithId)
+        await this._emotionRepository.save(existsEmotion)
 
-        return savedEmotion
+        return existsEmotion
     }
 }
 

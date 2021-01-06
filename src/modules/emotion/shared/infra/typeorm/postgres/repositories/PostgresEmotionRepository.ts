@@ -12,7 +12,7 @@ class PostgresEmotionRepository implements IEmotionRepository {
     }
 
     public async findOneById(emotionId: string): Promise<IEmotionEntity | undefined> {
-        return await this._repository.findOne({ where: { id: emotionId, deletedAt: null } })
+        return await this._repository.findOne({ where: { id: emotionId, deleted_at: null } })
     }
 
     public async filterByOwnerId(owner_id: string): Promise<IEmotionEntity[]> {
