@@ -15,6 +15,10 @@ class FakeNotificationRepository implements INotificationRepository {
         return this._repository.find((data) => data._id === new ObjectID(notification_id))
     }
 
+    public async filterByOwnerId(owner_id: string): Promise<INotificationSchema[]> {
+        return this._repository.filter((data) => data.owner_id === owner_id)
+    }
+
     public async create(data: ICreateNotificationDTO): Promise<INotificationSchema> {
         const { owner_id, content } = data
 

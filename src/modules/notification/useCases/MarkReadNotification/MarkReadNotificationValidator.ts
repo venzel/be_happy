@@ -3,7 +3,7 @@ import { isIdValid } from '@shared/helpers/validator'
 import { AppException } from '@shared/exceptions/AppException'
 
 class MarkReadNotificationValidator {
-    public validate(req: Request, res: Response, next: NextFunction): any {
+    public validRequestData(req: Request, res: Response, next: NextFunction): any {
         const notification_id = req.query.id?.toString()
 
         if (!isIdValid(notification_id, 'mongo')) {
