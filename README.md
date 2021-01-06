@@ -58,16 +58,17 @@
 -   [x] Listar os emotions
 -   [x] Atualizar o emotion
 -   [x] Exibir o emotion
--   Deletar o emotion
--   Listar notificacoes
+-   [x] Deletar o emotion
+-   [x] Listar notificacoes
 -   [x] Ajeitar Documentacao, instalacao node/nvm
 -   [x] Implementar caches: login e senha
 -   [x] Ajeitar bugs do create user
 
-## Fazer
+## Lembrar
 
 -   Documentar workflow de git
 -   Deixar o node fixo em uma versao
+-   Quando listar os usuarios, nao listar o owner logado
 
 ## Fazer
 
@@ -80,6 +81,7 @@
 
 ## Fazer
 
+-   Fazer um arquivo de recursos utilizados
 -   Verificar os status code de update e delete
 -   Melhorar o new Date(), tentar um metodo estatico
 

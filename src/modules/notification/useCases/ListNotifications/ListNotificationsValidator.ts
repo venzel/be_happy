@@ -2,8 +2,8 @@ import { Request, Response, NextFunction } from 'express'
 import { isIdValid } from '@shared/helpers/validator'
 import { AppException } from '@shared/exceptions/AppException'
 
-class ListEmotionsValidator {
-    public validate(req: Request, res: Response, next: NextFunction): any {
+class ListNotificationsValidator {
+    public validRequestData(req: Request, res: Response, next: NextFunction): any {
         const { role } = req.auth
 
         const query_user_id = req.query.user_id?.toString()
@@ -20,4 +20,4 @@ class ListEmotionsValidator {
     }
 }
 
-export { ListEmotionsValidator }
+export { ListNotificationsValidator }
