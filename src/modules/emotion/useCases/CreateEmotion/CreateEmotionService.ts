@@ -42,6 +42,8 @@ class CreateEmotionService {
 
         const content = `New emotion created in ${formatDate(new Date())}`
 
+        console.log(content)
+
         await this._notificationRepository.create({ owner_id, content })
 
         /* Return the emotion created */

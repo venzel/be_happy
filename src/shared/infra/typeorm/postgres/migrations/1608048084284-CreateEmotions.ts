@@ -11,22 +11,18 @@ export default class CreateEmotions1608048084284 implements MigrationInterface {
                         type: 'varchar',
                         isUnique: true,
                         isPrimary: true,
-                        isNullable: false,
                     },
                     {
                         name: 'owner_id',
                         type: 'varchar',
-                        isNullable: true,
                     },
                     {
                         name: 'type',
                         type: 'varchar',
-                        isNullable: false,
                     },
                     {
                         name: 'description',
                         type: 'varchar',
-                        isNullable: true,
                     },
                     {
                         name: 'created_at',

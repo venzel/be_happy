@@ -26,6 +26,12 @@ $ yarn global add pm2
 $ npm install pm2 -g
 ```
 
+### Para rodar typescript
+
+```bash
+$ pm2 install typescript
+```
+
 ### Start server pm2
 
 ```bash

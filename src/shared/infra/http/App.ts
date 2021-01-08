@@ -1,14 +1,14 @@
 import 'reflect-metadata'
 import 'dotenv/config'
 import express, { Express } from 'express'
-import { dbConnection } from '../typeorm/ConnectionDB'
+import { connection } from '../../../database/Connection'
 import { middleware } from './Middleware'
 
 class App {
     public execute(): Express {
         const app: Express = express()
 
-        dbConnection.use(app)
+        connection.use(app)
 
         middleware.use(app)
 
