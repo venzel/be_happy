@@ -1,14 +1,27 @@
-require('dotenv').config()
+const {
+    mongodb_host,
+    mongodb_port,
+    mongodb_db_name,
+    mongodb_user,
+    mongodb_password,
+} = require('./src/configs/mongodb')
+const {
+    postgres_host,
+    postgres_port,
+    postgres_db_name,
+    postgres_user,
+    postgres_password,
+} = require('./src/configs/postgres')
 
 module.exports = [
     {
         name: 'default',
         type: 'postgres',
-        host: 'localhost',
-        port: process.env.DB_POSTGRES_PORT,
-        username: process.env.DB_POSTGRES_USER,
-        password: process.env.DB_POSTGRES_PASSWORD,
-        database: process.env.DB_POSTGRES_NAME,
+        host: mongodb_host,
+        port: postgres_port,
+        database: postgres_db_name,
+        username: postgres_user,
+        password: postgres_password,
         synchronize: true,
         entities: ['src/modules/**/shared/infra/typeorm/postgres/entities/*.ts'],
         migrations: ['src/shared/infra/typeorm/postgres/migrations/*.ts'],
@@ -19,11 +32,11 @@ module.exports = [
     {
         name: 'mongodb',
         type: 'mongodb',
-        host: 'localhost',
-        port: process.env.DB_MONGO_PORT,
-        username: 'api_user',
-        password: 'api1234',
-        database: 'api_dev_db',
+        host: postgres_host,
+        port: mongodb_port,
+        database: mongodb_db_name,
+        username: mongodb_user,
+        password: mongodb_password,
         synchronize: true,
         logging: false,
         useUnifiedTopology: true,

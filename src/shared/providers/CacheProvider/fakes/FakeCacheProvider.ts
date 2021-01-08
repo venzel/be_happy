@@ -1,5 +1,5 @@
 import { ICacheProvider } from '../models/ICacheProvider'
-import { cache_key_prefix } from '@configs/cache'
+import { redis_key_prefix } from '@configs/redis'
 
 interface ICache {
     key: string
@@ -33,14 +33,14 @@ class FakeCacheProvider implements ICacheProvider {
     }
 
     public async save(key: string, value: string, time_to_expires: number): Promise<void> {
-        value = JSON.stringify(`${cache_key_prefix}:${value}`)
+        value = JSON.stringify(`${redis_key_prefix}:${value}`)
 
         const dataCache = { key, value, time_to_expires }
 
         this._cache.push(dataCache)
     }
 
-    public async findByKey(key: string): Promise<JSON | null> {
+    public async findByKey(key: string): Promise<string | null> {
         const dataCacheIndex: number = this._findIndexByKey(key)
 
         return dataCacheIndex !== -1 ? JSON.parse(this._cache[dataCacheIndex].value) : null

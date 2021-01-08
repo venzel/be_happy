@@ -6,6 +6,7 @@
 -   https://medium.com/faun/managing-mongodb-on-docker-with-docker-compose-26bf8a0bbae3
 -   https://onexlab-io.medium.com/docker-compose-mongodb-prod-dev-test-environment-eb1a75675f93
 -   https://renatogroffe.medium.com/docker-dica-r%C3%A1pida-criando-uma-inst%C3%A2ncia-do-redis-via-docker-compose-961c7eca5255
+-   https://stackoverflow.com/questions/42912755/how-to-create-a-db-for-mongodb-container-on-start-up
 
 ### Executa
 
@@ -34,6 +35,7 @@ $ mongo -u <user_name> --authenticationDatabase <database_name>
 
 ```
 mongodb://<user_name>:<password>@<host>:<port>/<database_name>
+mongodb://api_user:api1234@localhost:27016/api_dev_db
 ```
 
 ## Git
