@@ -13,7 +13,7 @@ import { IUserEntity } from '@modules/user/shared/models/entities/IUserEntity'
 @Entity('users')
 class PostgresUserEntity implements IUserEntity {
     @Expose({ name: 'user_id' })
-    @PrimaryGeneratedColumn('rowid')
+    @PrimaryGeneratedColumn('uuid')
     public id: string
 
     @Column()
@@ -35,7 +35,7 @@ class PostgresUserEntity implements IUserEntity {
 
     @Expose({ name: 'avatar_url' })
     get getAvatarUrl(): string | null {
-        return this.avatar ? `${api_url}/file/${this.avatar}` : null
+        return this.avatar !== '' ? `${api_url}/file/${this.avatar}` : null
     }
 
     @Column()

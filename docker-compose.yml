@@ -1,0 +1,61 @@
+version: '3.7'
+services:
+    postgres:
+        container_name: postgres-${APP_NAME}
+        image: postgres:latest
+        restart: always
+        ports:
+            - ${DB_POSTGRES_PORT}:5432
+        environment:
+            POSTGRES_USER: ${DB_POSTGRES_USER}
+            POSTGRES_PASSWORD: ${DB_POSTGRES_PASSWORD}
+            PGDATA: /data/postgres
+        volumes:
+            - ./postgres.conf:/etc/postgresql/postgresql.conf
+            - ./data/postgres:/var/lib/postgresql/data
+            - ./script.sh:/docker-entrypoint-initdb.d/script.sh
+        command: postgres -c config_file=/etc/postgresql/postgresql.conf
+
+    mongo:
+        container_name: mongodb-${APP_NAME}
+        image: mongo:latest
+        restart: always
+        ports:
+            - ${DB_MONGO_PORT}:27017
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: password
+            MONGO_INITDB_DATABASE: root-db
+        volumes:
+            - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+            # - ./data/mongodb:/data/db
+
+    redis:
+        container_name: redis-${APP_NAME}
+        image: redis:alpine
+        restart: always
+        ports:
+            - ${DB_REDIS_PORT}:6379
+        command: redis-server --requirepass ${DB_REDIS_PASSWORD}
+
+    api:
+        container_name: api-${APP_NAME}
+        image: node:latest
+        restart: always
+        env_file:
+            - .env
+        depends_on:
+            - postgres
+            - mongo
+            - redis
+        ports:
+            - ${SERVER_PORT}:${SERVER_PORT}
+        volumes:
+            - .:/usr/src/app
+        working_dir: /usr/src/app
+        command: yarn start
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '10m'
+                max-file: '5'

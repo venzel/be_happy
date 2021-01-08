@@ -6,7 +6,10 @@ class RedisCacheProvider implements ICacheProvider {
     private _cache: Redis
 
     constructor() {
-        this._cache = new IORedis(cache_port, cache_host, { keyPrefix: cache_key_prefix })
+        this._cache = new IORedis(cache_port, cache_host, {
+            keyPrefix: cache_key_prefix,
+            password: 'queijo',
+        })
     }
 
     public async save(key: string, value: string, time_to_expires: number): Promise<void> {
