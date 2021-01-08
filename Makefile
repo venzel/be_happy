@@ -3,7 +3,7 @@ include .env
 .PHONY: setup
 
 setup:
-	sh ./scripts/create.sh
+	sh ./scripts/test.sh
 
 .PHONY: up
 

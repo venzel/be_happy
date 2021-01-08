@@ -1,14 +1,14 @@
 import { ICacheProvider } from '../models/ICacheProvider'
 import IORedis, { Redis } from 'ioredis'
-import { cache_host, cache_port, cache_key_prefix } from '@configs/cache'
+import { redis_host, redis_port, redis_key_prefix, redis_password } from '@configs/redis'
 
 class RedisCacheProvider implements ICacheProvider {
     private _cache: Redis
 
     constructor() {
-        this._cache = new IORedis(cache_port, cache_host, {
-            keyPrefix: cache_key_prefix,
-            password: 'queijo',
+        this._cache = new IORedis(redis_port, redis_host, {
+            keyPrefix: redis_key_prefix,
+            password: redis_password,
         })
     }
 
@@ -27,11 +27,11 @@ class RedisCacheProvider implements ICacheProvider {
     }
 
     public async clearAllCacheByPrefix(prefix: string): Promise<void> {
-        const keys: string[] = await this._cache.keys(`${cache_key_prefix}:${prefix}:*`)
+        const keys: string[] = await this._cache.keys(`${redis_key_prefix}:${prefix}:*`)
 
         if (!keys.length) return
 
-        const keysWithoutPrefix = keys.map((key) => key.replace(`${cache_key_prefix}:`, ''))
+        const keysWithoutPrefix = keys.map((key) => key.replace(`${redis_key_prefix}:`, ''))
 
         await this._cache.del(keysWithoutPrefix)
     }
