@@ -50,6 +50,12 @@ $ bash install_nvm.sh
 $ source ~/.zshrc
 ```
 
+### Alias
+
+```bash
+$ nvm alias
+```
+
 ### Lista as versoes existentes do NodeJS
 
 ```bash
@@ -65,7 +71,13 @@ $ nvm install v12.16.2
 ### Muda a versao de uso
 
 ```bash
-$ nvm use 13.5.0
+$ nvm use 15.4.0
+```
+
+### Setar uma versao default
+
+```bash
+$ nvm alias default 15.4.0
 ```
 
 ### Versao

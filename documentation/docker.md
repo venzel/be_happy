@@ -62,6 +62,12 @@ $ sudo apt-get update
 $ sudo apt-get install docker-ce docker-ce-cli containerd.io
 ```
 
+### Adiciona um usuario ao grupo do docker
+
+```bash
+$ sudo usermod -aG docker <name_user>
+```
+
 ## Containers
 
 ### Container : Redis
