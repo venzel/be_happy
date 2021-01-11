@@ -3,7 +3,12 @@ include .env
 .PHONY: setup
 
 setup:
-	sh ./scripts/test.sh
+	sh ./docker/setup.sh && yarn typeorm migration:run && yarn build && yarn dev
+
+.PHONY: dev
+
+dev:
+	yarn dev
 
 .PHONY: up
 
@@ -19,3 +24,8 @@ down:
 
 logs:
 	docker-compose logs -f
+
+.PHONY: run
+
+run:
+	yarn dev
