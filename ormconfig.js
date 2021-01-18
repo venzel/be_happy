@@ -17,7 +17,7 @@ module.exports = [
     {
         name: 'default',
         type: 'postgres',
-        host: mongodb_host,
+        host: postgres_host,
         port: postgres_port,
         database: postgres_db_name,
         username: postgres_user,
@@ -32,7 +32,7 @@ module.exports = [
     {
         name: 'mongodb',
         type: 'mongodb',
-        host: postgres_host,
+        host: mongodb_host,
         port: mongodb_port,
         database: mongodb_db_name,
         username: mongodb_user,
