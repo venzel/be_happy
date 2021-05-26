@@ -103,6 +103,24 @@ $ git init
 $ git remote -v
 ```
 
+### Gerenciamento de versionamento
+
+```bash
+# Documentacao: https://dev.to/nishina555/how-to-ignore-files-already-managed-with-git-locally-19oo
+
+# Exclui a gestao LOCAL do arquivo pelo git
+$ git update-index --skip-worktree yarn.lock
+
+# Restaura a gestao LOCAL do arquivo pelo git
+$ git update-index --no-skip-worktree yarn.lock
+
+# Exclui a gestao do arquivo pelo git
+$ git update-index --assume-unchanged yarn.lock
+
+# Restaura a gestao do arquivo pelo git
+$ git update-index --no-assume-unchanged yarn.lock
+```
+
 ### Adiciona um caminho remoto ao origin
 
 ```bash
