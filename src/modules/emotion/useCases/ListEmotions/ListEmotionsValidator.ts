@@ -4,7 +4,7 @@ import { AppException } from '@shared/exceptions/AppException'
 
 class ListEmotionsValidator {
     public validate(req: Request, res: Response, next: NextFunction): any {
-        const { owner_id, role } = req.auth
+        const { role } = req.auth
 
         const query_user_id = req.query.user_id?.toString()
 

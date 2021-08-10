@@ -16,6 +16,10 @@ class MongoNotificationRepository implements INotificationRepository {
         return await this._repository.findOne({ _id: new ObjectID(notification_id) })
     }
 
+    public async filterByOwnerId(owner_id: string): Promise<INotificationSchema[]> {
+        return this._repository.find({ where: { owner_id } })
+    }
+
     public async create(data: ICreateNotificationDTO): Promise<INotificationSchema> {
         const { owner_id, content } = data
 

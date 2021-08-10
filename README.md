@@ -55,12 +55,20 @@
 -   Colocar as vars ambient no insominia, principalmente a key e documentar
 -   [x] Fazer o script migrations
 
--   Listar os emotions
--   Listar notificacoes
--   Atualizar o emotion
+-   [x] Listar os emotions
+-   [x] Atualizar o emotion
+-   [x] Exibir o emotion
+-   [x] Deletar o emotion
+-   [x] Listar notificacoes
 -   [x] Ajeitar Documentacao, instalacao node/nvm
 -   [x] Implementar caches: login e senha
 -   [x] Ajeitar bugs do create user
+
+## Lembrar
+
+-   Documentar workflow de git
+-   Deixar o node fixo em uma versao
+-   Quando listar os usuarios, nao listar o owner logado
 
 ## Fazer
 
@@ -73,7 +81,9 @@
 
 ## Fazer
 
--   analise de requisitos
+-   Fazer um arquivo de recursos utilizados
+-   Verificar os status code de update e delete
+-   Melhorar o new Date(), tentar um metodo estatico
 
 ## Outros
 

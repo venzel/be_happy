@@ -1,31 +1,48 @@
 import { injectable, inject } from 'tsyringe'
-import { IEmotionEntity } from '@modules/emotion/shared/models/entities/IEmotionEntity'
+import { formatDate } from '@shared/helpers/date'
 import { IEmotionRepository } from '@modules/emotion/shared/repositories/IEmotionRepository'
-import { AppException } from '@shared/exceptions/AppException'
+import { INotificationRepository } from '@modules/notification/shared/repositories/INotificationRepository'
 import { IUpdateEmotionDTO } from './IUpdateEmotionDTO'
+import { IEmotionEntity } from '@modules/emotion/shared/models/entities/IEmotionEntity'
+import { AppException } from '@shared/exceptions/AppException'
 
 @injectable()
 class UpdateEmotionService {
-    constructor(@inject('EmotionRepository') private _emotionRepository: IEmotionRepository) {}
+    constructor(
+        @inject('EmotionRepository') private _emotionRepository: IEmotionRepository,
+        @inject('NotificationRepository') private _notificationRepository: INotificationRepository
+    ) {}
 
     public async execute(data: IUpdateEmotionDTO): Promise<IEmotionEntity> {
-        const { emotion_id, description } = data
+        const { emotion_id, description, owner_id } = data
 
-        const existsEmotionWithId = await this._emotionRepository.findOneById(emotion_id)
+        const existsEmotion = await this._emotionRepository.findOneById(emotion_id)
 
-        if (!existsEmotionWithId) {
+        if (!existsEmotion) {
             throw new AppException('Emotion not found!', 404)
+        }
+
+        if (owner_id !== existsEmotion.owner_id) {
+            throw new AppException('It is not possible to update another users emotion!', 403)
         }
 
         /* Data update */
 
-        existsEmotionWithId.description = description
+        existsEmotion.description = description
 
-        /* End Data update */
+        /* Data saved in repository */
 
-        const savedEmotion = await this._emotionRepository.save(existsEmotionWithId)
+        await this._emotionRepository.save(existsEmotion)
 
-        return savedEmotion
+        /* Create notification */
+
+        const content = `Emotion updated in ${formatDate(new Date())}`
+
+        await this._notificationRepository.create({ owner_id, content })
+
+        /* Returns the emotion found */
+
+        return existsEmotion
     }
 }
 

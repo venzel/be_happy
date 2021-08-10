@@ -23,11 +23,9 @@ class MarkReadNotificationService {
             throw new AppException('It not permited update another notification user id!', 403)
         }
 
-        const markedAsReadNotification = await this._notificationRepository.markAsRead(
-            existsNotification
-        )
+        await this._notificationRepository.markAsRead(existsNotification)
 
-        return markedAsReadNotification
+        return existsNotification
     }
 }
 

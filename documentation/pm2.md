@@ -26,11 +26,17 @@ $ yarn global add pm2
 $ npm install pm2 -g
 ```
 
+### Para rodar typescript
+
+```bash
+$ pm2 install typescript
+```
+
 ### Start server pm2
 
 ```bash
 # Alert: before, enter folder behappy
-$ sudo pm2 start /opt/project-test/dist/Server.js --name node-behappy-server
+$ sudo pm2 start ./dist/shared/infra/http/app.js --name behappy-server
 ```
 
 ### Stop server pm2
@@ -79,4 +85,7 @@ $ pm2 stop node-behappy-server
 
 # Delete service
 $ pm2 delete node-behappy-server
+
+# Deleta todos os servicos
+$ pm2 delete all
 ```
