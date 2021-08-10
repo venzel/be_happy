@@ -10,6 +10,11 @@
 
 API Rest em **Typescript** e **NodeJS** com uma arquitetura **Feature by Package** (módulos e casos de usos).
 
+<p align="left">
+    <img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="Typescript" title="Typescript" width="30" height="30" /> 
+    <img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="NodeJS" title="NodeJS" width="30" height="30" /> 
+</p>
+
 ### Back end
 
 -   Typescript
@@ -21,7 +26,7 @@ API Rest em **Typescript** e **NodeJS** com uma arquitetura **Feature by Package
 
 ### Outras informações
 
-O projeto tem como gerencimento de pacotes o **Yarn** e o **Makefile** como automação de comandos, além disso, o Postgres, MongoDB e Redis é gerenciado através de um containers do **Docker**.
+O projeto tem como gerencimento de pacotes o **Yarn** e o **Makefile** como automação de comandos, além disso, o Postgres, MongoDB e Redis são containers do **Docker**.
 
 ## Arquitetura
 
