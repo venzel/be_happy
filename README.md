@@ -1,127 +1,80 @@
-# README.md
+# BeKid
 
-> **Atencao:** desconsiderar o uso de acentos
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/venzel/bekid/blob/master/LICENSE)
 
-> **Atencao:** Node.js nas versoes acima da 14.5.0 devido ao uuid
+> **BeKid** é uma aplicação para o mapeamento de emoções e combate ao bullying escolar.<br /> <a href="http://bekid.app">👉 bekid.app</a>
 
-## Arquitetura: Package by feature
+<p align="center"><img src="./media/logos/bekid-v1.png" width="280" /></p>
 
--   [Links](documentation/links.md)
--   [Analise de requisitos](documentation/analise-de-requisitos.md)
--   [Commitizen](documentation/commitizen.md)
--   [Packages](documentation/packages.md)
--   [GIT](documentation/git.md)
--   [Node](documentation/node.md)
--   [Yarn](documentation/yarn.md)
--   [Docker](documentation/docker.md)
--   [Docker compose](documentation/docker-compose.md)
--   [NGINX](documentation/nginx.md)
--   [PM2](documentation/pm2.md)
--   [CI/CD](documentation/ci-cd.md)
--   [Tests](documentation/tests.md)
--   [Eslint](documentation/eslint.md)
--   [TypeORM](documentation/typeorm.md)
--   [Typescript](documentation/typescript.md)
--   [VS Code : snippets](documentation/vscode.md)
--   [Linux](documentation/linux.md)
--   [SSH](documentation/ssh.md)
--   [ZSH](documentation/zsh.md)
--   [Insomnia](documentation/insomnia.md)
+## Tecnologias
 
-## COLORS THEME
+API Rest em **Typescript** e **NodeJS** com uma arquitetura **Feature by Package** (módulos e casos de usos).
 
-    - #A881E4
-    - #31CF97
-    - #28FE9A
-    - #FFF1C9
-    - #FFD2B6
-    - #FFDFA4
+### Back end
 
-## Fazer
+-   Typescript
+-   NodeJS / Express / Jest / TypeORM
 
--   [x] Organizar todas as rotas no insomnia
--   [x] Validar o nome do usuario
--   [x] Validar o email do usuario
--   [x] Alterar o campo emotion
--   [x] Documentar o typeorm migration nova criada
--   [x] Substituir a geracao de ids
--   [x] Moficar nas migrations o uuid function
--   [x] Mark read repository ajeitar nomes e tirar do repoistorio a funcao
--   [x] Fazer o toggle do user allowed
--   [x] Criar a migration de relatorio de emotions
--   Configurar o husky
--   Configurar o eslint
--   Documentacao do eslint
--   Colocar as vars ambient no insominia, principalmente a key e documentar
--   [x] Fazer o script migrations
+### Persistência de dados
 
--   [x] Listar os emotions
--   [x] Atualizar o emotion
--   [x] Exibir o emotion
--   [x] Deletar o emotion
--   [x] Listar notificacoes
--   [x] Ajeitar Documentacao, instalacao node/nvm
--   [x] Implementar caches: login e senha
--   [x] Ajeitar bugs do create user
+-   Postgres / MongoDB / Redis
 
-## Lembrar
+### Outras informações
 
--   Documentar workflow de git
--   Deixar o node fixo em uma versao
--   Quando listar os usuarios, nao listar o owner logado
+O projeto tem como gerencimento de pacotes o **Yarn** e o **Makefile** como automação de comandos, além disso, o Postgres, MongoDB e Redis é gerenciado através de um containers do **Docker**.
 
-## Fazer
+## Arquitetura
 
--   Fazer o mail provider
--   Implementar partes do sistema com mail provider
--   Criar o queue provider
--   Implementar parte do sistema com o queue
--   Implementar o mail provider com servico externo
--   Implementar o storage provider com servico externo
+### Porque Feature by Package?
 
-## Fazer
+Feature by Package (FBP) é uma arquitetura que utiliza conceitos do **DDD (Domain Driven Design)**, sugerida por empresas como a **Rocketseat**, com o objetivo de tornar o código mais **flexível**, **escalável** e de **manutenção simples**.
 
--   Fazer um arquivo de recursos utilizados
--   Verificar os status code de update e delete
--   Melhorar o new Date(), tentar um metodo estatico
+### Vantagens da arquitetura
 
-## Outros
+-   **MANUTENÇÃO**: Facilita o engajamento de muitas equipe e colaboradores em um projeto;
+-   **ESCALÁVEL**: Facilita refatoramento do código monolítico para uma uma estrura de microserviços;
+-   **SOLID**: Facilita a aplicação de todos os princípios do SOLID;
+-   **GIT**: Melhora o gerenciamento dos commits, evitando conflitos e etc;
+-   **TESTES**: Facilita o desenvolvimento de testes de unidade e integração.
 
--   Iniciar os testes da aplicacao
+### Organização das pastas
 
-## Outros
+<p align="center"><img src="./media/bekid-tree-v1.png" width="300" /></p>
 
--   Seguranca na aplicacao
--   Recupear apenas 3 senhas por vez
--   Efetuar o logout
+## Diagrama
 
-## Outros
+### Versão 1
 
--   Informar outras rotas na api quando realizar requisicoes
+<img src="./media/diagramas/diagrama-v1.png" />
 
-## Outros
+### Influências
 
--   Iniciar a documentacao para rodar a app
+Este projeto tem como principais influências, os fundamentos da <a href="https://rocketseat.com.br">Rocketseat</a>, <a href="https://devsuperior.com.br">DevSuperior<a> e <a href="https://www.algaworks.com">AlgaWorks<a>.
 
-## Outros
+## Como executar o projeto
 
--   Criar um logo e um git mais profissional
+### Pré-requisitos
 
-## Outros
+-   Node.js nas versoes acima da 14.5.0
+-   Docker
+-   Docker compose
 
--   Criar configuracoes de release
+```bash
+# Para clonar repositório
+git clone https://github.com/venzel/bekid
 
-## Outros
+# Para entrar na pasta do projeto
+cd bekid
 
--   Criar paginacao
+# Para subir o containers
+make up
 
-## Pesquisar
+# Para executar o projeto na porta 8080
+make run
+```
 
--   Aplicacao de limpeza de redis cache
--   Aplicacao de dados fakes no banco de dados
--   Criar o arquivo de configuracao do docker
--   Testar o cors
--   [x] Testar a integracao continua com codeship
--   Configurar a app para o pos build devido os @
--   Pequisar como se faz busca com regEx
--   Teste de carga no sistema
+## Autor
+
+Enéas Almeida
+
+<a href="https://www.linkedin.com/in/venzel">https://www.linkedin.com/in/venzel</a>
