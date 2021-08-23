@@ -42,10 +42,6 @@ Feature by Package (FBP) é uma arquitetura que utiliza conceitos do **DDD (Doma
 -   **GIT**: Melhora o gerenciamento dos commits, evitando conflitos e etc;
 -   **TESTES**: Facilita o desenvolvimento de testes de unidade e integração.
 
-### Organização das pastas
-
-<p align="center"><img src="./media/bekid-tree-v1.png" width="300" /></p>
-
 ## Diagrama
 
 ### Versão 1
@@ -56,30 +52,8 @@ Feature by Package (FBP) é uma arquitetura que utiliza conceitos do **DDD (Doma
 
 Este projeto tem como principais influências, os fundamentos da <a href="https://rocketseat.com.br">Rocketseat</a>, <a href="https://devsuperior.com.br">DevSuperior<a> e <a href="https://www.algaworks.com">AlgaWorks<a>.
 
-## Como executar o projeto
-
-### Pré-requisitos
-
--   Node.js nas versoes acima da 14.5.0
--   Docker
--   Docker compose
-
-```bash
-# Para clonar repositório
-git clone https://github.com/venzel/bekid
-
-# Para entrar na pasta do projeto
-cd bekid
-
-# Para subir o containers
-make up
-
-# Para executar o projeto na porta 8080
-make run
-```
-
 ## Autor
 
-Enéas Almeida
+Edivam Enéas de Almeida Júnior
 
 <a href="https://www.linkedin.com/in/venzel">https://www.linkedin.com/in/venzel</a>
